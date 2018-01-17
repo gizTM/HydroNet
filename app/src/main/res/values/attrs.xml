@@ -21,4 +21,9 @@
         <attr name="textStyle" />
     </declare-styleable>
 
+    <declare-styleable name="TwoPageFlipperLayout">
+        <attr name="first_page_layout" format="string" />
+        <attr name="second_page_layout" format="string" />
+    </declare-styleable>
+
 </resources>

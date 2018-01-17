@@ -1,4 +1,4 @@
-package com.senior.gizgiz.hydronet.Login;
+package com.senior.gizgiz.hydronet.Fragment;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -88,7 +88,7 @@ public class SignupFragment extends Fragment {
             return;
         }
         if(TextUtils.isEmpty(email)) {
-            Toast.makeText(getContext(), "Please enter email", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Please enter ic_email", Toast.LENGTH_LONG).show();
             return;
         }
         if(TextUtils.isEmpty(password)) {
@@ -100,10 +100,10 @@ public class SignupFragment extends Fragment {
             return;
         }
 
-        signupProgress.setMessage("Signing up user...");
+        signupProgress.setMessage("Signing up ic_user...");
         signupProgress.show();
 /*
-        firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+        firebaseAuth.createUserWithEmailAndPassword(ic_email,password).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {

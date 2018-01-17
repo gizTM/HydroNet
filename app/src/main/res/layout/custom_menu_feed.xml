@@ -7,7 +7,7 @@
     android:gravity="center"
     xmlns:custom="http://schemas.android.com/apk/res-auto">
     <!--<ImageView-->
-        <!--android:src="@drawable/action_feed"-->
+        <!--android:src="@drawaic_action_feedfeed"-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content" />-->
     <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView

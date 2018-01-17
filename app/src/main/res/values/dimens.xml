@@ -12,4 +12,5 @@
     <dimen name="num_label">28dp</dimen>
     <dimen name="badge_label">18dp</dimen>
     <dimen name="padding_small">10dp</dimen>
+    <dimen name="sub_btn_padding">20dp</dimen>
 </resources>

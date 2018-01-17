@@ -24,10 +24,10 @@ public class CustomButton extends AppCompatButton {
         super(context, attrs);
         TypedArray a = context.obtainStyledAttributes(
                 attrs,
-                R.styleable.CustomTextView,
+                R.styleable.CustomButton,
                 0, 0);
         try {
-            fontAttr = a.getInteger(R.styleable.CustomTextView_textStyle,0);
+            fontAttr = a.getInteger(R.styleable.CustomButton_textStyle,0);
         } finally {
             a.recycle();
         }
@@ -50,7 +50,6 @@ public class CustomButton extends AppCompatButton {
         else if (fontAttr==6) fontStyle = "Thin";
         Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"fonts/AdventPro-"+fontStyle+".ttf");
         setTypeface(tf);
-        this.append(fontStyle);
         invalidate();
         requestLayout();
     }

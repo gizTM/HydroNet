@@ -34,14 +34,14 @@
             android:layout_height="match_parent">
             <EditText
                 android:id="@+id/username_text"
-                android:drawableStart="@drawable/user"
+                android:drawableStart="@drawable/ic_user"
                 android:drawablePadding="10dp"
                 android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="50dp" />
             <EditText
                 android:id="@+id/password_text"
-                android:drawableStart="@drawable/pw"
+                android:drawableStart="@drawable/ic_pw"
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp" />
@@ -51,7 +51,7 @@
                 android:textSize="17dp"
                 android:text="Log in"
                 android:textColor="@color/white"
-                android:background="@drawable/bg_gray_button"
+                android:background="@drawable/bg_btn_gray"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp" />
@@ -70,7 +70,7 @@
                         android:textAllCaps="false"
                         android:textSize="17dp"
                         android:textColor="@color/white"
-                        android:background="@drawable/bg_fb_button"
+                        android:background="@drawable/bg_btn_fb"
                         android:text="Login with Facebook"
                         android:layout_width="110dp"
                         android:layout_height="55dp" />
@@ -85,7 +85,7 @@
                         android:textAllCaps="false"
                         android:textSize="17dp"
                         android:textColor="@color/white"
-                        android:background="@drawable/bg_gg_button"
+                        android:background="@drawable/bg_btn_gg"
                         android:text="Login with Google+"
                         android:layout_width="110dp"
                         android:layout_height="55dp" />

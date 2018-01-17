@@ -1,6 +1,5 @@
 package com.senior.gizgiz.hydronet;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -9,17 +8,16 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Toast;
-import android.widget.ViewFlipper;
 
 import com.senior.gizgiz.hydronet.CustomClassAdapter.HomeCardAdapter;
 import com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView;
+import com.senior.gizgiz.hydronet.CustomHelperClass.NavigationManager;
+import com.senior.gizgiz.hydronet.CustomHelperClass.TwoPageFlipperLayout;
 
 /**
  * Created by Admins on 015 15/1/2018.
@@ -30,12 +28,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private ActionBarDrawerToggle toggle;
     private Toolbar toolbar;
     private NavigationView navigationView;
-    private ViewFlipper flipper;
+    private TwoPageFlipperLayout flipper;
     private View contentPage,homeContent;
-    private ImageButton expandBT;
     private ListView cardList;
     private HomeCardAdapter historyAdapter;
-    private CustomTextView customMenuTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +41,24 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
         // setup toolbar drawer
+        setup();
+
+        // define basic recyclable element
+        contentPage = findViewById(R.id.page_content);
+        ViewStub contentStub = contentPage.findViewById(R.id.layout_stub);
+        contentStub.setLayoutResource(R.layout.content_home);
+        homeContent = contentStub.inflate();
+
+        // define content element
+        flipper = homeContent.findViewById(R.id.custom_home_flipper);
+        cardList = flipper.getSecondPage().findViewById(R.id.history_list);
+        historyAdapter = new HomeCardAdapter(getApplicationContext(),HomeCardAdapter.exampleCards);
+        cardList.setAdapter(historyAdapter);
+    }
+
+    void setup() {
         toolbar = findViewById(R.id.toolbar);
+        ((CustomTextView)toolbar.findViewById(R.id.page_title)).setText(R.string.menu_home);
         setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer);
         toggle = new ActionBarDrawerToggle(this, drawer, toolbar,R.string.drawer_open,R.string.drawer_close);
@@ -53,51 +66,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        // define object element
-        contentPage = findViewById(R.id.page_content);
-        ViewStub contentStub = contentPage.findViewById(R.id.layout_stub);
-        contentStub.setLayoutResource(R.layout.content_home);
-        homeContent = contentStub.inflate();
-        flipper = homeContent.findViewById(R.id.home_flipper);
-        expandBT = homeContent.findViewById(R.id.expand_activities_button);
-        cardList = homeContent.findViewById(R.id.history_list);
-        historyAdapter = new HomeCardAdapter(getApplicationContext(),HomeCardAdapter.exampleCards);
-
-        // define listener to element
-        expandBT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                flipper.showNext();
-            }
-        });
-        cardList.setAdapter(historyAdapter);
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        Log.d("id:",id+"");
-        switch (id) {
-            case R.id.home :
-                startActivity(new Intent(this,HomeActivity.class));
-                Toast.makeText(this,"Home",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.my_plant :
-                Toast.makeText(this,"My Plant",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.community :
-                Toast.makeText(this,"Community",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.feed :
-                Toast.makeText(this,"Feed",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.trading :
-                Toast.makeText(this,"Trading",Toast.LENGTH_SHORT).show();
-                break;
-            default: break;
-        }
-        return false;
+        return NavigationManager.navigateTo(this,id);
     }
 
     @Override

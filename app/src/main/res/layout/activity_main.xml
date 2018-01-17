@@ -7,8 +7,7 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CustomHelperClass.NavigationActivity">
+    android:layout_height="match_parent">
 
     <include android:id="@+id/page_content"
         layout="@layout/page_main"

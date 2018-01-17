@@ -6,6 +6,7 @@
     <color name="bg">#fafafa</color>
     <color name="icon_gray">#7a7a7a</color>
     <color name="font_gray">#606060</color>
+    <color name="font_light_gray">#929292</color>
     <color name="icon_light_gray">#d6d6d6</color>
     <color name="topMenuBG">#fafafa</color>
     <color name="green">#72bb53</color>

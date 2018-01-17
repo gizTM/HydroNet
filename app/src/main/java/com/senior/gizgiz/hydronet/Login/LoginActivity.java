@@ -9,6 +9,8 @@ import android.text.Spanned;
 import android.view.View;
 
 import com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView;
+import com.senior.gizgiz.hydronet.Fragment.LoginFragment;
+import com.senior.gizgiz.hydronet.Fragment.SignupFragment;
 import com.senior.gizgiz.hydronet.MainActivity;
 import com.senior.gizgiz.hydronet.R;
 

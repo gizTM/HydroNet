@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/btn_group"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout android:id="@+id/btn_first_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <LinearLayout android:id="@+id/btn_first"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:background="@drawable/bg_frame_content">
+            <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+                android:id="@+id/btn_first_label"
+                android:text="@string/menu_sub_summary"
+                android:textColor="@color/font_light_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/btn_second_group"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout android:id="@+id/btn_second"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:background="@drawable/bg_frame_content">
+            <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+                android:id="@+id/btn_second_label"
+                android:text="@string/menu_sub_part"
+                android:textColor="@color/font_light_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/btn_third_group"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout android:id="@+id/btn_third"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:background="@drawable/bg_frame_content">
+            <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+                android:id="@+id/btn_third_label"
+                android:text="@string/menu_sub_material"
+                android:textColor="@color/font_light_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

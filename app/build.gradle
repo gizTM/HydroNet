@@ -40,7 +40,7 @@ dependencies {
     //database
     compile 'com.google.firebase:firebase-database:11.6.0'
 
-    //user authentication
+    //ic_user authentication
     compile 'com.google.firebase:firebase-auth:11.6.0';
 
     //connect to netpie

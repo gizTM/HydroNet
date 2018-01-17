@@ -25,8 +25,8 @@
                     android:textSize="@dimen/page_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
-                <ImageButton
-                    android:src="@drawable/action_notification"
+                <ImageButton android:id="@+id/action_quick_notification"
+                    android:src="@drawable/ic_action_notification"
                     android:rotation="30"
                     android:background="@android:color/transparent"
                     android:scaleType="centerCrop"
@@ -34,7 +34,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp" />
                 <ImageButton android:id="@+id/action_quick_user"
-                    android:src="@drawable/action_user"
+                    android:src="@drawable/ic_action_user"
                     android:background="@android:color/transparent"
                     android:scaleType="centerCrop"
                     android:layout_marginLeft="15dp"

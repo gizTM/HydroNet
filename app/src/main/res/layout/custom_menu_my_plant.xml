@@ -7,12 +7,12 @@
     android:gravity="center"
     xmlns:custom="http://schemas.android.com/apk/res-auto">
     <!--<ImageView-->
-        <!--android:src="@drawable/action_my_plant"-->
+        <!--android:src="@drawaic_action_my_plantlant"-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content" />-->
     <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
         android:id="@+id/menu_title"
-        android:text="@string/menu_my_plant"
+        android:text="@string/menu_my_profile"
         android:layout_marginLeft="10dp"
         android:gravity="center_vertical"
         android:textSize="@dimen/label"

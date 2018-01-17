@@ -31,19 +31,19 @@
             android:layout_height="match_parent">
             <EditText
                 android:id="@+id/username_text"
-                android:drawableStart="@drawable/user"
+                android:drawableStart="@drawable/ic_user"
                 android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <EditText
                 android:id="@+id/email_text"
-                android:drawableStart="@drawable/email"
+                android:drawableStart="@drawable/ic_email"
                 android:inputType="textEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <EditText
                 android:id="@+id/password_text"
-                android:drawableStart="@drawable/pw"
+                android:drawableStart="@drawable/ic_pw"
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -58,7 +58,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="17dp"
-                android:background="@drawable/bg_gray_button"
+                android:background="@drawable/bg_btn_gray"
                 android:text="Sign up"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"

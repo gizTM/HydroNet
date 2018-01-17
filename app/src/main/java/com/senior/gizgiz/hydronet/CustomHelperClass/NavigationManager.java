@@ -1,5 +1,6 @@
 package com.senior.gizgiz.hydronet.CustomHelperClass;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -13,18 +14,9 @@ import com.senior.gizgiz.hydronet.R;
  * Created by Admins on 017 17/1/2018.
  */
 
-public class NavigationManager extends AppCompatActivity {
-    private static Context context;
+public class NavigationManager {
 
-    public void onCreate() {
-        context = this.getApplicationContext();
-    }
-
-    public Context getContext() {
-        return context;
-    }
-
-    public static void navigateTo (int item) {
+    public static boolean navigateTo (Context context, int item) {
         switch (item) {
             case R.id.home :
                 context.startActivity(new Intent(context,HomeActivity.class));
@@ -47,5 +39,6 @@ public class NavigationManager extends AppCompatActivity {
                 break;
             default: break;
         }
+        return false;
     }
 }

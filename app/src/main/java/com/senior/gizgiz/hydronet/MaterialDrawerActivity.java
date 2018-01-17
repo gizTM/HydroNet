@@ -36,22 +36,22 @@ public class MaterialDrawerActivity extends AppCompatActivity {
 
         //if you want to update the items at a later time it is recommended to keep it in a variable
         PrimaryDrawerItem drawer_home = new PrimaryDrawerItem().withIdentifier(1).withName(R.string.menu_home).withTypeface(font)
-                .withIcon(R.drawable.action_home);
-        PrimaryDrawerItem drawer_my_plant = new PrimaryDrawerItem().withIdentifier(2).withName(R.string.menu_my_plant).withTypeface(font)
-                .withIcon(R.drawable.action_my_plant);
+                .withIcon(R.drawable.ic_action_home);
+        PrimaryDrawerItem drawer_my_plant = new PrimaryDrawerItem().withIdentifier(2).withName(R.string.menu_my_profile).withTypeface(font)
+                .withIcon(R.drawable.ic_action_my_plant);
         PrimaryDrawerItem drawer_community = new PrimaryDrawerItem().withIdentifier(3).withName(R.string.menu_community).withTypeface(font)
-                .withIcon(R.drawable.action_community).withIsExpanded(true);
+                .withIcon(R.drawable.ic_action_community).withIsExpanded(true);
         SecondaryDrawerItem drawer_feed = new SecondaryDrawerItem().withIdentifier(4).withName(R.string.menu_feed).withTypeface(font)
-                .withIcon(R.drawable.action_feed);
+                .withIcon(R.drawable.ic_action_feed);
         SecondaryDrawerItem drawer_trading = new SecondaryDrawerItem().withIdentifier(5).withName(R.string.menu_trading).withTypeface(font)
-                .withIcon(R.drawable.action_trading);
+                .withIcon(R.drawable.ic_action_trading);
 
         // Create the AccountHeader
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
-                .withHeaderBackground(R.drawable.green_bg)
+                .withHeaderBackground(R.drawable.ic_bg_green)
                 .addProfiles(
-                        new ProfileDrawerItem().withName("Mike Penz").withEmail("mikepenz@gmail.com").withIcon(getResources().getDrawable(R.drawable.user))
+                        new ProfileDrawerItem().withName("Mike Penz").withEmail("mikepenz@gmail.com").withIcon(getResources().getDrawable(R.drawable.ic_user))
                 )
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override

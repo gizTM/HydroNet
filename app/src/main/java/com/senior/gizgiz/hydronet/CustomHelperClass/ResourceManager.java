@@ -19,17 +19,17 @@ public class ResourceManager {
     }
 
     public static int getDrawableID(Context context,String drawable) {
-        Resources resources = context.getResources();
-        final int resourceId = resources.getIdentifier(drawable, "drawable",
-                context.getPackageName());
-        return resourceId;
+        return context.getResources().getIdentifier(drawable,"drawable",context.getPackageName());
 //        return resources.getDrawable(resourceId);
     }
 
+    public static int getLayoutID(Context context, String layout) {
+        return context.getResources().getIdentifier(layout,"layout",context.getPackageName());
+//        return resources.getLayout(resourceId);
+    }
+
     public static Drawable getDrawable(Context context, String drawable) {
-        Resources resources = context.getResources();
-        final int resourceId = resources.getIdentifier(drawable, "drawable",
-                context.getPackageName());
-        return resources.getDrawable(resourceId);
+        int resourceId = context.getResources().getIdentifier(drawable,"drawable",context.getPackageName());
+        return context.getResources().getDrawable(resourceId);
     }
 }

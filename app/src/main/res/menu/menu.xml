@@ -4,27 +4,27 @@
     <group>
         <item android:id="@+id/home"
             app:actionLayout="@layout/custom_menu_home"
-            android:icon="@drawable/action_home"
+            android:icon="@drawable/ic_action_home"
             android:title="" />
         <item android:id="@+id/my_plant"
             app:actionLayout="@layout/custom_menu_my_plant"
-            android:icon="@drawable/action_my_plant"
+            android:icon="@drawable/ic_action_my_plant"
             android:title="" />
         <item android:id="@+id/community"
             app:actionLayout="@layout/custom_menu_community"
-            android:icon="@drawable/action_community"
+            android:icon="@drawable/ic_action_community"
             android:title=""/>
             <item android:id="@+id/feed"
                 app:actionLayout="@layout/custom_menu_feed"
-                android:icon="@drawable/action_feed"
+                android:icon="@drawable/ic_action_feed"
                 android:title="" />
             <item android:id="@+id/trading"
                 app:actionLayout="@layout/custom_menu_trading"
-                android:icon="@drawable/action_trading"
+                android:icon="@drawable/ic_action_trading"
                 android:title="" />
     </group>
     <item android:id="@+id/setting"
         app:actionLayout="@layout/custom_menu_setting"
-        android:icon="@drawable/action_user"
+        android:icon="@drawable/ic_action_user"
         android:title="" />
 </menu>

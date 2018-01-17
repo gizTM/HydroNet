@@ -28,7 +28,7 @@
     </style>
 
     <style name="plantHealthBar" parent="@android:style/Widget.RatingBar">
-        <item name="android:progressDrawable">@drawable/plant_health_bar_full</item>
+        <item name="android:progressDrawable">@drawable/bar_plant_health_full</item>
         <item name="android:minHeight">24dp</item>
         <item name="android:maxHeight">24dp</item>
         <item name="android:numStars">3</item>

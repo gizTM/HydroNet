@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@android:id/background"
-        android:drawable="@drawable/plant_health_bar_full_empty" />
+        android:drawable="@drawable/bar_plant_health_full_empty" />
     <item android:id="@android:id/secondaryProgress"
-        android:drawable="@drawable/plant_health_bar_full_empty" />
+        android:drawable="@drawable/bar_plant_health_full_empty" />
     <item android:id="@android:id/progress"
-        android:drawable="@drawable/plant_health_bar_full_filled" />
+        android:drawable="@drawable/bar_plant_health_full_filled" />
 </layer-list>
