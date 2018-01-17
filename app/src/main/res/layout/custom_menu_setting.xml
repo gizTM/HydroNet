@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="20dp"
+    android:gravity="center"
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
+    <!--<ImageView-->
+        <!--android:src="@drawable/action_user"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+        android:id="@+id/menu_title"
+        android:text="@string/menu_setting"
+        android:layout_marginLeft="10dp"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/label"
+        android:textColor="@color/font_gray"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

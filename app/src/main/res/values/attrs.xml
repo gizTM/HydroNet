@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="content_frame_color">
+        <attr name="frame_color" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomTextView">
+        <attr name="textStyle" format="integer">
+            <enum name="regular" value="0" />
+            <enum name="extra-light" value="1" />
+            <enum name="light" value="2" />
+            <enum name="medium" value="3" />
+            <enum name="bold" value="4" />
+            <enum name="semi-bold" value="5" />
+            <enum name="thin" value="6" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="CustomButton">
+        <attr name="textStyle" />
+    </declare-styleable>
+
+</resources>

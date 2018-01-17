@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "789572975719",
+    "firebase_url": "https://hydronetapp.firebaseio.com",
+    "project_id": "hydronetapp",
+    "storage_bucket": "hydronetapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:789572975719:android:eebcd6c4a7c75ded",
+        "android_client_info": {
+          "package_name": "com.senior.gizgiz.hydronet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "789572975719-3bm7vo417338mqpj5utnb0pkkrmri99u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.senior.gizgiz.hydronet",
+            "certificate_hash": "0bb6cd27c42a5c8561f409a7ffd7311abe85b5ee"
+          }
+        },
+        {
+          "client_id": "789572975719-hjc4b49mjmhrf2uq3uju8kleuln28j9f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXTbkmg_1Jiy0y-AiXgslua3_JhEfgNRQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "789572975719-hjc4b49mjmhrf2uq3uju8kleuln28j9f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

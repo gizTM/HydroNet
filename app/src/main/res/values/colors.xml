@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#fafafa</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#dadada</color>
+    <color name="bg">#fafafa</color>
+    <color name="icon_gray">#7a7a7a</color>
+    <color name="font_gray">#606060</color>
+    <color name="icon_light_gray">#d6d6d6</color>
+    <color name="topMenuBG">#fafafa</color>
+    <color name="green">#72bb53</color>
+    <color name="border_green">#629c44</color>
+    <color name="white">#ffffff</color>
+    <color name="button_gray_text">#d6d6d6</color>
+    <color name="orange">#ffa834</color>
+    <color name="border_orange">#d68227</color>
+    <color name="blue">#0000ff</color>
+    <color name="yellow">#ffff00</color>
+    <color name="badge_green">#c3bb38</color>
+    <color name="bg_nav_menu">#ebebeb</color>
+
+</resources>

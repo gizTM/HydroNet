@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout android:background="@drawable/bg_content_frame"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout android:id="@+id/upper_group"
+        android:padding="5dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <com.senior.gizgiz.hydronet.CustomHelperClass.SquareThumbnail
+            android:id="@+id/card_thumbnail"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_content_frame_green">
+            <ImageView android:id="@+id/plant_img"
+                android:src="@drawable/ic_plant_tomato"
+                android:padding="10dp"
+                android:layout_marginBottom="@dimen/label"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+            <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+                android:id="@+id/plant_name"
+                android:text="tomato"
+                android:textSize="@dimen/label"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:textAlignment="center"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+            <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+                android:id="@+id/plant_count_badge"
+                android:background="@drawable/bg_plant_count_badge"
+                android:layout_alignParentRight="true"
+                android:text="x4"
+                android:textSize="@dimen/badge_label"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+        </com.senior.gizgiz.hydronet.CustomHelperClass.SquareThumbnail>
+        <LinearLayout android:id="@+id/middle_group"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout android:id="@+id/location_group"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_location"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+                <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+                    android:id="@+id/location"
+                    android:text="A5"
+                    android:textSize="@dimen/num_label"
+                    custom:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <RatingBar
+                android:id="@+id/plant_health"
+                style="@style/plantHealthBar"
+                android:layout_gravity="center"
+                android:rating="2.5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:id="@+id/time_group"
+                android:layout_weight="2"
+                android:padding="10dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@drawable/ic_date"
+                    android:layout_margin="5dp"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp" />
+                <View
+                    android:background="@color/icon_light_gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp" />
+                    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+                        android:id="@+id/date"
+                        android:text="23rd day"
+                        android:maxLines="1"
+                        android:textSize="25dp"
+                        custom:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_margin="5dp"
+                    android:src="@drawable/ic_history"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp" />
+                <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+                    android:layout_gravity="center"
+                    android:layout_marginRight="5dp"
+                    android:text="History"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:background="@color/icon_light_gray"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:padding="5dp" >
+        <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recommend"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+</LinearLayout>
