@@ -19,5 +19,8 @@
     <color name="yellow">#ffff00</color>
     <color name="badge_green">#c3bb38</color>
     <color name="bg_nav_menu">#ebebeb</color>
+    <color name="btn_fb">#3d8af7</color>
+    <color name="btn_gg">#ff5d55</color>
+    <color name="btn_gray">#7a7a7a</color>
 
 </resources>

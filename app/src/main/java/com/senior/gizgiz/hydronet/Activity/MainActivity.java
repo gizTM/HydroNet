@@ -1,4 +1,4 @@
-package com.senior.gizgiz.hydronet;
+package com.senior.gizgiz.hydronet.Activity;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -9,6 +9,7 @@ import android.text.style.TypefaceSpan;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.senior.gizgiz.hydronet.CustomHelperClass.CustomTypefaceSpan;
+import com.senior.gizgiz.hydronet.R;
 
 public class MainActivity extends AppCompatActivity {
 

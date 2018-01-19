@@ -45,13 +45,26 @@
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <!--<include android:id="@+id/content_main"-->
-        <!--layout="@layout/content_home" />-->
-    <ViewStub
-        android:id="@+id/layout_stub"
-        android:inflatedId="@+id/content_layout"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent">
+        <ViewStub
+            android:id="@+id/layout_stub"
+            android:inflatedId="@+id/content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <LinearLayout
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.senior.gizgiz.hydronet.CustomHelperClass.SquareThumbnail
+                android:id="@+id/btn_add"
+                android:layout_margin="@dimen/btn_add_margin"
+                android:background="@drawable/ic_btn_add"
+                android:layout_width="@dimen/btn_add"
+                android:layout_height="@dimen/btn_add" />
+        </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

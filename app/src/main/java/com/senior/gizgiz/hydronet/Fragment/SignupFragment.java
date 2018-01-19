@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.senior.gizgiz.hydronet.CustomHelperClass.CustomButton;
-import com.senior.gizgiz.hydronet.MainActivity;
+import com.senior.gizgiz.hydronet.Activity.MainActivity;
 import com.senior.gizgiz.hydronet.R;
 
 public class SignupFragment extends Fragment {

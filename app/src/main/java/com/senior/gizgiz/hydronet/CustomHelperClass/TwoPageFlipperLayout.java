@@ -52,6 +52,8 @@ public class TwoPageFlipperLayout extends RelativeLayout {
         init(context,firstPageLayout,secondPageLayout);
     }
 
+    public ViewFlipper getFlipper() { return flipper; }
+
     public View getFirstPage() {
         return firstPage;
     }
@@ -59,6 +61,8 @@ public class TwoPageFlipperLayout extends RelativeLayout {
     public View getSecondPage() {
         return secondPage;
     }
+
+    public void setViewFirstPage() { flipper.setDisplayedChild(0); }
 
     public void init (Context context, String firstPageLayout, String secondPageLayout) {
         rootView = inflate(context, R.layout.two_page_flipper, this);

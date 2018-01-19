@@ -1,5 +1,6 @@
-package com.senior.gizgiz.hydronet;
+package com.senior.gizgiz.hydronet.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -16,8 +17,11 @@ import android.widget.ListView;
 
 import com.senior.gizgiz.hydronet.CustomClassAdapter.HomeCardAdapter;
 import com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView;
+import com.senior.gizgiz.hydronet.CustomHelperClass.MicrogearManager;
 import com.senior.gizgiz.hydronet.CustomHelperClass.NavigationManager;
+import com.senior.gizgiz.hydronet.CustomHelperClass.SquareThumbnail;
 import com.senior.gizgiz.hydronet.CustomHelperClass.TwoPageFlipperLayout;
+import com.senior.gizgiz.hydronet.R;
 
 /**
  * Created by Admins on 015 15/1/2018.
@@ -32,6 +36,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private View contentPage,homeContent;
     private ListView cardList;
     private HomeCardAdapter historyAdapter;
+    private SquareThumbnail addBTN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         // define basic recyclable element
         contentPage = findViewById(R.id.page_content);
+        addBTN = contentPage.findViewById(R.id.btn_add);
         ViewStub contentStub = contentPage.findViewById(R.id.layout_stub);
         contentStub.setLayoutResource(R.layout.content_home);
         homeContent = contentStub.inflate();
@@ -54,6 +60,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         cardList = flipper.getSecondPage().findViewById(R.id.history_list);
         historyAdapter = new HomeCardAdapter(getApplicationContext(),HomeCardAdapter.exampleCards);
         cardList.setAdapter(historyAdapter);
+
+        addBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplication(),MicrogearActivity.class));
+            }
+        });
     }
 
     void setup() {

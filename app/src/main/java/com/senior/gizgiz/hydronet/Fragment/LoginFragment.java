@@ -14,9 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.senior.gizgiz.hydronet.HomeActivity;
-import com.senior.gizgiz.hydronet.MainActivity;
-import com.senior.gizgiz.hydronet.MicrogearActivity;
+import com.senior.gizgiz.hydronet.Activity.HomeActivity;
+import com.senior.gizgiz.hydronet.Activity.MainActivity;
+import com.senior.gizgiz.hydronet.Activity.MicrogearActivity;
 import com.senior.gizgiz.hydronet.R;
 
 public class LoginFragment extends Fragment {

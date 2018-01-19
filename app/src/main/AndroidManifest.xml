@@ -17,7 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity">
+        <activity android:name=".Activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,13 +25,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Login.LoginActivity"
+            android:name=".Activity.LoginActivity"
             android:theme="@style/NoActionBar" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".MicrogearActivity" />
-        <activity android:name=".MaterialDrawerActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".MyPlantActivity" />
+        <activity android:name=".Activity.MainActivity" />
+        <activity android:name=".Activity.MicrogearActivity" />
+        <activity android:name=".Activity.MaterialDrawerActivity" />
+        <activity android:name=".Activity.HomeActivity" />
+        <activity android:name=".Activity.MyPlantActivity" />
+        <activity android:name=".CustomHelperClass.MicrogearManager" />
     </application>
 
 </manifest>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
-        android:text="@string/label_plant_overview"
+        android:text="@string/label_part_overview"
         android:layout_margin="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
-            android:text="plant overview"
+            android:text="part overview"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

@@ -1,4 +1,4 @@
-package com.senior.gizgiz.hydronet;
+package com.senior.gizgiz.hydronet.Activity;
 
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBar;
@@ -18,6 +18,7 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView;
+import com.senior.gizgiz.hydronet.R;
 
 public class MaterialDrawerActivity extends AppCompatActivity {
     private ActionBar actionBar;

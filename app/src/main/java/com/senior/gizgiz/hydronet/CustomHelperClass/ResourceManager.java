@@ -32,4 +32,13 @@ public class ResourceManager {
         int resourceId = context.getResources().getIdentifier(drawable,"drawable",context.getPackageName());
         return context.getResources().getDrawable(resourceId);
     }
+
+    public static int getID(Context context, String id) {
+        return context.getResources().getIdentifier(id,"id",context.getPackageName());
+    }
+
+    public static String getString(Context context, String string) {
+        int resourceId = context.getResources().getIdentifier(string,"string",context.getPackageName());
+        return context.getResources().getString(resourceId);
+    }
 }

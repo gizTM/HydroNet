@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,28 +7,22 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:background="@color/font_gray"
-    tools:context=".MainActivity">
-
-
-    <!--<ImageView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:id="@+id/imageView"-->
-        <!--android:src="@drawable/netpie_logo"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_centerHorizontal="true" />-->
-
-    <LinearLayout
-        android:id="@+id/linearLayoutId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:orientation="horizontal">
-
+    tools:context=".Activity.MainActivity">
+    <TableRow>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_span="3"
+            android:text="Test NetPie"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/page_title" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:gravity="center"
             android:text="APP ID"
             android:textColor="@color/white"
             android:textSize="18sp"
@@ -36,34 +30,25 @@
 
         <EditText
             android:id="@+id/editTextAPPID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:textColor="@color/white" />
 
         <ImageButton
-            android:visibility="invisible"
+            android:visibility="gone"
             android:id="@+id/imageButtonEditId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:src="@android:drawable/ic_menu_edit" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/linearLayoutKey"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/linearLayoutId"
-        android:orientation="horizontal">
-
+    </TableRow>
+    <TableRow>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:gravity="center"
             android:text="Key"
             android:textColor="@color/white"
             android:textSize="15sp" />
@@ -77,26 +62,18 @@
             android:textColor="@color/white" />
 
         <ImageButton
-            android:visibility="invisible"
+            android:visibility="gone"
             android:id="@+id/imageButtonEditKey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_edit" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayoutSecret"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/linearLayoutKey"
-        android:orientation="horizontal">
-
+    </TableRow>
+    <TableRow>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:gravity="center"
             android:text="Secret"
             android:textColor="@color/white"
             android:textSize="15sp" />
@@ -110,26 +87,18 @@
             android:textColor="@color/white" />
 
         <ImageButton
-            android:visibility="invisible"
+            android:visibility="gone"
             android:id="@+id/imageButtonEditSecret"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_edit" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayoutAlias"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/linearLayoutSecret"
-        android:orientation="horizontal">
-
+    </TableRow>
+    <TableRow>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:gravity="center"
             android:text="Alias"
             android:textColor="@color/white"
             android:textSize="15sp" />
@@ -143,151 +112,62 @@
             android:textColor="@color/white" />
 
         <ImageButton
-            android:visibility="invisible"
+            android:visibility="gone"
             android:id="@+id/imageButtonEditAlias"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_edit" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textViewSub"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Subscribe Topic"
-        android:textColor="@color/orange"
-        android:textSize="18sp"
-        android:layout_below="@+id/linearLayoutAlias"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewSub"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/linearLayoutSubcribe">
-
+    </TableRow>
+    <TableRow>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:gravity="center"
             android:text="topic"
-            android:textColor="@color/orange"
-            android:textSize="15sp"
-            android:layout_gravity="center_vertical" />
+            android:textColor="@color/white"
+            android:textSize="15sp" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="18sp"
-            android:textColor="@color/orange"
+            android:textColor="@color/white"
             android:id="@+id/editTextSub"
             android:layout_gravity="center_vertical" />
 
-        <ImageButton
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageButtonSub"
-            android:src="@android:drawable/ic_menu_upload" />
+            android:text="connect"
+            android:id="@+id/imageButtonSub" />
 
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textViewPub"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Publish Data to Topic"
-        android:textColor="@color/blue"
-        android:textSize="18sp"
-        android:layout_below="@+id/linearLayoutSubcribe"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewPub"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/linearLayoutPub">
-
+    </TableRow>
+    <TableRow>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:gravity="center"
             android:text="data"
-            android:textColor="@color/blue"
-            android:textSize="15sp"
-            android:layout_gravity="center_vertical" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@color/blue"
-            android:id="@+id/editTextData"
-            android:layout_gravity="center_vertical" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageButtonPub"
-            android:src="@android:drawable/ic_menu_upload" />
-
-    </LinearLayout>
-
-<!--
-    <TextView
-        android:id="@+id/textViewRead"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Read Data"
-        android:textColor="@color/yellow"
-        android:textSize="18sp"
-        android:layout_below="@+id/linearLayoutPub"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewRead"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/linearLayoutRead">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="topic"
-            android:textColor="@color/yellow"
-            android:textSize="15sp"
-            android:layout_gravity="center_vertical" />
+            android:textColor="@color/white"
+            android:textSize="15sp" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/white"
-            android:id="@+id/editTextRead"
+            android:id="@+id/editTextData"
             android:layout_gravity="center_vertical" />
 
-        <ImageButton
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageButtonRead"
-            android:src="@android:drawable/ic_menu_more" />
-
-    </LinearLayout>
--->
+            android:text="publish"
+            android:id="@+id/imageButtonPub" />
+    </TableRow>
 
     <TextView
         android:id="@+id/textViewResponse"
@@ -320,14 +200,14 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
                 android:scrollbars="vertical"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 android:text=""
                 android:typeface="monospace" />
-
         </LinearLayout>
     </ScrollView>
 
-    <ImageButton
+    <ImageButton android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageButtonDelete"
@@ -337,4 +217,4 @@
         android:layout_alignParentEnd="true" />
 
 
-</RelativeLayout>
+</TableLayout>

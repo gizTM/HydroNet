@@ -1,4 +1,4 @@
-package com.senior.gizgiz.hydronet;
+package com.senior.gizgiz.hydronet.Activity;
 
 import android.app.Activity;
 import android.os.Handler;
@@ -8,24 +8,27 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.senior.gizgiz.hydronet.R;
+
 import io.netpie.microgear.Microgear;
 import io.netpie.microgear.MicrogearEventListener;
 
 public class MicrogearActivity extends Activity {
-
     private Microgear microgear = new Microgear(this);
     private String APPID = "HydroNet"; //APP_ID
-    private String KEY = "PDsYSPrLaeRx1y6"; //KEY
-    private String SECRET = "Nx2FzLsbAHnwk22OtRr6seoG1"; //SECRET
-    private String ALIAS = "android";
+    private String KEY = "VyAjCTBLdMkqDAx"; //KEY
+    private String SECRET = "OZsrRwVddG7U2BDi4ksXUa7bS"; //SECRET
+    private String ALIAS = "";
 
     private EditText appidET,keyET,secretET,aliasET,subET,dataET,readET;
     private ImageButton appidIB,keysecretIB;
-    private ImageButton subIB,pubIB,readIB;
+    private Button subIB,pubIB,readIB;
     protected TextView tvSerial;
     private ScrollView mSvText;
 
@@ -44,26 +47,26 @@ public class MicrogearActivity extends Activity {
         final MicrogearCallBack callback = new MicrogearCallBack();
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        mSvText = (ScrollView) findViewById(R.id.svText);
-        tvSerial = (TextView) findViewById(R.id.tvSerial);
+        mSvText = findViewById(R.id.svText);
+        tvSerial = findViewById(R.id.tvSerial);
         tvSerial.setMovementMethod(new ScrollingMovementMethod());
 
-        appidET = (EditText) findViewById(R.id.editTextAPPID);
+        appidET = findViewById(R.id.editTextAPPID);
         appidET.setText(APPID);
-        keyET = (EditText) findViewById(R.id.editTextKEY);
+        keyET = findViewById(R.id.editTextKEY);
         keyET.setText(KEY);
-        secretET = (EditText) findViewById(R.id.editTextSECRET);
+        secretET = findViewById(R.id.editTextSECRET);
         secretET.setText(SECRET);
-        aliasET = (EditText) findViewById(R.id.editTextAlias);
+        aliasET =  findViewById(R.id.editTextAlias);
         aliasET.setText(ALIAS);
-        subET = (EditText) findViewById(R.id.editTextSub);
-        dataET = (EditText) findViewById(R.id.editTextData);
+        subET =  findViewById(R.id.editTextSub);
+        dataET = findViewById(R.id.editTextData);
 //        readET = (EditText) findViewById(R.id.editTextRead);
 
-        appidIB = (ImageButton) findViewById(R.id.imageButtonEditId);
-        keysecretIB = (ImageButton) findViewById(R.id.imageButtonEditKey);
-        subIB = (ImageButton) findViewById(R.id.imageButtonSub);
-        pubIB = (ImageButton) findViewById(R.id.imageButtonPub);
+        appidIB = findViewById(R.id.imageButtonEditId);
+        keysecretIB = findViewById(R.id.imageButtonEditKey);
+        subIB = findViewById(R.id.imageButtonSub);
+        pubIB = findViewById(R.id.imageButtonPub);
 //        readIB = (ImageButton) findViewById(R.id.imageButtonRead);
 
         subIB.setOnClickListener(new View.OnClickListener() {

@@ -34,4 +34,7 @@
     <string name="menu_sub_material">Materials</string>
     <string name="label_plant_overview">Income overview</string>
     <string name="menu_sub_summary">Summary</string>
+    <string name="msg_test_publish_microgear">Add plant successful~</string>
+    <string name="label_part_overview">Hardware parts overview</string>
+    <string name="label_material_overview">Materials overview</string>
 </resources>

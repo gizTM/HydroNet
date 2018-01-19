@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:id="@+id/btn_group"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <LinearLayout android:id="@+id/btn_first_group"
@@ -10,16 +12,21 @@
         <LinearLayout android:id="@+id/btn_first"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_margin="20dp"
-            android:padding="10dp"
+            android:layout_marginTop="@dimen/sub_btn_margin_vertical"
+            android:layout_marginBottom="@dimen/sub_btn_margin_vertical"
+            android:layout_marginLeft="@dimen/sub_btn_margin_horizontal"
+            android:layout_marginRight="@dimen/sub_btn_margin_horizontal"
             android:gravity="center"
             android:background="@drawable/bg_frame_content">
             <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
                 android:id="@+id/btn_first_label"
                 android:text="@string/menu_sub_summary"
+                android:textSize="@dimen/submenu_label"
+                android:layout_margin="5dp"
+                android:gravity="center"
                 android:textColor="@color/font_light_gray"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout android:id="@+id/btn_second_group"
@@ -29,16 +36,21 @@
         <LinearLayout android:id="@+id/btn_second"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_margin="20dp"
-            android:padding="10dp"
+            android:layout_marginTop="@dimen/sub_btn_margin_vertical"
+            android:layout_marginBottom="@dimen/sub_btn_margin_vertical"
+            android:layout_marginLeft="@dimen/sub_btn_margin_horizontal"
+            android:layout_marginRight="@dimen/sub_btn_margin_horizontal"
             android:gravity="center"
             android:background="@drawable/bg_frame_content">
             <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
                 android:id="@+id/btn_second_label"
                 android:text="@string/menu_sub_part"
+                android:textSize="@dimen/submenu_label"
+                android:layout_margin="5dp"
+                android:gravity="center"
                 android:textColor="@color/font_light_gray"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="fill_parent"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout android:id="@+id/btn_third_group"
@@ -48,16 +60,21 @@
         <LinearLayout android:id="@+id/btn_third"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_margin="20dp"
-            android:padding="10dp"
+            android:layout_marginTop="@dimen/sub_btn_margin_vertical"
+            android:layout_marginBottom="@dimen/sub_btn_margin_vertical"
+            android:layout_marginLeft="@dimen/sub_btn_margin_horizontal"
+            android:layout_marginRight="@dimen/sub_btn_margin_horizontal"
             android:gravity="center"
             android:background="@drawable/bg_frame_content">
             <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
                 android:id="@+id/btn_third_label"
                 android:text="@string/menu_sub_material"
+                android:textSize="@dimen/submenu_label"
+                android:layout_margin="5dp"
+                android:gravity="center"
                 android:textColor="@color/font_light_gray"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="fill_parent"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

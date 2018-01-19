@@ -1,4 +1,4 @@
-package com.senior.gizgiz.hydronet.Login;
+package com.senior.gizgiz.hydronet.Activity;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -11,7 +11,7 @@ import android.view.View;
 import com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.Fragment.LoginFragment;
 import com.senior.gizgiz.hydronet.Fragment.SignupFragment;
-import com.senior.gizgiz.hydronet.MainActivity;
+import com.senior.gizgiz.hydronet.Activity.MainActivity;
 import com.senior.gizgiz.hydronet.R;
 
 public class LoginActivity extends AppCompatActivity {

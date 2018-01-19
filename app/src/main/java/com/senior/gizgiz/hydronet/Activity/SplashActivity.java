@@ -1,4 +1,4 @@
-package com.senior.gizgiz.hydronet;
+package com.senior.gizgiz.hydronet.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
