@@ -13,7 +13,7 @@
         android:text="@string/menu_community"
         android:gravity="center_vertical"
         android:textSize="@dimen/label"
-        android:textColor="@color/font_gray"
+        android:textColor="@color/scorpion_gray"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

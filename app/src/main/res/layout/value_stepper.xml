@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomButton
+        android:id="@+id/stepper_decrease"
+        android:gravity="center"
+        android:background="@drawable/step_border_left"
+        android:textColor="@color/boulder_gray"
+        android:text="-"
+        android:layout_width="@dimen/stepper_btn"
+        android:layout_height="@dimen/stepper_btn" />
+    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomEditText
+        android:id="@+id/stepper_value"
+        android:textCursorDrawable="@color/transparent"
+        android:textColor="@color/boulder_gray"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:text="40"
+        android:layout_width="@dimen/value_stepper_width"
+        android:layout_height="wrap_content" />
+    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomButton
+        android:id="@+id/stepper_increase"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:background="@drawable/step_border_right"
+        android:textColor="@color/boulder_gray"
+        android:text="+"
+        android:layout_width="@dimen/stepper_btn"
+        android:layout_height="@dimen/stepper_btn" />
+</LinearLayout>

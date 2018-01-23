@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.ViewFlipper;
 
+import com.senior.gizgiz.hydronet.Fragment.TwoPageFragment;
 import com.senior.gizgiz.hydronet.R;
 
 /**
@@ -22,6 +23,7 @@ public class TwoPageFlipperLayout extends RelativeLayout {
 
     String firstPageLayout,secondPageLayout;
 
+    public TwoPageFlipperLayout(Context context) { super(context); }
     public TwoPageFlipperLayout(Context context, AttributeSet attrs) {
         super(context,attrs);
         TypedArray a = context.obtainStyledAttributes(
@@ -51,6 +53,8 @@ public class TwoPageFlipperLayout extends RelativeLayout {
         }
         init(context,firstPageLayout,secondPageLayout);
     }
+    public void setFirstPageLayout(String firstPageLayout) { this.firstPageLayout = firstPageLayout; }
+    public void setSecondPageLayout(String secondPageLayout) { this.secondPageLayout = secondPageLayout; }
 
     public ViewFlipper getFlipper() { return flipper; }
 
@@ -64,7 +68,7 @@ public class TwoPageFlipperLayout extends RelativeLayout {
 
     public void setViewFirstPage() { flipper.setDisplayedChild(0); }
 
-    public void init (Context context, String firstPageLayout, String secondPageLayout) {
+    private void init (Context context, String firstPageLayout, String secondPageLayout) {
         rootView = inflate(context, R.layout.two_page_flipper, this);
         flipper = rootView.findViewById(R.id.flipper);
 

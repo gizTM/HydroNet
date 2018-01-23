@@ -9,7 +9,7 @@
     <RelativeLayout android:id="@+id/sensor_popup"
         android:padding="10dp"
         android:orientation="vertical"
-        android:background="@drawable/bg_frame_content"
+        android:background="@drawable/bg_frame_transparent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageButton

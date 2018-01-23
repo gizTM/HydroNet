@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     tools:context=".CustomHelperClass.NavigationManager">
 
-    <android.support.design.widget.AppBarLayout
+    <android.support.design.widget.AppBarLayout android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/MyActionBar" >
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
-            android:background="@color/topMenuBG"
+            android:background="@color/app_bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <RelativeLayout
@@ -45,26 +45,111 @@
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <RelativeLayout
+    <ViewStub android:id="@+id/layout_stub"
+        android:inflatedId="@+id/content_layout"
+        android:layout_below="@id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout android:id="@+id/fab_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ViewStub
-            android:id="@+id/layout_stub"
-            android:inflatedId="@+id/content_layout"
+
+        <!-- Your FAB implementation -->
+        <com.senior.gizgiz.hydronet.CustomHelperClass.CustomFloatingActionButton
+            android:id="@+id/fab_add"
+            app:fab_icon="@drawable/ic_add_white_24dp"
+            app:fab_colorNormal="@color/green"
+            app:fab_colorDisabled="@color/silver_chalice_gray"
+            app:fab_colorPressed="@color/dark_green"
+            android:layout_margin="@dimen/btn_add_margin"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+        <!-- Overlay that dims the screen -->
+        <com.gordonwong.materialsheetfab.DimOverlayFrameLayout
+            android:id="@+id/dim_overlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-        <LinearLayout
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <com.senior.gizgiz.hydronet.CustomHelperClass.SquareThumbnail
-                android:id="@+id/btn_add"
-                android:layout_margin="@dimen/btn_add_margin"
-                android:background="@drawable/ic_btn_add"
-                android:layout_width="@dimen/btn_add"
-                android:layout_height="@dimen/btn_add" />
-        </LinearLayout>
+        <!-- Circular reveal container for the sheet -->
+        <io.codetail.widget.RevealLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="end|bottom"
+            android:orientation="vertical">
+            <!-- Sheet that contains your items -->
+            <android.support.v7.widget.CardView android:id="@+id/fab_sheet"
+                android:background="@drawable/bg_frame_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <!-- TODO: Put your sheet items here -->
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <LinearLayout android:id="@+id/menu_add_from_system"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/ic_database"
+                            android:background="@android:color/transparent"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+                        <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+                            android:text="@string/menu_add_system"
+                            android:textSize="@dimen/label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <View android:background="@color/alto_gray"
+                        android:layout_margin="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp" />
+                    <LinearLayout android:id="@+id/menu_add_from_user"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/ic_search_user_plant"
+                            android:background="@android:color/transparent"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+                        <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+                            android:text="@string/menu_add_user"
+                            android:textSize="@dimen/label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <View android:background="@color/alto_gray"
+                        android:layout_margin="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp" />
+                    <LinearLayout android:id="@+id/menu_add_new"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/ic_add_new_plant"
+                            android:background="@android:color/transparent"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+                        <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+                            android:text="@string/menu_add_new"
+                            android:textSize="@dimen/label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </io.codetail.widget.RevealLinearLayout>
     </RelativeLayout>
-
-</LinearLayout>
+    <View android:id="@+id/dim_popup_overlay"
+        android:visibility="invisible"
+        android:background="@drawable/dim_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>

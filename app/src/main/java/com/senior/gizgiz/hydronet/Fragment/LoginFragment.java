@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.senior.gizgiz.hydronet.Activity.HomeActivity;
 import com.senior.gizgiz.hydronet.Activity.MainActivity;
-import com.senior.gizgiz.hydronet.Activity.MicrogearActivity;
+import com.senior.gizgiz.hydronet.Activity.MicrogearConsoleActivity;
 import com.senior.gizgiz.hydronet.R;
 
 public class LoginFragment extends Fragment {
@@ -59,7 +59,7 @@ public class LoginFragment extends Fragment {
         fbBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(), MicrogearActivity.class));
+                startActivity(new Intent(getContext(), MicrogearConsoleActivity.class));
             }
         });
         loginBT.setOnClickListener(new View.OnClickListener() {

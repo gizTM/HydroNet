@@ -94,7 +94,7 @@
                     android:layout_width="50dp"
                     android:layout_height="30dp" />
                 <View
-                    android:background="@color/icon_light_gray"
+                    android:background="@color/alto_gray"
                     android:layout_width="match_parent"
                     android:layout_height="1dp" />
                     <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
@@ -123,7 +123,7 @@
         </LinearLayout>
     </LinearLayout>
     <View
-        android:background="@color/icon_light_gray"
+        android:background="@color/alto_gray"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_width="match_parent"

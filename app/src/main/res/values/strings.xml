@@ -37,4 +37,19 @@
     <string name="msg_test_publish_microgear">Add plant successful~</string>
     <string name="label_part_overview">Hardware parts overview</string>
     <string name="label_material_overview">Materials overview</string>
+    <string name="menu_add_new">Create new environment</string>
+    <string name="menu_add_user">Grow plant from your collection</string>
+    <string name="menu_add_system">Grow plant from system collection</string>
+    <string name="menu_netpie">NetPie Console</string>
+    <string name="modal_title_add_plant">Add plant</string>
+    <string name="modal_subtitle_add_plant">(confirm means starting the farm)</string>
+    <string name="at">\@</string>
+    <string name="add_location_prompt">select location to plant</string>
+    <string name="map_layout">show layout</string>
+    <string name="modal_topic_add_sensor">Sensor Configuration</string>
+    <string name="btn_add_plant">Start growing</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="label_sensor_water">Water :</string>
+    <string name="label_sensor_ph">pH :</string>
+    <string name="label_sensor_ec">EC :</string>
 </resources>

@@ -12,11 +12,6 @@ import com.senior.gizgiz.hydronet.R;
  */
 
 public class ResourceManager {
-    private static Context context = null;
-
-    public static void init(Context c) {
-        context = c;
-    }
 
     public static int getDrawableID(Context context,String drawable) {
         return context.getResources().getIdentifier(drawable,"drawable",context.getPackageName());
@@ -40,5 +35,9 @@ public class ResourceManager {
     public static String getString(Context context, String string) {
         int resourceId = context.getResources().getIdentifier(string,"string",context.getPackageName());
         return context.getResources().getString(resourceId);
+    }
+
+    public static int getDim(Context context, int dim) {
+        return context.getResources().getDimensionPixelSize(dim);
     }
 }

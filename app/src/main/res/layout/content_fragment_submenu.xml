@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include android:id="@+id/submenu"
-        layout="@layout/custom_submenu" />
+    <!--<include android:id="@+id/submenu"-->
+        <!--layout="@layout/custom_submenu" />-->
 
-    <FrameLayout android:id="@+id/content_fragment"
-        android:padding="10dp"
+    <!--<FrameLayout android:id="@+id/content_fragment"-->
+        <!--android:padding="10dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+
+    <android.support.design.widget.TabLayout android:id="@+id/sliding_tab"
+        app:tabBackground="@drawable/selector_tab"
+        app:tabIndicatorColor="@color/transparent"
+        android:layout_weight="1"
+        android:layout_marginLeft="@dimen/tab_margin"
+        android:layout_marginRight="@dimen/tab_margin"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.v4.view.ViewPager android:id="@+id/fragment_viewpager"
+        android:layout_weight="3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
+
 </LinearLayout>

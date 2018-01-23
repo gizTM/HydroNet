@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="20dp"
+    android:gravity="center">
+    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+        android:id="@+id/menu_title"
+        android:text="@string/menu_netpie"
+        android:layout_marginLeft="10dp"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/label"
+        android:textColor="@color/scorpion_gray"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

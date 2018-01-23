@@ -1,26 +1,33 @@
 package com.senior.gizgiz.hydronet.Activity;
 
-import android.support.v4.app.FragmentTransaction;
+import android.content.Context;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.senior.gizgiz.hydronet.CustomClassAdapter.SlidingTabAdapter;
 import com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.CustomHelperClass.NavigationManager;
 import com.senior.gizgiz.hydronet.CustomHelperClass.ResourceManager;
 import com.senior.gizgiz.hydronet.Fragment.TwoPageFragment;
 import com.senior.gizgiz.hydronet.R;
+
+import java.util.ArrayList;
 
 /**
  * Created by Admins on 015 15/1/2018.
@@ -33,7 +40,12 @@ public class MyPlantActivity extends AppCompatActivity implements NavigationView
     private NavigationView navigationView;
 
     private View contentPage, myProfileContent,submenu;
-    private LinearLayout plantBTN,partBTN,materialBTN;
+
+    private TabLayout tabLayout;
+    private ViewPager tabPager;
+    private SlidingTabAdapter tabAdapter;
+
+    private ArrayList<Fragment> pageFragments = new ArrayList<>();
 
     private TwoPageFragment plantFragment,partFragment,materialFragment;
 
@@ -52,52 +64,96 @@ public class MyPlantActivity extends AppCompatActivity implements NavigationView
         myProfileContent = contentStub.inflate();
 
         // define content element
-        submenu = myProfileContent.findViewById(R.id.submenu);
-        ((CustomTextView)submenu.findViewById(R.id.btn_first_label)).setText(R.string.menu_sub_plant);
-        ((CustomTextView)submenu.findViewById(R.id.btn_second_label)).setText(R.string.menu_sub_part);
-        ((CustomTextView)submenu.findViewById(R.id.btn_third_label)).setText(R.string.menu_sub_material);
-
-        plantBTN = submenu.findViewById(R.id.btn_first);
-        partBTN = submenu.findViewById(R.id.btn_second);
-        materialBTN = submenu.findViewById(R.id.btn_third);
+        submenu = ((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE))
+                .inflate(R.layout.custom_submenu, null, false);
 
         //initial fragment
         plantFragment = new TwoPageFragment();
         plantFragment.setInflatedLayoutId(R.layout.fragment_plant_plant);
         plantFragment.setFlipperId(R.id.custom_plant_flipper);
+        pageFragments.add(plantFragment);
         partFragment = new TwoPageFragment();
         partFragment.setInflatedLayoutId(R.layout.fragment_plant_part);
         partFragment.setFlipperId(R.id.custom_part_flipper);
+        pageFragments.add(partFragment);
         materialFragment = new TwoPageFragment();
         materialFragment.setInflatedLayoutId(R.layout.fragment_plant_material);
         materialFragment.setFlipperId(R.id.custom_material_flipper);
+        pageFragments.add(materialFragment);
 
-        //setup first fragment --> don't know why but this fix null pointer bug *0*
-        swapFragmentPart();
-        swapFragmentMaterial();
-        swapFragmentPlant();
+        //initial tab layout
+        tabLayout = findViewById(R.id.sliding_tab);
+        tabLayout.addTab(tabLayout.newTab());
+        tabLayout.addTab(tabLayout.newTab());
+        tabLayout.addTab(tabLayout.newTab());
+        tabPager = findViewById(R.id.fragment_viewpager);
+        tabAdapter = new SlidingTabAdapter(getSupportFragmentManager(),tabLayout.getTabCount(),pageFragments);
+        tabPager.setAdapter(tabAdapter);
+        tabLayout.setupWithViewPager(tabPager);
+//        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        ((CustomTextView)submenu.findViewById(R.id.btn_first_label)).setText(R.string.menu_sub_plant);
+        ((CustomTextView)submenu.findViewById(R.id.btn_second_label)).setText(R.string.menu_sub_part);
+        ((CustomTextView)submenu.findViewById(R.id.btn_third_label)).setText(R.string.menu_sub_material);
+        tabLayout.getTabAt(0).setCustomView(submenu.findViewById(R.id.btn_first));
+        tabLayout.getTabAt(1).setCustomView(submenu.findViewById(R.id.btn_second));
+        tabLayout.getTabAt(2).setCustomView(submenu.findViewById(R.id.btn_third));
 
-        plantBTN.setOnClickListener(new View.OnClickListener() {
+        // add tab margin
+        for(int i=0; i<tabLayout.getTabCount()-1; i++) {
+            View tab = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(i);
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) tab.getLayoutParams();
+            p.setMargins(0,0,50,0);
+//            p.setMargins(0, 0, ResourceManager.getDim(getApplicationContext(),R.dimen.tab_margin), 0);
+            tab.requestLayout();
+        }
+
+        //null on first jump tab bug fixed - not yet TT
+//        for (int i=0; i<tabLayout.getTabCount(); i++) tabLayout.getTabAt(i).select();
+//        tabLayout.getTabAt(1).select();
+
+        // optional - view second page when swipe up
+        /*
+        tabPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onClick(View view) {
-                swapFragmentPlant();
-                plantFragment.setViewFirstPage();
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
-        partBTN.setOnClickListener(new View.OnClickListener() {
+        */
+
+        // when tab changed
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void onClick(View view) {
-                partFragment.setViewFirstPage();
-                swapFragmentPart();
+            public void onTabSelected(TabLayout.Tab tab) {
+                Fragment selectedFrag = pageFragments.get(tab.getPosition());
+                if(selectedFrag instanceof TwoPageFragment)
+                    ((TwoPageFragment) selectedFrag).setViewFirstPage();
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                Fragment selectedFrag = pageFragments.get(tab.getPosition());
+                if(selectedFrag instanceof TwoPageFragment)
+                    ((TwoPageFragment) selectedFrag).setViewFirstPage();
             }
         });
-        materialBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                materialFragment.setViewFirstPage();
-                swapFragmentMaterial();
-            }
-        });
+
+        FabActivity.initAddFAB(getBaseContext(),contentPage.findViewById(R.id.fab_layout));
     }
 
     void setup() {
@@ -115,33 +171,6 @@ public class MyPlantActivity extends AppCompatActivity implements NavigationView
         toggle.syncState();
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-    }
-
-    void swapFragmentPlant() {
-        plantBTN.setBackground(ResourceManager.getDrawable(getBaseContext(),"bg_frame_content"));
-        partBTN.setBackground(ResourceManager.getDrawable(getBaseContext(),"bg_transparent"));
-        materialBTN.setBackground(ResourceManager.getDrawable(getBaseContext(),"bg_transparent"));
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.content_fragment, plantFragment);
-        ft.commit();
-    }
-
-    void swapFragmentPart() {
-        plantBTN.setBackground(ResourceManager.getDrawable(getBaseContext(),"bg_transparent"));
-        partBTN.setBackground(ResourceManager.getDrawable(getBaseContext(),"bg_frame_content"));
-        materialBTN.setBackground(ResourceManager.getDrawable(getBaseContext(),"bg_transparent"));
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.content_fragment, partFragment);
-        ft.commit();
-    }
-
-    void swapFragmentMaterial() {
-        plantBTN.setBackground(ResourceManager.getDrawable(getBaseContext(),"bg_transparent"));
-        partBTN.setBackground(ResourceManager.getDrawable(getBaseContext(),"bg_transparent"));
-        materialBTN.setBackground(ResourceManager.getDrawable(getBaseContext(),"bg_frame_content"));
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.content_fragment, materialFragment);
-        ft.commit();
     }
 
     @Override

@@ -24,10 +24,10 @@ public class CustomButton extends AppCompatButton {
         super(context, attrs);
         TypedArray a = context.obtainStyledAttributes(
                 attrs,
-                R.styleable.CustomButton,
+                R.styleable.CustomTextView,
                 0, 0);
         try {
-            fontAttr = a.getInteger(R.styleable.CustomButton_textStyle,0);
+            fontAttr = a.getInteger(R.styleable.CustomTextView_textStyle,0);
         } finally {
             a.recycle();
         }

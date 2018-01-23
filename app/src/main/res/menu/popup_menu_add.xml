@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/add_menu_system"
+        android:icon="@drawable/ic_database"
+        android:title="@string/menu_add_system" />
+    <item android:id="@+id/add_menu_user_plant"
+        android:icon="@drawable/ic_search_user_plant"
+        android:title="@string/menu_add_user" />
+    <item android:id="@+id/add_menu_new"
+        android:icon="@drawable/ic_add_new_plant"
+        android:title="@string/menu_add_new" />
+</menu>

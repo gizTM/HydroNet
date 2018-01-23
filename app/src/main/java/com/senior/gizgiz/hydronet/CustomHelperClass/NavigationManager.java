@@ -2,9 +2,11 @@ package com.senior.gizgiz.hydronet.CustomHelperClass;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
 import android.widget.Toast;
 
 import com.senior.gizgiz.hydronet.Activity.HomeActivity;
+import com.senior.gizgiz.hydronet.Activity.MicrogearConsoleActivity;
 import com.senior.gizgiz.hydronet.Activity.MyPlantActivity;
 import com.senior.gizgiz.hydronet.R;
 
@@ -13,6 +15,7 @@ import com.senior.gizgiz.hydronet.R;
  */
 
 public class NavigationManager {
+
     public static boolean navigateTo (Context context, int item) {
         switch (item) {
             case R.id.home :
@@ -34,8 +37,13 @@ public class NavigationManager {
 //                context.startActivity(new Intent(context,TradingActivity.class));
                 Toast.makeText(context,"Trading",Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.netpie_console :
+                context.startActivity(new Intent(context, MicrogearConsoleActivity.class));
+                Toast.makeText(context,"NetPie Console",Toast.LENGTH_SHORT).show();
+                break;
             default: break;
         }
         return false;
     }
+
 }
