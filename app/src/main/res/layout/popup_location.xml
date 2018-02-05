@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/location_group"
+    android:background="@drawable/bg_frame_content"
+    android:layout_margin="@dimen/padding_small"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+        android:layout_margin="@dimen/margin_separator"
+        android:text="Choose location : "
+        android:textSize="@dimen/badge_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <GridView
+        android:id="@+id/location_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:horizontalSpacing="5dp"
+        android:verticalSpacing="5dp"
+        android:numColumns="8"/>
+</LinearLayout>

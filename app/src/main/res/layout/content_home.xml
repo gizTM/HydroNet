@@ -4,7 +4,13 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto" >
-    <com.senior.gizgiz.hydronet.CustomHelperClass.TwoPageFlipperLayout
+    <!--<ViewSwitcher-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+        <!--<include layout="@layout/content_home_overview" />-->
+        <!--<include layout="@layout/content_home_detail" />-->
+    <!--</ViewSwitcher>-->
+    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomFlipperLayout
         android:id="@+id/custom_home_flipper"
         android:background="@color/app_bg"
         custom:first_page_layout="content_home_overview"

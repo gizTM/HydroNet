@@ -13,10 +13,10 @@ import android.view.View;
 import android.view.ViewStub;
 import android.widget.ListView;
 
-import com.senior.gizgiz.hydronet.CustomClassAdapter.HomeCardAdapter;
+import com.senior.gizgiz.hydronet.CustomClassAdapter.HomeCardListViewAdapter;
 import com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.CustomHelperClass.NavigationManager;
-import com.senior.gizgiz.hydronet.CustomHelperClass.TwoPageFlipperLayout;
+import com.senior.gizgiz.hydronet.CustomHelperClass.CustomFlipperLayout;
 import com.senior.gizgiz.hydronet.R;
 
 /**
@@ -28,10 +28,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private ActionBarDrawerToggle toggle;
     private Toolbar toolbar;
     private NavigationView navigationView;
-    private TwoPageFlipperLayout flipper;
+    private CustomFlipperLayout flipper;
     private View contentPage,homeContent;
-    private ListView cardList;
-    private HomeCardAdapter historyAdapter;
+    // recycler view
+//    private RecyclerView homeCardList;
+//    private HomeCardRecyclerViewAdapter historyAdapter;
+    // list view
+    private ListView homeCardList;
+    private HomeCardListViewAdapter historyAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +55,30 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         // define content element
         flipper = homeContent.findViewById(R.id.custom_home_flipper);
-        cardList = flipper.getSecondPage().findViewById(R.id.history_list);
-        historyAdapter = new HomeCardAdapter(getApplicationContext(),HomeCardAdapter.exampleCards);
-        cardList.setAdapter(historyAdapter);
+        homeCardList = flipper.getSecondPage().findViewById(R.id.history_list);
+
+        // list view
+        historyAdapter = new HomeCardListViewAdapter(getApplicationContext(),HomeCardListViewAdapter.exampleCards);
+        homeCardList.setAdapter(historyAdapter);
+
+        // recycler view
+//        historyAdapter = new HomeCardRecyclerViewAdapter(getApplicationContext(),HomeCardRecyclerViewAdapter.exampleCards);
+//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+//        homeCardList.setLayoutManager(layoutManager);
+//        homeCardList.setItemAnimator(new DefaultItemAnimator());
+//        homeCardList.setAdapter(historyAdapter);
+//        homeCardList.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), homeCardList, new RecyclerTouchListener.ClickListener() {
+//            @Override
+//            public void onClick(View view, int position) {
+//                HomeCard card = HomeCardRecyclerViewAdapter.exampleCards.get(position);
+//                Toast.makeText(getApplicationContext(), card.getName() + " is selected!", Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onLongClick(View view, int position) {
+//
+//            }
+//        }));
 
         FabActivity.initAddFAB(getBaseContext(),contentPage.findViewById(R.id.fab_layout));
     }

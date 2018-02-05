@@ -5,49 +5,49 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewStub;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.ViewFlipper;
 
-import com.senior.gizgiz.hydronet.Fragment.TwoPageFragment;
 import com.senior.gizgiz.hydronet.R;
 
 /**
  * Created by Admins on 017 17/1/2018.
  */
 
-public class TwoPageFlipperLayout extends RelativeLayout {
+public class CustomFlipperLayout extends RelativeLayout {
     View rootView,firstPage,secondPage;
     ViewFlipper flipper;
     ImageButton flipButton;
 
     String firstPageLayout,secondPageLayout;
 
-    public TwoPageFlipperLayout(Context context) { super(context); }
-    public TwoPageFlipperLayout(Context context, AttributeSet attrs) {
+    public CustomFlipperLayout(Context context) { super(context); }
+    public CustomFlipperLayout(Context context, AttributeSet attrs) {
         super(context,attrs);
         TypedArray a = context.obtainStyledAttributes(
                 attrs,
-                R.styleable.TwoPageFlipperLayout,
+                R.styleable.CustomFlipperLayout,
                 0, 0);
         try {
-            firstPageLayout = a.getString(R.styleable.TwoPageFlipperLayout_first_page_layout);
-            secondPageLayout = a.getString(R.styleable.TwoPageFlipperLayout_second_page_layout);
+            firstPageLayout = a.getString(R.styleable.CustomFlipperLayout_first_page_layout);
+            secondPageLayout = a.getString(R.styleable.CustomFlipperLayout_second_page_layout);
         } finally {
             a.recycle();
         }
         init(context,firstPageLayout,secondPageLayout);
     }
 
-    public TwoPageFlipperLayout(Context context, AttributeSet attrs, int defStyle) {
+    public CustomFlipperLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context,attrs,defStyle);
         TypedArray a = context.obtainStyledAttributes(
                 attrs,
-                R.styleable.TwoPageFlipperLayout,
+                R.styleable.CustomFlipperLayout,
                 0, 0);
         try {
-            firstPageLayout = a.getString(R.styleable.TwoPageFlipperLayout_first_page_layout);
-            secondPageLayout = a.getString(R.styleable.TwoPageFlipperLayout_second_page_layout);
+            firstPageLayout = a.getString(R.styleable.CustomFlipperLayout_first_page_layout);
+            secondPageLayout = a.getString(R.styleable.CustomFlipperLayout_second_page_layout);
         } finally {
             a.recycle();
         }
@@ -66,10 +66,14 @@ public class TwoPageFlipperLayout extends RelativeLayout {
         return secondPage;
     }
 
-    public void setViewFirstPage() { flipper.setDisplayedChild(0); }
+    public void setViewFirstPage() {
+        flipper.setDisplayedChild(0);
+        flipper.setInAnimation(null);
+        flipper.setOutAnimation(null);
+    }
 
-    private void init (Context context, String firstPageLayout, String secondPageLayout) {
-        rootView = inflate(context, R.layout.two_page_flipper, this);
+    private void init (final Context context, String firstPageLayout, String secondPageLayout) {
+        rootView = inflate(context, R.layout.flipper, this);
         flipper = rootView.findViewById(R.id.flipper);
 
         int firstPageId = ResourceManager.getLayoutID(getContext(),firstPageLayout);
@@ -87,6 +91,8 @@ public class TwoPageFlipperLayout extends RelativeLayout {
         flipButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                flipper.setInAnimation(AnimationUtils.loadAnimation(context, R.anim.move_up));
+                flipper.setOutAnimation(AnimationUtils.loadAnimation(context, R.anim.move_down));
                 flipper.showNext();
             }
         });

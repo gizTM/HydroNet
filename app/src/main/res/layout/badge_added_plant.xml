@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="@dimen/padding_so_small"
+    android:gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView android:id="@+id/added_plant_img"
+        android:src="@drawable/ic_plant_tomato"
+        android:layout_width="@dimen/badge"
+        android:layout_height="@dimen/badge" />
+    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+        android:id="@+id/added_plant_count"
+        android:gravity="center"
+        android:text="x1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

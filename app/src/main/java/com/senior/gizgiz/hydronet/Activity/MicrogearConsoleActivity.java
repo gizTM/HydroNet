@@ -84,6 +84,7 @@ public class MicrogearConsoleActivity extends MicrogearActivity {
             @Override
             public void onClick(View view) {
                 microgear.publish(topicET.getText().toString()+"",dataET.getText().toString()+"");
+                microgear.chat("esp8266",dataET.getText().toString());
             }
         });
         autoBTN.setOnClickListener(new View.OnClickListener() {

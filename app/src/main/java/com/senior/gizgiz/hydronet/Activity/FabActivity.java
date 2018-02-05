@@ -2,18 +2,18 @@ package com.senior.gizgiz.hydronet.Activity;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Build;
+import android.content.Intent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
 import com.gordonwong.materialsheetfab.MaterialSheetFab;
 import com.gordonwong.materialsheetfab.MaterialSheetFabEventListener;
 import com.senior.gizgiz.hydronet.CustomHelperClass.CustomFloatingActionButton;
+import com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.R;
 
 /**
@@ -21,10 +21,12 @@ import com.senior.gizgiz.hydronet.R;
  */
 
 public class FabActivity extends Activity {
+    private static Context context;
     private static MaterialSheetFab materialSheetFab;
-    private static LinearLayout addSystem,addUser,addNew;
+    private static LinearLayout addSystemFarm, addCustomFarm,addNew;
 
-    public static void initAddFAB(final Context context, final View view) {
+    public static void initAddFAB(Context c, final View view) {
+        context = c;
         final CustomFloatingActionButton fab = view.findViewById(R.id.fab_add);
         View sheetView = view.findViewById(R.id.fab_sheet);
         View overlay = view.findViewById(R.id.dim_overlay);
@@ -34,35 +36,64 @@ public class FabActivity extends Activity {
         // Initialize material sheet FAB
         materialSheetFab = new MaterialSheetFab<>(fab, sheetView, overlay, sheetColor, fabColor);
 
-        addSystem = view.findViewById(R.id.menu_add_from_system);
-        addUser = view.findViewById(R.id.menu_add_from_user);
-        addNew = view.findViewById(R.id.menu_add_new);
+        addSystemFarm = view.findViewById(R.id.menu_add_system_farm);
+        addCustomFarm = view.findViewById(R.id.menu_add_custom_farm);
 
-        addSystem.setOnClickListener(new View.OnClickListener() {
+        addSystemFarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 materialSheetFab.hideSheet();
-                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View customView = inflater.inflate(R.layout.popup_add_plant,null);
-                final PopupWindow popup = new PopupWindow(customView, ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-                view.getRootView().findViewById(R.id.dim_popup_overlay).setVisibility(View.VISIBLE);
-                view.getRootView().findViewById(R.id.dim_popup_overlay).setClickable(false);
-                popup.setOutsideTouchable(false);
-                View.OnClickListener dismissAddPopup = new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        popup.dismiss();
-                    }
-                };
-                customView.findViewById(R.id.btn_add_cancel).setOnClickListener(dismissAddPopup);
-//                customView.findViewById(R.id.popup_add_close).setOnClickListener(dismissAddPopup);
-                popup.setOnDismissListener(new PopupWindow.OnDismissListener() {
-                    @Override
-                    public void onDismiss() {
-                        view.getRootView().findViewById(R.id.dim_popup_overlay).setVisibility(View.INVISIBLE);
-                    }
-                });
-                popup.showAtLocation(customView, Gravity.CENTER,0,0);
+                context.startActivity(new Intent(context, AddPlantActivity.class));
+//                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//                final View customView = inflater.inflate(R.layout.popup_add_plant,null);
+//                final PopupWindow popup = new PopupWindow(customView, ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+//                view.getRootView().findViewById(R.id.dim_popup_overlay).setVisibility(View.VISIBLE);
+//                view.getRootView().findViewById(R.id.dim_popup_overlay).setClickable(false);
+//                popup.setOutsideTouchable(false);
+//                customView.findViewById(R.id.btn_add_plant).setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+////                        DecimalFormat decimalFormat = new DecimalFormat("#");
+//                        String count = ((CustomTextView)customView.findViewById(R.id.plant_count_badge)).getText().toString();
+//                        int plantCount = new Integer(count.substring(1));
+//                        plantCount = (plantCount>=32)?32:++plantCount;
+//                        ((CustomTextView)customView.findViewById(R.id.plant_count_badge)).setText("x"+plantCount);
+//                    }
+//                });
+//                customView.findViewById(R.id.btn_minus_plant).setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+////                        DecimalFormat decimalFormat = new DecimalFormat("#");
+//                        String count = ((CustomTextView)customView.findViewById(R.id.plant_count_badge)).getText().toString();
+//                        int plantCount = new Integer(count.substring(1));
+//                        plantCount = (plantCount<=1)?1:--plantCount;
+//                        ((CustomTextView)customView.findViewById(R.id.plant_count_badge)).setText("x"+plantCount);
+//                    }
+//                });
+//                //spinner
+//
+//                View.OnClickListener dismissAddPopup = new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        popup.dismiss();
+//                    }
+//                };
+//                customView.findViewById(R.id.btn_add_cancel).setOnClickListener(dismissAddPopup);
+////                customView.findViewById(R.id.popup_add_close).setOnClickListener(dismissAddPopup);
+//                popup.setOnDismissListener(new PopupWindow.OnDismissListener() {
+//                    @Override
+//                    public void onDismiss() {
+//                        view.getRootView().findViewById(R.id.dim_popup_overlay).setVisibility(View.INVISIBLE);
+//                    }
+//                });
+//                popup.showAtLocation(customView, Gravity.CENTER,0,0);
+            }
+        });
+
+        addCustomFarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.startActivity(new Intent(context,ExampleMultiSpinner.class));
             }
         });
 

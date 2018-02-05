@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
+<!--<LinearLayout-->
+    <!--xmlns:custom="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content">-->
+<LinearLayout xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<LinearLayout android:background="@drawable/bg_frame_content"
-    android:layout_marginTop="10dp"
+    android:background="@drawable/bg_frame_content"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <LinearLayout android:id="@+id/upper_group"
         android:padding="5dp"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <com.senior.gizgiz.hydronet.CustomHelperClass.SquareThumbnail
             android:id="@+id/card_thumbnail"
             android:padding="10dp"
@@ -25,8 +26,8 @@
                 android:src="@drawable/ic_plant_tomato"
                 android:padding="10dp"
                 android:layout_marginBottom="@dimen/label"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
             <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
                 android:id="@+id/plant_name"
                 android:text="tomato"
@@ -34,7 +35,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:textAlignment="center"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
                 android:id="@+id/plant_count_badge"
@@ -145,4 +146,4 @@
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
-</LinearLayout>
+<!--</LinearLayout>-->

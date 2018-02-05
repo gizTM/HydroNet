@@ -25,11 +25,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // set typeface for text
-        Typeface regular = Typeface.createFromAsset(this.getAssets(), "fonts/AdventPro-Regular.ttf");
-        Typeface bold = Typeface.createFromAsset(this.getAssets(), "fonts/AdventPro-Bold.ttf");
+//        Typeface regular = Typeface.createFromAsset(this.getAssets(), "fonts/AdventPro/AdventPro-Regular.ttf");
+//        Typeface bold = Typeface.createFromAsset(this.getAssets(), "fonts/AdventPro/AdventPro-Bold.ttf");
 
-        regularSpan = new CustomTypefaceSpan(regular);
-        boldSpan = new CustomTypefaceSpan(bold);
+//        regularSpan = new CustomTypefaceSpan(regular);
+//        boldSpan = new CustomTypefaceSpan(bold);
 
         startActivity(new Intent(this, HomeActivity.class));
 //        startActivity(new Intent(this, LoginActivity.class));

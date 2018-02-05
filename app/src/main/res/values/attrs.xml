@@ -17,7 +17,7 @@
         </attr>
     </declare-styleable>
 
-    <declare-styleable name="TwoPageFlipperLayout">
+    <declare-styleable name="CustomFlipperLayout">
         <attr name="first_page_layout" format="string" />
         <attr name="second_page_layout" format="string" />
     </declare-styleable>
@@ -25,6 +25,10 @@
     <declare-styleable name="ValueStepper">
         <attr name="value" format="float" />
         <attr name="disabled" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="DropdownMenu">
+        <attr name="prompt" format="string" />
     </declare-styleable>
 
 </resources>

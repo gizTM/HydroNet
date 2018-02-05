@@ -2,21 +2,18 @@ package com.senior.gizgiz.hydronet.Fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ViewFlipper;
 
-import com.senior.gizgiz.hydronet.CustomHelperClass.TwoPageFlipperLayout;
-import com.senior.gizgiz.hydronet.R;
+import com.senior.gizgiz.hydronet.CustomHelperClass.CustomFlipperLayout;
 
 /**
  * Created by Admins on 017 17/1/2018.
  */
 
-public class TwoPageFragment extends Fragment {
-    private TwoPageFlipperLayout flipperLayout;
+public class FlipperFragment extends Fragment {
+    private CustomFlipperLayout flipperLayout;
     private int inflatedLayoutId;
     private int flipperId;
     private int firstPageLayout,secondPageLayout;

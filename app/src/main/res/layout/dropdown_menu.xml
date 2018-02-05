@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="@dimen/padding_so_small"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+        android:id="@+id/dropdown_title"
+        android:text="@string/add_location_prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageButton
+        android:src="@drawable/ic_arrow_down"
+        android:padding="@dimen/padding_so_small"
+        android:layout_gravity="center_vertical"
+        android:background="@color/transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

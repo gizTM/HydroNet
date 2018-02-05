@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * Created by Admins on 016 16/1/2018.
  */
 
-public class HomeCardAdapter extends BaseAdapter {
+public class HomeCardListViewAdapter extends BaseAdapter {
     private final Context context;
     private final ArrayList<HomeCard> homeCards;
     public static ArrayList<HomeCard> exampleCards = new ArrayList<>();
@@ -33,7 +33,7 @@ public class HomeCardAdapter extends BaseAdapter {
         exampleCards.add(new HomeCard(3,"spinach",5,"A3",21,(float) 2.5));
     }
 
-    public HomeCardAdapter(Context context, ArrayList<HomeCard> homeCards) {
+    public HomeCardListViewAdapter(Context context, ArrayList<HomeCard> homeCards) {
         this.context = context;
         this.homeCards = homeCards;
     }

@@ -48,6 +48,10 @@ dependencies {
     //floating action button
     compile 'com.getbase:floatingactionbutton:1.10.1'
     compile 'com.gordonwong:material-sheet-fab:1.2.1'
+
+    //dropdown menu
+    compile 'com.exblr:dropdown-menu:1.0.2'
+    compile 'io.apptik.widget:multiselectspinner:1.0.12'
 }
 
 apply plugin: 'com.google.gms.google-services'

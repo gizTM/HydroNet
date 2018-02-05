@@ -54,7 +54,8 @@ public class CustomTextView extends AppCompatTextView {
         else if (fontAttr==4) fontStyle = "Bold";
         else if (fontAttr==5) fontStyle = "SemiBold";
         else if (fontAttr==6) fontStyle = "Thin";
-        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"fonts/AdventPro-"+fontStyle+".ttf");
+        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"fonts/AdventPro/AdventPro-"+fontStyle+".ttf");
+//        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"fonts/NotoSansDisplay-hinted/NotoSansDisplay-"+fontStyle+".ttf");
         setTypeface(tf);
         invalidate();
         requestLayout();

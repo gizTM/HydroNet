@@ -16,8 +16,8 @@ public class MicrogearActivity extends Activity {
     protected Microgear microgear = new Microgear(this);
     protected MicrogearCallBack callback = new MicrogearCallBack();
     protected String APPID = "HydroNet"; //APP_ID
-    protected String KEY = "tJXFyNtF1qNMSlN"; //KEY
-    protected String SECRET = "Qf9u5SmyW3W61hQdf7MmFGtT6"; //SECRET
+    protected String KEY = "4D1iYUOh0BS9ZvB"; //KEY
+    protected String SECRET = "y0fNCYc8GjnFfVTJ4Lv6jlObE"; //SECRET
     protected String ALIAS = "";
 
     protected Handler handler = new Handler() {

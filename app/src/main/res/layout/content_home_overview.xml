@@ -139,66 +139,86 @@
             android:src="@drawable/ic_bed_layout"/>
         <LinearLayout android:id="@+id/summary_sensor_group"
             android:orientation="vertical"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/padding_so_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <RelativeLayout android:id="@+id/summary_sensor_water"
-                android:background="@drawable/bg_frame_sensor"
-                android:padding="10dp"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
+            <LinearLayout android:id="@+id/summary_sensor_water"
+                android:gravity="center"
+                android:layout_margin="@dimen/padding_so_small"
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageView android:id="@+id/ic_sensor_water"
-                    android:src="@drawable/ic_sensor_water"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp" />
-                <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
-                    android:text="72%"
-                    android:layout_toRightOf="@id/ic_sensor_water"
-                    android:layout_marginLeft="10dp"
+                <LinearLayout android:background="@drawable/bg_frame_sensor"
+                    android:padding="10dp"
                     android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </RelativeLayout>
-            <RelativeLayout android:id="@+id/summary_sensor_ph"
-                android:background="@drawable/bg_frame_sensor"
-                android:padding="10dp"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-                <ImageView android:id="@+id/ic_sensor_ph"
-                    android:src="@drawable/ic_sensor_ph"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp" />
-                <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
-                    android:text="72%"
-                    android:layout_toRightOf="@id/ic_sensor_ph"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                    <ImageView
+                        android:src="@drawable/ic_sensor_water"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp" />
+                    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+                        android:text="72%"
+                        android:layout_marginLeft="10dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:id="@+id/summary_sensor_ph"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/padding_so_small"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:background="@drawable/bg_frame_sensor"
+                    android:padding="10dp"
                     android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </RelativeLayout>
-            <RelativeLayout android:id="@+id/summary_sensor_ec"
-                android:background="@drawable/bg_frame_sensor"
-                android:padding="10dp"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-                <ImageView android:id="@+id/ic_sensor_ec"
-                    android:src="@drawable/ic_sensor_ec"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp" />
-                <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
-                    android:text="72%"
                     android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/ic_sensor_ec"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                    <ImageView
+                        android:src="@drawable/ic_sensor_ph"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp" />
+                    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+                        android:text="72%"
+                        android:layout_marginLeft="10dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:id="@+id/summary_sensor_ec"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/padding_so_small"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:background="@drawable/bg_frame_sensor"
+                    android:padding="10dp"
                     android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </RelativeLayout>
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                    <ImageView
+                        android:src="@drawable/ic_sensor_ec"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp" />
+                    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+                        android:text="72%"
+                        android:layout_marginLeft="10dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

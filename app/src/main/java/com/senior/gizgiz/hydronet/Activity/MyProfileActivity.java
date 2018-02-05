@@ -23,8 +23,7 @@ import android.widget.RelativeLayout;
 import com.senior.gizgiz.hydronet.CustomClassAdapter.SlidingTabAdapter;
 import com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.CustomHelperClass.NavigationManager;
-import com.senior.gizgiz.hydronet.CustomHelperClass.ResourceManager;
-import com.senior.gizgiz.hydronet.Fragment.TwoPageFragment;
+import com.senior.gizgiz.hydronet.Fragment.FlipperFragment;
 import com.senior.gizgiz.hydronet.R;
 
 import java.util.ArrayList;
@@ -33,7 +32,7 @@ import java.util.ArrayList;
  * Created by Admins on 015 15/1/2018.
  */
 
-public class MyPlantActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MyProfileActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
     private Toolbar toolbar;
@@ -47,7 +46,7 @@ public class MyPlantActivity extends AppCompatActivity implements NavigationView
 
     private ArrayList<Fragment> pageFragments = new ArrayList<>();
 
-    private TwoPageFragment plantFragment,partFragment,materialFragment;
+    private FlipperFragment plantFragment,partFragment,materialFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,15 +67,15 @@ public class MyPlantActivity extends AppCompatActivity implements NavigationView
                 .inflate(R.layout.custom_submenu, null, false);
 
         //initial fragment
-        plantFragment = new TwoPageFragment();
+        plantFragment = new FlipperFragment();
         plantFragment.setInflatedLayoutId(R.layout.fragment_plant_plant);
         plantFragment.setFlipperId(R.id.custom_plant_flipper);
         pageFragments.add(plantFragment);
-        partFragment = new TwoPageFragment();
+        partFragment = new FlipperFragment();
         partFragment.setInflatedLayoutId(R.layout.fragment_plant_part);
         partFragment.setFlipperId(R.id.custom_part_flipper);
         pageFragments.add(partFragment);
-        materialFragment = new TwoPageFragment();
+        materialFragment = new FlipperFragment();
         materialFragment.setInflatedLayoutId(R.layout.fragment_plant_material);
         materialFragment.setFlipperId(R.id.custom_material_flipper);
         pageFragments.add(materialFragment);
@@ -135,9 +134,9 @@ public class MyPlantActivity extends AppCompatActivity implements NavigationView
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                Fragment selectedFrag = pageFragments.get(tab.getPosition());
-                if(selectedFrag instanceof TwoPageFragment)
-                    ((TwoPageFragment) selectedFrag).setViewFirstPage();
+//                Fragment selectedFrag = pageFragments.get(tab.getPosition());
+//                if(selectedFrag instanceof FlipperFragment)
+//                    ((FlipperFragment) selectedFrag).setViewFirstPage();
             }
 
             @Override
@@ -148,8 +147,8 @@ public class MyPlantActivity extends AppCompatActivity implements NavigationView
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
                 Fragment selectedFrag = pageFragments.get(tab.getPosition());
-                if(selectedFrag instanceof TwoPageFragment)
-                    ((TwoPageFragment) selectedFrag).setViewFirstPage();
+                if(selectedFrag instanceof FlipperFragment)
+                    ((FlipperFragment) selectedFrag).setViewFirstPage();
             }
         });
 

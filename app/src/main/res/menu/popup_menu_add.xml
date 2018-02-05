@@ -2,11 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/add_menu_system"
         android:icon="@drawable/ic_database"
-        android:title="@string/menu_add_system" />
+        android:title="@string/menu_add_system_farm" />
     <item android:id="@+id/add_menu_user_plant"
         android:icon="@drawable/ic_search_user_plant"
-        android:title="@string/menu_add_user" />
-    <item android:id="@+id/add_menu_new"
-        android:icon="@drawable/ic_add_new_plant"
-        android:title="@string/menu_add_new" />
+        android:title="@string/menu_add_custom_farm" />
 </menu>

@@ -2,12 +2,11 @@ package com.senior.gizgiz.hydronet.CustomHelperClass;
 
 import android.content.Context;
 import android.content.Intent;
-import android.view.View;
 import android.widget.Toast;
 
 import com.senior.gizgiz.hydronet.Activity.HomeActivity;
 import com.senior.gizgiz.hydronet.Activity.MicrogearConsoleActivity;
-import com.senior.gizgiz.hydronet.Activity.MyPlantActivity;
+import com.senior.gizgiz.hydronet.Activity.MyProfileActivity;
 import com.senior.gizgiz.hydronet.R;
 
 /**
@@ -23,7 +22,7 @@ public class NavigationManager {
                 Toast.makeText(context,"Home",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.my_plant :
-                context.startActivity(new Intent(context,MyPlantActivity.class));
+                context.startActivity(new Intent(context,MyProfileActivity.class));
                 Toast.makeText(context,"My Plant",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.community :
