@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.senior.gizgiz.hydronet.CustomHelperClass.CustomFlipperLayout
+<com.senior.gizgiz.hydronet.HelperClass.CustomFlipperLayout
     android:id="@+id/custom_part_flipper"
     android:background="@color/app_bg"
     custom:first_page_layout="content_plant_part_overview"

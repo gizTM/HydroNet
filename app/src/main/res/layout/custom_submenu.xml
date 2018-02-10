@@ -12,7 +12,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:gravity="center">
-            <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
                 android:id="@+id/btn_first_label"
                 android:text="@string/menu_sub_summary"
                 android:textSize="@dimen/submenu_label"
@@ -31,7 +31,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:gravity="center">
-            <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
                 android:id="@+id/btn_second_label"
                 android:text="@string/menu_sub_part"
                 android:textSize="@dimen/submenu_label"
@@ -50,7 +50,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:gravity="center">
-            <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
                 android:id="@+id/btn_third_label"
                 android:text="@string/menu_sub_material"
                 android:textSize="@dimen/submenu_label"

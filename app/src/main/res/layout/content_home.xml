@@ -10,7 +10,7 @@
         <!--<include layout="@layout/content_home_overview" />-->
         <!--<include layout="@layout/content_home_detail" />-->
     <!--</ViewSwitcher>-->
-    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomFlipperLayout
+    <com.senior.gizgiz.hydronet.HelperClass.CustomFlipperLayout
         android:id="@+id/custom_home_flipper"
         android:background="@color/app_bg"
         custom:first_page_layout="content_home_overview"

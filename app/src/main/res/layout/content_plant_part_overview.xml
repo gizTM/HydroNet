@@ -1,22 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
-        android:text="@string/label_part_overview"
-        android:layout_margin="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <LinearLayout
-        android:background="@drawable/bg_frame_content"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_part"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:paddingLeft="@dimen/padding_small"
+        android:paddingRight="@dimen/padding_small"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
-            android:text="part overview"
-            android:gravity="center"
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/part_overview_title"
+            android:text="@string/label_part_overview"
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout android:id="@+id/overview_plant"
+            android:background="@drawable/bg_frame_content"
+            android:layout_below="@id/part_overview_title"
+            android:layout_above="@id/btn_show_detail_frag"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-</LinearLayout>
+            android:layout_height="match_parent">
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:text="part overview"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <ImageButton android:id="@+id/btn_show_detail_frag"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_expand_down_arrow"
+            android:padding="@dimen/padding_so_small"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</FrameLayout>

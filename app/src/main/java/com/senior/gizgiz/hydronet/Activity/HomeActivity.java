@@ -11,13 +11,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewStub;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
-import com.senior.gizgiz.hydronet.CustomClassAdapter.HomeCardListViewAdapter;
-import com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView;
-import com.senior.gizgiz.hydronet.CustomHelperClass.NavigationManager;
-import com.senior.gizgiz.hydronet.CustomHelperClass.CustomFlipperLayout;
+import com.senior.gizgiz.hydronet.Adapter.ListViewAdapter.HomeCardListViewAdapter;
+import com.senior.gizgiz.hydronet.ClassForList.HomeCard;
+import com.senior.gizgiz.hydronet.HelperClass.CustomFlipperLayout;
+import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
+import com.senior.gizgiz.hydronet.HelperClass.NavigationManager;
 import com.senior.gizgiz.hydronet.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Admins on 015 15/1/2018.
@@ -36,6 +43,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     // list view
     private ListView homeCardList;
     private HomeCardListViewAdapter historyAdapter;
+
+    private List<HomeCard> homeCards = HomeCardListViewAdapter.exampleCards;
+    private RelativeLayout warningLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +66,23 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         // define content element
         flipper = homeContent.findViewById(R.id.custom_home_flipper);
         homeCardList = flipper.getSecondPage().findViewById(R.id.history_list);
+        warningLayout = flipper.getSecondPage().findViewById(R.id.sensor_popup);
+        warningLayout.findViewById(R.id.btn_close_warning).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                warningLayout.setVisibility(View.GONE);
+            }
+        });
 
         // list view
-        historyAdapter = new HomeCardListViewAdapter(getApplicationContext(),HomeCardListViewAdapter.exampleCards);
+        historyAdapter = new HomeCardListViewAdapter(getApplicationContext(),(ArrayList<HomeCard>) homeCards);
+        homeCardList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView adapterView, View view, int position, long id) {
+                HomeCard card = homeCards.get(position);
+                Toast.makeText(getApplicationContext(),card.getName()+"is selected",Toast.LENGTH_SHORT);
+            }
+        });
         homeCardList.setAdapter(historyAdapter);
 
         // recycler view

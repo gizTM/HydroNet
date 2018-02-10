@@ -6,7 +6,7 @@
     android:layout_margin="@dimen/padding_small"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
         android:layout_margin="@dimen/margin_separator"
         android:text="Choose location : "
         android:textSize="@dimen/badge_label"

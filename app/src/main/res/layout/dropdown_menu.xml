@@ -4,7 +4,7 @@
     android:padding="@dimen/padding_so_small"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
-    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
         android:id="@+id/dropdown_title"
         android:text="@string/add_location_prompt"
         android:layout_width="wrap_content"

@@ -10,7 +10,7 @@
         <!--android:src="@drawaic_action_tradingding"-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content" />-->
-    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
         android:id="@+id/menu_title"
         android:text="@string/menu_trading"
         android:layout_marginLeft="10dp"

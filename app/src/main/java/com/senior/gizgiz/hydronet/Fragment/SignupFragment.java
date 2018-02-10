@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.senior.gizgiz.hydronet.CustomHelperClass.CustomButton;
+import com.senior.gizgiz.hydronet.HelperClass.CustomButton;
 import com.senior.gizgiz.hydronet.Activity.MainActivity;
 import com.senior.gizgiz.hydronet.R;
 
@@ -45,7 +45,6 @@ public class SignupFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
 //        firebaseAuth = FirebaseAuth.getInstance();
 

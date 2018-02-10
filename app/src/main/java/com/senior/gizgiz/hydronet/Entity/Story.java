@@ -19,4 +19,22 @@ public class Story {
         this.detail = detail;
         this.mentionedPlant = mentionedPlant;
     }
+
+    public User getOwner() { return owner; }
+    public String getType() { return type; }
+    public String getDetail() { return detail; }
+    public int getLikedCount() { return likedCount; }
+    public int getSharedCount() { return sharedCount; }
+    public List<User> getLikedUser() { return likedUser; }
+    public List<User> getSharedUser() { return sharedUser; }
+    public Plant getMentionedPlant() { return mentionedPlant; }
+
+    public void setOwner(User owner) { this.owner = owner; }
+    public void setType(String type) { this.type = type; }
+    public void setDetail(String detail) { this.detail = detail; }
+    public void setLikedCount(int likedCount) { this.likedCount = likedCount; }
+    public void setSharedCount(int sharedCount) { this.sharedCount = sharedCount; }
+    public void setLikedUser(List<User> likedUser) { this.likedUser = likedUser; }
+    public void setSharedUser(List<User> sharedUser) { this.sharedUser = sharedUser; }
+    public void setMentionedPlant(Plant mentionedPlant) { this.mentionedPlant = mentionedPlant; }
 }

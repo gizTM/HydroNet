@@ -1,19 +1,24 @@
 package com.senior.gizgiz.hydronet.Entity;
 
+import org.parceler.Parcel;
+
 /**
  * Created by Admins on 005 5/2/2018.
  */
 
+@Parcel
 public class Plant {
-    private int id;
-    private String name,property,otherInfo;
+    int id;
+    String name,property,otherInfo;
 
+    public Plant() {}
     public Plant(String name) { this.name = name; }
     public Plant(String name, String property, String otherInfo) {
         this.name = name;
         this.property = property;
         this.otherInfo = otherInfo;
     }
+
 
     public String getName() { return name; }
     public String getProperty() { return property; }

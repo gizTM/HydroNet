@@ -25,8 +25,7 @@
     <dimen name="btn_add">50dp</dimen>
     <dimen name="btn_add_margin">20dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="popup_add_width">120dp</dimen>
-    <dimen name="popup_add_height">80dp</dimen>
+    <dimen name="margin_popup">30dp</dimen>
     <dimen name="tab_margin">20dp</dimen>
     <dimen name="modal_subtitle">21dp</dimen>
     <dimen name="at_sign">35dp</dimen>
@@ -37,5 +36,7 @@
     <dimen name="margin_separator">10dp</dimen>
     <dimen name="tag_height">30dp</dimen>
     <dimen name="tag_width">50dp</dimen>
+    <dimen name="expand_list_height">200dp</dimen>
+    <dimen name="badge_plant">50dp</dimen>
 
 </resources>

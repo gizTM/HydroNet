@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.senior.gizgiz.hydronet.CustomHelperClass.CustomFlipperLayout
+<com.senior.gizgiz.hydronet.HelperClass.CustomFlipperLayout
     android:id="@+id/custom_material_flipper"
     android:background="@color/app_bg"
     custom:first_page_layout="content_plant_material_overview"
@@ -9,3 +9,31 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto" />
+<!--<ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:id="@+id/flipper"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent" >-->
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+        <!--<ViewStub-->
+            <!--android:id="@+id/first_page_stub"-->
+            <!--android:inflatedId="@+id/first_page"-->
+            <!--android:layout_above="@+id/expand_activities_button"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent" />-->
+        <!--<ImageButton android:id="@+id/expand_activities_button"-->
+            <!--android:background="@android:color/transparent"-->
+            <!--android:src="@drawable/ic_expand_down_arrow"-->
+            <!--android:padding="@dimen/padding_so_small"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content" />-->
+    <!--</RelativeLayout>-->
+    <!--<ViewStub-->
+        <!--android:id="@+id/second_page_stub"-->
+        <!--android:inflatedId="@+id/second_page"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+<!--</ViewFlipper>-->
+

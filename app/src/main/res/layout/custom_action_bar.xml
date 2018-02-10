@@ -14,7 +14,7 @@
         android:scaleType="fitCenter"
         android:src="@drawable/menu" />
 
-    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
         android:id="@+id/page_title"
         android:text="page_title"
         android:layout_marginLeft="20dp"

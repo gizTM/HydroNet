@@ -1,6 +1,8 @@
 <resources>
 
     <style name="AppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@color/app_bg</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <!--<item name="colorPrimaryDark">@color/colorPrimary</item>-->
         <item name="android:actionBarStyle">@style/MyActionBar</item>
@@ -25,7 +27,7 @@
         <item name="background">@color/app_bg</item>
         <item name="android:elevation">0dp</item>
         <item name="elevation">0dp</item>
-        <item name="height">70dp</item>
+        <item name="height">60dp</item>
     </style>
 
     <style name="plantHealthBar" parent="@android:style/Widget.RatingBar">

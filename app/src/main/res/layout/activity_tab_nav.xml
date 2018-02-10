@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <FrameLayout android:id="@+id/container"
+        android:layout_above="@id/tabbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <LinearLayout android:id="@+id/tabbar"
+        android:background="@color/gallery_gray"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail
+            android:id="@+id/action_home"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView android:src="@drawable/ic_action_home"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
+        <com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail
+            android:id="@+id/action_profile"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView android:src="@drawable/ic_action_my_plant"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
+        <com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail
+            android:id="@+id/action_community"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView android:src="@drawable/ic_action_community"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
+        <com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail
+            android:id="@+id/action_notification"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView android:src="@drawable/ic_action_notification"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
+        <com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail
+            android:id="@+id/action_user"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView android:src="@drawable/ic_action_user"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
+    </LinearLayout>
+</RelativeLayout>

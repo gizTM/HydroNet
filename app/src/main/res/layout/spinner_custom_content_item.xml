@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
         android:id="@+id/custom_content_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

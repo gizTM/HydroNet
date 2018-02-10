@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_marginLeft="20dp"
     android:gravity="center">
-    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomTextView
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
         android:id="@+id/menu_title"
         android:text="@string/menu_netpie"
         android:layout_marginLeft="10dp"

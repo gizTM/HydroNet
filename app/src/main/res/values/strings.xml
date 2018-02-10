@@ -70,5 +70,8 @@
     <string name="title">Select Type</string>
     <string name="action_settings">Settings</string>
     <string name="invalid_location_choose">Deselect another location to change to new location</string>
+    <string name="label_system_plant">System default plant</string>
+    <string name="label_user_plant">User plant</string>
+    <string name="label_custom_plant">Add your own plant</string>
 
 </resources>

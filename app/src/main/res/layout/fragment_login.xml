@@ -45,7 +45,7 @@
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp" />
-            <com.senior.gizgiz.hydronet.CustomHelperClass.CustomButton
+            <com.senior.gizgiz.hydronet.HelperClass.CustomButton
                 android:id="@+id/login_button"
                 android:textAllCaps="false"
                 android:textSize="17dp"
@@ -65,7 +65,7 @@
                     android:gravity="center_horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomButton
+                    <com.senior.gizgiz.hydronet.HelperClass.CustomButton
                         android:id="@+id/login_fb_button"
                         android:textAllCaps="false"
                         android:textSize="17dp"
@@ -80,7 +80,7 @@
                     android:gravity="center_horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                    <com.senior.gizgiz.hydronet.CustomHelperClass.CustomButton
+                    <com.senior.gizgiz.hydronet.HelperClass.CustomButton
                         android:id="@+id/login_gg_button"
                         android:textAllCaps="false"
                         android:textSize="17dp"

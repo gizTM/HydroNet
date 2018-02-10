@@ -1,35 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
-    <ViewFlipper android:id="@+id/flipper"
+<ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/flipper"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-        <RelativeLayout
-            android:orientation="vertical"
+        android:layout_height="match_parent">
+        <ViewStub
+            android:id="@+id/first_page_stub"
+            android:inflatedId="@+id/first_page"
+            android:layout_above="@+id/expand_activities_button"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ViewStub
-                android:id="@+id/first_page_stub"
-                android:inflatedId="@+id/first_page"
-                android:layout_above="@+id/expand_activities_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-            <ImageButton android:id="@+id/expand_activities_button"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_expand_down_arrow"
-                android:layout_alignParentBottom="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <ViewStub
-                android:id="@+id/second_page_stub"
-                android:inflatedId="@+id/second_page"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
-    </ViewFlipper>
-</LinearLayout>
+            android:layout_height="match_parent" />
+        <ImageButton android:id="@+id/expand_activities_button"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_expand_down_arrow"
+            android:padding="@dimen/padding_so_small"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <ViewStub
+        android:id="@+id/second_page_stub"
+        android:inflatedId="@+id/second_page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    </LinearLayout>
+</ViewFlipper>
