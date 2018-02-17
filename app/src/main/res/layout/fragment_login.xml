@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -32,19 +31,24 @@
             android:paddingRight="50dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <EditText
+            <com.senior.gizgiz.hydronet.HelperClass.CustomEditText
                 android:id="@+id/username_text"
+                android:hint="@string/login_user"
                 android:drawableStart="@drawable/ic_user"
-                android:drawablePadding="10dp"
+                android:drawablePadding="@dimen/padding_small"
                 android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="50dp" />
-            <EditText
+            <com.senior.gizgiz.hydronet.HelperClass.CustomEditText
                 android:id="@+id/password_text"
+                android:hint="@string/login_password"
                 android:drawableStart="@drawable/ic_pw"
+                android:drawablePadding="@dimen/padding_small"
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp" />
+            <View android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_separator" />
             <com.senior.gizgiz.hydronet.HelperClass.CustomButton
                 android:id="@+id/login_button"
                 android:textAllCaps="false"

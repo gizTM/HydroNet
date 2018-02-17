@@ -60,4 +60,11 @@ public class CustomTextView extends AppCompatTextView {
         invalidate();
         requestLayout();
     }
+
+    public void setStyle(String fontStyle) {
+        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"fonts/AdventPro/AdventPro-"+fontStyle+".ttf");
+        setTypeface(tf);
+        invalidate();
+        requestLayout();
+    }
 }

@@ -10,8 +10,6 @@ import android.view.animation.Transformation;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.senior.gizgiz.hydronet.Activity.HomeActivity;
-import com.senior.gizgiz.hydronet.Activity.MyProfileActivity;
 import com.senior.gizgiz.hydronet.Activity.SensorManagerActivity;
 import com.senior.gizgiz.hydronet.R;
 
@@ -24,11 +22,11 @@ public class NavigationManager {
     public static boolean navigateTo (Context context, int item) {
         switch (item) {
             case R.id.home :
-                context.startActivity(new Intent(context,HomeActivity.class));
+//                context.startActivity(new Intent(context,HomeActivity.class));
                 Toast.makeText(context,"Home",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.my_plant :
-                context.startActivity(new Intent(context,MyProfileActivity.class));
+//                context.startActivity(new Intent(context,MyProfileActivity.class));
                 Toast.makeText(context,"My Plant",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.community :

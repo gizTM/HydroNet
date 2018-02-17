@@ -1,5 +1,6 @@
 package com.senior.gizgiz.hydronet.Activity;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -7,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.style.TypefaceSpan;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -20,8 +22,6 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference databaseRef;
     private String username;
 
-    public static TypefaceSpan regularSpan, boldSpan;
-
     private PlantCarouselFragment profileSubmenuFragment;
     private boolean nowCarouselFrag = false;
 
@@ -33,13 +33,13 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.action_home).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                nowCarouselFrag = false;
                 HomeOverviewFragment overviewFragment = new HomeOverviewFragment();
 //                else overviewFragment = (HomeOverviewFragment) getSupportFragmentManager().getFragments().get(0);
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.addToBackStack(null);
                 transaction.replace(R.id.container, overviewFragment);
                 transaction.commit();
-//                startActivity(new Intent(getApplication(), HomeActivity.class));
             }
         });
 
@@ -47,17 +47,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 nowCarouselFrag = true;
-                if(savedInstanceState == null) profileSubmenuFragment = new PlantCarouselFragment();
-                else profileSubmenuFragment = (PlantCarouselFragment) getSupportFragmentManager().getFragments().get(0);
+//                if(savedInstanceState == null)
+                    profileSubmenuFragment = new PlantCarouselFragment();
+//                else profileSubmenuFragment = (PlantCarouselFragment) getSupportFragmentManager().getFragments().get(0);
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.addToBackStack(null);
                 transaction.replace(R.id.container, profileSubmenuFragment);
                 transaction.commit();
-//                startActivity(new Intent(getApplication(), HomeActivity.class));
             }
         });
 
-//        startActivity(new Intent(this, LoginActivity.class));
+        findViewById(R.id.fab_add).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplication(),AddPlantActivity.class));
+            }
+        });
 
         // example code for database
 //        database = FirebaseDatabase.getInstance();
@@ -83,20 +88,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        if (nowCarouselFrag && !profileSubmenuFragment.onBackPressed()) {
-//            super.onBackPressed();
-//
-//        } else { }
-//    }
     @Override
     public void onBackPressed() {
-        // if there is a fragment and the back stack of this fragment is not empty,
-        // then emulate 'onBackPressed' behaviour, because in default, it is not working
+        if (nowCarouselFrag && !profileSubmenuFragment.onBackPressed()) {
+//            Toast.makeText(getApplicationContext(),"normal back",Toast.LENGTH_SHORT).show();
+            super.onBackPressed();
+        }
         FragmentManager fm = getSupportFragmentManager();
         for (Fragment frag : fm.getFragments()) {
-            if (frag.isVisible() && nowCarouselFrag && !profileSubmenuFragment.onBackPressed()) {
+            if (frag.isVisible()) {
                 FragmentManager childFm = frag.getChildFragmentManager();
                 if (childFm.getBackStackEntryCount() > 0) {
                     childFm.popBackStack();
@@ -104,6 +104,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-        super.onBackPressed();
     }
 }

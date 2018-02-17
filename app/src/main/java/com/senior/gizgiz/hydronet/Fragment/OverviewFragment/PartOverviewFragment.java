@@ -16,7 +16,7 @@ import com.senior.gizgiz.hydronet.R;
  * Created by Admins on 009 09/02/2018.
  */
 
-public class PartOverviewFragment extends Fragment implements OnBackPressListener {
+public class PartOverviewFragment extends OverviewFragment implements OnBackPressListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -33,7 +33,7 @@ public class PartOverviewFragment extends Fragment implements OnBackPressListene
 
     private void enterNextFragment() {
         PartDetailFragment detailFragment = new PartDetailFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.addToBackStack(null);
         transaction.replace(R.id.fragment_part, detailFragment);
         transaction.commit();
@@ -41,6 +41,11 @@ public class PartOverviewFragment extends Fragment implements OnBackPressListene
 
     @Override
     public boolean onBackPressed() {
+        return new BackPressImpl(this).onBackPressed();
+    }
+
+    @Override
+    public boolean setViewOverview() {
         return new BackPressImpl(this).onBackPressed();
     }
 }

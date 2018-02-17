@@ -16,7 +16,7 @@ import com.senior.gizgiz.hydronet.Fragment.DetailFragment.MaterialDetailFragment
 import com.senior.gizgiz.hydronet.Listener.OnBackPressListener;
 import com.senior.gizgiz.hydronet.R;
 
-public class MaterialOverviewFragment extends Fragment implements OnBackPressListener {
+public class MaterialOverviewFragment extends OverviewFragment implements OnBackPressListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -33,7 +33,7 @@ public class MaterialOverviewFragment extends Fragment implements OnBackPressLis
 
     private void enterNextFragment() {
         MaterialDetailFragment detailFragment = new MaterialDetailFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.addToBackStack(null);
         transaction.replace(R.id.fragment_material, detailFragment);
         transaction.commit();
@@ -41,6 +41,11 @@ public class MaterialOverviewFragment extends Fragment implements OnBackPressLis
 
     @Override
     public boolean onBackPressed() {
+        return new BackPressImpl(this).onBackPressed();
+    }
+
+    @Override
+    public boolean setViewOverview() {
         return new BackPressImpl(this).onBackPressed();
     }
 }

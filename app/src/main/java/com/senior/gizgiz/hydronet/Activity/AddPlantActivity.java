@@ -90,6 +90,20 @@ public class AddPlantActivity extends AppCompatActivity {
                 setupPlantBadgeView();
             }
         });
+
+        addPlantContent.findViewById(R.id.btn_start_growing).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplication(),SensorManagerActivity.class));
+            }
+        });
+
+        addPlantContent.findViewById(R.id.btn_cancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     void setup() {
@@ -281,7 +295,7 @@ public class AddPlantActivity extends AppCompatActivity {
 //            return true;
 //        }
 //        return super.onOptionsItemSelected(item);
-        startActivity(new Intent(this, HomeActivity.class));
+        finish();
         return false;
     }
 }

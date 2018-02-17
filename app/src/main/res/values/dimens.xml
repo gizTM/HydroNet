@@ -19,12 +19,14 @@
     <dimen name="num_label">28dp</dimen>
     <dimen name="badge_label">18dp</dimen>
     <dimen name="submenu_label">17dp</dimen>
+
     <dimen name="sub_btn_padding_small">3dp</dimen>
     <dimen name="sub_btn_margin_vertical">10dp</dimen>
     <dimen name="sub_btn_margin_horizontal">15dp</dimen>
     <dimen name="btn_add">50dp</dimen>
     <dimen name="btn_add_margin">20dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="fab_margin_bottom">80dp</dimen>
+    <dimen name="fab_margin_end">20dp</dimen>
     <dimen name="margin_popup">30dp</dimen>
     <dimen name="tab_margin">20dp</dimen>
     <dimen name="modal_subtitle">21dp</dimen>

@@ -1,4 +1,4 @@
-package com.senior.gizgiz.hydronet.Fragment.DetailFragment;
+package com.senior.gizgiz.hydronet.Fragment.OverviewFragment;
 
 import android.support.v4.app.Fragment;
 

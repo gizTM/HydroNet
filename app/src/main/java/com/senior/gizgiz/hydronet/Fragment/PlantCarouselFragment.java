@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +12,12 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.senior.gizgiz.hydronet.Adapter.SlidingTabAdapter;
-import com.senior.gizgiz.hydronet.Fragment.DetailFragment.OverviewFragment;
+import com.senior.gizgiz.hydronet.Fragment.OverviewFragment.OverviewFragment;
 import com.senior.gizgiz.hydronet.Fragment.OverviewFragment.MaterialOverviewFragment;
 import com.senior.gizgiz.hydronet.Fragment.OverviewFragment.PartOverviewFragment;
 import com.senior.gizgiz.hydronet.Fragment.OverviewFragment.PlantOverviewFragment;
 import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
+import com.senior.gizgiz.hydronet.HelperClass.ResourceManager;
 import com.senior.gizgiz.hydronet.Listener.OnBackPressListener;
 import com.senior.gizgiz.hydronet.R;
 
@@ -57,21 +59,25 @@ public class PlantCarouselFragment extends Fragment implements OnBackPressListen
     }
 
     public boolean onBackPressed() {
-        // currently visible tabAdapter Fragment
-        OnBackPressListener currentFragment = (OnBackPressListener) tabAdapter.getRegisteredFragment(tabPager.getCurrentItem());
-        // lets see if the currentFragment or any of its childFragment can handle onBackPressed
-        if (currentFragment != null) return currentFragment.onBackPressed();
-        // this Fragment couldn't handle the onBackPressed call
+        Fragment currentFragment = tabAdapter.getItem(tabPager.getCurrentItem());
+        if(currentFragment != null && currentFragment.isVisible()) {
+            FragmentManager childFm = currentFragment.getChildFragmentManager();
+            if (childFm.getBackStackEntryCount() > 0) {
+                return ((OnBackPressListener)currentFragment).onBackPressed();
+            }
+        }
         return false;
     }
 
     void setupFragmentList() {
-        plantFragment = new PlantOverviewFragment();
-        pageFragments.add(plantFragment);
-        partFragment = new PartOverviewFragment();
-        pageFragments.add(partFragment);
-        materialFragment = new MaterialOverviewFragment();
-        pageFragments.add(materialFragment);
+        if(pageFragments.size() < 3) {
+            plantFragment = new PlantOverviewFragment();
+            pageFragments.add(plantFragment);
+            partFragment = new PartOverviewFragment();
+            pageFragments.add(partFragment);
+            materialFragment = new MaterialOverviewFragment();
+            pageFragments.add(materialFragment);
+        }
     }
     void setupTabLayout() {
         submenu = ((LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE))
@@ -95,8 +101,8 @@ public class PlantCarouselFragment extends Fragment implements OnBackPressListen
         for(int i=0; i<tabLayout.getTabCount()-1; i++) {
             View tab = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(i);
             ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) tab.getLayoutParams();
-            p.setMargins(0,0,50,0);
-//            p.setMargins(0, 0, ResourceManager.getDim(getApplicationContext(),R.dimen.tab_margin), 0);
+//            p.setMargins(0,0,50,0);
+            p.setMargins(0, 0, ResourceManager.getDim(getContext(),R.dimen.tab_margin), 0);
             tab.requestLayout();
         }
     }
@@ -117,7 +123,7 @@ public class PlantCarouselFragment extends Fragment implements OnBackPressListen
             public void onTabReselected(TabLayout.Tab tab) {
                 Fragment selectedFrag = pageFragments.get(tab.getPosition());
                 if(selectedFrag instanceof OverviewFragment) {
-                    Toast.makeText(getContext(),"tab reselcted : #"+tab.getPosition(),Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(),"tab reselcted : #"+tab.getPosition(),Toast.LENGTH_SHORT).show();
                     ((OverviewFragment) selectedFrag).setViewOverview();
                 }
             }

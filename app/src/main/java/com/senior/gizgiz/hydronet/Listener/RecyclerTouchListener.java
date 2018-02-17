@@ -6,8 +6,6 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.senior.gizgiz.hydronet.Activity.MainActivity;
-
 /**
  * Created by Admins on 030 30/1/2018.
  */

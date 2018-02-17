@@ -18,14 +18,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.senior.gizgiz.hydronet.HelperClass.CustomButton;
 import com.senior.gizgiz.hydronet.Activity.MainActivity;
+import com.senior.gizgiz.hydronet.HelperClass.CustomEditText;
 import com.senior.gizgiz.hydronet.R;
 
 public class SignupFragment extends Fragment {
-
-    private SpannableString hintUsername,hintEmail,hintPassword,hintConfirmPW;
     private FirebaseDatabase database;
     private DatabaseReference databaseRef;
-    private EditText usernameET,emailET,passwordET,confirmPWET;
+    private CustomEditText usernameET,emailET,passwordET,confirmPWET;
     private CustomButton signupButton;
     private ProgressDialog signupProgress;
 
@@ -48,25 +47,7 @@ public class SignupFragment extends Fragment {
 
 //        firebaseAuth = FirebaseAuth.getInstance();
 
-        // set font for hint text
-        hintUsername = new SpannableString("Username");
-        hintEmail = new SpannableString("Email");
-        hintPassword = new SpannableString("Password");
-        hintConfirmPW = new SpannableString("Confirm password");
-        hintUsername.setSpan(MainActivity.regularSpan, 0, hintUsername.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-        hintEmail.setSpan(MainActivity.regularSpan, 0, hintEmail.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-        hintPassword.setSpan(MainActivity.regularSpan, 0, hintPassword.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-        hintConfirmPW.setSpan(MainActivity.regularSpan, 0, hintConfirmPW.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-        usernameET = (EditText) view.findViewById(R.id.username_text);
-        emailET = (EditText) view.findViewById(R.id.email_text);
-        passwordET = (EditText) view.findViewById(R.id.password_text);
-        confirmPWET = (EditText) view.findViewById(R.id.confirm_pw_text);
-        usernameET.setHint(hintUsername);
-        emailET.setHint(hintEmail);
-        passwordET.setHint(hintPassword);
-        confirmPWET.setHint(hintConfirmPW);
-
-        signupButton = (CustomButton) view.findViewById(R.id.signup_button);
+        signupButton = view.findViewById(R.id.signup_button);
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

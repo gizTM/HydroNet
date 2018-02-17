@@ -12,7 +12,11 @@
     <GridView android:id="@+id/my_plant_list"
         android:layout_marginLeft="@dimen/padding_small"
         android:layout_marginRight="@dimen/padding_small"
-        android:numColumns="2"
+        android:columnWidth="90dp"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth"
         android:layout_height="match_parent"
         android:layout_width="match_parent" />
 </LinearLayout>

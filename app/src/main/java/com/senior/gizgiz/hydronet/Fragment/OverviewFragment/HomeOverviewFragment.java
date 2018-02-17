@@ -16,7 +16,7 @@ import com.senior.gizgiz.hydronet.R;
  * Created by Admins on 010 10/02/2018.
  */
 
-public class HomeOverviewFragment extends Fragment implements OnBackPressListener {
+public class HomeOverviewFragment extends OverviewFragment implements OnBackPressListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.content_home_overview,viewGroup,false);
         rootView.findViewById(R.id.btn_show_detail_frag).setOnClickListener(new View.OnClickListener() {
@@ -34,15 +34,19 @@ public class HomeOverviewFragment extends Fragment implements OnBackPressListene
 
     private void enterNextFragment() {
         HomeDetailFragment detailFragment = new HomeDetailFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.addToBackStack(null);
         transaction.replace(R.id.fragment_home, detailFragment);
         transaction.commit();
     }
 
-
     @Override
     public boolean onBackPressed() {
+        return new BackPressImpl(this).onBackPressed();
+    }
+
+    @Override
+    public boolean setViewOverview() {
         return new BackPressImpl(this).onBackPressed();
     }
 }

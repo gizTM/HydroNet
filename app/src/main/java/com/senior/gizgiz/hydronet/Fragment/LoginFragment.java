@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.SpannableString;
-import android.text.Spanned;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.senior.gizgiz.hydronet.Activity.HomeActivity;
 import com.senior.gizgiz.hydronet.Activity.MainActivity;
 import com.senior.gizgiz.hydronet.Activity.MicrogearConsoleActivity;
 import com.senior.gizgiz.hydronet.R;
@@ -41,20 +39,12 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        hintUsername = new SpannableString("Username/Email");
-        hintPassword = new SpannableString("Password");
-        hintUsername.setSpan(MainActivity.regularSpan, 0, hintUsername.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-        hintPassword.setSpan(MainActivity.regularSpan, 0, hintPassword.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+        usernameET = view.findViewById(R.id.username_text);
+        passwordET = view.findViewById(R.id.password_text);
 
-        usernameET = (EditText) view.findViewById(R.id.username_text);
-        passwordET = (EditText) view.findViewById(R.id.password_text);
-
-        usernameET.setHint(hintUsername);
-        passwordET.setHint(hintPassword);
-
-        loginBT = (Button) view.findViewById(R.id.login_button);
-        fbBT = (Button) view.findViewById(R.id.login_fb_button);
-        ggBT = (Button) view.findViewById(R.id.login_gg_button);
+        loginBT = view.findViewById(R.id.login_button);
+        fbBT = view.findViewById(R.id.login_fb_button);
+        ggBT = view.findViewById(R.id.login_gg_button);
 
         fbBT.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +76,6 @@ public class LoginFragment extends Fragment {
         loginProgress.setMessage("Logging in...");
         loginProgress.show();
 
-        startActivity(new Intent(getContext(), HomeActivity.class));
+        startActivity(new Intent(getContext(), MainActivity.class));
     }
 }

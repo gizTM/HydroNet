@@ -1,15 +1,12 @@
 package com.senior.gizgiz.hydronet.Fragment.OverviewFragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.senior.gizgiz.hydronet.Fragment.BackPressImpl;
-import com.senior.gizgiz.hydronet.Fragment.DetailFragment.OverviewFragment;
 import com.senior.gizgiz.hydronet.Fragment.DetailFragment.PlantDetailFragment;
 import com.senior.gizgiz.hydronet.Listener.OnBackPressListener;
 import com.senior.gizgiz.hydronet.R;
@@ -35,7 +32,7 @@ public class PlantOverviewFragment extends OverviewFragment implements OnBackPre
 
     private void enterNextFragment() {
         PlantDetailFragment detailFragment = new PlantDetailFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.addToBackStack(null);
         transaction.replace(R.id.fragment_plant, detailFragment);
         transaction.commit();

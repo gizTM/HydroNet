@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/HydroNet.iml" filepath="$PROJECT_DIR$/.idea/HydroNet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HydroNet.iml" filepath="$PROJECT_DIR$/HydroNet.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

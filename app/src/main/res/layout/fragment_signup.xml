@@ -29,30 +29,40 @@
             android:paddingRight="50dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <EditText
+            <com.senior.gizgiz.hydronet.HelperClass.CustomEditText
                 android:id="@+id/username_text"
                 android:drawableStart="@drawable/ic_user"
+                android:drawablePadding="@dimen/padding_small"
+                android:hint="@string/signup_user"
                 android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            <EditText
+            <com.senior.gizgiz.hydronet.HelperClass.CustomEditText
                 android:id="@+id/email_text"
                 android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="@dimen/padding_small"
+                android:hint="@string/signup_email"
                 android:inputType="textEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            <EditText
+            <com.senior.gizgiz.hydronet.HelperClass.CustomEditText
                 android:id="@+id/password_text"
                 android:drawableStart="@drawable/ic_pw"
+                android:drawablePadding="@dimen/padding_small"
+                android:hint="@string/login_password"
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            <EditText
+            <com.senior.gizgiz.hydronet.HelperClass.CustomEditText
                 android:id="@+id/confirm_pw_text"
                 android:drawableStart="@drawable/ic_confirm_pw"
+                android:drawablePadding="@dimen/padding_small"
+                android:hint="@string/signup_confirm_pw"
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+            <View android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_separator" />
             <com.senior.gizgiz.hydronet.HelperClass.CustomButton
                 android:id="@+id/signup_button"
                 android:textAllCaps="false"

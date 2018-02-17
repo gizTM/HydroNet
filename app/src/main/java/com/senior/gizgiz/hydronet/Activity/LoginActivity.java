@@ -16,7 +16,6 @@ import com.senior.gizgiz.hydronet.R;
 public class LoginActivity extends AppCompatActivity {
 
     private Fragment f;
-    private SpannableString login_tab,signup_tab;
     private CustomTextView login,signup;
 
     @Override
@@ -24,12 +23,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        login = (CustomTextView) findViewById(R.id.login_tab);
-        signup = (CustomTextView) findViewById(R.id.signup_tab);
+        login = findViewById(R.id.login_tab);
+        signup = findViewById(R.id.signup_tab);
 
-        login_tab = new SpannableString("Log In");
-        login_tab.setSpan(MainActivity.boldSpan, 0, login_tab.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-        login.setText(login_tab);
+        login.setStyle("Bold");
+        signup.setStyle("Regular");
 
         f = new LoginFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -39,12 +37,8 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                login_tab = new SpannableString("Log In");
-                login_tab.setSpan(MainActivity.boldSpan, 0, login_tab.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-                login.setText(login_tab);
-                signup_tab = new SpannableString("Sign Up");
-                signup_tab.setSpan(MainActivity.regularSpan, 0, signup_tab.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-                signup.setText(signup_tab);
+                login.setStyle("Bold");
+                signup.setStyle("Regular");
 
                 f = new LoginFragment();
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -56,12 +50,8 @@ public class LoginActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                signup_tab = new SpannableString("Sign Up");
-                signup_tab.setSpan(MainActivity.boldSpan, 0, login_tab.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-                signup.setText(signup_tab);
-                login_tab = new SpannableString("Log In");
-                login_tab.setSpan(MainActivity.regularSpan, 0, login_tab.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-                login.setText(login_tab);
+                login.setStyle("Regular");
+                signup.setStyle("Bold");
 
                 f = new SignupFragment();
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

@@ -73,5 +73,10 @@
     <string name="label_system_plant">System default plant</string>
     <string name="label_user_plant">User plant</string>
     <string name="label_custom_plant">Add your own plant</string>
+    <string name="login_user">Username/Email</string>
+    <string name="login_password">Password</string>
+    <string name="signup_user">Username</string>
+    <string name="signup_email">Email address</string>
+    <string name="signup_confirm_pw">Confirm password</string>
 
 </resources>

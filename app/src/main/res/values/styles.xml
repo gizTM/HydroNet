@@ -19,7 +19,9 @@
 
 
     <!-- style for no action bar -->
-    <style name="NoActionBar" parent="@style/Theme.AppCompat.Light.NoActionBar" />
+    <style name="LoginTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorPrimaryDark">@color/green</item>
+    </style>
 
     <!-- style for the action bar backgrounds -->
     <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
@@ -59,7 +61,10 @@
     </style>
 
      <!--Splash theme -->
-    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:navigationIcon">@color/transparent</item>
+        <item name="android:navigationBarColor">@color/transparent</item>
         <item name="android:windowBackground">@drawable/splash</item>
     </style>
 
