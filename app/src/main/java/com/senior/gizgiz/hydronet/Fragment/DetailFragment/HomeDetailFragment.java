@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.senior.gizgiz.hydronet.Adapter.ListViewAdapter.HomeCardListViewAdapter;
+import com.senior.gizgiz.hydronet.Adapter.ListViewAdapter.HomeCardAdapter;
 import com.senior.gizgiz.hydronet.Fragment.BackPressImpl;
 import com.senior.gizgiz.hydronet.Listener.OnBackPressListener;
 import com.senior.gizgiz.hydronet.R;
@@ -21,7 +21,7 @@ import com.senior.gizgiz.hydronet.R;
 
 public class HomeDetailFragment extends Fragment implements OnBackPressListener {
     private ListView homeCardList;
-    private HomeCardListViewAdapter homeCardAdapter;
+    private HomeCardAdapter homeCardAdapter;
     private RelativeLayout warningLayout;
 
     @Override
@@ -41,12 +41,12 @@ public class HomeDetailFragment extends Fragment implements OnBackPressListener 
             }
         });
         homeCardList = view.findViewById(R.id.history_list);
-        homeCardAdapter = new HomeCardListViewAdapter(getContext(),HomeCardListViewAdapter.exampleCards);
+        homeCardAdapter = new HomeCardAdapter(getContext(), HomeCardAdapter.exampleCards);
         homeCardList.setAdapter(homeCardAdapter);
         homeCardList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getContext(),HomeCardListViewAdapter.exampleCards.get(i).getName()+" is selected!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), HomeCardAdapter.exampleCards.get(i).getName()+" is selected!",Toast.LENGTH_SHORT).show();
             }
         });
     }

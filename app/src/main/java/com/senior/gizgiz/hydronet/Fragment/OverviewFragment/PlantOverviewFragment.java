@@ -5,7 +5,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import com.senior.gizgiz.hydronet.Adapter.ListViewAdapter.PlantOverviewAdapter;
 import com.senior.gizgiz.hydronet.Fragment.BackPressImpl;
 import com.senior.gizgiz.hydronet.Fragment.DetailFragment.PlantDetailFragment;
 import com.senior.gizgiz.hydronet.Listener.OnBackPressListener;
@@ -16,18 +20,32 @@ import com.senior.gizgiz.hydronet.R;
  */
 
 public class PlantOverviewFragment extends OverviewFragment implements OnBackPressListener {
+    private ListView plantOverviewList;
+    private PlantOverviewAdapter plantOverviewAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.content_plant_plant_overview, container, false);
-        rootView.findViewById(R.id.btn_show_detail_frag).setOnClickListener(new View.OnClickListener() {
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view,Bundle savedInstanceState) {
+        super.onViewCreated(view,savedInstanceState);
+        plantOverviewList = view.findViewById(R.id.plant_detail_list);
+        plantOverviewAdapter = new PlantOverviewAdapter(getContext(), PlantOverviewAdapter.exampleCards);
+        plantOverviewList.setAdapter(plantOverviewAdapter);
+        plantOverviewList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getContext(), PlantOverviewAdapter.exampleCards.get(i).getName()+" is selected!",Toast.LENGTH_SHORT).show();
+            }
+        });
+        view.findViewById(R.id.btn_show_detail_frag).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 enterNextFragment();
             }
         });
-
-        return rootView;
     }
 
     private void enterNextFragment() {

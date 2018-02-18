@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.style.TypefaceSpan;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -15,6 +16,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.senior.gizgiz.hydronet.Fragment.PlantCarouselFragment;
 import com.senior.gizgiz.hydronet.Fragment.OverviewFragment.HomeOverviewFragment;
 import com.senior.gizgiz.hydronet.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,14 +29,28 @@ public class MainActivity extends AppCompatActivity {
     private PlantCarouselFragment profileSubmenuFragment;
     private boolean nowCarouselFrag = false;
 
+    private List<ImageView> menuList;
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab_nav);
 
+        menuList = new ArrayList<ImageView>() {{
+            add((ImageView) findViewById(R.id.icon_home));
+            add((ImageView) findViewById(R.id.icon_my_plant));
+            add((ImageView) findViewById(R.id.icon_community));
+            add((ImageView) findViewById(R.id.icon_trade));
+            add((ImageView) findViewById(R.id.icon_notification));
+            add((ImageView) findViewById(R.id.icon_user));
+        }};
+
+        setActiveTab(0);
+
         findViewById(R.id.action_home).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                setActiveTab(0);
                 nowCarouselFrag = false;
                 HomeOverviewFragment overviewFragment = new HomeOverviewFragment();
 //                else overviewFragment = (HomeOverviewFragment) getSupportFragmentManager().getFragments().get(0);
@@ -46,10 +64,11 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.action_profile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                setActiveTab(1);
                 nowCarouselFrag = true;
-//                if(savedInstanceState == null)
+                if(savedInstanceState == null)
                     profileSubmenuFragment = new PlantCarouselFragment();
-//                else profileSubmenuFragment = (PlantCarouselFragment) getSupportFragmentManager().getFragments().get(0);
+                else profileSubmenuFragment = (PlantCarouselFragment) getSupportFragmentManager().getFragments().get(0);
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.addToBackStack(null);
                 transaction.replace(R.id.container, profileSubmenuFragment);
@@ -86,6 +105,11 @@ public class MainActivity extends AppCompatActivity {
 //        username = "gizgiz";
 //        databaseRef.child("users").child(Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID)).setValue(username);
 
+    }
+
+    private void setActiveTab(int activeTab) {
+        for(int i=0; i<menuList.size(); i++) menuList.get(i).setImageAlpha(125);
+        menuList.get(activeTab).setImageAlpha(255);
     }
 
     @Override

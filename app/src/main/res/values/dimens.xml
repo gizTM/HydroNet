@@ -40,5 +40,7 @@
     <dimen name="tag_width">50dp</dimen>
     <dimen name="expand_list_height">200dp</dimen>
     <dimen name="badge_plant">50dp</dimen>
+    <dimen name="item_divider">8dp</dimen>
+    <dimen name="txt_list_item">20sp</dimen>
 
 </resources>

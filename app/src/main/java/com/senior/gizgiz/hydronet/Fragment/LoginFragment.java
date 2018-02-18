@@ -18,8 +18,6 @@ import com.senior.gizgiz.hydronet.Activity.MicrogearConsoleActivity;
 import com.senior.gizgiz.hydronet.R;
 
 public class LoginFragment extends Fragment {
-
-    private SpannableString hintUsername,hintPassword,login,fbLogin,ggLogin;
     private EditText usernameET, passwordET;
     private Button loginBT, fbBT, ggBT;
     private ProgressDialog loginProgress;
@@ -29,8 +27,7 @@ public class LoginFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login, container, false);
     }

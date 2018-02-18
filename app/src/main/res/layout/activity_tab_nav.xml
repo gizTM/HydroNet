@@ -18,7 +18,8 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <ImageView android:src="@drawable/ic_action_home"
+            <ImageView android:id="@+id/icon_home"
+                android:src="@drawable/ic_action_home"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
@@ -27,7 +28,8 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <ImageView android:src="@drawable/ic_action_my_plant"
+            <ImageView android:id="@+id/icon_my_plant"
+                android:src="@drawable/ic_action_my_plant"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
@@ -36,7 +38,8 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <ImageView android:src="@drawable/ic_action_community"
+            <ImageView android:id="@+id/icon_community"
+                android:src="@drawable/ic_action_community"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
@@ -45,7 +48,8 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <ImageView android:src="@drawable/ic_action_trade"
+            <ImageView android:id="@+id/icon_trade"
+                android:src="@drawable/ic_action_trade"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
@@ -54,7 +58,8 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <ImageView android:src="@drawable/ic_action_notification"
+            <ImageView android:id="@+id/icon_notification"
+                android:src="@drawable/ic_action_notification"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
@@ -63,7 +68,8 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <ImageView android:src="@drawable/ic_action_user"
+            <ImageView android:id="@+id/icon_user"
+                android:src="@drawable/ic_action_user"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>

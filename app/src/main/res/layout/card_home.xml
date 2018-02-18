@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<LinearLayout-->
-    <!--xmlns:custom="http://schemas.android.com/apk/res-auto"-->
-    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content">-->
 <LinearLayout xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/bg_frame_content"
+    android:background="@drawable/card_shadow"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <LinearLayout android:id="@+id/upper_group"
-        android:padding="5dp"
+        android:padding="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail
@@ -83,29 +78,29 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout android:id="@+id/time_group"
-                android:layout_weight="2"
-                android:padding="10dp"
-                android:orientation="vertical"
-                android:gravity="center"
+            android:layout_weight="2"
+            android:padding="10dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/ic_date"
+                android:layout_margin="5dp"
+                android:layout_width="50dp"
+                android:layout_height="30dp" />
+            <View
+                android:background="@color/alto_gray"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:id="@+id/date"
+                android:text="23rd day"
+                android:maxLines="1"
+                android:textSize="25dp"
+                custom:textStyle="bold"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:src="@drawable/ic_date"
-                    android:layout_margin="5dp"
-                    android:layout_width="50dp"
-                    android:layout_height="30dp" />
-                <View
-                    android:background="@color/alto_gray"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp" />
-                    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-                        android:id="@+id/date"
-                        android:text="23rd day"
-                        android:maxLines="1"
-                        android:textSize="25dp"
-                        custom:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                android:layout_height="wrap_content" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -146,4 +141,3 @@
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
-<!--</LinearLayout>-->

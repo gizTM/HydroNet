@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_material"
     android:layout_height="match_parent"
     android:layout_width="match_parent">
@@ -14,18 +15,42 @@
             android:layout_margin="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-        <LinearLayout android:id="@+id/overview_plant"
+        <RelativeLayout android:id="@+id/overview_material"
+            android:orientation="vertical"
             android:background="@drawable/bg_frame_content"
             android:layout_below="@id/material_overview_title"
             android:layout_above="@id/btn_show_detail_frag"
+            android:padding="@dimen/padding_small"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-                android:text="material overview"
-                android:gravity="center"
+            <ListView android:id="@+id/material_detail_list"
+                android:layout_above="@id/material_detail_remark"
+                android:scrollbars="vertical"
+                android:divider="@null"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
+                android:layout_height="match_parent"/>
+            <LinearLayout android:id="@+id/material_detail_remark"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_so_small"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                    android:layout_weight="0.4"
+                    android:text="Total cost :"
+                    android:textSize="@dimen/txt_list_item"
+                    app:textStyle="bold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                    android:id="@+id/overall_material_cost"
+                    android:layout_weight="0.6"
+                    android:textSize="@dimen/txt_list_item"
+                    android:text="฿5000"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </RelativeLayout>
         <ImageButton android:id="@+id/btn_show_detail_frag"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_expand_down_arrow"

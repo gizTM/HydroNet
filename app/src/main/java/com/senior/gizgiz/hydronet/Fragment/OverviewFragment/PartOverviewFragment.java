@@ -1,34 +1,64 @@
 package com.senior.gizgiz.hydronet.Fragment.OverviewFragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import com.senior.gizgiz.hydronet.Adapter.ListViewAdapter.PartOverviewAdapter;
+import com.senior.gizgiz.hydronet.ClassForList.PartOverviewCard;
 import com.senior.gizgiz.hydronet.Fragment.BackPressImpl;
 import com.senior.gizgiz.hydronet.Fragment.DetailFragment.PartDetailFragment;
+import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.Listener.OnBackPressListener;
 import com.senior.gizgiz.hydronet.R;
+
+import java.text.DecimalFormat;
 
 /**
  * Created by Admins on 009 09/02/2018.
  */
 
 public class PartOverviewFragment extends OverviewFragment implements OnBackPressListener {
+    private ListView partOverviewList;
+    private PartOverviewAdapter partOverviewAdapter;
+    private CustomTextView totalPartCost;
+
+    private float partCost;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.content_plant_part_overview, container, false);
-        rootView.findViewById(R.id.btn_show_detail_frag).setOnClickListener(new View.OnClickListener() {
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view,savedInstanceState);
+        partOverviewList = view.findViewById(R.id.part_detail_list);
+        partOverviewAdapter = new PartOverviewAdapter(getContext(),PartOverviewAdapter.exampleCards);
+        partOverviewList.setAdapter(partOverviewAdapter);
+        partOverviewList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getContext(),PartOverviewAdapter.exampleCards.get(i).getName()+" is selected!",Toast.LENGTH_SHORT).show();
+            }
+        });
+        for (PartOverviewCard card : PartOverviewAdapter.exampleCards) partCost += card.getCost();
+        totalPartCost = view.findViewById(R.id.overall_part_cost);
+        DecimalFormat decimalFormat = new DecimalFormat("฿###,###.###");
+        totalPartCost.setText(decimalFormat.format(partCost));
+        view.findViewById(R.id.btn_show_detail_frag).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 enterNextFragment();
             }
         });
-
-        return rootView;
     }
 
     private void enterNextFragment() {

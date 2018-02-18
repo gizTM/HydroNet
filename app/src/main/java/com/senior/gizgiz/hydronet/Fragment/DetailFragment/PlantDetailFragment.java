@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
-import com.senior.gizgiz.hydronet.Adapter.GridViewAdapter.PlantGridViewAdapter;
+import com.senior.gizgiz.hydronet.Adapter.GridViewAdapter.PlantAdapter;
 import com.senior.gizgiz.hydronet.Fragment.BackPressImpl;
 import com.senior.gizgiz.hydronet.Listener.OnBackPressListener;
 import com.senior.gizgiz.hydronet.R;
@@ -18,7 +20,7 @@ import com.senior.gizgiz.hydronet.R;
 
 public class PlantDetailFragment extends Fragment implements OnBackPressListener {
     private GridView plantList;
-    private PlantGridViewAdapter plantAdapter;
+    private PlantAdapter plantAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -30,8 +32,14 @@ public class PlantDetailFragment extends Fragment implements OnBackPressListener
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view,savedInstanceState);
         plantList = view.findViewById(R.id.my_plant_list);
-        plantAdapter = new PlantGridViewAdapter(getContext(),PlantGridViewAdapter.exampleUserPlants);
+        plantAdapter = new PlantAdapter(getContext(),PlantAdapter.exampleUserPlants);
         plantList.setAdapter(plantAdapter);
+        plantList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getContext(),PlantAdapter.exampleUserPlants.get(i).getName()+" is selected!",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public boolean onBackPressed() {

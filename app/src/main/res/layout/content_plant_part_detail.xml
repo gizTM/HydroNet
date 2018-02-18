@@ -4,14 +4,9 @@
     android:padding="@dimen/padding_small"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <!--<com.senior.gizgiz.hydronet.HelperClass.CustomTextView-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:gravity="center"-->
-        <!--android:text="part list" />-->
     <ListView android:id="@+id/my_part_list"
         android:divider="@null"
-        android:dividerHeight="@dimen/padding_small"
+        android:dividerHeight="@dimen/item_divider"
         android:layout_height="match_parent"
         android:layout_width="match_parent"/>
 </LinearLayout>

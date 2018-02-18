@@ -17,12 +17,12 @@ import java.util.List;
  * Created by Admins on 003 3/2/2018.
  */
 
-public class LocationGridViewAdapter extends BaseAdapter {
+public class LocationAdapter extends BaseAdapter {
     private Context context;
     public static List<DropdownItem> itemList;
     public static List<DropdownItem> selectedItem = new ArrayList<>();
 
-    public LocationGridViewAdapter(Context context, List<DropdownItem> list) {
+    public LocationAdapter(Context context, List<DropdownItem> list) {
         this.context =context;
         itemList = list;
     }

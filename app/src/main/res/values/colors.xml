@@ -11,7 +11,8 @@
 
     <color name="green">#72bb53</color>
     <color name="border_green">#629c44</color>
-    <color name="dark_green">#629c44</color>
+    <color name="dark_green">#4c7a34</color>
+    <color name="light_green">#92d36e</color>
     <color name="orange">#ffa834</color>
     <color name="border_orange">#d68227</color>
     <color name="yellow">#ffff00</color>

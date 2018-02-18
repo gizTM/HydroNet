@@ -19,7 +19,7 @@ import java.util.List;
  * Created by Admins on 2018/02/06.
  */
 
-public class PlantGridViewAdapter extends BaseAdapter {
+public class PlantAdapter extends BaseAdapter {
     private Context context;
     private List<Plant> plantList;
     public static List<Plant> exampleSystemPlants = new ArrayList<>();
@@ -41,7 +41,7 @@ public class PlantGridViewAdapter extends BaseAdapter {
         exampleUserPlants.add(new Plant("tomato"));
     }
 
-    public PlantGridViewAdapter(Context context, List<Plant> plantList) {
+    public PlantAdapter(Context context, List<Plant> plantList) {
         this.context = context;
         this.plantList = plantList;
     }
@@ -57,12 +57,12 @@ public class PlantGridViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-        PlantGridViewAdapter.ViewHolder viewHolder;
+        PlantAdapter.ViewHolder viewHolder;
         if (view != null) {
-            viewHolder = (PlantGridViewAdapter.ViewHolder) view.getTag();
+            viewHolder = (PlantAdapter.ViewHolder) view.getTag();
         } else {
             view = LayoutInflater.from(context).inflate(R.layout.card_plant, null);
-            viewHolder = new PlantGridViewAdapter.ViewHolder(view);
+            viewHolder = new PlantAdapter.ViewHolder(view);
             view.setTag(viewHolder);
         }
         viewHolder.bind(position);

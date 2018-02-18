@@ -1,19 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:gravity="center"
     android:layout_marginLeft="@dimen/margin_popup"
     android:layout_marginRight="@dimen/margin_popup"
     android:padding="@dimen/padding_small"
-    android:background="@drawable/bg_frame_content"
+    android:background="@drawable/card_shadow"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <!--<ImageView android:id="@+id/plant_thumbnail"-->
-    <!--android:src="@drawable/ic_plant_tomato"-->
-    <!--android:layout_width="@dimen/badge_plant"-->
-    <!--android:layout_height="@dimen/badge_plant" />-->
-    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView android:id="@+id/plant_name"
-        android:text="material"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail
+        android:layout_weight="1.5"
+        android:layout_marginEnd="@dimen/margin_popup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+        <ImageView android:id="@+id/material_img"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_sensor_ph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
+    <LinearLayout android:layout_weight="3"
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/material_name"
+            android:text="material"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/material_detail"
+            android:text="@string/equipment_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>

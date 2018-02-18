@@ -19,8 +19,8 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
-import com.senior.gizgiz.hydronet.Adapter.GridViewAdapter.LocationGridViewAdapter;
-import com.senior.gizgiz.hydronet.Adapter.GridViewAdapter.PlantGridViewAdapter;
+import com.senior.gizgiz.hydronet.Adapter.GridViewAdapter.LocationAdapter;
+import com.senior.gizgiz.hydronet.Adapter.GridViewAdapter.PlantAdapter;
 import com.senior.gizgiz.hydronet.Adapter.RecyclerViewAdapter.PlantBadgeRecyclerViewAdapter;
 import com.senior.gizgiz.hydronet.ClassForList.DropdownItem;
 import com.senior.gizgiz.hydronet.ClassForList.PlantBadge;
@@ -53,8 +53,8 @@ public class AddPlantActivity extends AppCompatActivity {
 //    private PlantRecyclerViewAdapter systemPlantAdapter,userPlantAdapter;
 
     private PlantBadgeRecyclerViewAdapter plantBadgeAdapter;
-    private PlantGridViewAdapter systemPlantAdapter,userPlantAdapter;
-    private LocationGridViewAdapter locationGridViewAdapter;
+    private PlantAdapter systemPlantAdapter,userPlantAdapter;
+    private LocationAdapter locationGridViewAdapter;
 
     private boolean isExpandSystemPlant = false, isExpandUserPlant = false, isExpandCustomPlant = false;
     private int plantCount;
@@ -151,14 +151,14 @@ public class AddPlantActivity extends AppCompatActivity {
                 popup.showAtLocation(customView, Gravity.CENTER,0,0);
                 systemPlantList = customView.findViewById(R.id.system_plant_list);
                 userPlantList = customView.findViewById(R.id.user_plant_list);
-                systemPlantAdapter = new PlantGridViewAdapter(getApplicationContext(),PlantGridViewAdapter.exampleSystemPlants);
-                userPlantAdapter = new PlantGridViewAdapter(getApplicationContext(),PlantGridViewAdapter.exampleUserPlants);
+                systemPlantAdapter = new PlantAdapter(getApplicationContext(),PlantAdapter.exampleSystemPlants);
+                userPlantAdapter = new PlantAdapter(getApplicationContext(),PlantAdapter.exampleUserPlants);
                 systemPlantList.setAdapter(systemPlantAdapter);
                 userPlantList.setAdapter(userPlantAdapter);
                 systemPlantList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        nowEditingPlant = PlantGridViewAdapter.exampleSystemPlants.get(i);
+                        nowEditingPlant = PlantAdapter.exampleSystemPlants.get(i);
                         popup.dismiss();
                         ((ImageView)addPlantContent.findViewById(R.id.plant_thumbnail)).setImageResource(
                                 ResourceManager.getDrawableID(getApplicationContext(),"ic_plant_"+nowEditingPlant.getName()));
@@ -168,7 +168,7 @@ public class AddPlantActivity extends AppCompatActivity {
                 userPlantList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        nowEditingPlant = PlantGridViewAdapter.exampleUserPlants.get(i);
+                        nowEditingPlant = PlantAdapter.exampleUserPlants.get(i);
                         popup.dismiss();
                         ((ImageView) addPlantContent.findViewById(R.id.plant_thumbnail)).setImageResource(
                                 ResourceManager.getDrawableID(getApplicationContext(),"ic_plant_"+nowEditingPlant.getName()));
@@ -240,15 +240,15 @@ public class AddPlantActivity extends AppCompatActivity {
     }
     void handleLocationDropdown() {
         dropdownMenu = addPlantContent.findViewById(R.id.dropdown_menu);
-        locationGridViewAdapter = new LocationGridViewAdapter(this, createMockLocationList(32,8));
+        locationGridViewAdapter = new LocationAdapter(this, createMockLocationList(32,8));
         View customContentView = getLayoutInflater().inflate(R.layout.popup_location, null, false);
         locationList = customContentView.findViewById(R.id.location_gridview);
         locationList.setAdapter(locationGridViewAdapter);
         locationList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                List<DropdownItem> items = LocationGridViewAdapter.selectedItem;
-                boolean isSelected = LocationGridViewAdapter.itemList.get(position).isSelected();
+                List<DropdownItem> items = LocationAdapter.selectedItem;
+                boolean isSelected = LocationAdapter.itemList.get(position).isSelected();
                 if (!isSelected) locationGridViewAdapter.selectItem(position,plantCount);
                 else locationGridViewAdapter.unselectItem(position);
                 if (items.size()==0) dropdownMenu.setCurrentTitle("Location");

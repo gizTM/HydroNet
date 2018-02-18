@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * Created by Admins on 016 16/1/2018.
  */
 
-public class HomeCardListViewAdapter extends BaseAdapter {
+public class HomeCardAdapter extends BaseAdapter {
     private final Context context;
     private final ArrayList<HomeCard> homeCards;
     public static ArrayList<HomeCard> exampleCards = new ArrayList<>();
@@ -33,19 +33,19 @@ public class HomeCardListViewAdapter extends BaseAdapter {
         exampleCards.add(new HomeCard(6,"spinach",6,"B6",1,(float) 1.2));
     }
 
-    public HomeCardListViewAdapter(Context context, ArrayList<HomeCard> homeCards) {
+    public HomeCardAdapter(Context context, ArrayList<HomeCard> homeCards) {
         this.context = context;
         this.homeCards = homeCards;
     }
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        HomeCardListViewAdapter.ViewHolder viewHolder;
+        HomeCardAdapter.ViewHolder viewHolder;
         if(view != null) {
-            viewHolder = (HomeCardListViewAdapter.ViewHolder) view.getTag();
+            viewHolder = (HomeCardAdapter.ViewHolder) view.getTag();
         } else {
             view = LayoutInflater.from(context).inflate(R.layout.card_home,null);
-            viewHolder = new HomeCardListViewAdapter.ViewHolder(view);
+            viewHolder = new HomeCardAdapter.ViewHolder(view);
             view.setTag(viewHolder);
         }
         viewHolder.bind(position);

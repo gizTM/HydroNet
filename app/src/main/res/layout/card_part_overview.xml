@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:id="@+id/part_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0.5"
+        android:text="1."
+        android:textSize="@dimen/txt_list_item" />
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:id="@+id/part_name"
+        android:scrollHorizontally="true"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:layout_weight="2.5"
+        android:textSize="@dimen/txt_list_item"
+        android:text="Arduino UNO R3 board"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:id="@+id/part_cost"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        app:textStyle="bold"
+        android:textSize="@dimen/txt_list_item"
+        android:inputType="number"
+        android:text="1000"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
