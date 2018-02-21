@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.senior.gizgiz.hydronet.Adapter.ListViewAdapter.HomeCardAdapter;
-import com.senior.gizgiz.hydronet.Fragment.BackPressImpl;
+import com.senior.gizgiz.hydronet.HelperClass.BackPressHandler;
 import com.senior.gizgiz.hydronet.Listener.OnBackPressListener;
 import com.senior.gizgiz.hydronet.R;
 
@@ -53,6 +53,6 @@ public class HomeDetailFragment extends Fragment implements OnBackPressListener 
 
     @Override
     public boolean onBackPressed() {
-        return new BackPressImpl(this).onBackPressed();
+        return new BackPressHandler(this).onBackPressed();
     }
 }

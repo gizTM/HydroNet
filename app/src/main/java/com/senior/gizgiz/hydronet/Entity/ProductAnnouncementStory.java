@@ -12,7 +12,7 @@ public class ProductAnnouncementStory extends Story {
     private List<Negotiation> negotiations;
 
     public ProductAnnouncementStory(User owner, String detail, Plant mentionedPlant) {
-        super(owner,"announcement",detail,mentionedPlant);
+        super(owner,"sale",detail,mentionedPlant);
         this.status = "open";
         this.negotiations = new ArrayList<>();
     }

@@ -1,7 +1,16 @@
 package com.senior.gizgiz.hydronet.HelperClass;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.text.Html;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.BulletSpan;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by Admins on 016 16/1/2018.
@@ -35,5 +44,20 @@ public class ResourceManager {
 
     public static int getDim(Context context, int dim) {
         return context.getResources().getDimensionPixelSize(dim);
+    }
+
+    public static String getSeparateString(String string) {
+        String formattedString = "";
+        for (String unit : string.split(";")) formattedString += unit+"\n";
+        return formattedString;
+    }
+
+    public static void showBullet(SpannableStringBuilder builder, String textSeparatedByNextLine) {
+        for (String string : textSeparatedByNextLine.split("\n")) {
+            BulletSpan bulletSpan = new BulletSpan(30, Color.BLACK);
+            builder.setSpan(bulletSpan, textSeparatedByNextLine.indexOf(string),
+                    textSeparatedByNextLine.indexOf(string) + 1,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
     }
 }

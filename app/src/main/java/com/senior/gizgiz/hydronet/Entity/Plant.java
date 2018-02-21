@@ -1,17 +1,14 @@
 package com.senior.gizgiz.hydronet.Entity;
 
-import org.parceler.Parcel;
 
 /**
  * Created by Admins on 005 5/2/2018.
  */
 
-@Parcel
 public class Plant {
     int id;
     String name,property,otherInfo;
 
-    public Plant() {}
     public Plant(String name) { this.name = name; }
     public Plant(String name, String property, String otherInfo) {
         this.name = name;

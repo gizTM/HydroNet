@@ -1,13 +1,12 @@
 package com.senior.gizgiz.hydronet.Fragment.OverviewFragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.senior.gizgiz.hydronet.Fragment.BackPressImpl;
+import com.senior.gizgiz.hydronet.HelperClass.BackPressHandler;
 import com.senior.gizgiz.hydronet.Fragment.DetailFragment.HomeDetailFragment;
 import com.senior.gizgiz.hydronet.Listener.OnBackPressListener;
 import com.senior.gizgiz.hydronet.R;
@@ -42,11 +41,11 @@ public class HomeOverviewFragment extends OverviewFragment implements OnBackPres
 
     @Override
     public boolean onBackPressed() {
-        return new BackPressImpl(this).onBackPressed();
+        return new BackPressHandler(this).onBackPressed();
     }
 
     @Override
     public boolean setViewOverview() {
-        return new BackPressImpl(this).onBackPressed();
+        return new BackPressHandler(this).onBackPressed();
     }
 }

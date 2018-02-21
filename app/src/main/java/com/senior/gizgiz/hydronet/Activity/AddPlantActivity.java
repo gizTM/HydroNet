@@ -23,7 +23,7 @@ import com.senior.gizgiz.hydronet.Adapter.GridViewAdapter.LocationAdapter;
 import com.senior.gizgiz.hydronet.Adapter.GridViewAdapter.PlantAdapter;
 import com.senior.gizgiz.hydronet.Adapter.RecyclerViewAdapter.PlantBadgeRecyclerViewAdapter;
 import com.senior.gizgiz.hydronet.ClassForList.DropdownItem;
-import com.senior.gizgiz.hydronet.ClassForList.PlantBadge;
+import com.senior.gizgiz.hydronet.ClassForList.ToGrowPlantBadge;
 import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.HelperClass.NavigationManager;
 import com.senior.gizgiz.hydronet.Entity.Plant;
@@ -60,7 +60,7 @@ public class AddPlantActivity extends AppCompatActivity {
     private int plantCount;
     private Plant nowEditingPlant = new Plant("salad");
     private List<Plant> toAddPlantList = new ArrayList<>();
-    private List<PlantBadge> badgeList = new ArrayList<>();
+    private List<ToGrowPlantBadge> badgeList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +86,7 @@ public class AddPlantActivity extends AppCompatActivity {
         addPlantContent.findViewById(R.id.btn_add_more).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                badgeList.add(new PlantBadge(nowEditingPlant,plantCount));
+                badgeList.add(new ToGrowPlantBadge(nowEditingPlant,plantCount));
                 setupPlantBadgeView();
             }
         });
@@ -131,7 +131,7 @@ public class AddPlantActivity extends AppCompatActivity {
         plantBadgeList.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), plantBadgeList, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                PlantBadge card = badgeList.get(position);
+                ToGrowPlantBadge card = badgeList.get(position);
                 Toast.makeText(getApplicationContext(), card.getPlant().getName() + " is selected!", Toast.LENGTH_SHORT).show();
             }
 

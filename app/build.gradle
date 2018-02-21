@@ -44,8 +44,8 @@ dependencies {
 //    compile 'uk.co.chrisjenx:calligraphy:2.3.0'
 
     //parceler
-    compile 'org.parceler:parceler-api:1.1.9'
-    annotationProcessor 'org.parceler:parceler:1.1.9'
+//    compile 'org.parceler:parceler-api:1.1.9'
+//    annotationProcessor 'org.parceler:parceler:1.1.9'
 
     //custom material drawer
     implementation("com.mikepenz:materialdrawer:6.0.2@aar") {
@@ -58,13 +58,15 @@ dependencies {
 
     //dropdown menu
     compile 'com.exblr:dropdown-menu:1.0.2'
-    compile 'io.apptik.widget:multiselectspinner:1.0.12'
+//    compile 'io.apptik.widget:multiselectspinner:1.0.12'
 
     //toggle button ios style
     compile 'com.github.luongvo:iOS-SwitchView:1.0.2'
 
-    //on-off switch button
-    compile 'com.github.ngallazzi:HighlightingView:1.0.2'
+    //picasso
+//    compile 'com.squareup.picasso:picasso:2.5.2'
+    //glide
+    compile 'com.github.bumptech.glide:glide:3.5.2'
 }
 
 apply plugin: 'com.google.gms.google-services'

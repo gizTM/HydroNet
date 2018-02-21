@@ -9,9 +9,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.senior.gizgiz.hydronet.Adapter.ListViewAdapter.EquipmentAdapter;
 import com.senior.gizgiz.hydronet.Adapter.ListViewAdapter.PartOverviewAdapter;
-import com.senior.gizgiz.hydronet.ClassForList.PartOverviewCard;
-import com.senior.gizgiz.hydronet.Fragment.BackPressImpl;
+import com.senior.gizgiz.hydronet.Entity.Item;
+import com.senior.gizgiz.hydronet.HelperClass.BackPressHandler;
 import com.senior.gizgiz.hydronet.Fragment.DetailFragment.PartDetailFragment;
 import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.Listener.OnBackPressListener;
@@ -41,15 +42,15 @@ public class PartOverviewFragment extends OverviewFragment implements OnBackPres
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view,savedInstanceState);
         partOverviewList = view.findViewById(R.id.part_detail_list);
-        partOverviewAdapter = new PartOverviewAdapter(getContext(),PartOverviewAdapter.exampleCards);
+        partOverviewAdapter = new PartOverviewAdapter(getContext(),EquipmentAdapter.exampleCards);
         partOverviewList.setAdapter(partOverviewAdapter);
         partOverviewList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getContext(),PartOverviewAdapter.exampleCards.get(i).getName()+" is selected!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),EquipmentAdapter.exampleCards.get(i).getName()+" is selected!",Toast.LENGTH_SHORT).show();
             }
         });
-        for (PartOverviewCard card : PartOverviewAdapter.exampleCards) partCost += card.getCost();
+        for (Item card : EquipmentAdapter.exampleCards) partCost += card.getCost();
         totalPartCost = view.findViewById(R.id.overall_part_cost);
         DecimalFormat decimalFormat = new DecimalFormat("฿###,###.###");
         totalPartCost.setText(decimalFormat.format(partCost));
@@ -71,11 +72,11 @@ public class PartOverviewFragment extends OverviewFragment implements OnBackPres
 
     @Override
     public boolean onBackPressed() {
-        return new BackPressImpl(this).onBackPressed();
+        return new BackPressHandler(this).onBackPressed();
     }
 
     @Override
     public boolean setViewOverview() {
-        return new BackPressImpl(this).onBackPressed();
+        return new BackPressHandler(this).onBackPressed();
     }
 }

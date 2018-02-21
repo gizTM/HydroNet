@@ -19,7 +19,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/bg_nav_menu"
-        app:menu="@menu/menu"
         app:headerLayout="@layout/nav_header_main"
         android:layout_gravity="start"/>
 

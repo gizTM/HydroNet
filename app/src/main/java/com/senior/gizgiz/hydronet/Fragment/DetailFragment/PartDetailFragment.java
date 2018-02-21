@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.senior.gizgiz.hydronet.Adapter.ListViewAdapter.EquipmentAdapter;
-import com.senior.gizgiz.hydronet.Fragment.BackPressImpl;
+import com.senior.gizgiz.hydronet.HelperClass.BackPressHandler;
 import com.senior.gizgiz.hydronet.Listener.OnBackPressListener;
 import com.senior.gizgiz.hydronet.R;
 
@@ -43,6 +43,6 @@ public class PartDetailFragment extends Fragment implements OnBackPressListener 
     }
 
     public boolean onBackPressed() {
-        return new BackPressImpl(this).onBackPressed();
+        return new BackPressHandler(this).onBackPressed();
     }
 }

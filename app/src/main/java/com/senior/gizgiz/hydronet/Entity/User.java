@@ -13,6 +13,8 @@ public class User {
     private List<Plant> plantList;
     private SensorData sensorData;
 
+    public User(String username) {  }
+
     public User(String username, Email email, String password) {
         this.username = username;
     }

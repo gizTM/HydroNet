@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:padding="@dimen/padding_small"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <com.senior.gizgiz.hydronet.HelperClass.CustomButton
+        android:id="@+id/btn_share_new_story"
         android:background="@drawable/bg_btn_share"
+        android:layout_marginBottom="@dimen/padding_small"
         android:text="@string/btn_share"
         android:textColor="@color/white"
         android:textSize="@dimen/txt_list_item"

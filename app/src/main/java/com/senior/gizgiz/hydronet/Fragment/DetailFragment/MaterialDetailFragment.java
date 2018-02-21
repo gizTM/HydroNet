@@ -2,7 +2,6 @@ package com.senior.gizgiz.hydronet.Fragment.DetailFragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.senior.gizgiz.hydronet.Adapter.GridViewAdapter.PlantAdapter;
 import com.senior.gizgiz.hydronet.Adapter.ListViewAdapter.MaterialAdapter;
-import com.senior.gizgiz.hydronet.Fragment.BackPressImpl;
+import com.senior.gizgiz.hydronet.HelperClass.BackPressHandler;
 import com.senior.gizgiz.hydronet.Listener.OnBackPressListener;
 import com.senior.gizgiz.hydronet.R;
 
@@ -45,6 +43,6 @@ public class MaterialDetailFragment extends Fragment implements OnBackPressListe
     }
 
     public boolean onBackPressed() {
-        return new BackPressImpl(this).onBackPressed();
+        return new BackPressHandler(this).onBackPressed();
     }
 }

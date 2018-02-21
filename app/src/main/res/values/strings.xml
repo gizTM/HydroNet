@@ -80,5 +80,8 @@
     <string name="signup_confirm_pw">Confirm password</string>
     <string name="equipment_detail">\t- detail1\n\t- detail2\n\t- detail3</string>
     <string name="btn_share">Share</string>
+    <!--<string name="bullet">\t•</string>-->
+    <string name="bullet">\t-</string>
+    <string name="liked_count">Liked :</string>
 
 </resources>

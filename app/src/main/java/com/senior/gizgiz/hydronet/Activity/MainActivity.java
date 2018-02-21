@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.senior.gizgiz.hydronet.Fragment.FeedFragment;
 import com.senior.gizgiz.hydronet.Fragment.PlantCarouselFragment;
 import com.senior.gizgiz.hydronet.Fragment.OverviewFragment.HomeOverviewFragment;
 import com.senior.gizgiz.hydronet.R;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private String username;
 
     private PlantCarouselFragment profileSubmenuFragment;
+
     private boolean nowCarouselFrag = false;
 
     private List<ImageView> menuList;
@@ -66,12 +68,25 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 setActiveTab(1);
                 nowCarouselFrag = true;
-                if(savedInstanceState == null)
+//                if(savedInstanceState == null)
                     profileSubmenuFragment = new PlantCarouselFragment();
-                else profileSubmenuFragment = (PlantCarouselFragment) getSupportFragmentManager().getFragments().get(0);
+//                else profileSubmenuFragment = (PlantCarouselFragment) getSupportFragmentManager().getFragments().get(0);
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.addToBackStack(null);
                 transaction.replace(R.id.container, profileSubmenuFragment);
+                transaction.commit();
+            }
+        });
+
+        findViewById(R.id.action_community).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setActiveTab(2);
+                nowCarouselFrag = false;
+                FeedFragment overviewFragment = new FeedFragment();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.addToBackStack(null);
+                transaction.replace(R.id.container, overviewFragment);
                 transaction.commit();
             }
         });

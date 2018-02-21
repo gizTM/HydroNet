@@ -1,6 +1,6 @@
 package com.senior.gizgiz.hydronet.Entity;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by Admins on 006 6/2/2018.
@@ -10,31 +10,38 @@ public class Story {
     private User owner;
     private String type, detail;
     private int likedCount, sharedCount;
-    private List<User> likedUser, sharedUser;
+    private ArrayList<User> likedUser, sharedUser;
     private Plant mentionedPlant;
+
+    private boolean liked;
 
     public Story(User owner, String type, String detail, Plant mentionedPlant) {
         this.owner = owner;
         this.type = type;
         this.detail = detail;
+        this.likedUser = new ArrayList<>();
+        this.sharedUser = new ArrayList<>();
         this.mentionedPlant = mentionedPlant;
+        this.liked = false;
     }
 
     public User getOwner() { return owner; }
     public String getType() { return type; }
     public String getDetail() { return detail; }
-    public int getLikedCount() { return likedCount; }
-    public int getSharedCount() { return sharedCount; }
-    public List<User> getLikedUser() { return likedUser; }
-    public List<User> getSharedUser() { return sharedUser; }
+    public int getLikedCount() { return likedUser.size(); }
+    public int getSharedCount() { return sharedUser.size(); }
+    public ArrayList<User> getLikedUser() { return likedUser; }
+    public ArrayList<User> getSharedUser() { return sharedUser; }
     public Plant getMentionedPlant() { return mentionedPlant; }
+    public boolean getLiked() { return liked; }
 
     public void setOwner(User owner) { this.owner = owner; }
     public void setType(String type) { this.type = type; }
     public void setDetail(String detail) { this.detail = detail; }
-    public void setLikedCount(int likedCount) { this.likedCount = likedCount; }
-    public void setSharedCount(int sharedCount) { this.sharedCount = sharedCount; }
-    public void setLikedUser(List<User> likedUser) { this.likedUser = likedUser; }
-    public void setSharedUser(List<User> sharedUser) { this.sharedUser = sharedUser; }
+    public void addLikedUser(User user) { likedUser.add(user); }
+    public void addSharedUser(User user) { sharedUser.add(user); }
+    public void setLikedUser(ArrayList<User> likedUser) { this.likedUser = likedUser; }
+    public void setSharedUser(ArrayList<User> sharedUser) { this.sharedUser = sharedUser; }
     public void setMentionedPlant(Plant mentionedPlant) { this.mentionedPlant = mentionedPlant; }
+    public void setLiked(boolean liked) { this.liked = liked; }
 }

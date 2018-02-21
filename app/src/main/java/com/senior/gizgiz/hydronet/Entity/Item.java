@@ -5,19 +5,28 @@ package com.senior.gizgiz.hydronet.Entity;
  */
 
 public class Item {
-    private String name, detail;
-    private String type;
+    private String id, name, detail;
+    private float cost;
 
-    public Item(String name, String type) {
+    public Item(String id, String name, float cost, String detail) {
+        this.id = id;
         this.name = name;
-        this.type = type;
+        this.cost = cost;
+        this.detail = detail;
     }
 
+    public Item(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public String getId() { return id; }
     public String getName() { return name; }
     public String getDetail() { return detail; }
-    public String getType() { return type; }
+    public float getCost() { return cost; }
 
+    public void setId(String id) { this.id = id; }
     public void setName(String name) { this.name = name; }
     public void setDetail(String detail) { this.detail = detail; }
-    public void setType(String type) { this.type = type; }
+    public void setCost(float cost) { this.cost = cost; }
 }

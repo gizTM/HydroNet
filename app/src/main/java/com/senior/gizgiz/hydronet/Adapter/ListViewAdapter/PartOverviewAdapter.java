@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.senior.gizgiz.hydronet.ClassForList.PartOverviewCard;
+import com.senior.gizgiz.hydronet.Entity.Item;
 import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.R;
 
@@ -19,19 +19,9 @@ import java.util.ArrayList;
 
 public class PartOverviewAdapter extends BaseAdapter {
     private final Context context;
-    private final ArrayList<PartOverviewCard> partOverviewCards;
-    public static ArrayList<PartOverviewCard> exampleCards = new ArrayList<>();
+    private final ArrayList<Item> partOverviewCards;
 
-    static {
-        exampleCards.add(new PartOverviewCard(1,"Arduino UNO R3",500));
-        exampleCards.add(new PartOverviewCard(2,"Raspberry pi 3",2000));
-        exampleCards.add(new PartOverviewCard(3,"ESP8266-01 wifi module",100));
-        exampleCards.add(new PartOverviewCard(4,"Ultra sonic sensor",1000));
-        exampleCards.add(new PartOverviewCard(5,"pH sensor",2000));
-        exampleCards.add(new PartOverviewCard(6,"EC sensor",3000));
-    }
-
-    public PartOverviewAdapter(Context context, ArrayList<PartOverviewCard> partOverviewCards) {
+    public PartOverviewAdapter(Context context, ArrayList<Item> partOverviewCards) {
         this.context = context;
         this.partOverviewCards = partOverviewCards;
     }
@@ -66,7 +56,7 @@ public class PartOverviewAdapter extends BaseAdapter {
     }
 
     private class ViewHolder {
-        private CustomTextView id, name, cost, totalCost;
+        private CustomTextView id, name, cost;
 
         public ViewHolder(View view) {
             this.id = view.findViewById(R.id.part_id);
@@ -75,8 +65,8 @@ public class PartOverviewAdapter extends BaseAdapter {
         }
 
         public void bind(int position) {
-            PartOverviewCard card = partOverviewCards.get(position);
-            id.setText(card.getId()+"");
+            Item card = partOverviewCards.get(position);
+            id.setText(card.getId().substring(1));
             name.setText(card.getName());
             DecimalFormat decimalFormat = new DecimalFormat("฿###,###.###");
             cost.setText(decimalFormat.format(card.getCost()));

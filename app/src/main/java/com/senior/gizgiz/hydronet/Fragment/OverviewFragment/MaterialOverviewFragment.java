@@ -13,9 +13,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.senior.gizgiz.hydronet.Adapter.ListViewAdapter.MaterialAdapter;
 import com.senior.gizgiz.hydronet.Adapter.ListViewAdapter.MaterialOverviewAdapter;
-import com.senior.gizgiz.hydronet.ClassForList.MaterialOverviewCard;
-import com.senior.gizgiz.hydronet.Fragment.BackPressImpl;
+import com.senior.gizgiz.hydronet.Entity.Item;
+import com.senior.gizgiz.hydronet.HelperClass.BackPressHandler;
 import com.senior.gizgiz.hydronet.Fragment.DetailFragment.MaterialDetailFragment;
 import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.Listener.OnBackPressListener;
@@ -40,15 +41,15 @@ public class MaterialOverviewFragment extends OverviewFragment implements OnBack
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         materialOverviewList = view.findViewById(R.id.material_detail_list);
-        materialOverviewAdapter = new MaterialOverviewAdapter(getContext(),MaterialOverviewAdapter.exampleCards);
+        materialOverviewAdapter = new MaterialOverviewAdapter(getContext(),MaterialAdapter.exampleCards);
         materialOverviewList.setAdapter(materialOverviewAdapter);
         materialOverviewList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getContext(),MaterialOverviewAdapter.exampleCards.get(i).getName()+" is selected!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),MaterialAdapter.exampleCards.get(i).getName()+" is selected!",Toast.LENGTH_SHORT).show();
             }
         });
-        for (MaterialOverviewCard card : MaterialOverviewAdapter.exampleCards) materialCost += card.getCost();
+        for (Item card : MaterialAdapter.exampleCards) materialCost += card.getCost();
         totalMaterialCost = view.findViewById(R.id.overall_material_cost);
         DecimalFormat decimalFormat = new DecimalFormat("฿###,###.###");
         totalMaterialCost.setText(decimalFormat.format(materialCost));
@@ -70,12 +71,12 @@ public class MaterialOverviewFragment extends OverviewFragment implements OnBack
 
     @Override
     public boolean onBackPressed() {
-        return new BackPressImpl(this).onBackPressed();
+        return new BackPressHandler(this).onBackPressed();
     }
 
     @Override
     public boolean setViewOverview() {
-        return new BackPressImpl(this).onBackPressed();
+        return new BackPressHandler(this).onBackPressed();
     }
 }
 

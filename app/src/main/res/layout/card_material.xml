@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:gravity="center"
     android:layout_marginLeft="@dimen/margin_popup"
@@ -16,8 +17,8 @@
         <ImageView android:id="@+id/material_img"
             android:layout_centerInParent="true"
             android:src="@drawable/ic_sensor_ph"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
     <LinearLayout android:layout_weight="3"
         android:orientation="vertical"
@@ -25,12 +26,13 @@
         android:layout_height="wrap_content">
         <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
             android:id="@+id/material_name"
-            android:text="material"
+            android:text="material name"
+            app:textStyle="bold"
+            android:textSize="@dimen/txt_list_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
             android:id="@+id/material_detail"
-            android:text="@string/equipment_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
