@@ -24,15 +24,6 @@ public class PlantRecyclerViewAdapter extends RecyclerView.Adapter<PlantRecycler
     private List<Plant> systemDefaultPlants;
     public static List<Plant> exampleSystemPlants = new ArrayList<>();
 
-    static {
-        exampleSystemPlants.add(new Plant("tomato"));
-        exampleSystemPlants.add(new Plant("cucumber"));
-        exampleSystemPlants.add(new Plant("spinach"));
-        exampleSystemPlants.add(new Plant("tomato"));
-        exampleSystemPlants.add(new Plant("cucumber"));
-        exampleSystemPlants.add(new Plant("spinach"));
-    }
-
     public PlantRecyclerViewAdapter(Context context, List<Plant> systemDefaultPlants) {
         this.context = context;
         this.systemDefaultPlants = systemDefaultPlants;

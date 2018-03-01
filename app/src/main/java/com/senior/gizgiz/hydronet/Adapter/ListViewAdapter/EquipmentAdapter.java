@@ -85,7 +85,6 @@ public class EquipmentAdapter extends BaseAdapter {
         public ViewHolder(View view) {
             this.name = view.findViewById(R.id.equipment_name);
             this.detail = view.findViewById(R.id.equipment_detail);
-            if(img != null) ((BitmapDrawable) img.getDrawable()).getBitmap().recycle();
             this.img = view.findViewById(R.id.equipment_img);
         }
 

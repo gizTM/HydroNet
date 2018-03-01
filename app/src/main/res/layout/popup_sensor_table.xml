@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:grid="http://schemas.android.com/tools"
+    android:id="@+id/dim_popup_overlay"
+    android:background="@drawable/dim_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout android:id="@+id/popup_sensor_table_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin_popup"
+        android:padding="@dimen/padding_so_small"
+        android:background="@drawable/bg_frame_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <GridLayout android:columnCount="5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <!--<TableRow android:background="@drawable/bg_frame_table">-->
+                <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                    android:padding="@dimen/margin_separator"
+                    android:background="@drawable/bg_frame_table"
+                    android:gravity="center"
+                    android:layout_gravity="fill_horizontal"
+                    android:layout_columnSpan="3"
+                    android:text="Sensor data"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                    android:padding="@dimen/margin_separator"
+                    android:background="@drawable/bg_frame_table"
+                    android:layout_rowSpan="2"
+                    android:gravity="center"
+                    android:text="Meaning"/>
+                <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                    android:padding="@dimen/margin_separator"
+                    android:background="@drawable/bg_frame_table"
+                    android:layout_rowSpan="2"
+                    android:gravity="center"
+                    android:text="Handle"/>
+            <!--</TableRow>-->
+            <!--<TableRow android:background="@drawable/bg_frame_table">-->
+                <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                    android:padding="@dimen/margin_separator"
+                    android:background="@drawable/bg_frame_table"
+                    android:gravity="center"
+                    android:text="Water level"/>
+                <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                    android:padding="@dimen/margin_separator"
+                    android:background="@drawable/bg_frame_table"
+                    android:gravity="center"
+                    android:text="pH level"/>
+                <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                    android:padding="@dimen/margin_separator"
+                    android:background="@drawable/bg_frame_table"
+                    android:gravity="center"
+                    android:text="EC level"/>
+            <!--</TableRow>-->
+        </GridLayout>
+    </LinearLayout>
+</LinearLayout>

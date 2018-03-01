@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/padding_small"
+    android:background="@drawable/card_shadow"
+    android:weightSum="3"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout android:id="@+id/story_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/margin_separator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView android:id="@+id/feed_img"
+                android:layout_margin="@dimen/padding_small"
+                android:background="@color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
+        <LinearLayout android:layout_gravity="top"
+            android:orientation="vertical"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                    android:id="@+id/owner_username"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/margin_separator"
+                    android:layout_weight="5"
+                    android:text="@string/signup_user"
+                    app:textStyle="bold"
+                    android:scrollHorizontally="true"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textSize="@dimen/txt_list_item"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                    android:id="@+id/story_type"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/blue"
+                    android:padding="@dimen/padding_so_small"
+                    android:background="@drawable/bg_frame_transparent"
+                    android:text="open for sale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:id="@+id/story_detail_bullet"
+                android:text="Detail: "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:drawableStart="@drawable/ic_harvested"
+        android:gravity="center"
+        android:textSize="@dimen/badge_label"
+        android:text="2 remaining"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <View android:background="@color/alto_gray"
+        android:layout_marginTop="@dimen/margin_separator"
+        android:layout_marginBottom="@dimen/margin_separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <LinearLayout android:id="@+id/like_layout"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout android:id="@+id/btn_negotiate"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView android:src="@drawable/ic_negotiation"
+                android:background="@color/transparent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:id="@+id/negotiation_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:id="@+id/btn_like"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView android:id="@+id/btn_like_img"
+                android:src="@drawable/ic_like"
+                android:background="@color/transparent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:id="@+id/like_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+            <LinearLayout android:id="@+id/btn_share"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <ImageView android:src="@drawable/ic_share"
+                    android:background="@color/transparent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                    android:id="@+id/share_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

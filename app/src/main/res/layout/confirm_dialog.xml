@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/padding_medium"
+    android:background="@color/gallery_gray">
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:id="@+id/dialog_message"
+        android:drawableStart="@drawable/ic_warning"
+        android:text="@string/dialog_confirm"
+        android:drawablePadding="@dimen/padding_medium"
+        android:gravity="start"
+        android:textAlignment="viewStart"
+        android:textSize="@dimen/label"
+        app:textStyle="bold"
+        android:layout_marginBottom="@dimen/padding_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_gravity="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/btn_negative"
+            android:text="@string/dialog_negative"
+            app:textStyle="bold"
+            android:paddingStart="@dimen/padding_small"
+            android:paddingEnd="@dimen/padding_small"
+            android:paddingTop="@dimen/padding_so_small"
+            android:paddingBottom="@dimen/padding_so_small"
+            android:background="@drawable/bg_btn_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/btn_positive"
+            android:text="@string/diglog_positive"
+            app:textStyle="bold"
+            android:layout_marginStart="@dimen/padding_small"
+            android:paddingStart="@dimen/padding_small"
+            android:paddingEnd="@dimen/padding_small"
+            android:paddingTop="@dimen/padding_so_small"
+            android:paddingBottom="@dimen/padding_so_small"
+            android:background="@drawable/bg_btn_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

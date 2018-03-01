@@ -2,9 +2,11 @@ package com.senior.gizgiz.hydronet.Fragment.OverviewFragment;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupWindow;
 
 import com.senior.gizgiz.hydronet.HelperClass.BackPressHandler;
 import com.senior.gizgiz.hydronet.Fragment.DetailFragment.HomeDetailFragment;
@@ -27,8 +29,21 @@ public class HomeOverviewFragment extends OverviewFragment implements OnBackPres
         return rootView;
     }
 
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view,savedInstanceState);
+    public void onViewCreated(final View parentView, Bundle savedInstanceState) {
+        super.onViewCreated(parentView,savedInstanceState);
+        parentView.findViewById(R.id.farm_bed_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                View customView = LayoutInflater.from(getContext()).inflate(R.layout.popup_sensor_table,null);
+                final PopupWindow popup = new PopupWindow(customView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                popup.setOutsideTouchable(true);
+                popup.showAtLocation(parentView, Gravity.CENTER,0,0);
+                customView.findViewById(R.id.dim_popup_overlay).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) { popup.dismiss(); }
+                });
+            }
+        });
     }
 
     private void enterNextFragment() {

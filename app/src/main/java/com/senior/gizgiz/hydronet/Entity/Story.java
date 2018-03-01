@@ -8,14 +8,14 @@ import java.util.ArrayList;
 
 public class Story {
     private User owner;
-    private String type, detail;
-    private int likedCount, sharedCount;
+    private String  detail;
+    private int type,likedCount, sharedCount;
     private ArrayList<User> likedUser, sharedUser;
     private Plant mentionedPlant;
 
     private boolean liked;
 
-    public Story(User owner, String type, String detail, Plant mentionedPlant) {
+    public Story(User owner, int type, String detail, Plant mentionedPlant) {
         this.owner = owner;
         this.type = type;
         this.detail = detail;
@@ -26,7 +26,7 @@ public class Story {
     }
 
     public User getOwner() { return owner; }
-    public String getType() { return type; }
+    public int getType() { return type; }
     public String getDetail() { return detail; }
     public int getLikedCount() { return likedUser.size(); }
     public int getSharedCount() { return sharedUser.size(); }
@@ -36,7 +36,7 @@ public class Story {
     public boolean getLiked() { return liked; }
 
     public void setOwner(User owner) { this.owner = owner; }
-    public void setType(String type) { this.type = type; }
+    public void setType(int type) { this.type = type; }
     public void setDetail(String detail) { this.detail = detail; }
     public void addLikedUser(User user) { likedUser.add(user); }
     public void addSharedUser(User user) { sharedUser.add(user); }

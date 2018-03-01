@@ -6,11 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.senior.gizgiz.hydronet.ClassForList.PlantOverviewCard;
+import com.senior.gizgiz.hydronet.Entity.GrowHistory;
+import com.senior.gizgiz.hydronet.Entity.Plant;
+import com.senior.gizgiz.hydronet.Entity.UserPlant;
 import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Admins on 018 18/02/2018.
@@ -18,21 +20,11 @@ import java.util.ArrayList;
 
 public class PlantOverviewAdapter extends BaseAdapter {
     private final Context context;
-    private final ArrayList<PlantOverviewCard> plantDetailCards;
-    public static ArrayList<PlantOverviewCard> exampleCards = new ArrayList<>();
+    private final List<Plant> plantOverviewCards;
 
-    static {
-        exampleCards.add(new PlantOverviewCard(1,"tomato",1,5,2));
-        exampleCards.add(new PlantOverviewCard(2,"cucumber",5,2,2));
-        exampleCards.add(new PlantOverviewCard(3,"spinach",3,21,5));
-        exampleCards.add(new PlantOverviewCard(4,"cucumber",4,1,0));
-        exampleCards.add(new PlantOverviewCard(5,"tomato",5,45,6));
-        exampleCards.add(new PlantOverviewCard(6,"spinach",6,1,2));
-    }
-
-    public PlantOverviewAdapter(Context context, ArrayList<PlantOverviewCard> homeCards) {
+    public PlantOverviewAdapter(Context context, List<Plant> plantOverviewCards) {
         this.context = context;
-        this.plantDetailCards = homeCards;
+        this.plantOverviewCards = plantOverviewCards;
     }
 
     @Override
@@ -51,7 +43,7 @@ public class PlantOverviewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return plantDetailCards.size();
+        return plantOverviewCards.size();
     }
 
     @Override
@@ -77,13 +69,20 @@ public class PlantOverviewAdapter extends BaseAdapter {
         }
 
         public void bind(int position) {
-            PlantOverviewCard card = plantDetailCards.get(position);
-            id.setText(card.getId()+"");
+            Plant card = plantOverviewCards.get(position);
+            List<GrowHistory> histories = ((UserPlant) card).getGrowHistory();
+            int numGrowing=0,numHarvested=0,numFailed=0;
+            for (GrowHistory history : histories) {
+                if(history.getResult().equalsIgnoreCase("failed")) numFailed+=history.getCount();
+                else if(history.isHarvested()) numHarvested+=history.getCount();
+                else numGrowing+=history.getCount();
+            }
+            id.setText(card.getId().substring(2));
             name.setText(card.getName());
-            growing.setText("x"+card.getGrowing());
-            harvested.setText("x"+card.getHarvested());
-            failed.setText("x"+card.getFailed());
-            total.setText("x"+(card.getGrowing()+card.getHarvested()+card.getFailed()));
+            growing.setText("x"+numGrowing);
+            harvested.setText("x"+numHarvested);
+            failed.setText("x"+numFailed);
+            total.setText("x"+(numGrowing+numHarvested+numFailed));
         }
     }
 }

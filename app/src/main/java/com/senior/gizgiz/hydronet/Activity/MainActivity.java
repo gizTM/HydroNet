@@ -48,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
         }};
 
         setActiveTab(0);
+        nowCarouselFrag = false;
+        HomeOverviewFragment overviewFragment = new HomeOverviewFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.addToBackStack(null);
+        transaction.replace(R.id.container, overviewFragment);
+        transaction.commit();
 
         findViewById(R.id.action_home).setOnClickListener(new View.OnClickListener() {
             @Override

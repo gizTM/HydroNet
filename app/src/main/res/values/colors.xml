@@ -4,7 +4,6 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#dadada</color>
 
-
     <color name="transparent">#00ffffff</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
@@ -38,5 +37,4 @@
     <color name="mine_shaft_gray">#232323</color>
 
     <color name="dim_alto_gray">#d6d6d6d6</color>
-
 </resources>

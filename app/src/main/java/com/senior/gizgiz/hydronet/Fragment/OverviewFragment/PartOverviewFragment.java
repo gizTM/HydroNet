@@ -50,6 +50,7 @@ public class PartOverviewFragment extends OverviewFragment implements OnBackPres
                 Toast.makeText(getContext(),EquipmentAdapter.exampleCards.get(i).getName()+" is selected!",Toast.LENGTH_SHORT).show();
             }
         });
+        partCost = 0;
         for (Item card : EquipmentAdapter.exampleCards) partCost += card.getCost();
         totalPartCost = view.findViewById(R.id.overall_part_cost);
         DecimalFormat decimalFormat = new DecimalFormat("฿###,###.###");

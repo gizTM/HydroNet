@@ -49,6 +49,7 @@ public class MaterialOverviewFragment extends OverviewFragment implements OnBack
                 Toast.makeText(getContext(),MaterialAdapter.exampleCards.get(i).getName()+" is selected!",Toast.LENGTH_SHORT).show();
             }
         });
+        materialCost = 0;
         for (Item card : MaterialAdapter.exampleCards) materialCost += card.getCost();
         totalMaterialCost = view.findViewById(R.id.overall_material_cost);
         DecimalFormat decimalFormat = new DecimalFormat("฿###,###.###");

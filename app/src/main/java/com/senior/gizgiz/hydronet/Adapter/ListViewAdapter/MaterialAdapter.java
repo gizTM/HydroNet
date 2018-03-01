@@ -75,7 +75,6 @@ public class MaterialAdapter extends BaseAdapter {
         public ViewHolder(View view) {
             this.name = view.findViewById(R.id.material_name);
             this.detail = view.findViewById(R.id.material_detail);
-            if(img != null) ((BitmapDrawable) img.getDrawable()).getBitmap().recycle();
             this.img = view.findViewById(R.id.material_img);
         }
 

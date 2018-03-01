@@ -1,5 +1,7 @@
 package com.senior.gizgiz.hydronet.Entity;
 
+import com.senior.gizgiz.hydronet.Adapter.ListViewAdapter.StoryAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,18 +10,18 @@ import java.util.List;
  */
 
 public class ProductAnnouncementStory extends Story {
-    private String status;
+    private String saleStatus;
     private List<Negotiation> negotiations;
 
     public ProductAnnouncementStory(User owner, String detail, Plant mentionedPlant) {
-        super(owner,"sale",detail,mentionedPlant);
-        this.status = "open";
+        super(owner, StoryAdapter.getTypeSale(),detail,mentionedPlant);
+        this.saleStatus = "open";
         this.negotiations = new ArrayList<>();
     }
 
-    public String getStatus() { return status; }
+    public String getSaleStatus() { return saleStatus; }
     public List<Negotiation> getNegotiations() { return negotiations; }
 
-    public void setStatus(String status) { this.status = status; }
+    public void setSaleStatus(String saleStatus) { this.saleStatus = saleStatus; }
     public void addNegotiations(Negotiation negotiation) { this.negotiations.add(negotiation); }
 }

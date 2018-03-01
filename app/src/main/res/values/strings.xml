@@ -83,5 +83,19 @@
     <!--<string name="bullet">\t•</string>-->
     <string name="bullet">\t-</string>
     <string name="liked_count">Liked :</string>
+    <string name="btn_add_more_plant">Add more</string>
+    <string name="btn_plant_change">change</string>
+    <string name="plant_name_preview">\???</string>
+    <string name="dialog_confirm">Do you really want to continue?</string>
+    <string name="diglog_positive">Yes</string>
+    <string name="dialog_negative">No</string>
+    <string name="btn_negotiate">Negotiate!</string>
+    <string name="label_trade_overview">Trading statistic overview</string>
+    <string name="trade_paid">paid</string>
+    <string name="trade_gain">gained</string>
+    <string name="label_select_all">Select all</string>
+    <string name="label_select_none">Select none</string>
+    <string name="btn_add_max">MAX</string>
+    <string name="label_select_done">Done</string>
 
 </resources>

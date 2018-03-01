@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_trade"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:paddingLeft="@dimen/padding_small"
+        android:paddingRight="@dimen/padding_small"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/trade_overview_title"
+            android:text="@string/label_trade_overview"
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RelativeLayout android:id="@+id/overview_part"
+            android:orientation="vertical"
+            android:background="@drawable/bg_frame_content"
+            android:layout_below="@id/trade_overview_title"
+            android:layout_above="@id/btn_show_detail_frag"
+            android:padding="@dimen/padding_small"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TableLayout android:orientation="vertical"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TableRow>
+                    <LinearLayout android:id="@+id/bought_badge"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="@dimen/padding_small"
+                        android:background="@drawable/bg_frame_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                            android:id="@+id/bought_count"
+                            android:text="19"
+                            app:textStyle="bold"
+                            android:textSize="@dimen/big_badge_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                            android:text="bought"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout android:id="@+id/paid_group"
+                        android:layout_marginStart="@dimen/padding_small"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <LinearLayout android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                                android:text="฿xx"
+                                android:textSize="@dimen/big_badge_label"
+                                app:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                                android:text="@string/trade_paid"
+                                android:layout_marginStart="@dimen/padding_so_small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                        <LinearLayout android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                                android:text="21"
+                                android:textSize="@dimen/big_badge_label"
+                                app:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                                android:text="on wishlist"
+                                android:layout_marginStart="@dimen/padding_so_small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </TableRow>
+                <TableRow>
+                    <View android:background="@color/alto_gray"
+                        android:layout_span="2"
+                        android:layout_marginTop="@dimen/margin_separator"
+                        android:layout_marginBottom="@dimen/margin_separator"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp" />
+                </TableRow>
+                <TableRow>
+                    <LinearLayout android:id="@+id/sold_badge"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="@dimen/padding_small"
+                        android:background="@drawable/bg_frame_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                            android:id="@+id/sold_count"
+                            android:text="25"
+                            app:textStyle="bold"
+                            android:textSize="@dimen/big_badge_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                            android:text="sold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout android:id="@+id/gain_group"
+                        android:layout_marginStart="@dimen/padding_small"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <LinearLayout android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                                android:text="฿xx"
+                                android:textSize="@dimen/big_badge_label"
+                                app:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                                android:text="@string/trade_gain"
+                                android:layout_marginStart="@dimen/padding_so_small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                        <LinearLayout android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                                android:text="34"
+                                android:textSize="@dimen/big_badge_label"
+                                app:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                                android:text="on shelf"
+                                android:layout_marginStart="@dimen/padding_so_small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </TableRow>
+            </TableLayout>
+            <!--<LinearLayout android:id="@+id/part_detail_remark"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:padding="@dimen/padding_so_small"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+                <!--<com.senior.gizgiz.hydronet.HelperClass.CustomTextView-->
+                    <!--android:layout_weight="0.4"-->
+                    <!--android:text="Total cost :"-->
+                    <!--android:textSize="@dimen/txt_list_item"-->
+                    <!--app:textStyle="bold"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content" />-->
+                <!--<com.senior.gizgiz.hydronet.HelperClass.CustomTextView-->
+                    <!--android:id="@+id/overall_part_cost"-->
+                    <!--android:layout_weight="0.6"-->
+                    <!--android:textSize="@dimen/txt_list_item"-->
+                    <!--android:text="฿5000"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content" />-->
+            <!--</LinearLayout>-->
+        </RelativeLayout>
+        <ImageButton android:id="@+id/btn_show_detail_frag"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_expand_down_arrow"
+            android:padding="@dimen/padding_so_small"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</FrameLayout>

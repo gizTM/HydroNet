@@ -15,11 +15,13 @@
     <dimen name="sub_btn_padding">15dp</dimen>
 
     <!--font size-->
-    <dimen name="modal_title">30dp</dimen>
-    <dimen name="label">20dp</dimen>
+    <dimen name="modal_title">30sp</dimen>
+    <dimen name="label">20sp</dimen>
     <dimen name="num_label">28dp</dimen>
-    <dimen name="badge_label">18dp</dimen>
-    <dimen name="submenu_label">17dp</dimen>
+    <dimen name="badge_label">18sp</dimen>
+    <dimen name="submenu_label">17sp</dimen>
+    <dimen name="txt_list_item">18sp</dimen>
+    <dimen name="big_badge_label">35sp</dimen>
 
     <dimen name="sub_btn_padding_small">3dp</dimen>
     <dimen name="sub_btn_margin_vertical">10dp</dimen>
@@ -39,9 +41,8 @@
     <dimen name="margin_separator">10dp</dimen>
     <dimen name="tag_height">30dp</dimen>
     <dimen name="tag_width">50dp</dimen>
-    <dimen name="expand_list_height">200dp</dimen>
+    <dimen name="expand_list_height">250dp</dimen>
     <dimen name="badge_plant">50dp</dimen>
     <dimen name="item_divider">8dp</dimen>
-    <dimen name="txt_list_item">18sp</dimen>
 
 </resources>
