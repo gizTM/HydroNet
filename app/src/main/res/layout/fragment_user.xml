@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_small"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/username"
+            android:text="@string/signup_user"
+            app:textStyle="bold"
+            android:textSize="@dimen/modal_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/email"
+            android:layout_below="@id/username"
+            android:text="@string/prompt_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.senior.gizgiz.hydronet.HelperClass.CustomButton
+            android:id="@+id/btn_logout"
+            android:background="@drawable/bg_btn_light_gray"
+            android:gravity="center"
+            app:textStyle="bold"
+            android:textColor="@color/scorpion_gray"
+            android:padding="@dimen/padding_so_small"
+            android:drawableEnd="@drawable/ic_logout"
+            android:layout_alignParentEnd="true"
+            android:text="@string/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <LinearLayout android:layout_marginTop="@dimen/titleSize"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:text="farm layout"
+            android:textSize="@dimen/txt_list_item"
+            app:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RadioGroup android:id="@+id/farm_layout_radio_group"
+            android:orientation="horizontal"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <com.senior.gizgiz.hydronet.HelperClass.CustomRadioButton
+                android:id="@+id/checkbox_farm_layout_default"
+                android:text="4 x 8 -- default"
+                android:textColor="@color/scorpion_gray"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.senior.gizgiz.hydronet.HelperClass.CustomRadioButton
+                android:id="@+id/checkbox_farm_layout_custom"
+                android:text="custom design"
+                android:textColor="@color/scorpion_gray"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
+    </LinearLayout>
+    <View android:background="@color/alto_gray"
+        android:layout_marginTop="@dimen/margin_separator"
+        android:layout_marginBottom="@dimen/margin_separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:text="equipment control"
+            android:textSize="@dimen/txt_list_item"
+            app:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RadioGroup android:id="@+id/control_radio_group"
+            android:orientation="vertical"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <com.senior.gizgiz.hydronet.HelperClass.CustomRadioButton
+                android:id="@+id/radio_control_default"
+                android:text="minimum control -- default"
+                android:textColor="@color/scorpion_gray"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.senior.gizgiz.hydronet.HelperClass.CustomRadioButton
+                android:id="@+id/radio_control_custom"
+                android:text="full control (I want to control my farm fully)"
+                android:textColor="@color/scorpion_gray"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
+    </LinearLayout>
+    <View android:background="@color/alto_gray"
+        android:layout_marginTop="@dimen/margin_separator"
+        android:layout_marginBottom="@dimen/margin_separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:text="report frequency"
+            android:textSize="@dimen/txt_list_item"
+            app:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RadioGroup android:id="@+id/report_radio_group"
+            android:orientation="vertical"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <com.senior.gizgiz.hydronet.HelperClass.CustomRadioButton
+                android:id="@+id/radio_report_default"
+                android:text="daily sensor report -- default"
+                android:textColor="@color/scorpion_gray"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.senior.gizgiz.hydronet.HelperClass.CustomRadioButton
+                android:id="@+id/radio_report_custom"
+                android:text="report more than 1 time per day"
+                android:textColor="@color/scorpion_gray"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
+    </LinearLayout>
+    <View android:background="@color/alto_gray"
+        android:layout_marginTop="@dimen/margin_separator"
+        android:layout_marginBottom="@dimen/margin_separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:text="about HydroNet"
+            android:textSize="@dimen/txt_list_item"
+            app:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/btn_license"
+            android:text="@string/about_app"
+            android:layout_weight="1"
+            android:textColor="@color/scorpion_gray"
+            android:gravity="center"
+            android:drawableEnd="@drawable/ic_open_window"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" />
+    </LinearLayout>
+</LinearLayout>

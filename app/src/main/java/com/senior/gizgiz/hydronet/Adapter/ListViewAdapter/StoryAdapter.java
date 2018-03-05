@@ -10,15 +10,22 @@ import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 import com.senior.gizgiz.hydronet.Adapter.GridViewAdapter.PlantAdapter;
+import com.senior.gizgiz.hydronet.Entity.Plant;
+import com.senior.gizgiz.hydronet.Entity.ProductAnnouncementStory;
+import com.senior.gizgiz.hydronet.Entity.ProgressStory;
 import com.senior.gizgiz.hydronet.Entity.Story;
 import com.senior.gizgiz.hydronet.Entity.User;
+import com.senior.gizgiz.hydronet.Entity.UserPlant;
 import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.HelperClass.ResourceManager;
 import com.senior.gizgiz.hydronet.R;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * Created by Admins on 020 20/02/2018.
@@ -42,10 +49,20 @@ public class StoryAdapter extends BaseAdapter {
 
     static {
         exampleCards.add(new Story(new User("gizgiz"),TYPE_STORY,"This plant is good!", PlantAdapter.exampleUserPlants.get(4)));
-        exampleCards.add(new Story(new User("gizgiz"),TYPE_SALE,"x2 cucumber on sale!", PlantAdapter.exampleUserPlants.get(0)));
-        exampleCards.add(new Story(new User("gizgiz"),TYPE_SALE,"x5 spinach on sale!", PlantAdapter.exampleUserPlants.get(1)));
-        exampleCards.add(new Story(new User("gizgiz"),TYPE_PROGRESS,"I'm growing x4 salad!", PlantAdapter.exampleUserPlants.get(2)));
-        exampleCards.add(new Story(new User("gizgiz"),TYPE_PROGRESS,"I'm growing x3 celery!", PlantAdapter.exampleUserPlants.get(3)));
+        exampleCards.add(new ProductAnnouncementStory(new User("gizgiz"),ProductAnnouncementStory.COND_TYPE_MONEY,"100",
+                "x2 cucumber on sale!", PlantAdapter.exampleUserPlants.get(0),createMockHistoryNumber(PlantAdapter.exampleUserPlants.get(0))));
+        exampleCards.add(new ProductAnnouncementStory(new User("gizgiz"),ProductAnnouncementStory.COND_TYPE_OTHER,"x10 tomato",
+                "x5 spinach on sale!", PlantAdapter.exampleUserPlants.get(1),createMockHistoryNumber(PlantAdapter.exampleUserPlants.get(1))));
+        exampleCards.add(new ProgressStory(new User("gizgiz"),"I'm growing x4 salad!",
+                PlantAdapter.exampleUserPlants.get(2),createMockHistoryNumber(PlantAdapter.exampleUserPlants.get(2))));
+        exampleCards.add(new ProgressStory(new User("gizgiz"),"I'm growing x3 celery!",
+                PlantAdapter.exampleUserPlants.get(3),createMockHistoryNumber(PlantAdapter.exampleUserPlants.get(3))));
+    }
+
+    private static int createMockHistoryNumber(Plant plant) {
+        UserPlant userPlant = (UserPlant) plant;
+        Random rand = new Random();
+        return rand.nextInt(userPlant.getGrowHistory().size());
     }
 
     public StoryAdapter(Context context, ArrayList<Story> stories) {
@@ -102,40 +119,53 @@ public class StoryAdapter extends BaseAdapter {
     public static int getTypeMaxCount() { return TYPE_MAX_COUNT; }
 
     private class ViewHolder {
-        private CustomTextView owner,detail,type;
+        private CustomTextView owner,detail,startDate,harvestDate,status,condition,remark;
         private ImageView img,like,share;
         private LinearLayout likeBTN, shareBTN;
 
         public ViewHolder(View view,int type) {
             this.owner = view.findViewById(R.id.owner_username);
-            this.type = view.findViewById(R.id.story_type);
             this.img = view.findViewById(R.id.feed_img);
             this.like = view.findViewById(R.id.btn_like_img);
             this.likeBTN = view.findViewById(R.id.btn_like);
             this.shareBTN = view.findViewById(R.id.btn_share);
             if(type==TYPE_STORY) this.detail = view.findViewById(R.id.story_detail_bullet);
             else if(type==TYPE_SALE) {
-
+                this.startDate = view.findViewById(R.id.sale_start_date);
+                this.harvestDate = view.findViewById(R.id.sale_harvest_date);
+                this.status = view.findViewById(R.id.sale_status);
+                this.condition = view.findViewById(R.id.sale_init_condition);
+                this.remark = view.findViewById(R.id.sale_remark);
             } else {
-
+                this.startDate = view.findViewById(R.id.progress_start_date);
+                this.harvestDate = view.findViewById(R.id.progress_harvest_date);
+                this.status = view.findViewById(R.id.progress_status);
+                this.remark = view.findViewById(R.id.progress_remark);
             }
         }
 
         public void bind(int position,int type) {
             final Story card = stories.get(position);
-//            img.setImageResource(ResourceManager.getDrawableID(context,"ic_"+card.getId()));
             Glide.with(context)
                     .load(ResourceManager.getDrawableID(context,"ic_plant_"+card.getMentionedPlant().getName()))
                     .fitCenter()
                     .into(img);
-            if(type==TYPE_STORY) this.detail.setText(card.getDetail());
+            if(type==TYPE_STORY) this.detail.setText(card.getRemark());
             else if(type==TYPE_SALE) {
-
+                int historyNumber = ((ProductAnnouncementStory)card).getHistoryNumber();
+                startDate.setText(ResourceManager.shortDateFormat.format(((UserPlant)card.getMentionedPlant()).getGrowHistory().get(historyNumber).getStartDate()));
+                harvestDate.setText(ResourceManager.shortDateFormat.format(((UserPlant)card.getMentionedPlant()).getGrowHistory().get(historyNumber).getHarvestDate()));
+                status.setText(((ProductAnnouncementStory) card).getSaleStatus());
+                condition.setText(((ProductAnnouncementStory) card).getCondition());
+                remark.setText(card.getRemark());
             } else {
-
+                int historyNumber = ((ProgressStory)card).getHistoryNumber();
+                startDate.setText(ResourceManager.shortDateFormat.format(((UserPlant)card.getMentionedPlant()).getGrowHistory().get(historyNumber).getStartDate()));
+                harvestDate.setText(ResourceManager.shortDateFormat.format(((UserPlant)card.getMentionedPlant()).getGrowHistory().get(historyNumber).getHarvestDate()));
+                status.setText(((UserPlant) card.getMentionedPlant()).getGrowHistory().get(historyNumber).getResult());
+                remark.setText(card.getRemark());
             }
             this.owner.setText(card.getOwner().getUsername());
-            this.type.setText(TYPE.get(card.getType()));
             this.likeBTN.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

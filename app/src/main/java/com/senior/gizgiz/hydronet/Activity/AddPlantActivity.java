@@ -51,7 +51,6 @@ public class AddPlantActivity extends AppCompatActivity {
 
     private RecyclerView plantBadgeList;
     private GridView locationList,systemPlantList,userPlantList;
-//    private DropdownMenu dropdownMenu;
     private CustomTextView dropdownMenu;
 
     private PlantBadgeRecyclerViewAdapter plantBadgeAdapter;
@@ -63,7 +62,6 @@ public class AddPlantActivity extends AppCompatActivity {
     private List<String> nowEditingLocation = new ArrayList<>();
 
     private List<ToGrowPlant> badgeList = new ArrayList<>();
-//    private boolean isExpandSystemPlant,isExpandUserPlant,isExpandCustomPlant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -277,7 +275,6 @@ public class AddPlantActivity extends AppCompatActivity {
     private void handleLocationDropdown() {
         final View customView = getLayoutInflater().inflate(R.layout.popup_location, null, false);
         locationPopup = customView;
-        final PopupWindow popup = new PopupWindow(customView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         locationGridViewAdapter = new LocationAdapter(this, createMockLocationList(32,8));
         locationList = customView.findViewById(R.id.location_gridview);
         locationList.setAdapter(locationGridViewAdapter);
@@ -508,7 +505,7 @@ public class AddPlantActivity extends AppCompatActivity {
                 break;
         }
     }
-    public static ArrayList<DropdownItem> createMockLocationList(int count, int colNum) {
+    private ArrayList<DropdownItem> createMockLocationList(int count, int colNum) {
         ArrayList<DropdownItem> list = new ArrayList<>();
         ArrayList<String> row = new ArrayList<String>() {{add("A"); add("B"); add("C"); add("D"); }};
         for(int i=0; i<row.size(); i++) for (int j = 1; j <= colNum; j++) {
@@ -521,5 +518,10 @@ public class AddPlantActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         handleCancelAddPlant();
         return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        handleCancelAddPlant();
     }
 }

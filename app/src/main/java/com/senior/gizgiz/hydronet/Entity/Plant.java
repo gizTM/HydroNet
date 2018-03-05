@@ -6,7 +6,7 @@ package com.senior.gizgiz.hydronet.Entity;
  */
 
 public class Plant {
-    String id,name,property,otherInfo;
+    private String id,name,property,otherInfo;
 
     public Plant(String id,String name) {
         this.id = id;

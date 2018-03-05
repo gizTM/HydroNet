@@ -5,8 +5,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.senior.gizgiz.hydronet.HelperClass.BackPressHandler;
+import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.Listener.OnBackPressListener;
 import com.senior.gizgiz.hydronet.R;
 
@@ -15,6 +17,10 @@ import com.senior.gizgiz.hydronet.R;
  */
 
 public class TradeSummaryDetailFragment extends Fragment implements OnBackPressListener {
+    private ListView tradeList;
+    private CustomTextView stat;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.content_trade_summary_detail, container, false);
@@ -24,6 +30,8 @@ public class TradeSummaryDetailFragment extends Fragment implements OnBackPressL
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view,savedInstanceState);
+        tradeList = view.findViewById(R.id.trade_detail_list);
+
     }
 
     public boolean onBackPressed() {

@@ -10,10 +10,14 @@ import java.util.List;
  */
 
 public class ProgressStory extends Story {
-    private String plantStatus;
+    private int historyNumber;
 
-    public ProgressStory(User owner, String plantStatus, String detail, Plant mentionedPlant) {
-        super(owner, StoryAdapter.getTypeProgress(),detail,mentionedPlant);
-        this.plantStatus = plantStatus;
+    public ProgressStory(User owner, String remark, Plant mentionedPlant,int historyNumber) {
+        super(owner, StoryAdapter.getTypeProgress(),remark,mentionedPlant);
+        this.historyNumber = historyNumber;
     }
+
+    public int getHistoryNumber() { return historyNumber; }
+
+    public void setHistoryNumber(int historyNumber) { this.historyNumber = historyNumber; }
 }

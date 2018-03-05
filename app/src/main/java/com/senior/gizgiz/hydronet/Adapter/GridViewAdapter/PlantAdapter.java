@@ -17,6 +17,8 @@ import com.senior.gizgiz.hydronet.HelperClass.ResourceManager;
 import com.senior.gizgiz.hydronet.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -96,17 +98,40 @@ public class PlantAdapter extends BaseAdapter {
 
     private static ArrayList<GrowHistory> createMockGrowHistory(int total) {
         ArrayList<GrowHistory> mockHistory = new ArrayList<>();
+        ArrayList<String> locations = new ArrayList<>();
         Random rand = new Random();
         for (int i=0; i<total; i++) {
+            Calendar cal = Calendar.getInstance();
+            cal.set(Calendar.YEAR, rand.nextInt(2)+2017);
+            cal.set(Calendar.MONTH, rand.nextInt(12)+1);
+            cal.set(Calendar.DAY_OF_MONTH, rand.nextInt(30)+1);
+            Date startDate = cal.getTime();
+            cal.set(Calendar.YEAR, rand.nextInt(2)+2017);
+            cal.set(Calendar.MONTH, rand.nextInt(12)+1);
+            cal.set(Calendar.DAY_OF_MONTH, rand.nextInt(30)+1);
+            Date harvestDate = cal.getTime();
             int count = rand.nextInt(10)+1;
             boolean failed = rand.nextBoolean();
             boolean harvested = rand.nextBoolean();
             GrowHistory temp = new GrowHistory();
             temp.setCount(count);
+            for(int j=0; j<count; j++) locations.add(createMockLocationList(8).get(rand.nextInt(32)));
+            temp.setStartDate(startDate);
+            temp.setHarvestDate(harvestDate);
+            temp.setLocationList(locations);
             temp.setResult(failed?"success":"failed");
             temp.setHarvested(harvested);
             mockHistory.add(temp);
         }
         return mockHistory;
+    }
+
+    private static ArrayList<String> createMockLocationList(int colNum) {
+        ArrayList<String> list = new ArrayList<>();
+        ArrayList<String> row = new ArrayList<String>() {{add("A"); add("B"); add("C"); add("D"); }};
+        for(int i=0; i<row.size(); i++) for (int j = 1; j <= colNum; j++) {
+            list.add(row.get(i)+j);
+        }
+        return list;
     }
 }

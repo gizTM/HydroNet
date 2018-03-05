@@ -9,14 +9,21 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.BulletSpan;
 
+import java.text.DateFormat;
+import java.text.DateFormatSymbols;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 
 /**
  * Created by Admins on 016 16/1/2018.
  */
 
 public class ResourceManager {
+    private static Locale th = new Locale("th","TH");
+    public static DateFormat shortDateFormat = DateFormat.getDateInstance(DateFormat.SHORT, th);
+    public static DateFormat shortDateTimeFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yy", th);
 
     public static int getDrawableID(Context context,String drawable) {
         return context.getResources().getIdentifier(drawable,"drawable",context.getPackageName());

@@ -97,5 +97,11 @@
     <string name="label_select_none">Select none</string>
     <string name="btn_add_max">MAX</string>
     <string name="label_select_done">Done</string>
-
+    <string name="menu_sub_sell">Sell</string>
+    <string name="menu_sub_buy">Buy</string>
+    <string name="notification">Your product announcement negotiation is updated by ... </string>
+    <string name="timestamp">2 minutes ago</string>
+    <string name="logout">Logout</string>
+    <string name="about_app">see Licenses and credit information</string>
+    <string name="menu_license">About HydroNet</string>
 </resources>

@@ -31,6 +31,7 @@ public class FeedFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view,savedInstanceState);
         shareBTN = view.findViewById(R.id.btn_share_new_story);
         storyList = view.findViewById(R.id.story_list);
         storyAdapter = new StoryAdapter(getContext(),StoryAdapter.exampleCards);

@@ -45,6 +45,7 @@
                             android:layout_height="wrap_content" />
                         <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
                             android:text="bought"
+                            android:textSize="@dimen/txt_list_item"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -63,6 +64,7 @@
                                 android:layout_height="wrap_content" />
                             <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
                                 android:text="@string/trade_paid"
+                                android:textSize="@dimen/txt_list_item"
                                 android:layout_marginStart="@dimen/padding_so_small"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
@@ -76,7 +78,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                             <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-                                android:text="on wishlist"
+                                android:text="negotiating"
+                                android:textSize="@dimen/txt_list_item"
                                 android:layout_marginStart="@dimen/padding_so_small"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
@@ -108,6 +111,7 @@
                             android:layout_height="wrap_content" />
                         <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
                             android:text="sold"
+                            android:textSize="@dimen/txt_list_item"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -126,6 +130,7 @@
                                 android:layout_height="wrap_content" />
                             <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
                                 android:text="@string/trade_gain"
+                                android:textSize="@dimen/txt_list_item"
                                 android:layout_marginStart="@dimen/padding_so_small"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
@@ -139,7 +144,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                             <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-                                android:text="on shelf"
+                                android:text="now on sale"
+                                android:textSize="@dimen/txt_list_item"
                                 android:layout_marginStart="@dimen/padding_so_small"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />

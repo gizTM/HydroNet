@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:background="@drawable/card_shadow"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail
+        android:id="@+id/sold_plant_thumbnail"
+        android:layout_weight="1.5"
+        android:layout_marginStart="@dimen/padding_small"
+        android:layout_marginEnd="@dimen/padding_small"
+        android:padding="@dimen/padding_small"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+        <ImageView android:id="@+id/sold_img"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_plant_tomato"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/sold_count"
+            android:background="@drawable/bg_badge_add_count"
+            android:layout_alignParentEnd="true"
+            android:text="x1"
+            android:textSize="@dimen/badge_label"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+    </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
+    <TableLayout android:layout_weight="3"
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+        <TableRow>
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:text="ID "
+                app:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:id="@+id/sold_transaction_id"
+                android:gravity="start"
+                android:layout_gravity="center_vertical"
+                android:text="xxx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+        <TableRow>
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:text="Buyer "
+                app:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:id="@+id/sold_transaction_buyer"
+                android:gravity="start"
+                android:layout_gravity="center_vertical"
+                android:text="userxxx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+        <TableRow>
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:text="Price"
+                app:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:id="@+id/sold_transaction_cond"
+                android:gravity="start"
+                android:layout_gravity="center_vertical"
+                android:text="100.00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+        <TableRow>
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:text="Date "
+                app:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:id="@+id/sold_transaction_date"
+                android:text="xx-xx-xx"
+                android:gravity="start"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

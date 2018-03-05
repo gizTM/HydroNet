@@ -6,30 +6,28 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.style.TypefaceSpan;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.senior.gizgiz.hydronet.Fragment.FeedFragment;
+import com.senior.gizgiz.hydronet.Fragment.NotificationFragment;
 import com.senior.gizgiz.hydronet.Fragment.PlantCarouselFragment;
 import com.senior.gizgiz.hydronet.Fragment.OverviewFragment.HomeOverviewFragment;
+import com.senior.gizgiz.hydronet.Fragment.TradeCarouselFragment;
+import com.senior.gizgiz.hydronet.Fragment.UserFragment;
 import com.senior.gizgiz.hydronet.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-    private FirebaseDatabase database;
-    private DatabaseReference databaseRef;
-    private String username;
-
     private PlantCarouselFragment profileSubmenuFragment;
+    private TradeCarouselFragment tradeSubmenuFragment;
 
-    private boolean nowCarouselFrag = false;
+    private boolean nowProfileCarousel = false;
+    private boolean nowTradeCarousel = false;
 
     private List<ImageView> menuList;
 
@@ -48,18 +46,18 @@ public class MainActivity extends AppCompatActivity {
         }};
 
         setActiveTab(0);
-        nowCarouselFrag = false;
+        nowProfileCarousel = false;
         HomeOverviewFragment overviewFragment = new HomeOverviewFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.addToBackStack(null);
         transaction.replace(R.id.container, overviewFragment);
         transaction.commit();
-
         findViewById(R.id.action_home).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setActiveTab(0);
-                nowCarouselFrag = false;
+                nowProfileCarousel = false;
+                nowTradeCarousel = false;
                 HomeOverviewFragment overviewFragment = new HomeOverviewFragment();
 //                else overviewFragment = (HomeOverviewFragment) getSupportFragmentManager().getFragments().get(0);
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -68,12 +66,12 @@ public class MainActivity extends AppCompatActivity {
                 transaction.commit();
             }
         });
-
         findViewById(R.id.action_profile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setActiveTab(1);
-                nowCarouselFrag = true;
+                nowProfileCarousel = true;
+                nowTradeCarousel = false;
 //                if(savedInstanceState == null)
                     profileSubmenuFragment = new PlantCarouselFragment();
 //                else profileSubmenuFragment = (PlantCarouselFragment) getSupportFragmentManager().getFragments().get(0);
@@ -83,16 +81,55 @@ public class MainActivity extends AppCompatActivity {
                 transaction.commit();
             }
         });
-
         findViewById(R.id.action_community).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setActiveTab(2);
-                nowCarouselFrag = false;
-                FeedFragment overviewFragment = new FeedFragment();
+                nowProfileCarousel = false;
+                nowTradeCarousel = false;
+                FeedFragment feedFragment = new FeedFragment();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.addToBackStack(null);
-                transaction.replace(R.id.container, overviewFragment);
+                transaction.replace(R.id.container, feedFragment);
+                transaction.commit();
+            }
+        });
+        findViewById(R.id.action_trade).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setActiveTab(3);
+                nowProfileCarousel = false;
+                nowTradeCarousel = true;
+                tradeSubmenuFragment = new TradeCarouselFragment();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.addToBackStack(null);
+                transaction.replace(R.id.container, tradeSubmenuFragment);
+                transaction.commit();
+            }
+        });
+        findViewById(R.id.action_notification).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setActiveTab(4);
+                nowProfileCarousel = false;
+                nowTradeCarousel = false;
+                NotificationFragment notificationFragment = new NotificationFragment();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.addToBackStack(null);
+                transaction.replace(R.id.container, notificationFragment);
+                transaction.commit();
+            }
+        });
+        findViewById(R.id.action_user).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setActiveTab(5);
+                nowProfileCarousel = false;
+                nowTradeCarousel = false;
+                UserFragment userFragment = new UserFragment();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.addToBackStack(null);
+                transaction.replace(R.id.container, userFragment);
                 transaction.commit();
             }
         });
@@ -103,29 +140,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplication(),AddPlantActivity.class));
             }
         });
-
-        // example code for database
-//        database = FirebaseDatabase.getInstance();
-//        databaseRef = database.getReference();
-        // set data reference
-//        databaseRef.setValue("message");
-        // detect data change from firebase
-        /*
-        databaseRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("OnDataChange", dataSnapshot.toString());
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.e("OnCancelled", databaseError.toString());
-            }
-        });
-        */
-        // set data and child
-//        username = "gizgiz";
-//        databaseRef.child("users").child(Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID)).setValue(username);
-
     }
 
     private void setActiveTab(int activeTab) {
@@ -135,10 +149,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (nowCarouselFrag && !profileSubmenuFragment.onBackPressed()) {
-//            Toast.makeText(getApplicationContext(),"normal back",Toast.LENGTH_SHORT).show();
-            super.onBackPressed();
-        }
+        if (nowProfileCarousel && !profileSubmenuFragment.onBackPressed()) super.onBackPressed();
+        else if (nowTradeCarousel && !tradeSubmenuFragment.onBackPressed()) super.onBackPressed();
         FragmentManager fm = getSupportFragmentManager();
         for (Fragment frag : fm.getFragments()) {
             if (frag.isVisible()) {

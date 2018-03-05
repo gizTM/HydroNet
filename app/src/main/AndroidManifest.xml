@@ -45,6 +45,9 @@
         <activity android:name=".Activity.SensorManagerActivity"
             android:screenOrientation="portrait"
             android:configChanges="keyboardHidden"/>
+        <activity android:name=".Activity.AboutActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden" />
     </application>
 
 </manifest>

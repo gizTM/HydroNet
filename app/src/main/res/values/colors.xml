@@ -16,6 +16,8 @@
     <color name="border_orange">#d68227</color>
     <color name="yellow">#ffff00</color>
     <color name="badge_green">#c3bb38</color>
+    <color name="badge">#aaaaaa</color>
+    <color name="badge_gray">#5f5f5f</color>
     <color name="bg_nav_menu">#ebebeb</color>
     <color name="blue">#0000ff</color>
     <color name="btn_fb">#3d8af7</color>
