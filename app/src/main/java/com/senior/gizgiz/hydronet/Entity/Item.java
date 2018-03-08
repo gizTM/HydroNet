@@ -1,5 +1,8 @@
 package com.senior.gizgiz.hydronet.Entity;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by Admins on 006 6/2/2018.
  */
@@ -7,6 +10,8 @@ package com.senior.gizgiz.hydronet.Entity;
 public class Item {
     private String id, name, detail;
     private float cost;
+
+    public Item() { }
 
     public Item(String id, String name, float cost, String detail) {
         this.id = id;
@@ -18,6 +23,15 @@ public class Item {
     public Item(String id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Map<String, Object> toMap() {
+        HashMap<String,Object> result = new HashMap<>();
+        result.put("id",id);
+        result.put("name",name);
+        result.put("cost",cost);
+        result.put("detail",detail);
+        return result;
     }
 
     public String getId() { return id; }

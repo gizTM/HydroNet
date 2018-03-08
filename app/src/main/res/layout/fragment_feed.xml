@@ -15,9 +15,14 @@
         android:textSize="@dimen/txt_list_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    <ListView android:id="@+id/story_list"
-        android:divider="@null"
-        android:dividerHeight="@dimen/item_divider"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/feed_swipe_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ListView android:id="@+id/story_list"
+            android:divider="@null"
+            android:dividerHeight="@dimen/item_divider"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

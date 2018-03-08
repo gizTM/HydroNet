@@ -93,7 +93,7 @@
     <string name="label_trade_overview">Trading statistic overview</string>
     <string name="trade_paid">paid</string>
     <string name="trade_gain">gained</string>
-    <string name="label_select_all">Select all</string>
+    <string name="label_select_all">Auto select</string>
     <string name="label_select_none">Select none</string>
     <string name="btn_add_max">MAX</string>
     <string name="label_select_done">Done</string>
@@ -104,4 +104,6 @@
     <string name="logout">Logout</string>
     <string name="about_app">see Licenses and credit information</string>
     <string name="menu_license">About HydroNet</string>
+    <string name="btn_edit_db">Edit Database</string>
+    <string name="menu_edit_db">Edit Firebase Database</string>
 </resources>

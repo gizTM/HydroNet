@@ -9,8 +9,9 @@ import java.util.List;
 public class UserPlant extends Plant {
     private List<GrowHistory> growHistory;
 
-    public UserPlant(String id, String name,List<GrowHistory> growHistory) {
-        super(id,name);
+    public UserPlant() {}
+    public UserPlant(String name,List<GrowHistory> growHistory) {
+        super(name);
         this.growHistory = growHistory;
     }
 

@@ -20,10 +20,8 @@ import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.HelperClass.ResourceManager;
 import com.senior.gizgiz.hydronet.R;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 
@@ -33,8 +31,7 @@ import java.util.Random;
 
 public class StoryAdapter extends BaseAdapter {
     private final Context context;
-    private final ArrayList<Story> stories;
-    public static ArrayList<Story> exampleCards = new ArrayList<>();
+    public static ArrayList<Story> stories = new ArrayList<>();
 
     private static final int TYPE_STORY = 0;
     private static final int TYPE_PROGRESS = 1;
@@ -47,27 +44,14 @@ public class StoryAdapter extends BaseAdapter {
         put(TYPE_SALE,"sale");
     }};
 
-    static {
-        exampleCards.add(new Story(new User("gizgiz"),TYPE_STORY,"This plant is good!", PlantAdapter.exampleUserPlants.get(4)));
-        exampleCards.add(new ProductAnnouncementStory(new User("gizgiz"),ProductAnnouncementStory.COND_TYPE_MONEY,"100",
-                "x2 cucumber on sale!", PlantAdapter.exampleUserPlants.get(0),createMockHistoryNumber(PlantAdapter.exampleUserPlants.get(0))));
-        exampleCards.add(new ProductAnnouncementStory(new User("gizgiz"),ProductAnnouncementStory.COND_TYPE_OTHER,"x10 tomato",
-                "x5 spinach on sale!", PlantAdapter.exampleUserPlants.get(1),createMockHistoryNumber(PlantAdapter.exampleUserPlants.get(1))));
-        exampleCards.add(new ProgressStory(new User("gizgiz"),"I'm growing x4 salad!",
-                PlantAdapter.exampleUserPlants.get(2),createMockHistoryNumber(PlantAdapter.exampleUserPlants.get(2))));
-        exampleCards.add(new ProgressStory(new User("gizgiz"),"I'm growing x3 celery!",
-                PlantAdapter.exampleUserPlants.get(3),createMockHistoryNumber(PlantAdapter.exampleUserPlants.get(3))));
-    }
-
-    private static int createMockHistoryNumber(Plant plant) {
+    public static int createMockHistoryNumber(Plant plant) {
         UserPlant userPlant = (UserPlant) plant;
         Random rand = new Random();
         return rand.nextInt(userPlant.getGrowHistory().size());
     }
 
-    public StoryAdapter(Context context, ArrayList<Story> stories) {
+    public StoryAdapter(Context context) {
         this.context = context;
-        this.stories = stories;
     }
 
     @Override
@@ -101,17 +85,13 @@ public class StoryAdapter extends BaseAdapter {
         return view;
     }
 
-    @Override public int getCount() {
-        return stories.size();
-    }
+    @Override public int getCount() { return stories.size(); }
     @Override public long getItemId(int position) {
         return position;
     }
-    @Override public Object getItem(int position) {
-        return exampleCards.get(position);
-    }
+    @Override public Object getItem(int position) { return stories.get(position); }
     @Override public int getViewTypeCount() { return TYPE_MAX_COUNT; }
-    @Override public int getItemViewType(int position) { return exampleCards.get(position).getType(); }
+    @Override public int getItemViewType(int position) { return stories.get(position).getType(); }
 
     public static int getTypeStory() { return TYPE_STORY; }
     public static int getTypeProgress() { return TYPE_PROGRESS; }
@@ -119,8 +99,8 @@ public class StoryAdapter extends BaseAdapter {
     public static int getTypeMaxCount() { return TYPE_MAX_COUNT; }
 
     private class ViewHolder {
-        private CustomTextView owner,detail,startDate,harvestDate,status,condition,remark;
-        private ImageView img,like,share;
+        private CustomTextView owner,detail,startDate,harvestDate,status,condition,remark,count;
+        private ImageView img,like,share,statBTN;
         private LinearLayout likeBTN, shareBTN;
 
         public ViewHolder(View view,int type) {
@@ -131,15 +111,19 @@ public class StoryAdapter extends BaseAdapter {
             this.shareBTN = view.findViewById(R.id.btn_share);
             if(type==TYPE_STORY) this.detail = view.findViewById(R.id.story_detail_bullet);
             else if(type==TYPE_SALE) {
+                this.count = view.findViewById(R.id.sale_plant_count);
                 this.startDate = view.findViewById(R.id.sale_start_date);
                 this.harvestDate = view.findViewById(R.id.sale_harvest_date);
                 this.status = view.findViewById(R.id.sale_status);
                 this.condition = view.findViewById(R.id.sale_init_condition);
+                this.statBTN = view.findViewById(R.id.btn_show_grow_stat);
                 this.remark = view.findViewById(R.id.sale_remark);
             } else {
+                this.count = view.findViewById(R.id.progress_plant_count);
                 this.startDate = view.findViewById(R.id.progress_start_date);
                 this.harvestDate = view.findViewById(R.id.progress_harvest_date);
                 this.status = view.findViewById(R.id.progress_status);
+                this.statBTN = view.findViewById(R.id.btn_show_grow_stat);
                 this.remark = view.findViewById(R.id.progress_remark);
             }
         }
@@ -150,19 +134,34 @@ public class StoryAdapter extends BaseAdapter {
                     .load(ResourceManager.getDrawableID(context,"ic_plant_"+card.getMentionedPlant().getName()))
                     .fitCenter()
                     .into(img);
-            if(type==TYPE_STORY) this.detail.setText(card.getRemark());
+            if(type==TYPE_STORY)
+                detail.setText(stories.get(position).getRemark());
             else if(type==TYPE_SALE) {
-                int historyNumber = ((ProductAnnouncementStory)card).getHistoryNumber();
-                startDate.setText(ResourceManager.shortDateFormat.format(((UserPlant)card.getMentionedPlant()).getGrowHistory().get(historyNumber).getStartDate()));
-                harvestDate.setText(ResourceManager.shortDateFormat.format(((UserPlant)card.getMentionedPlant()).getGrowHistory().get(historyNumber).getHarvestDate()));
+                int historyNumber = ((ProductAnnouncementStory) card).getHistoryNumber();
+                count.setText("x".concat(String.valueOf(card.getMentionedPlant().getGrowHistory().get(historyNumber).getCount())));
+                startDate.setText(ResourceManager.shortDateFormat.format(card.getMentionedPlant().getGrowHistory().get(historyNumber).getStartDate()));
+                harvestDate.setText(ResourceManager.shortDateFormat.format((card.getMentionedPlant()).getGrowHistory().get(historyNumber).getHarvestDate()));
                 status.setText(((ProductAnnouncementStory) card).getSaleStatus());
                 condition.setText(((ProductAnnouncementStory) card).getCondition());
+                statBTN.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
                 remark.setText(card.getRemark());
             } else {
                 int historyNumber = ((ProgressStory)card).getHistoryNumber();
-                startDate.setText(ResourceManager.shortDateFormat.format(((UserPlant)card.getMentionedPlant()).getGrowHistory().get(historyNumber).getStartDate()));
-                harvestDate.setText(ResourceManager.shortDateFormat.format(((UserPlant)card.getMentionedPlant()).getGrowHistory().get(historyNumber).getHarvestDate()));
-                status.setText(((UserPlant) card.getMentionedPlant()).getGrowHistory().get(historyNumber).getResult());
+                count.setText("x".concat(String.valueOf(card.getMentionedPlant().getGrowHistory().get(historyNumber).getCount())));
+                startDate.setText(ResourceManager.shortDateFormat.format((card.getMentionedPlant()).getGrowHistory().get(historyNumber).getStartDate()));
+                harvestDate.setText(ResourceManager.shortDateFormat.format((card.getMentionedPlant()).getGrowHistory().get(historyNumber).getHarvestDate()));
+                status.setText((card.getMentionedPlant()).getGrowHistory().get(historyNumber).getResult());
+                statBTN.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
                 remark.setText(card.getRemark());
             }
             this.owner.setText(card.getOwner().getUsername());

@@ -8,6 +8,7 @@ public class Negotiation {
     private User negotiator;
     private String condition, status;
 
+    public Negotiation() {}
     public Negotiation(User negotiator, String condition) {
         this.negotiator = negotiator;
         this.condition = condition;

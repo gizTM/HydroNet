@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/app_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:text="update for child ... "
+        android:layout_weight=".5"
+        android:layout_marginStart="@dimen/padding_small"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp" />
+    <LinearLayout android:layout_weight="8"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/padding_small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.senior.gizgiz.hydronet.HelperClass.CustomEditText
+            android:id="@+id/child"
+            android:background="@drawable/bg_frame_content"
+            android:text=""
+            android:gravity="center"
+            android:layout_width="80dp"
+            android:layout_height="35dp"/>
+        <com.senior.gizgiz.hydronet.HelperClass.CustomEditText
+            android:id="@+id/input_data"
+            android:background="@drawable/bg_frame_content"
+            android:inputType="textMultiLine"
+            android:padding="@dimen/padding_small"
+            android:layout_marginTop="@dimen/padding_small"
+            android:gravity="top|start"
+            android:lines="8"
+            android:minLines="6"
+            android:maxLines="10"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:scrollbars="vertical" />
+        <!--<LinearLayout android:orientation="horizontal"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_marginStart="@dimen/padding_medium"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<com.senior.gizgiz.hydronet.HelperClass.CustomEditText-->
+                <!--android:id="@+id/key"-->
+                <!--android:background="@drawable/bg_frame_content"-->
+                <!--android:text=""-->
+                <!--android:gravity="center"-->
+                <!--android:layout_width="80dp"-->
+                <!--android:layout_height="30dp"/>-->
+            <!--<com.senior.gizgiz.hydronet.HelperClass.CustomTextView-->
+                <!--android:text=" -> "-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+            <!--<com.senior.gizgiz.hydronet.HelperClass.CustomEditText-->
+                <!--android:id="@+id/value"-->
+                <!--android:background="@drawable/bg_frame_content"-->
+                <!--android:text=""-->
+                <!--android:gravity="center"-->
+                <!--android:layout_width="120dp"-->
+                <!--android:layout_height="30dp"/>-->
+            <!--<ImageButton android:id="@+id/add_to_db"-->
+                <!--android:src="@drawable/ic_add_white_24dp"-->
+                <!--android:background="@drawable/bg_btn_gray"-->
+                <!--android:layout_margin="@dimen/padding_so_small"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+            <!--<ImageButton android:id="@+id/clear"-->
+                <!--android:src="@drawable/ic_close"-->
+                <!--android:background="@color/transparent"-->
+                <!--android:layout_margin="@dimen/padding_so_small"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+    </LinearLayout>
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:id="@+id/btn_confirm_edit_db"
+        android:layout_marginBottom="@dimen/padding_small"
+        android:layout_marginStart="@dimen/padding_small"
+        android:layout_marginEnd="@dimen/padding_small"
+        android:layout_gravity="end"
+        android:background="@drawable/bg_btn_white"
+        android:paddingTop="@dimen/padding_so_small"
+        android:paddingBottom="@dimen/padding_so_small"
+        android:paddingLeft="@dimen/padding_small"
+        android:paddingRight="@dimen/padding_small"
+        android:text="@string/btn_edit_db"
+        android:textSize="@dimen/submenu_label"
+        app:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

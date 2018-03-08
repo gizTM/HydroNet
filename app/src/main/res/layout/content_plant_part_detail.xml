@@ -3,12 +3,17 @@
     android:background="@color/app_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ListView android:id="@+id/my_part_list"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/part_detail_swipe_layout"
         android:layout_marginStart="@dimen/padding_small"
         android:layout_marginEnd="@dimen/padding_small"
         android:layout_marginTop="@dimen/padding_small"
-        android:divider="@null"
-        android:dividerHeight="@dimen/item_divider"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView android:id="@+id/my_part_list"
+            android:divider="@null"
+            android:dividerHeight="@dimen/item_divider"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

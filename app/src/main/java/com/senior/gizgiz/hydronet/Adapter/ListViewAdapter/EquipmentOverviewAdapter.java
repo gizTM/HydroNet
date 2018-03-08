@@ -11,29 +11,29 @@ import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.R;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Admins on 018 18/02/2018.
  */
 
-public class PartOverviewAdapter extends BaseAdapter {
+public class EquipmentOverviewAdapter extends BaseAdapter {
     private final Context context;
-    private final ArrayList<Item> partOverviewCards;
+    private final List<Item> partOverviewCards;
 
-    public PartOverviewAdapter(Context context, ArrayList<Item> partOverviewCards) {
+    public EquipmentOverviewAdapter(Context context, List<Item> partOverviewCards) {
         this.context = context;
         this.partOverviewCards = partOverviewCards;
     }
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        PartOverviewAdapter.ViewHolder viewHolder;
+        EquipmentOverviewAdapter.ViewHolder viewHolder;
         if(view != null) {
-            viewHolder = (PartOverviewAdapter.ViewHolder) view.getTag();
+            viewHolder = (EquipmentOverviewAdapter.ViewHolder) view.getTag();
         } else {
             view = LayoutInflater.from(context).inflate(R.layout.card_part_overview,null);
-            viewHolder = new PartOverviewAdapter.ViewHolder(view);
+            viewHolder = new EquipmentOverviewAdapter.ViewHolder(view);
             view.setTag(viewHolder);
         }
         viewHolder.bind(position);

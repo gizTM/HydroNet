@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewStub;
 
 import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
+import com.senior.gizgiz.hydronet.HelperClass.NavigationManager;
 import com.senior.gizgiz.hydronet.R;
 
 import java.util.ArrayList;
@@ -23,7 +24,9 @@ import me.saket.bettermovementmethod.BetterLinkMovementMethod;
  */
 
 public class AboutActivity extends AppCompatActivity {
+    private boolean expandCredit = true, expandSource = true;
     private static List<String> licenses = new ArrayList<>();
+    private static List<String> sources = new ArrayList<>();
 
     static {
         licenses.add("<div>Icons made by <a href=\"https://www.flaticon.com/authors/ocha\" title=\"OCHA\">OCHA</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a> is licensed by <a href=\"http://creativecommons.org/licenses/by/3.0/\" title=\"Creative Commons BY 3.0\" target=\"_blank\">CC 3.0 BY</a></div>");
@@ -43,6 +46,10 @@ public class AboutActivity extends AppCompatActivity {
         licenses.add("<div>Icons made by <a href=\"https://www.flaticon.com/authors/yannick\" title=\"Yannick\">Yannick</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a> is licensed by <a href=\"http://creativecommons.org/licenses/by/3.0/\" title=\"Creative Commons BY 3.0\" target=\"_blank\">CC 3.0 BY</a></div>");
         licenses.add("<div>Icons made by <a href=\"https://www.flaticon.com/authors/chanut\" title=\"Chanut\">Chanut</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a> is licensed by <a href=\"http://creativecommons.org/licenses/by/3.0/\" title=\"Creative Commons BY 3.0\" target=\"_blank\">CC 3.0 BY</a></div>");
         licenses.add("<div>Icons made by <a href=\"https://www.flaticon.com/authors/lucy-g\" title=\"Lucy G\">Lucy G</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a> is licensed by <a href=\"http://creativecommons.org/licenses/by/3.0/\" title=\"Creative Commons BY 3.0\" target=\"_blank\">CC 3.0 BY</a></div>");
+
+        sources.add("<div>PH/ TDS / PPM / EC LEVELS FOR HYDROPONIC VEGETABLES from <a href=\"https://growguru.co.za/ph-tds-ppm-ec-levels-for-hydroponic-vegetables/\">here</a></div>");
+        sources.add("<div>Plant PH/EC/PPM from <a href=\"https://hydroponic.co.za/hydroponics-quickstart/plant-phecppm/\">here</a></div>");
+        sources.add("<div>What Is The Best pH And EC Levels For Hydro Marijuana Growers? from <a href=\"https://www.themaven.net/theweedblog/growing/what-is-the-best-ph-and-ec-levels-for-hydro-marijuana-growers-PFG2tYveHUaZIMsZ_8td5w?full=1\">here</a></div>");
     }
 
     private DrawerLayout drawer;
@@ -63,10 +70,30 @@ public class AboutActivity extends AppCompatActivity {
         aboutContent = contentStub.inflate();
         findViewById(R.id.fab_layout).setVisibility(View.GONE);
 
-        CustomTextView licenseLink = aboutContent.findViewById(R.id.license);
+        final CustomTextView licenseLink = aboutContent.findViewById(R.id.license);
+        final CustomTextView sourceLink = aboutContent.findViewById(R.id.info_credit);
+        aboutContent.findViewById(R.id.credit_toggle).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!expandCredit) NavigationManager.expand(licenseLink);
+                else  NavigationManager.collapse(licenseLink);
+                expandCredit = !expandCredit;
+            }
+        });
+        aboutContent.findViewById(R.id.source_toggle).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!expandSource) NavigationManager.expand(sourceLink);
+                else NavigationManager.collapse(sourceLink);
+                expandSource = !expandSource;
+            }
+        });
         licenseLink.setMovementMethod(BetterLinkMovementMethod.getInstance());
+        sourceLink.setMovementMethod(BetterLinkMovementMethod.getInstance());
         for (String license : licenses)
-            licenseLink.append(Html.fromHtml(license+"\n"));
+            licenseLink.append(Html.fromHtml(license));
+        for (String source : sources)
+            sourceLink.append(Html.fromHtml(source));
     }
 
     private void setup() {

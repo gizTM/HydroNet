@@ -29,24 +29,24 @@ import java.util.Random;
 public class PlantAdapter extends BaseAdapter {
     private Context context;
     private List<Plant> plantList;
-    public static List<Plant> exampleSystemPlants = new ArrayList<>();
+    public static List<Plant> systemPlants = new ArrayList<>();
     public static List<Plant> exampleUserPlants = new ArrayList<>();
 
     static {
-        exampleSystemPlants.add(new SystemDefaultPlant("sp1","tomato"));
-        exampleSystemPlants.add(new SystemDefaultPlant("sp2","cucumber"));
-        exampleSystemPlants.add(new SystemDefaultPlant("sp3","spinach"));
-        exampleSystemPlants.add(new SystemDefaultPlant("sp4","salad"));
-        exampleSystemPlants.add(new SystemDefaultPlant("sp5","strawberry"));
-        exampleSystemPlants.add(new SystemDefaultPlant("sp6","celery"));
-        exampleSystemPlants.add(new SystemDefaultPlant("sp7","carrot"));
+//        systemPlants.add(new SystemDefaultPlant("tomato"));
+//        systemPlants.add(new SystemDefaultPlant("cucumber"));
+//        systemPlants.add(new SystemDefaultPlant("spinach"));
+//        systemPlants.add(new SystemDefaultPlant("salad"));
+//        systemPlants.add(new SystemDefaultPlant("strawberry"));
+//        systemPlants.add(new SystemDefaultPlant("celery"));
+//        systemPlants.add(new SystemDefaultPlant("carrot"));
 
-        exampleUserPlants.add(new UserPlant("up1","cucumber",createMockGrowHistory(4)));
-        exampleUserPlants.add(new UserPlant("up2","spinach",createMockGrowHistory(6)));
-        exampleUserPlants.add(new UserPlant("up3","salad",createMockGrowHistory(2)));
-        exampleUserPlants.add(new UserPlant("up4","celery",createMockGrowHistory(12)));
-        exampleUserPlants.add(new UserPlant("up5","carrot",createMockGrowHistory(9)));
-        exampleUserPlants.add(new UserPlant("up6","chili",createMockGrowHistory(5)));
+        exampleUserPlants.add(new UserPlant("cucumber",createMockGrowHistory(4)));
+        exampleUserPlants.add(new UserPlant("spinach",createMockGrowHistory(6)));
+        exampleUserPlants.add(new UserPlant("salad",createMockGrowHistory(2)));
+        exampleUserPlants.add(new UserPlant("celery",createMockGrowHistory(12)));
+        exampleUserPlants.add(new UserPlant("carrot",createMockGrowHistory(9)));
+        exampleUserPlants.add(new UserPlant("chili",createMockGrowHistory(5)));
     }
 
     public PlantAdapter(Context context, List<Plant> plantList) {
@@ -98,9 +98,11 @@ public class PlantAdapter extends BaseAdapter {
 
     private static ArrayList<GrowHistory> createMockGrowHistory(int total) {
         ArrayList<GrowHistory> mockHistory = new ArrayList<>();
+        ArrayList<String> farmLocation = createMockLocationList(8);
         ArrayList<String> locations = new ArrayList<>();
         Random rand = new Random();
         for (int i=0; i<total; i++) {
+            locations.clear();
             Calendar cal = Calendar.getInstance();
             cal.set(Calendar.YEAR, rand.nextInt(2)+2017);
             cal.set(Calendar.MONTH, rand.nextInt(12)+1);
@@ -115,7 +117,8 @@ public class PlantAdapter extends BaseAdapter {
             boolean harvested = rand.nextBoolean();
             GrowHistory temp = new GrowHistory();
             temp.setCount(count);
-            for(int j=0; j<count; j++) locations.add(createMockLocationList(8).get(rand.nextInt(32)));
+            for(int j=0; j<count; j++)
+                locations.add(farmLocation.get(rand.nextInt(32)));
             temp.setStartDate(startDate);
             temp.setHarvestDate(harvestDate);
             temp.setLocationList(locations);

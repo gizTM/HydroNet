@@ -1,7 +1,6 @@
 package com.senior.gizgiz.hydronet.Adapter.ListViewAdapter;
 
 import android.content.Context;
-import android.graphics.drawable.BitmapDrawable;
 import android.text.SpannableStringBuilder;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +15,7 @@ import com.senior.gizgiz.hydronet.HelperClass.ResourceManager;
 import com.senior.gizgiz.hydronet.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Admins on 019 19/02/2018.
@@ -23,27 +23,10 @@ import java.util.ArrayList;
 
 public class EquipmentAdapter extends BaseAdapter {
     private final Context context;
-    private final ArrayList<Item> partOverviewCards;
-    public static ArrayList<Item> exampleCards = new ArrayList<>();
+    private List<Item> partOverviewCards;
+    public static List<Item> equipments = new ArrayList<>();
 
-    static {
-        exampleCards.add(new Item("e1","Arduino board", 500,
-                "basic model: UNO R3;used as farm controller"));
-        exampleCards.add(new Item("e2","Raspberry pi", 2000,
-                "basic model: Pi3;used to connect to internet"));
-        exampleCards.add(new Item("e3","ESP8266-01 module",100,
-                "basic model: model01;used to connect to internet (alternatives to rpi)"));
-        exampleCards.add(new Item("e4","Ultra sonic sensor",50,
-                "model: HC-SR04;used to measure farm water level;"));
-        exampleCards.add(new Item("e5","pH sensor",2000,
-                "model: ...;used to measure farm pH level"));
-        exampleCards.add(new Item("e6","EC sensor",3000,
-                "model: ...;used to measure farm EC level"));
-        exampleCards.add(new Item("e7","Ultra sonic sensor",350,
-                "model: JSN-SR04T;used to measure farm water level;*waterproof"));
-    }
-
-    public EquipmentAdapter(Context context, ArrayList<Item> partOverviewCards) {
+    public EquipmentAdapter(Context context, List<Item> partOverviewCards) {
         this.context = context;
         this.partOverviewCards = partOverviewCards;
     }

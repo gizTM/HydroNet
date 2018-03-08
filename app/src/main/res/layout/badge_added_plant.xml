@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:padding="@dimen/padding_so_small"
     android:gravity="center"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
     <ImageView android:id="@+id/added_plant_img"
-        android:src="@drawable/ic_plant_tomato"
+        android:src="@drawable/ic_plant_preview"
         android:layout_width="@dimen/badge"
         android:layout_height="@dimen/badge" />
     <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
         android:id="@+id/added_plant_count"
-        android:gravity="center"
+        android:layout_toEndOf="@id/added_plant_img"
+        android:layout_centerVertical="true"
         android:text="x1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-</LinearLayout>
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:id="@+id/warning_ph_ec"
+        android:visibility="gone"
+        android:background="@drawable/bg_red_dot"
+        android:textSize="@dimen/badge_label"
+        android:layout_alignEnd="@id/added_plant_count"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_width="10dp"
+        android:layout_height="10dp" />
+</RelativeLayout>

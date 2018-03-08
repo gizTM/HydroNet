@@ -125,7 +125,7 @@
             android:layout_marginEnd="@dimen/margin_separator"
             android:layout_width="1dp"
             android:layout_height="match_parent" />
-        <RelativeLayout android:id="@+id/location_group"
+        <LinearLayout android:id="@+id/location_group"
             android:orientation="vertical"
             android:layout_weight="2"
             android:gravity="center"
@@ -133,9 +133,9 @@
             android:layout_height="fill_parent">
             <LinearLayout android:orientation="vertical"
                 android:gravity="center"
-                android:layout_centerInParent="true"
+                android:layout_weight="2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="0dp">
                 <LinearLayout android:id="@+id/location_spinner_group"
                     android:orientation="horizontal"
                     android:gravity="center"
@@ -184,12 +184,13 @@
             <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
                 android:id="@+id/error_field"
                 android:textColor="@color/red"
+                custom:textStyle="bold"
                 android:gravity="center"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
+                android:layout_height="0dp" />
+        </LinearLayout>
     </LinearLayout>
     <View android:id="@+id/separator2"
         android:layout_below="@id/plant_group"

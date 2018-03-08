@@ -40,7 +40,6 @@ public class PlantOverviewFragment extends OverviewFragment implements OnBackPre
         plantOverviewList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Toast.makeText(getContext(), PlantOverviewAdapter.exampleCards.get(i).getName()+" is selected!",Toast.LENGTH_SHORT).show();
                 Plant plant = PlantAdapter.exampleUserPlants.get(i);
                 Toast.makeText(getContext(), plant.getName()+" is selected!\n" +
                         "planted "+((UserPlant) plant).getGrowHistory().size()+" times!",Toast.LENGTH_SHORT).show();

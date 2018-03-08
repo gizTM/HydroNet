@@ -6,26 +6,45 @@ package com.senior.gizgiz.hydronet.Entity;
  */
 
 public class Plant {
-    private String id,name,property,otherInfo;
+    private String name,property,otherInfo;
+    private float pHLow, pHHigh, ECLow, ECHigh;
 
-    public Plant(String id,String name) {
-        this.id = id;
+    public Plant() { }
+
+    public Plant(String name) {
         this.name = name;
     }
-    public Plant(String id,String name, String property, String otherInfo) {
-        this.id = id;
+
+    public Plant(String name, float pHLow, float pHHigh, float ECLow, float ECHigh) {
+        this.name = name;
+        this.pHLow = pHLow;
+        this.pHHigh = pHHigh;
+        this.ECLow = ECLow;
+        this.ECHigh = ECHigh;
+    }
+    public Plant(String name,float pHLow,float pHHigh,float ECLow,float ECHigh, String property, String otherInfo) {
         this.name = name;
         this.property = property;
         this.otherInfo = otherInfo;
+        this.pHLow = pHLow;
+        this.pHHigh = pHHigh;
+        this.ECLow = ECLow;
+        this.ECHigh = ECHigh;
     }
 
-    public String getId() { return id; }
     public String getName() { return name; }
     public String getProperty() { return property; }
     public String getOtherInfo() { return otherInfo; }
+    public float getpHLow() { return pHLow; }
+    public float getpHHigh() {return pHHigh; }
+    public float getECLow() { return ECLow; }
+    public float getECHigh() { return ECHigh; }
 
-    public void setId(String id) { this.id = id; }
     public void setName(String name) { this.name = name; }
     public void setProperty(String property) { this.property = property; }
     public void setOtherInfo(String otherInfo) { this.otherInfo = otherInfo; }
+    public void setpHLow(float pHLow) { this.pHLow = pHLow; }
+    public void setpHHigh(float pHHigh) { this.pHHigh = pHHigh; }
+    public void setECLow(float ECLow) { this.ECLow = ECLow; }
+    public void setECHigh(float ECHigh) { this.ECHigh = ECHigh; }
 }

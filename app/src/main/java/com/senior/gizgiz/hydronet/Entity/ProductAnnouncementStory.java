@@ -5,7 +5,9 @@ import com.senior.gizgiz.hydronet.Adapter.ListViewAdapter.StoryAdapter;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Admins on 2018/02/06.
@@ -21,7 +23,8 @@ public class ProductAnnouncementStory extends Story {
     private List<Negotiation> negotiations;
     private int historyNumber;
 
-    public ProductAnnouncementStory(User owner, int exchangeConditionType, String condition, String remark, Plant mentionedPlant, int historyNumber) {
+    public ProductAnnouncementStory() { }
+    public ProductAnnouncementStory(User owner, int exchangeConditionType, String condition, String remark, UserPlant mentionedPlant, int historyNumber) {
         super(owner, StoryAdapter.getTypeSale(),remark,mentionedPlant);
         this.exchangeConditionType = exchangeConditionType;
         if(exchangeConditionType==COND_TYPE_MONEY) {
@@ -37,6 +40,15 @@ public class ProductAnnouncementStory extends Story {
         this.saleStatus = "open";
         this.negotiations = new ArrayList<>();
         this.historyNumber = historyNumber;
+    }
+
+    public Map<String,Object> toMap() {
+        HashMap<String,Object> result = new HashMap<>();
+        result.put("status",saleStatus);
+        result.put("exchangetype",exchangeConditionType);
+        result.put("condition",condition);
+        result.put("historynumber",historyNumber);
+        return result;
     }
 
     public String getSaleStatus() { return saleStatus; }

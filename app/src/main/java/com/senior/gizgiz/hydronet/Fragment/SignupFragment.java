@@ -2,33 +2,46 @@ package com.senior.gizgiz.hydronet.Fragment;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.senior.gizgiz.hydronet.Entity.User;
+import com.senior.gizgiz.hydronet.HelperClass.AESCrypt;
 import com.senior.gizgiz.hydronet.HelperClass.CustomButton;
 import com.senior.gizgiz.hydronet.Activity.MainActivity;
 import com.senior.gizgiz.hydronet.HelperClass.CustomEditText;
+import com.senior.gizgiz.hydronet.HelperClass.RealTimeDBManager;
 import com.senior.gizgiz.hydronet.R;
 
 public class SignupFragment extends Fragment {
-    private FirebaseDatabase database;
-    private DatabaseReference databaseRef;
     private CustomEditText usernameET,emailET,passwordET,confirmPWET;
     private CustomButton signupButton;
     private ProgressDialog signupProgress;
 
-//    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth firebaseAuth;
 
     public SignupFragment() {
         // Required empty public constructor
@@ -45,9 +58,14 @@ public class SignupFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
+        usernameET = view.findViewById(R.id.username_text);
+        emailET = view.findViewById(R.id.email_text);
+        passwordET = view.findViewById(R.id.password_text);
+        confirmPWET = view.findViewById(R.id.confirm_pw_text);
         signupButton = view.findViewById(R.id.signup_button);
+
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,16 +77,16 @@ public class SignupFragment extends Fragment {
     }
 
     private void register() {
-        String username = usernameET.getText().toString().trim();
-        String email = emailET.getText().toString().trim();
-        String password = passwordET.getText().toString().trim();
+        final String username = usernameET.getText().toString().trim();
+        final String email = emailET.getText().toString().trim();
+        final String password = passwordET.getText().toString().trim();
         String confirmPass = confirmPWET.getText().toString().trim();
         if(TextUtils.isEmpty(username)) {
             Toast.makeText(getContext(), "Please enter username", Toast.LENGTH_LONG).show();
             return;
         }
         if(TextUtils.isEmpty(email)) {
-            Toast.makeText(getContext(), "Please enter ic_email", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Please enter email", Toast.LENGTH_LONG).show();
             return;
         }
         if(TextUtils.isEmpty(password)) {
@@ -80,22 +98,41 @@ public class SignupFragment extends Fragment {
             return;
         }
 
-        signupProgress.setMessage("Signing up ic_user...");
+        signupProgress.setMessage("Signing up user...");
         signupProgress.show();
-/*
-        firebaseAuth.createUserWithEmailAndPassword(ic_email,password).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+
+        firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
-//                    alert();
+//                    alert("SignUp successful!");
                     Toast.makeText(getActivity(), "Signed up successfully", Toast.LENGTH_LONG).show();
+                    String encryptedPass = "";
+                    try {
+                        encryptedPass = AESCrypt.encrypt(password);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    RealTimeDBManager.setUpdateValueEventListener();
+                    final String finalEncryptedPass = encryptedPass;
+                    RealTimeDBManager.getDatabase().child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            RealTimeDBManager.writeNewUser(username,email, finalEncryptedPass);
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                    startActivity(new Intent(getContext(),MainActivity.class));
                 } else {
-                    Toast.makeText(getActivity(), "Could not sign up .. Please try again...", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Could not sign up .. Please check input field and try again...", Toast.LENGTH_LONG).show();
                 }
                 signupProgress.dismiss();
             }
         });
-        */
     }
 
     void alert(String msg) {

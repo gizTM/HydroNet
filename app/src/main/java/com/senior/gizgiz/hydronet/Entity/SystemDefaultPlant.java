@@ -5,9 +5,14 @@ package com.senior.gizgiz.hydronet.Entity;
  */
 
 public class SystemDefaultPlant extends Plant {
-    public SystemDefaultPlant(String id,String name) { super(id,name); }
-    public SystemDefaultPlant(String id,String name, String property, String otherInfo) { super(id,name,property,otherInfo); }
-
+    public SystemDefaultPlant() {}
+    public SystemDefaultPlant(String name) { super(name); }
+    public SystemDefaultPlant(String name,float pHLow,float pHHigh,float ECLow,float ECHigh) {
+        super(name,pHLow,pHHigh,ECLow,ECHigh);
+    }
+    public SystemDefaultPlant(String name, String property, String otherInfo,float pHLow,float pHHigh,float ECLow,float ECHigh) {
+        super(name, pHLow, pHHigh, ECLow, ECHigh, property, otherInfo);
+    }
     public void update(String name, String property, String otherInfo) {
         super.setName(name);
         super.setProperty(property);

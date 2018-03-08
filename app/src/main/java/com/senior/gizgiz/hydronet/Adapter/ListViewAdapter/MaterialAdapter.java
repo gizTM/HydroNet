@@ -1,7 +1,6 @@
 package com.senior.gizgiz.hydronet.Adapter.ListViewAdapter;
 
 import android.content.Context;
-import android.graphics.drawable.BitmapDrawable;
 import android.text.SpannableStringBuilder;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,12 +23,12 @@ import java.util.ArrayList;
 public class MaterialAdapter extends BaseAdapter {
     private final Context context;
     private final ArrayList<Item> partOverviewCards;
-    public static ArrayList<Item> exampleCards = new ArrayList<>();
+    public static ArrayList<Item> materials = new ArrayList<>();
 
     static {
-        exampleCards.add(new Item("m1","Pot for hydroponics gardening",50,
+        materials.add(new Item("m1","Pot for hydroponics gardening",50,
                 "small pot for hydroponics planting;size may differ"));
-        exampleCards.add(new Item("m2","Sponge for hydroponics",30,
+        materials.add(new Item("m2","Sponge for hydroponics",30,
                 "50x1\" 1.5\" premium cubic sponge seed grow holder;size should be compatible with pot"));
     }
 

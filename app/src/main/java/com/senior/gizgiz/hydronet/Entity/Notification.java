@@ -15,6 +15,7 @@ public class Notification {
     private Story story;
     private SensorData sensorData;
 
+    public Notification() {}
     public Notification(String id, int type, Date timeStamp) {
         this.id = id;
         this.type = type;

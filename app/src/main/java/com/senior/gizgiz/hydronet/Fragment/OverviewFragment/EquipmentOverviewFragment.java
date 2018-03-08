@@ -1,12 +1,9 @@
 package com.senior.gizgiz.hydronet.Fragment.OverviewFragment;
 
-/**
- * Created by Admins on 009 09/02/2018.
- */
-
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +11,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
-import com.senior.gizgiz.hydronet.Adapter.ListViewAdapter.MaterialAdapter;
-import com.senior.gizgiz.hydronet.Adapter.ListViewAdapter.MaterialOverviewAdapter;
+import com.senior.gizgiz.hydronet.Adapter.ListViewAdapter.EquipmentAdapter;
+import com.senior.gizgiz.hydronet.Adapter.ListViewAdapter.EquipmentOverviewAdapter;
 import com.senior.gizgiz.hydronet.Entity.Item;
 import com.senior.gizgiz.hydronet.HelperClass.BackPressHandler;
-import com.senior.gizgiz.hydronet.Fragment.DetailFragment.MaterialDetailFragment;
+import com.senior.gizgiz.hydronet.Fragment.DetailFragment.EquipmentDetailFragment;
 import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.HelperClass.RealTimeDBManager;
 import com.senior.gizgiz.hydronet.Listener.OnBackPressListener;
@@ -29,42 +27,48 @@ import com.senior.gizgiz.hydronet.R;
 
 import java.text.DecimalFormat;
 
-public class MaterialOverviewFragment extends OverviewFragment implements OnBackPressListener,SwipeRefreshLayout.OnRefreshListener {
-    private ListView materialOverviewList;
-    private static MaterialOverviewAdapter materialOverviewAdapter;
-    private static CustomTextView totalMaterialCost;
+/**
+ * Created by Admins on 009 09/02/2018.
+ */
 
-    private static float materialCost;
+public class EquipmentOverviewFragment extends OverviewFragment implements OnBackPressListener,SwipeRefreshLayout.OnRefreshListener {
     private SwipeRefreshLayout swipeRefreshLayout;
+    private ListView partOverviewList;
+    private static EquipmentOverviewAdapter partOverviewAdapter;
+    private static CustomTextView totalPartCost;
+
+    private static float partCost;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.content_plant_material_overview, container, false);
+        View rootView = inflater.inflate(R.layout.content_plant_part_overview, container, false);
         return rootView;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        materialOverviewList = view.findViewById(R.id.material_detail_list);
-        materialOverviewAdapter = new MaterialOverviewAdapter(getContext(),MaterialAdapter.materials);
-        materialOverviewList.setAdapter(materialOverviewAdapter);
-        swipeRefreshLayout = view.findViewById(R.id.material_overview_swipe_layout);
+        super.onViewCreated(view,savedInstanceState);
+        partOverviewList = view.findViewById(R.id.part_detail_list);
+        partOverviewAdapter = new EquipmentOverviewAdapter(getContext(),EquipmentAdapter.equipments);
+        partOverviewList.setAdapter(partOverviewAdapter);
+        swipeRefreshLayout = view.findViewById(R.id.part_overview_swipe_layout);
         swipeRefreshLayout.setOnRefreshListener(this);
         swipeRefreshLayout.post(new Runnable() {
             @Override
             public void run() {
                 swipeRefreshLayout.setRefreshing(true);
-                fetchMaterialData(swipeRefreshLayout);
+                fetchEquipmentData(swipeRefreshLayout);
             }
         });
-        materialOverviewList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        partOverviewList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getContext(),MaterialAdapter.materials.get(i).getName()+" is selected!",Toast.LENGTH_SHORT).show();
+                Item item = EquipmentAdapter.equipments.get(i);
+                Toast.makeText(getContext(),item.getName()+" is selected!",Toast.LENGTH_SHORT).show();
             }
         });
-        totalMaterialCost = view.findViewById(R.id.overall_material_cost);
+        totalPartCost = view.findViewById(R.id.overall_part_cost);
         view.findViewById(R.id.btn_show_detail_frag).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,28 +78,29 @@ public class MaterialOverviewFragment extends OverviewFragment implements OnBack
     }
 
     private void enterNextFragment() {
-        MaterialDetailFragment detailFragment = new MaterialDetailFragment();
+        EquipmentDetailFragment detailFragment = new EquipmentDetailFragment();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.addToBackStack(null);
-        transaction.replace(R.id.fragment_material, detailFragment);
+        transaction.replace(R.id.fragment_part, detailFragment);
         transaction.commit();
     }
-    public static void fetchMaterialData(final SwipeRefreshLayout swipeRefreshLayout) {
+
+    public static void fetchEquipmentData(final SwipeRefreshLayout swipeRefreshLayout) {
+        partCost=0;
         swipeRefreshLayout.setRefreshing(true);
-        materialCost = 0;
-        RealTimeDBManager.getDatabase().child("items").orderByChild("id").startAt("m").endAt("m\uf8ff").addValueEventListener(new ValueEventListener() {
+        RealTimeDBManager.getDatabase().child("items").orderByChild("id").startAt("e").endAt("e\uf8ff").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                MaterialAdapter.materials.clear();
+                EquipmentAdapter.equipments.clear();
                 for(DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
-//                    Log.e("key",childDataSnapshot.getKey());
+//                    Log.e("onDataChange",childDataSnapshot.getKey());
                     Item item = childDataSnapshot.getValue(Item.class);
-                    MaterialAdapter.materials.add(item);
-                    materialCost+=item.getCost();
+                    EquipmentAdapter.equipments.add(item);
+                    partCost+=item.getCost();
                 }
                 DecimalFormat decimalFormat = new DecimalFormat("฿###,###.###");
-                totalMaterialCost.setText(decimalFormat.format(materialCost));
-                materialOverviewAdapter.notifyDataSetChanged();
+                totalPartCost.setText(decimalFormat.format(partCost));
+                partOverviewAdapter.notifyDataSetChanged();
                 swipeRefreshLayout.setRefreshing(false);
             }
 
@@ -110,7 +115,6 @@ public class MaterialOverviewFragment extends OverviewFragment implements OnBack
         return new BackPressHandler(this).onBackPressed();
     }
     @Override public boolean setViewOverview() { return new BackPressHandler(this).onBackPressed(); }
-    @Override public void onRefresh() { fetchMaterialData(swipeRefreshLayout); }
+    @Override public void onRefresh() { fetchEquipmentData(swipeRefreshLayout); }
 
 }
-

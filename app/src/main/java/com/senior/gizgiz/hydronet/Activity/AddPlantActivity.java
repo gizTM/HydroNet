@@ -2,6 +2,7 @@ package com.senior.gizgiz.hydronet.Activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
@@ -16,25 +17,32 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
-import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.senior.gizgiz.hydronet.Adapter.GridViewAdapter.ChangePlantAdapter;
 import com.senior.gizgiz.hydronet.Adapter.GridViewAdapter.LocationAdapter;
 import com.senior.gizgiz.hydronet.Adapter.GridViewAdapter.PlantAdapter;
 import com.senior.gizgiz.hydronet.Adapter.RecyclerViewAdapter.PlantBadgeRecyclerViewAdapter;
 import com.senior.gizgiz.hydronet.ClassForList.DropdownItem;
 import com.senior.gizgiz.hydronet.ClassForList.ToGrowPlant;
+import com.senior.gizgiz.hydronet.Entity.SystemDefaultPlant;
 import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.HelperClass.NavigationManager;
 import com.senior.gizgiz.hydronet.Entity.Plant;
+import com.senior.gizgiz.hydronet.HelperClass.RealTimeDBManager;
 import com.senior.gizgiz.hydronet.HelperClass.ResourceManager;
+import com.senior.gizgiz.hydronet.HelperClass.ValueStepper;
 import com.senior.gizgiz.hydronet.Listener.RecyclerTouchListener;
 import com.senior.gizgiz.hydronet.R;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -58,31 +66,29 @@ public class AddPlantActivity extends AppCompatActivity {
     private LocationAdapter locationGridViewAdapter;
 
     private int plantCount,selectableCount = plantCount;
-    private Plant nowEditingPlant = new Plant("","preview");
+    private Plant nowEditingPlant = new Plant("preview");
     private List<String> nowEditingLocation = new ArrayList<>();
 
     private List<ToGrowPlant> badgeList = new ArrayList<>();
+    private static float avgPHLow, avgPHHigh,avgECLow,avgECHigh;
+    final DecimalFormat decimalFormat = new DecimalFormat("0.0#");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // use recyclable main xml w/ ViewStub content
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // setup toolbar drawer
         setup();
-        // define basic recyclable element
         contentPage = findViewById(R.id.page_content);
         ViewStub contentStub = contentPage.findViewById(R.id.layout_stub);
         contentStub.setLayoutResource(R.layout.activity_add_plant);
         addPlantContent = contentStub.inflate();
         findViewById(R.id.fab_layout).setVisibility(View.GONE);
-
         setupPlantBadgeView();
         handlePlantCount();
         handleChangePlant();
         handleLocationDropdown();
         handleAddPlant();
-        addPlantContent.findViewById(R.id.error_field).setOnClickListener(new View.OnClickListener() {
+        addPlantContent.findViewById(R.id.plant_name).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { printDebug(); }
         });
@@ -123,12 +129,47 @@ public class AddPlantActivity extends AppCompatActivity {
                 ((ImageView)customView.findViewById(R.id.badge_plant_thumbnail)).setImageResource(
                         ResourceManager.getDrawableID(getApplicationContext(),"ic_plant_"+card.getPlant().getName()));
                 ((CustomTextView)customView.findViewById(R.id.badge_plant_name)).setText(card.getPlant().getName());
-                ((CustomTextView)customView.findViewById(R.id.badge_plant_count)).setText("x"+card.getCount());
+                ((CustomTextView)customView.findViewById(R.id.badge_plant_count)).setText("x".concat(String.valueOf(card.getCount())));
+                CustomTextView avgPH = customView.findViewById(R.id.avg_ph_range);
+                CustomTextView avgEC = customView.findViewById(R.id.avg_ec_range);
+                if(avgPHLow==avgPHHigh) avgPH.setText(decimalFormat.format(avgPHLow));
+                else avgPH.setText(decimalFormat.format(avgPHLow).concat(" - ").concat(decimalFormat.format(avgPHHigh)));
+                if(avgECLow==avgECHigh) avgEC.setText(decimalFormat.format(avgECLow));
+                else avgEC.setText(decimalFormat.format(avgECLow).concat(" - ").concat(decimalFormat.format(avgECHigh)));
+                if(!card.ispHOK()) {
+                    ((CustomTextView)customView.findViewById(R.id.ph_range))
+                            .setTextColor(ResourceManager.getColor(getBaseContext(),R.color.red));
+                    ((CustomTextView)customView.findViewById(R.id.avg_ph_range))
+                            .setTextColor(ResourceManager.getColor(getBaseContext(),R.color.red));
+                } else {
+                    ((CustomTextView)customView.findViewById(R.id.ph_range))
+                            .setTextColor(ResourceManager.getColor(getBaseContext(),R.color.boulder_gray));
+                    ((CustomTextView)customView.findViewById(R.id.avg_ph_range))
+                            .setTextColor(ResourceManager.getColor(getBaseContext(),R.color.boulder_gray));
+                }
+                if(!card.isECOK()) {
+                    ((CustomTextView)customView.findViewById(R.id.ec_range))
+                            .setTextColor(ResourceManager.getColor(getBaseContext(),R.color.red));
+                    ((CustomTextView)customView.findViewById(R.id.avg_ec_range))
+                            .setTextColor(ResourceManager.getColor(getBaseContext(),R.color.red));
+                } else {
+                    ((CustomTextView)customView.findViewById(R.id.ec_range))
+                            .setTextColor(ResourceManager.getColor(getBaseContext(),R.color.boulder_gray));
+                    ((CustomTextView)customView.findViewById(R.id.avg_ec_range))
+                            .setTextColor(ResourceManager.getColor(getBaseContext(),R.color.boulder_gray));
+                }
                 final PopupWindow popup = new PopupWindow(customView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 popup.setOutsideTouchable(true);
                 popup.showAtLocation(addPlantContent, Gravity.CENTER, 0, 0);
                 GridView selectedBadgeGridView = customView.findViewById(R.id.plant_location);
                 selectedBadgeGridView.setAdapter(locationGridViewAdapter);
+                float pHLow = card.getPlant().getpHLow(), pHHigh = card.getPlant().getpHHigh(),
+                        ECLow = card.getPlant().getECLow(), ECHigh = card.getPlant().getECHigh();
+                CustomTextView pHRange = customView.findViewById(R.id.ph_range), ECRange = customView.findViewById(R.id.ec_range);
+                if(pHLow==pHHigh) pHRange.setText(String.valueOf(pHLow));
+                else pHRange.setText(String.valueOf(pHLow).concat(" - ").concat(String.valueOf(pHHigh)));
+                if(ECLow==ECHigh) ECRange.setText(String.valueOf(ECLow));
+                else ECRange.setText(String.valueOf(ECLow).concat(" - ").concat(String.valueOf(ECHigh)));
                 customView.findViewById(R.id.btn_remove_plant).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -136,7 +177,7 @@ public class AddPlantActivity extends AppCompatActivity {
                                 new ContextThemeWrapper(AddPlantActivity.this,R.style.myDialog));
                         View dialogCustomLayout = LayoutInflater.from(getApplicationContext()).inflate(R.layout.confirm_dialog,null);
                         ((CustomTextView)dialogCustomLayout.findViewById(R.id.dialog_message)).setText(
-                                "Do you really want to remove ".concat(card.getPlant().getName()).concat(" from the list?"));
+                                String.valueOf("Do you really want to remove ").concat(card.getPlant().getName()).concat(" from the list?"));
                         dialogBuilder.setView(dialogCustomLayout);
                         final AlertDialog dialog = dialogBuilder.create();
                         dialogCustomLayout.findViewById(R.id.btn_positive).setOnClickListener(new View.OnClickListener() {
@@ -144,11 +185,19 @@ public class AddPlantActivity extends AppCompatActivity {
                             public void onClick(View view) {
                                 dialog.cancel();
                                 popup.dismiss();
-                                locationGridViewAdapter.removeFromAdapter(card.getPlant().getName().trim());
                                 badgeList.remove(card);
-                                dropdownMenu.setText(String.valueOf(locationGridViewAdapter.getRemainingSlot())+" spots left");
+                                updatePHEC();
+                                updateNotifyPHEC();
+                                setErrorMessage("");
+                                CustomTextView changeBTN = addPlantContent.findViewById(R.id.btn_change_plant);
+                                changeBTN.setClickable(true);
+                                changeBTN.setText("change");
+                                ((CustomTextView) addPlantContent.findViewById(R.id.plant_count_badge)).setText("x1");
+                                plantCount = 1;
+                                locationGridViewAdapter.resetViewSelectedItem(card.getPlant().getName());
+                                locationGridViewAdapter.removeFromAdapter(card.getPlant().getName().trim());
+                                dropdownMenu.setText(String.valueOf(locationGridViewAdapter.getRemainingSlot()).concat(" spots left"));
                                 plantBadgeAdapter.notifyDataSetChanged();
-
                             }
                         });
                         dialogCustomLayout.findViewById(R.id.btn_negative).setOnClickListener(new View.OnClickListener() {
@@ -216,14 +265,30 @@ public class AddPlantActivity extends AppCompatActivity {
         popup.showAtLocation(customView, Gravity.CENTER, 0, 0);
         systemPlantList = customView.findViewById(R.id.system_plant_list);
         userPlantList = customView.findViewById(R.id.user_plant_list);
-        systemPlantAdapter = new ChangePlantAdapter(getApplicationContext(), PlantAdapter.exampleSystemPlants);
+        systemPlantAdapter = new ChangePlantAdapter(getApplicationContext(), PlantAdapter.systemPlants);
         userPlantAdapter = new ChangePlantAdapter(getApplicationContext(), PlantAdapter.exampleUserPlants);
         systemPlantList.setAdapter(systemPlantAdapter);
         userPlantList.setAdapter(userPlantAdapter);
+        PlantAdapter.systemPlants.clear();
+        RealTimeDBManager.getDatabase().child("systemplants").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                PlantAdapter.systemPlants.add(dataSnapshot.getValue(SystemDefaultPlant.class));
+                systemPlantAdapter.notifyDataSetChanged();
+            }
+            @Override public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                PlantAdapter.systemPlants.remove(dataSnapshot.getValue(SystemDefaultPlant.class));
+                systemPlantAdapter.notifyDataSetChanged();
+            }
+            @Override public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+            @Override public void onCancelled(DatabaseError databaseError) {}
+        });
         systemPlantList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                nowEditingPlant = PlantAdapter.exampleSystemPlants.get(i);
+                nowEditingPlant = PlantAdapter.systemPlants.get(i);
                 popup.dismiss();
                 ((ImageView) addPlantContent.findViewById(R.id.plant_thumbnail)).setImageResource(
                         ResourceManager.getDrawableID(getApplicationContext(), "ic_plant_" + nowEditingPlant.getName()));
@@ -311,7 +376,7 @@ public class AddPlantActivity extends AppCompatActivity {
                                 nowEditingLocation.addAll(selectedItems);
                             } else
                                 setLocationErrorMessage("This location is selected!!!\nSelect another location in white.");
-                            dropdownMenu.setText(String.valueOf(locationGridViewAdapter.getRemainingSlot()) + " spots left");
+                            dropdownMenu.setText(String.valueOf(locationGridViewAdapter.getRemainingSlot()).concat(" spots left"));
                         }
                     });
                     customView.findViewById(R.id.btn_select_all).setOnClickListener(new View.OnClickListener() {
@@ -326,9 +391,9 @@ public class AddPlantActivity extends AppCompatActivity {
                     customView.findViewById(R.id.btn_select_none).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            setLocationErrorMessage("not yet fixed");
-//                            List<String> selectedItems = locationGridViewAdapter.selectNone(nowEditingPlant.getName());
-//                            nowEditingLocation.clear();
+//                            setLocationErrorMessage("not yet fixed");
+                            List<String> selectedItems = locationGridViewAdapter.selectNone(nowEditingPlant.getName());
+                            nowEditingLocation.clear();
 //                            nowEditingLocation.addAll(selectedItems);
                         }
                     });
@@ -348,7 +413,7 @@ public class AddPlantActivity extends AppCompatActivity {
         addPlantContent.findViewById(R.id.btn_add_plant).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(nowEditingPlant.getId().equalsIgnoreCase("???"))
+                if(nowEditingPlant.getName().equalsIgnoreCase("preview"))
                     setErrorMessage("Choose plant first!!!");
                 else {
                     plantCount = (plantCount >= 32) ? 32 : ++plantCount;
@@ -359,7 +424,7 @@ public class AddPlantActivity extends AppCompatActivity {
         addPlantContent.findViewById(R.id.btn_minus_plant).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(nowEditingPlant.getId().equalsIgnoreCase("???"))
+                if(nowEditingPlant.getName().equalsIgnoreCase("preview"))
                     setErrorMessage("Choose plant first!!!");
                 else {
                     plantCount = (plantCount <= 1) ? 1 : --plantCount;
@@ -389,8 +454,7 @@ public class AddPlantActivity extends AppCompatActivity {
                 if(nowEditingPlant.getName().equalsIgnoreCase("preview"))
                     setErrorMessage("Choose plant first!!!");
                 else if(nowEditingLocation.size()==Math.max(selectableCount,plantCount)) {
-                    locationGridViewAdapter.updatePreviousSelection(nowEditingPlant.getName());
-                    dropdownMenu.setText(String.valueOf(locationGridViewAdapter.getRemainingSlot())+" spots left");
+                    dropdownMenu.setText(String.valueOf(locationGridViewAdapter.getRemainingSlot()).concat(" spots left"));
                     setErrorMessage("");
                     ToGrowPlant nowEditingToGrowPlant = new ToGrowPlant(nowEditingPlant,plantCount,nowEditingLocation);
                     boolean existed = false;
@@ -398,23 +462,26 @@ public class AddPlantActivity extends AppCompatActivity {
                         if(toGrowPlant.getPlant().getName().equalsIgnoreCase(nowEditingToGrowPlant.getPlant().getName())) {
                             existed = true;
                             toGrowPlant.addCount(plantCount);
-                            toGrowPlant.addLocation(nowEditingLocation);
+                            toGrowPlant.setLocationList(nowEditingLocation);
                             break;
                         }
                     if(!existed) badgeList.add(nowEditingToGrowPlant);
                     plantBadgeList.setAdapter(plantBadgeAdapter);
+                    updatePHEC();
+                    updateNotifyPHEC();
+                    locationGridViewAdapter.addPreviouslySelection(nowEditingPlant.getName());
                     //reset layout
-                    nowEditingPlant = new Plant("???", "preview");
+                    nowEditingPlant = new Plant("preview");
                     ((ImageView) addPlantContent.findViewById(R.id.plant_thumbnail)).setImageResource(
                             ResourceManager.getDrawableID(getApplicationContext(), "ic_plant_" + nowEditingPlant.getName()));
-                    ((CustomTextView) addPlantContent.findViewById(R.id.plant_name)).setText(nowEditingPlant.getId());
+                    ((CustomTextView) addPlantContent.findViewById(R.id.plant_name)).setText("???");
                     nowEditingLocation.clear();
                     if(locationGridViewAdapter.getRemainingSlot()==0) {
                         CustomTextView changeBTN = addPlantContent.findViewById(R.id.btn_change_plant);
                         changeBTN.setClickable(false);
                         changeBTN.setText("slot full");
                         ((CustomTextView) addPlantContent.findViewById(R.id.plant_count_badge)).setText("x0");
-                        setErrorMessage("slot full!!!\ndelete some plant to add another");
+                        setErrorMessage("slot full!!!\ndelete some to add another");
                     } else {
                         CustomTextView changeBTN = addPlantContent.findViewById(R.id.btn_change_plant);
                         changeBTN.setClickable(true);
@@ -449,6 +516,41 @@ public class AddPlantActivity extends AppCompatActivity {
         });
         dialog.show();
     }
+    private void updatePHEC() {
+        float sumpHLow=0,sumpHHigh=0,sumECLow=0,sumECHigh=0;
+        for(ToGrowPlant badge : badgeList) {
+            sumpHLow+=badge.getPlant().getpHLow();
+            sumpHHigh+=badge.getPlant().getpHHigh();
+            sumECLow+=badge.getPlant().getECLow();
+            sumECHigh+=badge.getPlant().getECHigh();
+        }
+        avgPHLow = sumpHLow/Math.max(badgeList.size(),1);
+        avgPHHigh = sumpHHigh/Math.max(badgeList.size(),1);
+        avgECLow = sumECLow/Math.max(badgeList.size(),1);
+        avgECHigh = sumECHigh/Math.max(badgeList.size(),1);
+        ((ValueStepper)addPlantContent.findViewById(R.id.stepper_ph_lo)).setValue(avgPHLow);
+        ((ValueStepper)addPlantContent.findViewById(R.id.stepper_ph_hi)).setValue(avgPHHigh);
+        ((ValueStepper)addPlantContent.findViewById(R.id.stepper_ec_lo)).setValue(avgECLow);
+        ((ValueStepper)addPlantContent.findViewById(R.id.stepper_ec_hi)).setValue(avgECHigh);
+    }
+    private void updateNotifyPHEC() {
+        for(ToGrowPlant badge : badgeList) {
+            float limit = 0.5f;
+            if(Math.abs(badge.getPlant().getpHLow()-avgPHLow)>limit ||
+                    Math.abs(badge.getPlant().getpHHigh()-avgPHHigh)>limit) {
+                badge.setpHOK(false);
+                setErrorMessage("Some plant(s) are not OK!\nMaybe grow plants with similar values?");
+            }
+            else badge.setpHOK(true);
+            if(Math.abs(badge.getPlant().getECLow()-avgECLow)>limit ||
+                    Math.abs(badge.getPlant().getECHigh()-avgECHigh)>limit) {
+                badge.setECOK(false);
+                setErrorMessage("Some plant(s) are not OK!\nMaybe grow plants with similar values?");
+            }
+            else badge.setECOK(true);
+            plantBadgeAdapter.notifyDataSetChanged();
+        }
+    }
     private void setErrorMessage(String errorMessage) {
         ((CustomTextView)addPlantContent.findViewById(R.id.error_field)).setText(errorMessage);
     }
@@ -470,13 +572,23 @@ public class AddPlantActivity extends AppCompatActivity {
         for(Map.Entry<String,List<String>> entry : locationGridViewAdapter.getLocationListForPlant().entrySet()) {
             plantInMap+=entry.getKey()+", ";
         }
-        Log.i("nowEditingPlant",nowEditingPlant.getName());
-        Log.i("nowEditingLocation",nowEditingLocation.size()+" "+locations);
-//        Log.i("current selection",locationGridViewAdapter.getCurrentlySelectedItems().size()+" "+currentPlantLocation);
-        Log.i("previous selection",locationGridViewAdapter.getPreviouslySelectedItems().size()+" "+previousSelections);
+        Log.e("nowEditingPlant",nowEditingPlant.getName());
+        Log.e("nowEditingPlant value",nowEditingPlant.getpHLow()+","+nowEditingPlant.getpHHigh()+","+nowEditingPlant.getECLow()+","+nowEditingPlant.getECHigh());
+        Log.e("nowEditingLocation",nowEditingLocation.size()+" "+locations);
+//        Log.e("current selection",locationGridViewAdapter.getCurrentlySelectedItems().size()+" "+currentPlantLocation);
+        Log.e("previous selection",locationGridViewAdapter.getPreviouslySelectedItems().size()+" "+previousSelections);
 //        Log.i("plant count",plantCount+"");
-        Log.i("selectable plant count",selectableCount+"");
-        Log.i("plant in map",locationGridViewAdapter.getLocationListForPlant().size()+" "+plantInMap);
+        Log.e("selectable plant count",selectableCount+"");
+        Log.e("plant in map",locationGridViewAdapter.getLocationListForPlant().size()+" "+plantInMap);
+//        Log.e("avg value",avgPHLow+","+avgPHHigh+","+avgECLow+","+avgECHigh);
+        for(ToGrowPlant badge : badgeList) {
+            Log.e("diff1",Math.abs(badge.getPlant().getpHLow()-avgPHLow)+"");
+            Log.e("diff2",Math.abs(badge.getPlant().getpHHigh()-avgPHHigh)+"");
+            Log.e("diff3",Math.abs(badge.getPlant().getECLow()-avgECLow)+"");
+            Log.e("diff4",Math.abs(badge.getPlant().getECHigh()-avgECHigh)+"");
+            System.out.println();
+            plantBadgeAdapter.notifyDataSetChanged();
+        }
     }
     private void expandAt(View customView, int position) {
         View v1 = customView.findViewById(R.id.system_plant_layout);
@@ -520,8 +632,7 @@ public class AddPlantActivity extends AppCompatActivity {
         return false;
     }
 
-    @Override
-    public void onBackPressed() {
+    @Override public void onBackPressed() {
         handleCancelAddPlant();
     }
 }

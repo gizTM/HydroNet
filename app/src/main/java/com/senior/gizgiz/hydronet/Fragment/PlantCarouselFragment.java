@@ -9,12 +9,11 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.senior.gizgiz.hydronet.Adapter.SlidingTabAdapter;
 import com.senior.gizgiz.hydronet.Fragment.OverviewFragment.OverviewFragment;
 import com.senior.gizgiz.hydronet.Fragment.OverviewFragment.MaterialOverviewFragment;
-import com.senior.gizgiz.hydronet.Fragment.OverviewFragment.PartOverviewFragment;
+import com.senior.gizgiz.hydronet.Fragment.OverviewFragment.EquipmentOverviewFragment;
 import com.senior.gizgiz.hydronet.Fragment.OverviewFragment.PlantOverviewFragment;
 import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.HelperClass.ResourceManager;
@@ -73,7 +72,7 @@ public class PlantCarouselFragment extends Fragment implements OnBackPressListen
         if(pageFragments.size() < 3) {
             plantFragment = new PlantOverviewFragment();
             pageFragments.add(plantFragment);
-            partFragment = new PartOverviewFragment();
+            partFragment = new EquipmentOverviewFragment();
             pageFragments.add(partFragment);
             materialFragment = new MaterialOverviewFragment();
             pageFragments.add(materialFragment);

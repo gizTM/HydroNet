@@ -77,7 +77,7 @@ public class PlantOverviewAdapter extends BaseAdapter {
                 else if(history.isHarvested()) numHarvested+=history.getCount();
                 else numGrowing+=history.getCount();
             }
-            id.setText(card.getId().substring(2));
+//            id.setText(card.getId().substring(2));
             name.setText(card.getName());
             growing.setText("x"+numGrowing);
             harvested.setText("x"+numHarvested);

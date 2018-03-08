@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.senior.gizgiz.hydronet.HelperClass.RealTimeDBManager;
+
 public class SplashActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +26,10 @@ public class SplashActivity extends Activity {
 //                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
 
-//        startActivity(new Intent(this, LoginActivity.class));
-        startActivity(new Intent(this, MainActivity.class));
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(currentUser != null) startActivity(new Intent(this,MainActivity.class));
+        else startActivity(new Intent(this, LoginActivity.class));
+//        startActivity(new Intent(this, MainActivity.class));
         finish();
     }
 }

@@ -23,12 +23,17 @@
             android:padding="@dimen/padding_small"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <ListView android:id="@+id/part_detail_list"
-                android:layout_above="@id/part_detail_remark"
-                android:scrollbars="vertical"
-                android:divider="@null"
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/part_overview_swipe_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent">
+                <ListView android:id="@+id/part_detail_list"
+                    android:layout_above="@id/part_detail_remark"
+                    android:scrollbars="vertical"
+                    android:divider="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </android.support.v4.widget.SwipeRefreshLayout>
             <LinearLayout android:id="@+id/part_detail_remark"
                 android:orientation="horizontal"
                 android:padding="@dimen/padding_so_small"

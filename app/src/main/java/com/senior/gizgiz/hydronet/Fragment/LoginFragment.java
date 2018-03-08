@@ -3,8 +3,8 @@ package com.senior.gizgiz.hydronet.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.text.SpannableString;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,14 +13,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.senior.gizgiz.hydronet.Activity.MainActivity;
 import com.senior.gizgiz.hydronet.Activity.MicrogearConsoleActivity;
 import com.senior.gizgiz.hydronet.R;
+
 
 public class LoginFragment extends Fragment {
     private EditText usernameET, passwordET;
     private Button loginBT, fbBT, ggBT;
     private ProgressDialog loginProgress;
+    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
     public LoginFragment() {
         // Required empty public constructor
@@ -46,6 +54,7 @@ public class LoginFragment extends Fragment {
         fbBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                loginWithFB();
                 startActivity(new Intent(getContext(), MicrogearConsoleActivity.class));
             }
         });
@@ -73,6 +82,20 @@ public class LoginFragment extends Fragment {
         loginProgress.setMessage("Logging in...");
         loginProgress.show();
 
-        startActivity(new Intent(getContext(), MainActivity.class));
+        firebaseAuth.signInWithEmailAndPassword(username,password)
+                .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()) {
+                            Toast.makeText(getContext(), "Logged in successfully", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(getContext(), MainActivity.class));
+                        } else Toast.makeText(getActivity(), "Could not log in .. Please check and try again...", Toast.LENGTH_LONG).show();
+                        loginProgress.dismiss();
+                    }
+                });
+//        startActivity(new Intent(getContext(), MainActivity.class));
+    }
+    private void loginWithFB() {
+
     }
 }

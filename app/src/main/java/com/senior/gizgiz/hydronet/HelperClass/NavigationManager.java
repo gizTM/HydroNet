@@ -2,12 +2,15 @@ package com.senior.gizgiz.hydronet.HelperClass;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.senior.gizgiz.hydronet.Activity.SensorManagerActivity;
@@ -69,6 +72,28 @@ public class NavigationManager {
             collapse(customView.findViewById(expandLayout));
             customView.findViewById(toggleBTN).setBackgroundResource(R.drawable.ic_expand_more);
         }
+    }
+    public static void dimBehind(PopupWindow popupWindow) {
+        View container;
+        if (popupWindow.getBackground() == null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                container = (View) popupWindow.getContentView().getParent();
+            } else {
+                container = popupWindow.getContentView();
+            }
+        } else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                container = (View) popupWindow.getContentView().getParent().getParent();
+            } else {
+                container = (View) popupWindow.getContentView().getParent();
+            }
+        }
+        Context context = popupWindow.getContentView().getContext();
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        WindowManager.LayoutParams p = (WindowManager.LayoutParams) container.getLayoutParams();
+        p.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+        p.dimAmount = 0.3f;
+        wm.updateViewLayout(container, p);
     }
     public static void expand(final View v) {
         v.measure(ViewGroup.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);

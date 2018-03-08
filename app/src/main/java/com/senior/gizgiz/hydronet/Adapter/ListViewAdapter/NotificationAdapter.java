@@ -12,8 +12,6 @@ import com.github.kevinsawicki.timeago.TimeAgo;
 import com.senior.gizgiz.hydronet.Adapter.GridViewAdapter.PlantAdapter;
 import com.senior.gizgiz.hydronet.Entity.Item;
 import com.senior.gizgiz.hydronet.Entity.Notification;
-import com.senior.gizgiz.hydronet.Entity.Plant;
-import com.senior.gizgiz.hydronet.Entity.Story;
 import com.senior.gizgiz.hydronet.Entity.SystemDefaultPlant;
 import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.HelperClass.ResourceManager;
@@ -60,16 +58,16 @@ public class NotificationAdapter extends BaseAdapter {
     }
 
     static {
-        exampleCards.add(new Notification("n1", TYPE_SYSTEM_PLANT,createMockTimeStamp(), PlantAdapter.exampleSystemPlants.get(3)));
+        exampleCards.add(new Notification("n1", TYPE_SYSTEM_PLANT,createMockTimeStamp(), PlantAdapter.systemPlants.get(3)));
         exampleCards.add(new Notification("n2", TYPE_FARM_WEEKLY,createMockTimeStamp()));
-        exampleCards.add(new Notification("n3", TYPE_TRANSACTION,createMockTimeStamp(), StoryAdapter.exampleCards.get(2)));
+        exampleCards.add(new Notification("n3", TYPE_TRANSACTION,createMockTimeStamp(), StoryAdapter.stories.get(0)));
         exampleCards.add(new Notification("n4", TYPE_SENSOR_WARNING,createMockTimeStamp()));
         exampleCards.add(new Notification("n5", TYPE_SYSTEM_ITEM,createMockTimeStamp(),
                 new Item("m3","A & B fertilizer",200,"already formulated A and B fertilizer for hydroponics;" +
                         "mix 5cc. each with 1L water;put A in for 4-6 hours then mix B")));
-        exampleCards.add(new Notification("n6", TYPE_NEGOTIATION_UPDATE,createMockTimeStamp(), StoryAdapter.exampleCards.get(2)));
-        exampleCards.add(new Notification("n7", TYPE_TRANSACTION,createMockTimeStamp(), StoryAdapter.exampleCards.get(1)));
-        exampleCards.add(new Notification("n8", TYPE_SYSTEM_PLANT,createMockTimeStamp(), new SystemDefaultPlant("sp8","apple")));
+        exampleCards.add(new Notification("n6", TYPE_NEGOTIATION_UPDATE,createMockTimeStamp(), StoryAdapter.stories.get(0)));
+        exampleCards.add(new Notification("n7", TYPE_TRANSACTION,createMockTimeStamp(), StoryAdapter.stories.get(0)));
+        exampleCards.add(new Notification("n8", TYPE_SYSTEM_PLANT,createMockTimeStamp(), new SystemDefaultPlant("apple")));
     }
 
     public NotificationAdapter(Context context,List<Notification> notifications) {

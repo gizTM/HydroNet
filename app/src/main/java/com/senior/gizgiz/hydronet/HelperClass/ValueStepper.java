@@ -22,6 +22,8 @@ public class ValueStepper extends LinearLayout {
     private boolean disabled;
     private Drawable background;
 
+    final DecimalFormat decimalFormat = new DecimalFormat("0.0#");
+
     public ValueStepper(Context context) {
         super(context);
         init(context);
@@ -56,7 +58,6 @@ public class ValueStepper extends LinearLayout {
     }
 
     private void init(final Context context) {
-        final DecimalFormat decimalFormat = new DecimalFormat("0.0#");
         rootView = inflate(context, R.layout.value_stepper, this);
         background = (disabled)?ResourceManager.getDrawable(context,"bg_disabled_stepper") :
                 ResourceManager.getDrawable(context,"bg_stepper");
@@ -64,6 +65,7 @@ public class ValueStepper extends LinearLayout {
         decrease = rootView.findViewById(R.id.stepper_decrease);
         increase = rootView.findViewById(R.id.stepper_increase);
         valueET = rootView.findViewById(R.id.stepper_value);
+        valueET.setEnabled(false);
         if(!disabled) {
             decrease.setOnClickListener(new OnClickListener() {
                 @Override
@@ -83,5 +85,9 @@ public class ValueStepper extends LinearLayout {
         valueET.setText(decimalFormat.format(value));
         invalidate();
         requestLayout();
+    }
+    public void setValue(float value) {
+        this.value = value;
+        valueET.setText(decimalFormat.format(value));
     }
 }

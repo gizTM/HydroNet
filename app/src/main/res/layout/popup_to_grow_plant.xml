@@ -17,11 +17,11 @@
             android:baselineAligned="false"
             android:gravity="center"
             android:layout_gravity="center"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout android:id="@+id/plant_thumbnail"
                 android:orientation="vertical"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content">
                 <com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail
@@ -47,21 +47,102 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp" />
                 </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
-                <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-                    android:id="@+id/badge_plant_name"
-                    android:textSize="@dimen/txt_list_item"
-                    app:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:text="@string/plant_name_preview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
             </LinearLayout>
+            <TableLayout android:orientation="vertical"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <TableRow>
+                    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                        android:id="@+id/badge_plant_name"
+                        android:textSize="@dimen/modal_subtitle"
+                        android:layout_span="2"
+                        android:layout_weight="1"
+                        app:textStyle="bold"
+                        android:text="@string/plant_name_preview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </TableRow>
+                <TableRow>
+                    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                        android:layout_span="2"
+                        android:layout_weight="1"
+                        android:text="Ideal value"
+                        app:textStyle="bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </TableRow>
+                <TableRow>
+                    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                        android:text="pH : "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                        android:id="@+id/ph_range"
+                        android:text="-"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </TableRow>
+                <TableRow>
+                    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                        android:text="EC : "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                        android:id="@+id/ec_range"
+                        android:text="-"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </TableRow>
+            </TableLayout>
             <ImageButton android:id="@+id/btn_remove_plant"
                 android:src="@drawable/ic_bin"
+                android:layout_weight="1"
                 android:background="@color/transparent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View android:background="@color/alto_gray"
+            android:layout_marginStart="@dimen/margin_separator"
+            android:layout_marginEnd="@dimen/margin_separator"
+            android:layout_marginBottom="@dimen/margin_separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+        <LinearLayout android:orientation="horizontal"
+            android:layout_weight=".3"
+            android:paddingStart="@dimen/padding_small"
+            android:paddingEnd="@dimen/padding_small"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_height="0dp"
+            android:layout_width="wrap_content">
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:text="avg pH : "
+                app:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:id="@+id/avg_ph_range"
+                android:text="5.5 - 6.5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:text="       avg EC : "
+                app:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:id="@+id/avg_ec_range"
+                android:text="1.8 - 2.4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+        <View android:background="@color/alto_gray"
+            android:layout_margin="@dimen/margin_separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
         <LinearLayout android:layout_weight="3"
             android:orientation="vertical"
             android:layout_width="wrap_content"

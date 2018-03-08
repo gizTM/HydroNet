@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/dim_popup_overlay"
     android:background="@drawable/dim_bg"
     android:layout_width="match_parent"
@@ -29,6 +30,7 @@
         <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
             android:id="@+id/location_error_field"
             android:textColor="@color/red"
+            app:textStyle="bold"
             android:gravity="center"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/padding_small"

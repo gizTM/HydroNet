@@ -18,7 +18,7 @@
             android:layout_height="wrap_content">
             <ImageView android:id="@+id/feed_img"
                 android:layout_centerInParent="true"
-                android:src="@drawable/ic_plant_tomato"
+                android:src="@drawable/ic_plant_preview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>

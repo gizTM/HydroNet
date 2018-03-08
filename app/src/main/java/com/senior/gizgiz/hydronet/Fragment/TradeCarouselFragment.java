@@ -11,10 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.senior.gizgiz.hydronet.Adapter.SlidingTabAdapter;
-import com.senior.gizgiz.hydronet.Fragment.OverviewFragment.MaterialOverviewFragment;
 import com.senior.gizgiz.hydronet.Fragment.OverviewFragment.OverviewFragment;
-import com.senior.gizgiz.hydronet.Fragment.OverviewFragment.PartOverviewFragment;
-import com.senior.gizgiz.hydronet.Fragment.OverviewFragment.PlantOverviewFragment;
 import com.senior.gizgiz.hydronet.Fragment.OverviewFragment.TradeSummaryOverviewFragment;
 import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.HelperClass.ResourceManager;

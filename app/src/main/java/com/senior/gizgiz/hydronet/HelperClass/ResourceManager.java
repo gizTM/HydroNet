@@ -4,10 +4,13 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.BulletSpan;
+
+import com.senior.gizgiz.hydronet.R;
 
 import java.text.DateFormat;
 import java.text.DateFormatSymbols;
@@ -51,6 +54,11 @@ public class ResourceManager {
 
     public static int getDim(Context context, int dim) {
         return context.getResources().getDimensionPixelSize(dim);
+    }
+
+    public static int getColor(Context context, int color) {
+        return ContextCompat.getColor(context, color);
+//        return context.getResources().getColor(color,context.getTheme());
     }
 
     public static String getSeparateString(String string) {

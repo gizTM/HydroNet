@@ -12,6 +12,7 @@ public class TradeInfo {
     private List<ExchangeTransaction> userTransaction;
     private List<ProductAnnouncementStory> userSaleStory;
 
+    public TradeInfo() {}
     public TradeInfo(String id, UserPlant userPlant, List<ExchangeTransaction> userTransaction, List<ProductAnnouncementStory> userSaleStory) {
         this.id = id;
         this.userPlant = userPlant;

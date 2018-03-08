@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import com.senior.gizgiz.hydronet.Activity.AddPlantActivity;
 import com.senior.gizgiz.hydronet.ClassForList.DropdownItem;
 import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
+import com.senior.gizgiz.hydronet.HelperClass.ResourceManager;
 import com.senior.gizgiz.hydronet.R;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class LocationAdapter extends BaseAdapter {
     private List<DropdownItem> itemList = new ArrayList<>();
 //    private List<String> currentlySelectedItems = new ArrayList<>();
     private List<String> previouslySelectedItems = new ArrayList<>();
+    private List<String> currentlyViewItems = new ArrayList<>();
 
     private Map<String,List<String>> locationListForPlant = new HashMap<>();
 
@@ -78,23 +80,23 @@ public class LocationAdapter extends BaseAdapter {
         notifyDataSetChanged();
         return locationListForPlant.get(name);
     }
-
     public List<String> selectAll(String name,int maxSelected) {
         for (DropdownItem item : itemList) {
-            if (locationListForPlant.get(name) == null) {
-                item.setSelected(true);
-                List<String> temp = new ArrayList<>();
-                temp.add(item.getInfo());
-                locationListForPlant.put(name, temp);
-            } else if(!previouslySelectedItems.contains(item.getInfo()) && locationListForPlant.get(name).size() < maxSelected) {
-                item.setSelected(true);
-                locationListForPlant.get(name).add(item.getInfo());
+            if(!previouslySelectedItems.contains(item.getInfo()) && !item.isSelected()) {
+                if (locationListForPlant.get(name) == null) {
+                    item.setSelected(true);
+                    List<String> temp = new ArrayList<>();
+                    temp.add(item.getInfo());
+                    locationListForPlant.put(name, temp);
+                } else if (locationListForPlant.get(name).size() < maxSelected) {
+                    item.setSelected(true);
+                    locationListForPlant.get(name).add(item.getInfo());
+                }
             }
         }
         notifyDataSetChanged();
         return locationListForPlant.get(name);
     }
-
     public List<String> unSelectItem(String name,int position) {
         if(locationListForPlant.get(name).size() > 0) {
             itemList.get(position).setSelected(false);
@@ -104,24 +106,19 @@ public class LocationAdapter extends BaseAdapter {
         notifyDataSetChanged();
         return locationListForPlant.get(name);
     }
-
     public List<String> selectNone(String name) {
         for (DropdownItem item : itemList) {
-            if(locationListForPlant.get(name) == null) {
-                item.setSelected(false);
-                List<String> temp = new ArrayList<>();
-                temp.add(item.getInfo());
-                locationListForPlant.put(name, temp);
-            } else if(!previouslySelectedItems.contains(item.getInfo())){
-                item.setSelected(false);
-                locationListForPlant.get(name).add(item.getInfo());
+            if(!previouslySelectedItems.contains(item.getInfo())) {
+                if (locationListForPlant.get(name) != null) {
+                    item.setSelected(false);
+                    locationListForPlant.get(name).remove(item.getInfo());
+                }
+//                locationListForPlant.remove(name);
             }
         }
         notifyDataSetChanged();
         return locationListForPlant.get(name);
     }
-
-    //set selected otherwise previous
     public void updatePreviousSelection(String selectedName) {
         previouslySelectedItems.clear();
         for(Map.Entry<String,List<String>> entry : locationListForPlant.entrySet()) {
@@ -132,15 +129,19 @@ public class LocationAdapter extends BaseAdapter {
         }
         notifyDataSetChanged();
     }
+    public void addPreviouslySelection(String selectedName) {
+        previouslySelectedItems.addAll(locationListForPlant.get(selectedName));
+        notifyDataSetChanged();
+    }
 
     public void viewSelectedItem(String selectedName) {
-        previouslySelectedItems.removeAll(locationListForPlant.get(selectedName));
+//        previouslySelectedItems.removeAll(locationListForPlant.get(selectedName));
+        currentlyViewItems.addAll(locationListForPlant.get(selectedName));
     }
-
     public void resetViewSelectedItem(String selectedName) {
-        previouslySelectedItems.addAll(locationListForPlant.get(selectedName));
+//        previouslySelectedItems.addAll(locationListForPlant.get(selectedName));
+        currentlyViewItems.removeAll(locationListForPlant.get(selectedName));
     }
-
     public void removeFromAdapter(String selectedName) {
         List<String> locations = locationListForPlant.get(selectedName);
         if(locations != null) {
@@ -151,16 +152,12 @@ public class LocationAdapter extends BaseAdapter {
             locationListForPlant.remove(selectedName);
         }
     }
-
-//    public boolean isCurrentlySelectedEmpty() { return currentlySelectedItems.isEmpty(); }
-
     public void resetLocationAdapter() {
         previouslySelectedItems.clear();
 //        currentlySelectedItems.clear();
         locationListForPlant.clear();
         notifyDataSetChanged();
     }
-
     public int getRemainingSlot() {
         int remainingLocation = 0;
         for (DropdownItem item : itemList) remainingLocation += (!item.isSelected())?1:0;
@@ -183,15 +180,18 @@ public class LocationAdapter extends BaseAdapter {
             DropdownItem item = itemList.get(position);
             itemLabel.setText(item.getInfo());
             if (item.isSelected()) {
-                if(previouslySelectedItems.contains(item.getInfo())) {
-                    itemLabel.setTextColor(context.getResources().getColor(R.color.colorPrimary));
+                if(currentlyViewItems.contains(item.getInfo())) {
+                    itemLabel.setTextColor(ResourceManager.getColor(context,R.color.colorPrimary));
+                    itemLabel.setBackgroundResource(R.drawable.bg_view_dropdown_item);
+                } else if(previouslySelectedItems.contains(item.getInfo())) {
+                    itemLabel.setTextColor(ResourceManager.getColor(context,R.color.colorPrimary));
                     itemLabel.setBackgroundResource(R.drawable.bg_disabled_dropdown_item);
                 } else {
-                    itemLabel.setTextColor(context.getResources().getColor(R.color.colorPrimary));
+                    itemLabel.setTextColor(ResourceManager.getColor(context,R.color.boulder_gray));
                     itemLabel.setBackgroundResource(R.drawable.bg_disabled_stepper);
                 }
             } else {
-                itemLabel.setTextColor(context.getResources().getColor(R.color.black));
+                itemLabel.setTextColor(ResourceManager.getColor(context,R.color.boulder_gray));
                 itemLabel.setBackgroundResource(R.drawable.bg_stepper);
             }
         }

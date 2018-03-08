@@ -14,6 +14,8 @@ public class ExchangeTransaction {
     private float exchangeCondition;
     private Date exchangeTime;
 
+    public ExchangeTransaction() { }
+
     public ExchangeTransaction(String id, UserPlant exchangePlant, int count, User seller, User buyer, float exchangeCondition, Date exchangeTime) {
         this.id = id;
         this.exchangePlant = exchangePlant;
