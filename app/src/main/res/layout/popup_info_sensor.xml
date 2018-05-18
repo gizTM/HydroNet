@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_frame_content"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <LinearLayout android:orientation="vertical"
+        android:gravity="center"
+        android:padding="@dimen/padding_medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail
+            android:layout_width="90dp"
+            android:layout_height="wrap_content">
+            <ImageView android:id="@+id/ic_sensor"
+                android:src="@drawable/ic_sensor_water"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/label_popup_title"
+            android:text="@string/label_sensor_water"
+            app:textStyle="bold"
+            android:textSize="@dimen/txt_list_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/sensor_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:text="@string/ideal"
+                android:layout_marginEnd="@dimen/padding_so_small"
+                app:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:id="@+id/ideal_sensor_value"
+                android:text="10cm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="end"
+        android:paddingStart="@dimen/padding_medium"
+        android:paddingEnd="@dimen/padding_medium"
+        android:paddingBottom="@dimen/padding_medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/btn_got_it"
+            android:text="@string/got_it"
+            app:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

@@ -9,8 +9,6 @@ import android.widget.LinearLayout;
 
 import com.senior.gizgiz.hydronet.R;
 
-import java.text.DecimalFormat;
-
 /**
  * Created by Admins on 022 22/1/2018.
  */
@@ -18,11 +16,15 @@ import java.text.DecimalFormat;
 public class ValueStepper extends LinearLayout {
     private View rootView,decrease,increase;
     private CustomEditText valueET;
-    private float value;
+    private int value,minValue,maxValue;
     private boolean disabled;
     private Drawable background;
 
-    final DecimalFormat decimalFormat = new DecimalFormat("0.0#");
+    private OnValueChangeListener listener;
+
+    public interface OnValueChangeListener {
+        void onValueChanged(int value);
+    }
 
     public ValueStepper(Context context) {
         super(context);
@@ -35,7 +37,7 @@ public class ValueStepper extends LinearLayout {
                 R.styleable.ValueStepper,
                 0, 0);
         try {
-            value = a.getFloat(R.styleable.ValueStepper_value,0);
+            value = a.getInteger(R.styleable.ValueStepper_value,0);
             disabled = a.getBoolean(R.styleable.ValueStepper_disabled,false);
         } finally {
             a.recycle();
@@ -49,7 +51,7 @@ public class ValueStepper extends LinearLayout {
                 R.styleable.ValueStepper,
                 0, 0);
         try {
-            value = a.getFloat(R.styleable.ValueStepper_value,0);
+            value = a.getInteger(R.styleable.ValueStepper_value,0);
             disabled = a.getBoolean(R.styleable.ValueStepper_disabled,false);
         } finally {
             a.recycle();
@@ -58,6 +60,7 @@ public class ValueStepper extends LinearLayout {
     }
 
     private void init(final Context context) {
+        listener = null;
         rootView = inflate(context, R.layout.value_stepper, this);
         background = (disabled)?ResourceManager.getDrawable(context,"bg_disabled_stepper") :
                 ResourceManager.getDrawable(context,"bg_stepper");
@@ -70,24 +73,45 @@ public class ValueStepper extends LinearLayout {
             decrease.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    value -= 0.1;
-                    valueET.setText(decimalFormat.format(value));
+                    if(value>minValue) value -= 1;
+                    valueET.setText(String.valueOf(value));
+                    if(listener != null) listener.onValueChanged(value);
                 }
             });
             increase.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    value += 0.1;
-                    valueET.setText(decimalFormat.format(value));
+                    if(value<maxValue) value += 1;
+                    valueET.setText(String.valueOf(value));
+                    if(listener != null) listener.onValueChanged(value);
                 }
             });
         }
-        valueET.setText(decimalFormat.format(value));
+        valueET.setText(String.valueOf(value));
         invalidate();
         requestLayout();
     }
-    public void setValue(float value) {
+
+    public int getValue() { return value; }
+    public int getMinValue() { return minValue; }
+    public int getMaxValue() { return maxValue; }
+
+    public void setValue(int value) {
         this.value = value;
-        valueET.setText(decimalFormat.format(value));
+        valueET.setText(String.valueOf(value));
     }
+    public void setMinValue(int minValue) { this.minValue = minValue; }
+    public void setMaxValue(int maxValue) { this.maxValue = maxValue; }
+    public void setActiveBackground() {
+        this.background = ResourceManager.getDrawable(getContext(),"btn_small_corner_green");
+        invalidate();
+        requestLayout();
+    }
+    public void resetBackground() {
+        this.background = ResourceManager.getDrawable(getContext(),"bg_stepper");
+        invalidate();
+        requestLayout();
+    }
+
+    public void setOnValueChangedListener(OnValueChangeListener listener) { this.listener = listener; }
 }

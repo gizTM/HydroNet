@@ -9,16 +9,14 @@
         android:id="@+id/dialog_message"
         android:drawableStart="@drawable/ic_warning"
         android:text="@string/dialog_confirm"
-        android:drawablePadding="@dimen/padding_medium"
-        android:gravity="start"
-        android:textAlignment="viewStart"
+        android:gravity="start|center_vertical"
+        android:drawablePadding="@dimen/padding_small"
         android:textSize="@dimen/label"
         app:textStyle="bold"
         android:layout_marginBottom="@dimen/padding_small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <LinearLayout
-        android:layout_gravity="end"
+    <LinearLayout android:layout_gravity="end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
@@ -29,7 +27,6 @@
             android:paddingEnd="@dimen/padding_small"
             android:paddingTop="@dimen/padding_so_small"
             android:paddingBottom="@dimen/padding_so_small"
-            android:background="@drawable/bg_btn_white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
@@ -41,7 +38,6 @@
             android:paddingEnd="@dimen/padding_small"
             android:paddingTop="@dimen/padding_so_small"
             android:paddingBottom="@dimen/padding_so_small"
-            android:background="@drawable/bg_btn_white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>

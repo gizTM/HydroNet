@@ -4,19 +4,18 @@
     android:orientation="horizontal"
     android:gravity="center"
     android:padding="@dimen/sub_btn_padding_small"
-    android:background="@drawable/card_shadow"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail
         android:id="@+id/notification_thumbnail"
         android:layout_weight="1"
-        android:layout_marginEnd="@dimen/padding_small"
+        android:layout_marginEnd="@dimen/padding_so_small"
         android:padding="@dimen/padding_small"
         android:layout_width="0dp"
         android:layout_height="wrap_content">
         <ImageView android:id="@+id/notification_img"
             android:layout_centerInParent="true"
-            android:src="@drawable/ic_plant_tomato"
+            android:src="@drawable/ic_plant_preview"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
@@ -26,14 +25,18 @@
         android:layout_height="wrap_content">
         <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
             android:id="@+id/notification_message"
-            android:text="@string/notification"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
             android:id="@+id/notification_timestamp"
-            android:text="@string/timestamp"
             app:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
+    <ImageView android:id="@+id/read"
+        android:layout_marginStart="@dimen/padding_medium"
+        android:layout_marginEnd="@dimen/padding_medium"
+        android:src="@drawable/bg_red_dot"
+        android:layout_width="10dp"
+        android:layout_height="10dp" />
 </LinearLayout>

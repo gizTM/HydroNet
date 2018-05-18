@@ -25,14 +25,14 @@ public class HomeCardRecyclerViewAdapter extends RecyclerView.Adapter<HomeCardRe
     private final List<HomeCard> homeCards;
     public static List<HomeCard> exampleCards = new ArrayList<>();
 
-    static {
-        exampleCards.add(new HomeCard(1,"tomato",1,"A1",32,3));
-        exampleCards.add(new HomeCard(2,"cucumber",2,"D2",2,2));
-        exampleCards.add(new HomeCard(3,"spinach",3,"A3",21,(float) 2.5));
-        exampleCards.add(new HomeCard(4,"cucumber",4,"D4",26,1));
-        exampleCards.add(new HomeCard(5,"tomato",5,"A5",45,(float) 2.6));
-        exampleCards.add(new HomeCard(6,"spinach",6,"B6",1,(float) 1.2));
-    }
+//    static {
+//        exampleCards.add(new HomeCard(1,"tomato",1,"A1",32,3));
+//        exampleCards.add(new HomeCard(2,"cucumber",2,"D2",2,2));
+//        exampleCards.add(new HomeCard(3,"spinach",3,"A3",21,(float) 2.5));
+//        exampleCards.add(new HomeCard(4,"cucumber",4,"D4",26,1));
+//        exampleCards.add(new HomeCard(5,"tomato",5,"A5",45,(float) 2.6));
+//        exampleCards.add(new HomeCard(6,"spinach",6,"B6",1,(float) 1.2));
+//    }
 
     public HomeCardRecyclerViewAdapter(Context context, List<HomeCard> homeCards) {
         this.context = context;

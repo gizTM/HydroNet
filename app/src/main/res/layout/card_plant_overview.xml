@@ -4,14 +4,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-        android:id="@+id/plant_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="0.5"
-        android:text="1."
-        android:textSize="@dimen/txt_list_item" />
-    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
         android:id="@+id/plant_name"
         android:scrollHorizontally="true"
         android:ellipsize="end"
@@ -27,7 +19,7 @@
         android:layout_gravity="center"
         android:textSize="@dimen/txt_list_item"
         android:gravity="center"
-        android:text="x4"
+        android:text="4"
         android:textColor="@color/green"
         android:layout_width="0dp"
         android:layout_height="wrap_content"/>
@@ -37,7 +29,7 @@
         android:layout_gravity="center"
         android:textSize="@dimen/txt_list_item"
         android:gravity="center"
-        android:text="x2"
+        android:text="2"
         android:textColor="@color/blue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"/>
@@ -47,7 +39,7 @@
         android:layout_gravity="center"
         android:textSize="@dimen/txt_list_item"
         android:gravity="center"
-        android:text="x0"
+        android:text="0"
         android:textColor="@color/red"
         android:layout_width="0dp"
         android:layout_height="wrap_content"/>
@@ -58,7 +50,7 @@
         app:textStyle="bold"
         android:textSize="@dimen/txt_list_item"
         android:gravity="center"
-        android:text="x6"
+        android:text="6"
         android:layout_width="0dp"
         android:layout_height="wrap_content"/>
 </LinearLayout>

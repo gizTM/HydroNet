@@ -9,15 +9,15 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.github.kevinsawicki.timeago.TimeAgo;
-import com.senior.gizgiz.hydronet.Adapter.GridViewAdapter.PlantAdapter;
-import com.senior.gizgiz.hydronet.Entity.Item;
 import com.senior.gizgiz.hydronet.Entity.Notification;
-import com.senior.gizgiz.hydronet.Entity.SystemDefaultPlant;
+import com.senior.gizgiz.hydronet.Entity.ProductAnnouncementStory;
+import com.senior.gizgiz.hydronet.Entity.ProgressStory;
+import com.senior.gizgiz.hydronet.Entity.Story;
 import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
+import com.senior.gizgiz.hydronet.HelperClass.RealTimeDBManager;
 import com.senior.gizgiz.hydronet.HelperClass.ResourceManager;
 import com.senior.gizgiz.hydronet.R;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -32,42 +32,22 @@ import java.util.Random;
 public class NotificationAdapter extends BaseAdapter {
     private Context context;
     private List<Notification> notificationList;
-    public static List<Notification> exampleCards = new ArrayList<>();
 
-    private static final int TYPE_TRANSACTION = 0;
-    private static final int TYPE_NEGOTIATION_UPDATE = 1;
-    private static final int TYPE_SENSOR_WARNING = 2;
-    private static final int TYPE_FARM_WEEKLY = 3;
-    private static final int TYPE_SYSTEM_PLANT = 4;
-    private static final int TYPE_SYSTEM_ITEM = 5;
-    private static final int TYPE_MAX_COUNT = TYPE_SYSTEM_ITEM + 1;
-
-    private static final Map<Integer,String> TYPE = new HashMap<Integer, String>() {{
-        put(TYPE_TRANSACTION,"general");
-        put(TYPE_FARM_WEEKLY,"progress");
-        put(TYPE_SYSTEM_PLANT,"sale");
-    }};
+    public static final int TYPE_SENSOR_WARNING = 0;
+    public static final int TYPE_STORY = 1;
+    public static final int TYPE_NEGOTIATION_UPDATE = 2;
+    public static final int TYPE_FARM_WEEKLY = 3;
+    public static final int TYPE_SYSTEM_PLANT = 4;
+    public static final int TYPE_SYSTEM_ITEM = 5;
+    public static final int TYPE_MAX_COUNT = TYPE_SYSTEM_ITEM + 1;
 
     private static Date createMockTimeStamp() {
         Random rand = new Random();
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.YEAR, rand.nextInt(1)+2018);
-        cal.set(Calendar.MONTH, rand.nextInt(1)+2);
+        cal.set(Calendar.MONTH, rand.nextInt(1)+5);
         cal.set(Calendar.DAY_OF_MONTH, rand.nextInt(31)+1);
         return cal.getTime();
-    }
-
-    static {
-        exampleCards.add(new Notification("n1", TYPE_SYSTEM_PLANT,createMockTimeStamp(), PlantAdapter.systemPlants.get(3)));
-        exampleCards.add(new Notification("n2", TYPE_FARM_WEEKLY,createMockTimeStamp()));
-        exampleCards.add(new Notification("n3", TYPE_TRANSACTION,createMockTimeStamp(), StoryAdapter.stories.get(0)));
-        exampleCards.add(new Notification("n4", TYPE_SENSOR_WARNING,createMockTimeStamp()));
-        exampleCards.add(new Notification("n5", TYPE_SYSTEM_ITEM,createMockTimeStamp(),
-                new Item("m3","A & B fertilizer",200,"already formulated A and B fertilizer for hydroponics;" +
-                        "mix 5cc. each with 1L water;put A in for 4-6 hours then mix B")));
-        exampleCards.add(new Notification("n6", TYPE_NEGOTIATION_UPDATE,createMockTimeStamp(), StoryAdapter.stories.get(0)));
-        exampleCards.add(new Notification("n7", TYPE_TRANSACTION,createMockTimeStamp(), StoryAdapter.stories.get(0)));
-        exampleCards.add(new Notification("n8", TYPE_SYSTEM_PLANT,createMockTimeStamp(), new SystemDefaultPlant("apple")));
     }
 
     public NotificationAdapter(Context context,List<Notification> notifications) {
@@ -104,68 +84,79 @@ public class NotificationAdapter extends BaseAdapter {
 
     private class ViewHolder {
         private CustomTextView message,timestamp;
-        private ImageView img;
+        private ImageView img,read;
 
         public ViewHolder(View view) {
             this.img = view.findViewById(R.id.notification_img);
             this.message = view.findViewById(R.id.notification_message);
             this.timestamp = view.findViewById(R.id.notification_timestamp);
+            this.read = view.findViewById(R.id.read);
         }
 
         public void bind(int position,int type) {
             Notification card = notificationList.get(position);
+            read.setVisibility(card.isRead()?View.INVISIBLE:View.VISIBLE);
             switch (type) {
-                case TYPE_TRANSACTION :
-                    Glide.with(context).
-                            load(ResourceManager.getDrawableID(context,"ic_plant_".concat(card.getStory().getMentionedPlant().getName())))
-                            .fitCenter()
-                            .into(img);
-                    card.setMessage("You have bought ".concat(card.getStory().getMentionedPlant().getName()));
+                case TYPE_STORY:
+                    if(card.getStoryType()==0) {
+                        Story story = card.getStory();
+                        Glide.with(context).load(ResourceManager.getDrawableID(context, "ic_plant_".concat(
+                                (story.getMentionedPlantType() == 0) ? story.getMentionedPlant().getName() : story.getMentionedUserPlant().getName())))
+                                .fitCenter().into(img);
+                    } else if(card.getStoryType()==1) {
+                        ProgressStory story = card.getProgressStory();
+                        Glide.with(context)
+                                .load(ResourceManager.getDrawableID(context,"ic_plant_".concat(story.getMentionedUserPlant().getName())))
+                                .fitCenter()
+                                .into(img);
+                    } else {
+                        ProductAnnouncementStory story = card.getSaleStory();
+                        Glide.with(context)
+                                .load(ResourceManager.getDrawableID(context,"ic_plant_".concat(story.getMentionedUserPlant().getName())))
+                                .fitCenter()
+                                .into(img);
+                    }
                     break;
                 case TYPE_SENSOR_WARNING :
                     Glide.with(context).
                             load(ResourceManager.getDrawableID(context,"ic_warning"))
                             .fitCenter()
                             .into(img);
-                    card.setMessage("There is problem with your sensor.\nCheck the farm!");
+//                    card.setMessage("There is problem with your sensor.\nCheck the farm!");
                     break;
                 case TYPE_FARM_WEEKLY :
                     Glide.with(context).
                             load(ResourceManager.getDrawableID(context,"ic_warning"))
                             .fitCenter()
                             .into(img);
-                    card.setMessage("Another week has passed\nDo you still want to continue?");
+//                    card.setMessage("Another week has passed\nDo you still want to continue?");
                     break;
                 case TYPE_NEGOTIATION_UPDATE :
                     Glide.with(context).
                             load(ResourceManager.getDrawableID(context,"ic_plant_".concat(card.getStory().getMentionedPlant().getName())))
                             .fitCenter()
                             .into(img);
-                    card.setMessage("Negotiation is updated!\nCheck the story!");
+//                    card.setMessage("Negotiation is updated!\nCheck the story!");
                     break;
                 case TYPE_SYSTEM_PLANT :
                     Glide.with(context).
                             load(ResourceManager.getDrawableID(context,"ic_plant_".concat(card.getPlant().getName())))
                             .fitCenter()
                             .into(img);
-                    card.setMessage("New system default plant is added!\nCheck it out!");
+//                    card.setMessage("New system default plant is added!\nCheck it out!");
                     break;
                 case TYPE_SYSTEM_ITEM :
                     Glide.with(context).
                             load(ResourceManager.getDrawableID(context,"ic_".concat(card.getItem().getId())))
                             .fitCenter()
                             .into(img);
-                    card.setMessage("New item is added!\n Check it out!");
+//                    card.setMessage("New item is added!\n Check it out!");
                     break;
                 default:
             }
             message.setText(card.getMessage());
-            Date cardTime = card.getTimeStamp();
-            TimeAgo time = new TimeAgo();
-            if(cardTime.before(Calendar.getInstance().getTime()))
-                timestamp.setText(time.timeAgo(cardTime.getTime()));
-            else timestamp.setText(time.timeUntil(cardTime.getTime()));
-//            timestamp.append(" - "+DateFormat.getDateInstance(DateFormat.SHORT, new Locale("th","TH")).format(cardTime));
+            String cardTime = card.getTimeStamp();
+            timestamp.setText(new TimeAgo().timeAgo(Long.valueOf(cardTime)));
         }
     }
 }

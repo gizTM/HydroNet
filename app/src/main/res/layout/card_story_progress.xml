@@ -39,17 +39,37 @@
             android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="wrap_content">
-            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-                android:id="@+id/owner_username"
-                android:layout_marginEnd="@dimen/margin_separator"
-                android:text="@string/signup_user"
-                app:textStyle="bold"
-                android:scrollHorizontally="true"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textSize="@dimen/txt_list_item"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                    android:id="@+id/owner_username"
+                    android:layout_gravity="center"
+                    android:text="@string/signup_user"
+                    app:textStyle="bold"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textSize="@dimen/txt_list_item"
+                    android:layout_weight="3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                    android:id="@+id/post_date"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/gray"
+                    android:text="1s"
+                    android:gravity="end"
+                    android:layout_weight="3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <ImageView android:id="@+id/btn_option"
+                    android:src="@drawable/ic_option"
+                    android:layout_weight="0.7"
+                    android:rotation="90"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
             <LinearLayout android:id="@+id/detail_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -101,6 +121,7 @@
                 </TableLayout>
                 <ImageView android:id="@+id/btn_show_grow_stat"
                     android:src="@drawable/ic_stat"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />
@@ -135,12 +156,11 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <LinearLayout android:id="@+id/btn_try"
-            android:layout_weight="1"
+        <LinearLayout android:layout_weight="1"
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <ImageView android:id="@+id/btn_try_img"
+            <ImageView android:id="@+id/btn_try"
                 android:src="@drawable/ic_try"
                 android:background="@color/transparent"
                 android:layout_width="wrap_content"
@@ -150,32 +170,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-        <LinearLayout android:id="@+id/btn_like"
-            android:layout_weight="1"
+        <LinearLayout android:layout_weight="1"
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <ImageView android:id="@+id/btn_like_img"
+            <ImageView android:id="@+id/btn_like"
                 android:src="@drawable/ic_like"
                 android:background="@color/transparent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
                 android:id="@+id/like_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout android:id="@+id/btn_share"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <ImageView android:src="@drawable/ic_share"
-                android:background="@color/transparent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-                android:id="@+id/share_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

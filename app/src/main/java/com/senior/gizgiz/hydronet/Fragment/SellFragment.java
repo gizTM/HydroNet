@@ -1,13 +1,16 @@
 package com.senior.gizgiz.hydronet.Fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.senior.gizgiz.hydronet.Adapter.ListViewAdapter.SoldItemAdapter;
+import com.senior.gizgiz.hydronet.HelperClass.ResourceManager;
 import com.senior.gizgiz.hydronet.R;
 
 /**
@@ -17,6 +20,7 @@ import com.senior.gizgiz.hydronet.R;
 public class SellFragment extends Fragment {
     private ListView soldList;
     private SoldItemAdapter soldItemAdapter;
+    private LinearLayout emptyState;
 
     public SellFragment() {  }
 
@@ -31,5 +35,6 @@ public class SellFragment extends Fragment {
         soldList = view.findViewById(R.id.simple_list);
         soldItemAdapter = new SoldItemAdapter(getContext(),SoldItemAdapter.exampleCards);
         soldList.setAdapter(soldItemAdapter);
+        emptyState = view.findViewById(R.id.empty_state);
     }
 }

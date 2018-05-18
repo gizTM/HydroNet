@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <TableLayout android:id="@+id/popup_to_grow"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin_popup"
+        android:padding="@dimen/padding_so_small"
+        android:background="@drawable/bg_frame_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableRow>
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:layout_gravity="center"
+                android:text="water level"/>
+            <lecho.lib.hellocharts.view.LineChartView
+                android:id="@+id/story_stat_water"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="50dp"/>
+        </TableRow>
+        <TableRow>
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:layout_gravity="center"
+                android:text="ph level"/>
+            <lecho.lib.hellocharts.view.LineChartView
+                android:id="@+id/story_stat_ph"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="50dp"/>
+        </TableRow>
+        <TableRow>
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:layout_gravity="center"
+                android:text="ec level"/>
+            <lecho.lib.hellocharts.view.LineChartView
+                android:id="@+id/story_stat_ec"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="50dp"/>
+        </TableRow>
+    </TableLayout>

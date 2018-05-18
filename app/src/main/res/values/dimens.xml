@@ -2,27 +2,41 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="titleSize">25dp</dimen>
-    <dimen name="page_title">25sp</dimen>
+    <dimen name="titleSize">20sp</dimen>
+    <dimen name="page_title">20sp</dimen>
 
     <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
          https://developer.android.com/design/patterns/navigation-drawer.html -->
     <dimen name="navigation_drawer_width">240dp</dimen>
 
+    <dimen name="padding_so_so_small">3dp</dimen>
     <dimen name="padding_so_small">5dp</dimen>
     <dimen name="padding_small">16dp</dimen>
-    <dimen name="padding_medium">20dp</dimen>
+    <dimen name="padding_medium">24dp</dimen>
+    <dimen name="padding_big">30dp</dimen>
     <dimen name="sub_btn_padding">15dp</dimen>
+    <dimen name="padding_list_content_with_icon">72dp</dimen>
 
     <!--font size-->
     <dimen name="modal_title">30sp</dimen>
-    <dimen name="label">20sp</dimen>
-    <dimen name="num_label">28dp</dimen>
-    <dimen name="badge_label">18sp</dimen>
-    <dimen name="submenu_label">17sp</dimen>
-    <dimen name="txt_list_item">18sp</dimen>
+    <dimen name="label">16sp</dimen>
+    <dimen name="num_label">20sp</dimen>
+    <dimen name="badge_label">15sp</dimen>
+    <dimen name="submenu_label">15sp</dimen>
+    <dimen name="txt_list_item">17sp</dimen>
+    <dimen name="big_label">30sp</dimen>
     <dimen name="big_badge_label">45sp</dimen>
+    <dimen name="medium_text">14sp</dimen>
+    <dimen name="small_text">10sp</dimen>
+    <dimen name="active_bottom_nav_font">14sp</dimen>
+    <dimen name="inactive_bottom_nav_font">12sp</dimen>
 
+    <dimen name="bottom_nav_icon_size">24dp</dimen>
+    <dimen name="bottom_nav_height">56dp</dimen>
+    <dimen name="active_bottom_nav_top_padding">6dp</dimen>
+    <dimen name="inactive_bottom_nav_top_padding">8dp</dimen>
+    <dimen name="bottom_nav_bottom_padding">10dp</dimen>
+    <dimen name="bottom_nav_side_padding">12dp</dimen>
     <dimen name="sub_btn_padding_small">3dp</dimen>
     <dimen name="sub_btn_margin_vertical">10dp</dimen>
     <dimen name="sub_btn_margin_horizontal">15dp</dimen>
@@ -35,8 +49,8 @@
     <dimen name="modal_subtitle">21sp</dimen>
     <dimen name="at_sign">35dp</dimen>
     <dimen name="ic_map">20dp</dimen>
-    <dimen name="value_stepper_width">30dp</dimen>
-    <dimen name="stepper_btn">25dp</dimen>
+    <dimen name="value_stepper_width">40dp</dimen>
+    <dimen name="stepper_btn">35dp</dimen>
     <dimen name="badge">30dp</dimen>
     <dimen name="margin_separator">10dp</dimen>
     <dimen name="tag_height">30dp</dimen>
@@ -46,3 +60,4 @@
     <dimen name="item_divider">8dp</dimen>
 
 </resources>
+

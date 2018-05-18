@@ -5,9 +5,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.senior.gizgiz.hydronet.Adapter.ListViewAdapter.BoughtItemAdapter;
+import com.senior.gizgiz.hydronet.HelperClass.ResourceManager;
 import com.senior.gizgiz.hydronet.R;
 
 /**
@@ -17,6 +20,7 @@ import com.senior.gizgiz.hydronet.R;
 public class BuyFragment extends Fragment {
     private ListView boughtList;
     private BoughtItemAdapter boughtItemAdapter;
+    private LinearLayout emptyState;
 
     public BuyFragment() {  }
 
@@ -31,5 +35,6 @@ public class BuyFragment extends Fragment {
         boughtList = view.findViewById(R.id.simple_list);
         boughtItemAdapter = new BoughtItemAdapter(getContext(),BoughtItemAdapter.exampleCards);
         boughtList.setAdapter(boughtItemAdapter);
+        emptyState = view.findViewById(R.id.empty_state);
     }
 }

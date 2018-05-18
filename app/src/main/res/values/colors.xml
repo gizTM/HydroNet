@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#fafafa</color>
+    <color name="colorPrimary">#aaaaaa</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#dadada</color>
 
@@ -20,10 +20,13 @@
     <color name="badge_gray">#5f5f5f</color>
     <color name="bg_nav_menu">#ebebeb</color>
     <color name="blue">#0000ff</color>
+    <color name="cobalt_blue">#0844a4</color>
+    <color name="denim_blue">#0c59cf</color>
+    <color name="blue_ribbon">#1464f6</color>
     <color name="btn_fb">#3d8af7</color>
     <color name="tint_add">#ff1da1f2</color>
     <color name="btn_gg">#ff5d55</color>
-    <color name="red">#ff3823</color>
+    <color name="red">#E01600</color>
 
     <color name="app_bg">#fafafa</color>
 
@@ -38,5 +41,8 @@
     <color name="tundora_gray">#444444</color>
     <color name="mine_shaft_gray">#232323</color>
 
-    <color name="dim_alto_gray">#d6d6d6d6</color>
+    <color name="dim_gray">#55929292</color>
+    <color name="dim_alto_gray">#bbd6d6d6</color>
+    <color name="blur_gray">#55606060</color>
+    <color name="dim_green">#5572bb53</color>
 </resources>

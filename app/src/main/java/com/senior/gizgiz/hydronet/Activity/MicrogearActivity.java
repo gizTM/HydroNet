@@ -1,5 +1,6 @@
 package com.senior.gizgiz.hydronet.Activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Message;
@@ -19,6 +20,7 @@ public class MicrogearActivity extends Activity {
     protected String SECRET = "lZWJRzMSIrfOuiDt4C68VKjlb";  //SECRET
     protected String ALIAS = "android";
 
+    @SuppressLint("HandlerLeak")
     protected Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {

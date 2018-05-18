@@ -1,136 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/app_bg"
     android:orientation="vertical"
-    android:paddingStart="@dimen/padding_so_small"
-    android:paddingEnd="@dimen/padding_so_small"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <RelativeLayout android:id="@+id/sensor_popup"
-        android:padding="10dp"
-        android:orientation="vertical"
-        android:background="@drawable/bg_frame_transparent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageButton android:id="@+id/btn_close_warning"
-            android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_close"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:background="@drawable/bg_frame_transparent"
+        android:orientation="vertical"
+        android:padding="10dp">
+        <ImageButton
+            android:id="@+id/btn_close_warning"
             android:layout_width="15dp"
-            android:layout_height="15dp" />
-        <LinearLayout android:id="@+id/label_group"
+            android:layout_height="15dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_close" />
+        <LinearLayout
+            android:id="@+id/label_group"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
+
             <ImageView
-                android:layout_weight="2"
-                android:src="@drawable/ic_danger"
                 android:layout_width="50dp"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                android:layout_weight="2"
+                android:src="@drawable/ic_danger" />
+
             <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-                android:layout_weight="4"
-                android:textStyle="bold"
-                android:textSize="@dimen/submenu_label"
                 android:layout_width="200dp"
-                android:layout_gravity="center"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="4"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
+                android:text="@string/msg_warning"
                 android:textAlignment="center"
-                custom:textStyle="bold"
-                android:text="@string/msg_warning" />
+                android:textSize="@dimen/submenu_label"
+                android:textStyle="bold"
+                app:textStyle="bold" />
         </LinearLayout>
-        <LinearLayout android:id="@+id/warning_sensor_group"
-            android:orientation="horizontal"
+
+        <LinearLayout
+            android:id="@+id/warning_sensor_group"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/label_group"
             android:layout_weight="3"
             android:gravity="center"
-            android:layout_below="@id/label_group"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <LinearLayout android:id="@+id/warning_sensor_water"
-                android:gravity="center"
-                android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/warning_sensor_water"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <LinearLayout android:background="@drawable/bg_frame_sensor"
-                    android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
+                    android:background="@drawable/bg_frame_sensor"
+                    android:padding="10dp">
+
                     <ImageView
-                        android:src="@drawable/ic_sensor_water"
                         android:layout_width="30dp"
-                        android:layout_height="30dp" />
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_sensor_water" />
+
                     <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-                        android:text="72%"
-                        android:layout_marginLeft="10dp"
-                        android:layout_gravity="center"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:text="72%" />
                 </LinearLayout>
             </LinearLayout>
-            <LinearLayout android:id="@+id/waring_sensor_ph"
-                android:layout_weight="1"
-                android:gravity="center"
+
+            <LinearLayout
+                android:id="@+id/waring_sensor_ph"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
                 <LinearLayout
-                    android:background="@drawable/bg_frame_sensor"
-                    android:padding="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
+                    android:background="@drawable/bg_frame_sensor"
+                    android:padding="10dp">
+
                     <ImageView
-                        android:src="@drawable/ic_sensor_ph"
                         android:layout_width="30dp"
-                        android:layout_height="30dp" />
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_sensor_ph" />
+
                     <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-                        android:text="72%"
-                        android:layout_marginLeft="10dp"
-                        android:layout_gravity="center"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:text="72%" />
                 </LinearLayout>
             </LinearLayout>
-            <LinearLayout android:id="@+id/warning_sensor_ec"
-                android:layout_weight="1"
-                android:gravity="center"
+
+            <LinearLayout
+                android:id="@+id/warning_sensor_ec"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
                 <LinearLayout
-                    android:background="@drawable/bg_frame_sensor"
-                    android:padding="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
+                    android:background="@drawable/bg_frame_sensor"
+                    android:padding="10dp">
+
                     <ImageView
-                        android:src="@drawable/ic_sensor_ec"
                         android:layout_width="30dp"
-                        android:layout_height="30dp" />
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_sensor_ec" />
+
                     <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-                        android:text="72%"
-                        android:layout_marginLeft="10dp"
-                        android:layout_gravity="center"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:text="72%" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
-    <View android:layout_width="match_parent"
-        android:layout_height="@dimen/padding_so_small" />
-    <!--<android.support.v7.widget.RecyclerView android:id="@+id/history_list"-->
-        <!--android:scrollbars="vertical"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"/>-->
-    <ListView android:id="@+id/history_list"
-        android:divider="@null"
-        android:dividerHeight="@dimen/item_divider"
+    <LinearLayout android:orientation="horizontal"
+        android:padding="@dimen/padding_small"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content">
+        <RadioGroup android:id="@+id/toggle_grow_harvested"
+            android:layout_weight="3"
+            android:checkedButton="@+id/growing"
+            android:background="@drawable/bg_btn_toggle"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/growing"
+                android:background="@drawable/bg_toggle_widget"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="@dimen/padding_so_small"
+                android:button="@null"
+                android:gravity="center"
+                android:text="Growing"
+                android:textColor="@color/white" />
+            <RadioButton android:id="@+id/harvested"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:padding="@dimen/padding_so_small"
+                android:layout_weight="1"
+                android:background="@drawable/bg_toggle_widget"
+                android:button="@null"
+                android:gravity="center"
+                android:text="Harvested"
+                android:textColor="@color/white" />
+        </RadioGroup>
+        <View android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:layout_weight=".5"
+            android:text="Filter"
+            android:visibility="gone"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <RelativeLayout
+        android:paddingStart="@dimen/padding_so_small"
+        android:paddingEnd="@dimen/padding_so_small"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/history_detail_swipe_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ListView android:id="@+id/history_list"
+                android:divider="@null"
+                android:dividerHeight="@dimen/item_divider"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <!--<android.support.v7.widget.RecyclerView android:id="@+id/history_list"-->
+            <!--android:scrollbars="vertical"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"/>-->
+        </android.support.v4.widget.SwipeRefreshLayout>
+        <ImageView android:id="@+id/empty_state_history"
+            android:src="@drawable/empty_state_history"
+            android:visibility="gone"
+            android:padding="@dimen/margin_popup"
+            android:layout_centerInParent="true"
+            android:background="@color/app_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
 </LinearLayout>

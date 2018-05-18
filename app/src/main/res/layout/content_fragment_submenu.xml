@@ -4,18 +4,57 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <android.support.design.widget.TabLayout android:id="@+id/sliding_tab"
-        app:tabBackground="@drawable/selector_tab"
-        app:tabIndicatorColor="@color/transparent"
-        android:layout_weight="1"
-        android:layout_marginLeft="@dimen/tab_margin"
-        android:layout_marginRight="@dimen/tab_margin"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-
-    <android.support.v4.view.ViewPager android:id="@+id/fragment_viewpager"
-        android:layout_weight="3"
+    <LinearLayout android:id="@+id/top_layout"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/padding_small"
+        android:layout_marginTop="@dimen/padding_so_small"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:layout_height="wrap_content">
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/sub_page_title"
+            android:layout_gravity="center"
+            android:text="Statistics"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textStyle="bold"
+            android:textSize="@dimen/big_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <!--<android.support.design.widget.TabLayout-->
+            <!--android:id="@+id/sliding_tab"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:clipToPadding="true"-->
+            <!--android:paddingLeft="24dp"-->
+            <!--android:paddingRight="24dp"-->
+            <!--app:stl_indicatorAlwaysInCenter="true"-->
+            <!--app:stl_defaultTabTextColor="@color/scorpion_gray"-->
+            <!--app:stl_defaultTabTextHorizontalPadding="24dp"-->
+            <!--app:stl_dividerColor="@color/transparent"-->
+            <!--app:stl_dividerThickness="0dp"-->
+            <!--app:stl_indicatorColor="@color/green"-->
+            <!--app:stl_indicatorCornerRadius="18dp"-->
+            <!--app:stl_indicatorGravity="bottom"-->
+            <!--app:stl_indicatorInterpolation="smart"-->
+            <!--app:stl_indicatorThickness="3dp"-->
+            <!--app:stl_underlineColor="@color/transparent"-->
+            <!--app:tabBackground="@drawable/selector_tab"-->
+            <!--app:stl_underlineThickness="0dp" />-->
+        <android.support.design.widget.TabLayout
+            android:id="@+id/sliding_tab"
+            android:layout_marginStart="@dimen/padding_small"
+            android:layout_marginEnd="@dimen/padding_small"
+            android:layout_gravity="center"
+            app:tabMode="scrollable"
+            app:tabGravity="center"
+            app:tabPadding="0dp"
+            app:tabIndicatorColor="@color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/fragment_viewpager"
+        app:layout_constraintTop_toBottomOf="@id/top_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

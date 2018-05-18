@@ -3,19 +3,13 @@
     <item android:id="@+id/home"
         android:title="@string/menu_home"
         android:icon="@drawable/ic_action_home"/>
-    <item android:id="@+id/my_plant"
-        android:title="@string/menu_home"
-        android:icon="@drawable/ic_action_home"/>
-    <item android:id="@+id/community"
-        android:title="@string/menu_home"
-        android:icon="@drawable/ic_action_home"/>
     <item android:id="@+id/feed"
-        android:title="@string/menu_home"
-        android:icon="@drawable/ic_action_home"/>
-    <item android:id="@+id/trading"
-        android:title="@string/menu_home"
-        android:icon="@drawable/ic_action_home"/>
-    <item android:id="@+id/netpie_console"
-        android:title="@string/menu_home"
-        android:icon="@drawable/ic_action_home"/>
+        android:title="@string/menu_feed"
+        android:icon="@drawable/ic_action_community"/>
+    <item android:id="@+id/notification"
+        android:title="@string/menu_notification"
+        android:icon="@drawable/ic_action_notification"/>
+    <item android:id="@+id/user"
+        android:title="@string/menu_user"
+        android:icon="@drawable/ic_action_user"/>
 </menu>

@@ -47,22 +47,25 @@ public class CustomTextView extends AppCompatTextView {
 
     private void init(int fontAttr) {
         String fontStyle = "Regular";
-        if (fontAttr==0) fontStyle="Regular";
+        if (fontAttr==0) fontStyle="Regular"; //regular
         else if (fontAttr==1) fontStyle = "ExtraLight";
-        else if (fontAttr==2) fontStyle = "Light";
+        else if (fontAttr==2) fontStyle = "Light"; //light
         else if (fontAttr==3) fontStyle = "Medium";
-        else if (fontAttr==4) fontStyle = "Bold";
+        else if (fontAttr==4) fontStyle = "Bold"; //bold
         else if (fontAttr==5) fontStyle = "SemiBold";
         else if (fontAttr==6) fontStyle = "Thin";
-        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"fonts/AdventPro/AdventPro-"+fontStyle+".ttf");
+//        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"fonts/AdventPro/AdventPro-"+fontStyle+".ttf");
 //        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"fonts/NotoSansDisplay-hinted/NotoSansDisplay-"+fontStyle+".ttf");
+        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"fonts/Roboto/Roboto-"+fontStyle+".ttf");
         setTypeface(tf);
         invalidate();
         requestLayout();
     }
 
     public void setStyle(String fontStyle) {
-        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"fonts/AdventPro/AdventPro-"+fontStyle+".ttf");
+//        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"fonts/AdventPro/AdventPro-"+fontStyle+".ttf");
+//        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"fonts/NotoSansDisplay-hinted/NotoSansDisplay-"+fontStyle+".ttf");
+        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"fonts/Roboto/Roboto-"+fontStyle+".ttf");
         setTypeface(tf);
         invalidate();
         requestLayout();

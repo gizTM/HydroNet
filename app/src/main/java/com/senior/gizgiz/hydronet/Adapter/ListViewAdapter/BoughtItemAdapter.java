@@ -1,7 +1,6 @@
 package com.senior.gizgiz.hydronet.Adapter.ListViewAdapter;
 
 import android.content.Context;
-import android.text.SpannableStringBuilder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +16,10 @@ import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.HelperClass.ResourceManager;
 import com.senior.gizgiz.hydronet.R;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Random;
 
 /**
@@ -44,17 +41,17 @@ public class BoughtItemAdapter extends BaseAdapter {
     }
 
     static {
-        exampleCards.add(new ExchangeTransaction("b1", (UserPlant)PlantAdapter.exampleUserPlants.get(0),3,
+        exampleCards.add(new ExchangeTransaction("b1", (UserPlant)PlantAdapter.exampleCards.get(0),3,
                 new User("gizgiz"), new User("fernfern"),100,createMockTimeStamp()));
-        exampleCards.add(new ExchangeTransaction("b2", (UserPlant)PlantAdapter.exampleUserPlants.get(1),4,
+        exampleCards.add(new ExchangeTransaction("b2", (UserPlant)PlantAdapter.exampleCards.get(1),4,
                 new User("gizgiz"), new User("fernfern"),90,createMockTimeStamp()));
-        exampleCards.add(new ExchangeTransaction("b3", (UserPlant)PlantAdapter.exampleUserPlants.get(2),9,
+        exampleCards.add(new ExchangeTransaction("b3", (UserPlant)PlantAdapter.exampleCards.get(2),9,
                 new User("gizgiz"), new User("fernfern"),120,createMockTimeStamp()));
-        exampleCards.add(new ExchangeTransaction("b4", (UserPlant)PlantAdapter.exampleUserPlants.get(3),2,
+        exampleCards.add(new ExchangeTransaction("b4", (UserPlant)PlantAdapter.exampleCards.get(3),2,
                 new User("gizgiz"), new User("fernfern"),50,createMockTimeStamp()));
-        exampleCards.add(new ExchangeTransaction("b5", (UserPlant)PlantAdapter.exampleUserPlants.get(4),2,
+        exampleCards.add(new ExchangeTransaction("b5", (UserPlant)PlantAdapter.exampleCards.get(4),2,
                 new User("gizgiz"), new User("fernfern"),110,createMockTimeStamp()));
-        exampleCards.add(new ExchangeTransaction("b6", (UserPlant)PlantAdapter.exampleUserPlants.get(5),2,
+        exampleCards.add(new ExchangeTransaction("b6", (UserPlant)PlantAdapter.exampleCards.get(5),2,
                 new User("gizgiz"), new User("fernfern"),70,createMockTimeStamp()));
     }
 

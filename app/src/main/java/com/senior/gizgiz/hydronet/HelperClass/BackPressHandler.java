@@ -1,7 +1,7 @@
 package com.senior.gizgiz.hydronet.HelperClass;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import android.app.Fragment;
+import android.app.FragmentManager;
 
 import com.senior.gizgiz.hydronet.Listener.OnBackPressListener;
 
@@ -28,14 +28,16 @@ public class BackPressHandler implements OnBackPressListener {
         } else {
             // get the child Fragment
             FragmentManager childFragmentManager = parentFragment.getChildFragmentManager();
-            OnBackPressListener childFragment = (OnBackPressListener) childFragmentManager.getFragments().get(0);
-            // propagate onBackPressed method call to the child Fragment
-            if (!childFragment.onBackPressed()) {
-                // child Fragment was unable to handle the task
-                // It could happen when the child Fragment is last last leaf of a chain
-                // removing the child Fragment from stack
-                childFragmentManager.popBackStackImmediate();
-
+            OnBackPressListener childFragment = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                childFragment = (OnBackPressListener) childFragmentManager.getFragments().get(0);
+                // propagate onBackPressed method call to the child Fragment
+                if (!childFragment.onBackPressed()) {
+                    // child Fragment was unable to handle the task
+                    // It could happen when the child Fragment is last last leaf of a chain
+                    // removing the child Fragment from stack
+                    childFragmentManager.popBackStackImmediate();
+                }
             }
             // either this Fragment or its child handled the task
             // either way we are successful and done here

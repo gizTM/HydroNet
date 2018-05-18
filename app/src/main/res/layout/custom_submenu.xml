@@ -3,49 +3,35 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <!--<LinearLayout android:id="@+id/btn_first_group"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_weight="1">-->
-        <LinearLayout android:id="@+id/btn_first"
-            android:layout_weight="1"
+    <LinearLayout android:id="@+id/btn_first"
+        android:layout_weight="1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center">
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/btn_first_label"
+            android:text="@string/menu_sub_summary"
+            android:textSize="@dimen/submenu_label"
+            android:gravity="center"
+            android:textColor="@color/gray"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="center">
-            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-                android:id="@+id/btn_first_label"
-                android:text="@string/menu_sub_summary"
-                android:textSize="@dimen/submenu_label"
-                android:gravity="center"
-                android:textColor="@color/gray"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"/>
-        </LinearLayout>
-    <!--</LinearLayout>-->
-    <!--<LinearLayout android:id="@+id/btn_second_group"-->
-        <!--android:layout_weight="1"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
-        <LinearLayout android:id="@+id/btn_second"
-            android:layout_weight="1"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="center">
-            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-                android:id="@+id/btn_second_label"
-                android:text="@string/menu_sub_part"
-                android:textSize="@dimen/submenu_label"
-                android:gravity="center"
-                android:textColor="@color/gray"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"/>
-        </LinearLayout>
-    <!--</LinearLayout>-->
-    <!--<LinearLayout android:id="@+id/btn_third_group"-->
-        <!--android:layout_weight="1"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
-        <LinearLayout android:id="@+id/btn_third"
+            android:layout_height="fill_parent"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/btn_second"
+        android:layout_weight="1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center">
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/btn_second_label"
+            android:text="@string/menu_sub_part"
+            android:textSize="@dimen/submenu_label"
+            android:gravity="center"
+            android:textColor="@color/gray"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/btn_third"
             android:layout_weight="1"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -59,5 +45,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"/>
         </LinearLayout>
-    <!--</LinearLayout>-->
+    <LinearLayout android:id="@+id/btn_fourth"
+        android:layout_weight="1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center">
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/btn_fourth_label"
+            android:text="@string/menu_sub_material"
+            android:textSize="@dimen/submenu_label"
+            android:gravity="center"
+            android:textColor="@color/gray"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/btn_fifth"
+        android:layout_weight="1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center">
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/btn_fifth_label"
+            android:text="@string/menu_sub_material"
+            android:textSize="@dimen/submenu_label"
+            android:gravity="center"
+            android:textColor="@color/gray"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"/>
+    </LinearLayout>
 </LinearLayout>

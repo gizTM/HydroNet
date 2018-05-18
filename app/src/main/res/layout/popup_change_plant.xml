@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/dim_bg"
-    android:id="@+id/dim_popup_overlay"
-    android:orientation="vertical">
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="@drawable/dim_bg"-->
+    <!--android:id="@+id/dim_popup_overlay"-->
+    <!--android:orientation="vertical">-->
     <RelativeLayout android:id="@+id/popup_change_content"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_margin="@dimen/margin_popup"
         android:background="@drawable/bg_frame_content"
         android:layout_width="match_parent"
@@ -84,16 +85,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/expand_list_height"
                 android:orientation="vertical">
-                <GridView android:id="@+id/user_plant_list"
-                    android:layout_marginStart="@dimen/padding_small"
-                    android:layout_marginEnd="@dimen/padding_small"
-                    android:columnWidth="70dp"
-                    android:numColumns="auto_fit"
-                    android:verticalSpacing="5dp"
-                    android:horizontalSpacing="5dp"
-                    android:stretchMode="columnWidth"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/expand_list_height"/>
+                    android:layout_height="match_parent">
+                    <GridView android:id="@+id/user_plant_list"
+                        android:layout_marginStart="@dimen/padding_small"
+                        android:layout_marginEnd="@dimen/padding_small"
+                        android:columnWidth="70dp"
+                        android:numColumns="auto_fit"
+                        android:verticalSpacing="5dp"
+                        android:horizontalSpacing="5dp"
+                        android:stretchMode="columnWidth"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/expand_list_height"/>
+                    <LinearLayout android:id="@+id/empty_state_userplant"
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView android:src="@drawable/ic_warning"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                            android:text="@string/label_empty_state"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </RelativeLayout>
             </LinearLayout>
             <View android:id="@+id/separator2"
                 android:layout_width="match_parent"
@@ -136,4 +155,4 @@
                 android:background="@android:color/darker_gray"/>
         </LinearLayout>
     </RelativeLayout>
-</LinearLayout>
+<!--</LinearLayout>-->

@@ -1,85 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/dim_popup_overlay"
-    android:background="@drawable/dim_bg"
+    android:id="@+id/popup_location"
+    android:orientation="vertical"
+    android:background="@color/app_bg"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
-        android:orientation="vertical"
-        android:background="@color/app_bg"
+    android:layout_height="wrap_content">
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:id="@+id/popup_location_label"
+        android:layout_margin="@dimen/margin_separator"
+        android:text="Choose location : "
+        android:layout_gravity="fill_horizontal"
+        android:textSize="@dimen/badge_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <GridView android:id="@+id/location_gridview"
+        android:layout_weight="20"
+        android:layout_marginStart="@dimen/padding_so_small"
+        android:layout_marginEnd="@dimen/padding_so_small"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:horizontalSpacing="5dp"
+        android:verticalSpacing="5dp"
+        android:numColumns="8"/>
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:id="@+id/location_error_field"
+        android:textColor="@color/red"
+        app:textStyle="bold"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/padding_small"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <RelativeLayout android:orientation="horizontal"
+        android:padding="@dimen/padding_small"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-            android:id="@+id/popup_location_label"
-            android:layout_margin="@dimen/margin_separator"
-            android:text="Choose location : "
-            android:layout_gravity="fill_horizontal"
-            android:textSize="@dimen/badge_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <GridView android:id="@+id/location_gridview"
-            android:layout_weight="20"
-            android:layout_marginStart="@dimen/padding_so_small"
+            android:id="@+id/btn_select_all"
+            android:background="@drawable/bg_btn_white"
+            android:layout_alignParentStart="true"
             android:layout_marginEnd="@dimen/padding_so_small"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:horizontalSpacing="5dp"
-            android:verticalSpacing="5dp"
-            android:numColumns="8"/>
-        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-            android:id="@+id/location_error_field"
-            android:textColor="@color/red"
-            app:textStyle="bold"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/padding_small"
-            android:visibility="gone"
+            android:paddingTop="@dimen/padding_so_small"
+            android:paddingBottom="@dimen/padding_so_small"
+            android:paddingLeft="@dimen/padding_small"
+            android:paddingRight="@dimen/padding_small"
+            android:text="@string/label_select_all"
+            android:textSize="@dimen/submenu_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-        <RelativeLayout android:orientation="horizontal"
-            android:padding="@dimen/padding_small"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-                android:id="@+id/btn_select_all"
-                android:background="@drawable/bg_btn_white"
-                android:layout_alignParentStart="true"
-                android:layout_marginEnd="@dimen/padding_so_small"
-                android:paddingTop="@dimen/padding_so_small"
-                android:paddingBottom="@dimen/padding_so_small"
-                android:paddingLeft="@dimen/padding_small"
-                android:paddingRight="@dimen/padding_small"
-                android:text="@string/label_select_all"
-                android:textSize="@dimen/submenu_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-                android:id="@+id/btn_select_none"
-                android:layout_toEndOf="@id/btn_select_all"
-                android:layout_marginStart="@dimen/padding_so_small"
-                android:background="@drawable/bg_btn_white"
-                android:paddingTop="@dimen/padding_so_small"
-                android:paddingBottom="@dimen/padding_so_small"
-                android:paddingLeft="@dimen/padding_small"
-                android:paddingRight="@dimen/padding_small"
-                android:text="@string/label_select_none"
-                android:textSize="@dimen/submenu_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-                android:id="@+id/btn_done"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="@dimen/padding_so_small"
-                android:background="@drawable/bg_btn_white"
-                android:paddingTop="@dimen/padding_so_small"
-                android:paddingBottom="@dimen/padding_so_small"
-                android:paddingLeft="@dimen/padding_small"
-                android:paddingRight="@dimen/padding_small"
-                android:text="@string/label_select_done"
-                android:textSize="@dimen/submenu_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-    </LinearLayout>
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/btn_select_none"
+            android:layout_toEndOf="@id/btn_select_all"
+            android:layout_marginStart="@dimen/padding_so_small"
+            android:background="@drawable/bg_btn_white"
+            android:paddingTop="@dimen/padding_so_small"
+            android:paddingBottom="@dimen/padding_so_small"
+            android:paddingLeft="@dimen/padding_small"
+            android:paddingRight="@dimen/padding_small"
+            android:text="@string/label_select_none"
+            android:textSize="@dimen/submenu_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/btn_done"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/padding_so_small"
+            android:background="@drawable/bg_btn_white"
+            android:paddingTop="@dimen/padding_so_small"
+            android:paddingBottom="@dimen/padding_so_small"
+            android:paddingLeft="@dimen/padding_small"
+            android:paddingRight="@dimen/padding_small"
+            android:text="@string/label_select_done"
+            android:textSize="@dimen/submenu_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
 </LinearLayout>

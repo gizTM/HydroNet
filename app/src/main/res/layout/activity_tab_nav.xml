@@ -4,89 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <FrameLayout android:id="@+id/container"
-        android:layout_above="@id/tabbar"
+        android:layout_above="@id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-    <LinearLayout android:id="@+id/tabbar"
-        android:background="@color/gallery_gray"
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
+        android:background="@color/gallery_gray"
+        app:itemIconTint="@color/bottom_navigation_colors"
+        app:itemTextColor="@color/bottom_navigation_colors"
+        app:menu="@menu/menu_nav"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail
-            android:id="@+id/action_home"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView android:id="@+id/icon_home"
-                android:src="@drawable/ic_action_home"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
-        <com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail
-            android:id="@+id/action_profile"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView android:id="@+id/icon_my_plant"
-                android:src="@drawable/ic_action_my_plant"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
-        <com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail
-            android:id="@+id/action_community"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView android:id="@+id/icon_community"
-                android:src="@drawable/ic_action_community"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
-        <com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail
-            android:id="@+id/action_trade"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView android:id="@+id/icon_trade"
-                android:src="@drawable/ic_action_trade"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
-        <com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail
-            android:id="@+id/action_notification"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView android:id="@+id/icon_notification"
-                android:src="@drawable/ic_action_notification"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
-        <com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail
-            android:id="@+id/action_user"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView android:id="@+id/icon_user"
-                android:src="@drawable/ic_action_user"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
-    </LinearLayout>
-    <RelativeLayout android:id="@+id/fab_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <com.senior.gizgiz.hydronet.HelperClass.CustomFloatingActionButton
-            android:id="@+id/fab_add"
-            app:fab_colorNormal="@color/green"
-            app:fab_colorPressed="@color/dark_green"
-            app:fab_icon="@drawable/ic_add_white_24dp"
-            android:layout_marginBottom="@dimen/fab_margin_bottom"
-            android:layout_marginEnd="@dimen/fab_margin_end"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
+        android:layout_height="@dimen/bottom_nav_height"/>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_add"
+        style="@style/Widget.Design.FloatingActionButton"
+        app:backgroundTint="@color/green"
+        app:rippleColor="@color/dark_green"
+        android:layout_marginBottom="@dimen/fab_margin_bottom"
+        android:layout_marginEnd="@dimen/fab_margin_end"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        app:srcCompat="@drawable/ic_add_white_24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

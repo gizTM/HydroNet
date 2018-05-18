@@ -27,7 +27,7 @@
     <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
         <item name="android:background">@color/app_bg</item>
         <item name="background">@color/app_bg</item>
-        <item name="android:elevation">0dp</item>
+        <item name="android:elevation">1dp</item>
         <item name="elevation">0dp</item>
         <item name="height">60dp</item>
     </style>
@@ -59,9 +59,35 @@
         <item name="material_drawer_header_selection_text">@color/material_drawer_header_selection_text</item>
     </style>
 
+    <!--seekbar theme-->
+    <style name="mySeekBar" parent="Theme.AppCompat.Light">
+        <item name="android:progressTint">@color/green</item>
+        <item name="android:colorControlActivated">@color/dark_green</item>
+        <item name="android:colorControlNormal">@color/tundora_gray</item>
+    </style>
+
+    <style name="myMonthYearDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlActivated">@color/scorpion_gray</item>
+        <item name="textColorAlertDialogListItem">@android:color/white</item>
+        <item name="colorAccent">@color/scorpion_gray</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
     <!--dialog theme-->
     <style name="myDialog" parent="Theme.AppCompat.Dialog">
         <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!--switch theme-->
+    <style name="mySwitch" parent="Theme.AppCompat.Light">
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">@color/green</item>
+        <!-- inactive thumb color -->
+        <item name="colorSwitchThumbNormal">@color/gray</item>
+        <!-- inactive track color (30% transparency) -->
+        <item name="android:colorForeground">#221f1f</item>
     </style>
 
      <!--Splash theme -->

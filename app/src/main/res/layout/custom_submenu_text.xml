@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/btn_group"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <LinearLayout android:id="@+id/btn_first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:id="@+id/btn_first_label"
+        android:text="@string/menu_sub_summary"
+        android:textSize="@dimen/submenu_label"
+        android:gravity="center"
+        android:textColor="@color/gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/btn_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:id="@+id/btn_second_label"
+        android:text="@string/menu_sub_part"
+        android:textSize="@dimen/submenu_label"
+        android:gravity="center"
+        android:textColor="@color/gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/btn_third"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:id="@+id/btn_third_label"
+        android:text="@string/menu_sub_material"
+        android:textSize="@dimen/submenu_label"
+        android:gravity="center"
+        android:textColor="@color/gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>

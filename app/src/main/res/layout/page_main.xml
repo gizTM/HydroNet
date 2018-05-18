@@ -16,35 +16,48 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <!--<TextView-->
-                    <!--android:id="@+id/page_title"-->
-                    <!--android:text="@string/menu_home"-->
-                    <!--android:fontFamily="@font/advert_pro_bold"-->
-                    <!--android:textSize="@dimen/page_title"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"/>-->
                 <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
                     android:id="@+id/page_title"
                     android:text="@string/menu_home"
                     android:textSize="@dimen/page_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
-                <ImageButton android:id="@+id/action_quick_notification"
-                    android:src="@drawable/ic_action_notification"
-                    android:rotation="30"
-                    android:background="@android:color/transparent"
-                    android:scaleType="centerCrop"
-                    android:layout_toLeftOf="@id/action_quick_user"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp" />
-                <ImageButton android:id="@+id/action_quick_user"
-                    android:src="@drawable/ic_action_user"
-                    android:background="@android:color/transparent"
-                    android:scaleType="centerCrop"
-                    android:layout_marginLeft="15dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp" />
+                <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                    android:id="@+id/btn_share"
+                    android:text="Share"
+                    android:textSize="@dimen/submenu_label"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/bg_btn_white"
+                    android:padding="@dimen/padding_so_small"
+                    app:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                    android:id="@+id/btn_start_growing"
+                    android:text="Start growing"
+                    android:textSize="@dimen/submenu_label"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/bg_btn_white"
+                    android:padding="@dimen/padding_so_small"
+                    app:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <!--<ImageButton android:id="@+id/action_quick_notification"-->
+                    <!--android:src="@drawable/ic_action_notification"-->
+                    <!--android:rotation="30"-->
+                    <!--android:background="@android:color/transparent"-->
+                    <!--android:scaleType="centerCrop"-->
+                    <!--android:layout_toStartOf="@id/action_quick_user"-->
+                    <!--android:layout_width="30dp"-->
+                    <!--android:layout_height="30dp" />-->
+                <!--<ImageButton android:id="@+id/action_quick_user"-->
+                    <!--android:src="@drawable/ic_action_user"-->
+                    <!--android:background="@android:color/transparent"-->
+                    <!--android:scaleType="centerCrop"-->
+                    <!--android:layout_marginStart="15dp"-->
+                    <!--android:layout_alignParentEnd="true"-->
+                    <!--android:layout_width="30dp"-->
+                    <!--android:layout_height="30dp" />-->
             </RelativeLayout>
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>

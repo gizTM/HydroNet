@@ -9,8 +9,8 @@ public class HomeCard {
     private String name,location;
     private float health;
 
-    public HomeCard(int id,String name,int count,String location,int date,float health) {
-        this.id = id;
+    public HomeCard(String name,int count,String location,int date,float health) {
+//        this.id = id;
         this.name = name;
         this.count = count;
         this.location = location;

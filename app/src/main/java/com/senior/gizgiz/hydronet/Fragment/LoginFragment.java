@@ -19,8 +19,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.senior.gizgiz.hydronet.Activity.MainActivity;
 import com.senior.gizgiz.hydronet.Activity.MicrogearConsoleActivity;
+import com.senior.gizgiz.hydronet.HelperClass.RealTimeDBManager;
 import com.senior.gizgiz.hydronet.R;
 
 
@@ -68,7 +72,7 @@ public class LoginFragment extends Fragment {
     }
 
     private void login () {
-        String username = usernameET.getText().toString().trim();
+        final String username = usernameET.getText().toString().trim();
         String password = passwordET.getText().toString().trim();
         if(TextUtils.isEmpty(username)) {
             Toast.makeText(getContext(), "Please enter username", Toast.LENGTH_LONG).show();
@@ -87,8 +91,18 @@ public class LoginFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
-                            Toast.makeText(getContext(), "Logged in successfully", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(getContext(), MainActivity.class));
+                            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                            if(currentUser != null) {
+                                Toast.makeText(getContext(), "Logged in successfully", Toast.LENGTH_LONG).show();
+                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                        .setDisplayName(username).build();
+                                currentUser.updateProfile(profileUpdates);
+                                String uid = currentUser.getUid();
+                                String token = FirebaseInstanceId.getInstance().getToken();
+                                RealTimeDBManager.getDatabase().child("users/"+uid+"/notificationTokens").setValue(null);
+                                RealTimeDBManager.getDatabase().child("users/"+uid+"/notificationTokens/"+token).setValue(true);
+                                startActivity(new Intent(getContext(), MainActivity.class));
+                            }
                         } else Toast.makeText(getActivity(), "Could not log in .. Please check and try again...", Toast.LENGTH_LONG).show();
                         loginProgress.dismiss();
                     }

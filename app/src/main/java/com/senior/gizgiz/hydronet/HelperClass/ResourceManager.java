@@ -9,11 +9,19 @@ import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.BulletSpan;
+import android.util.Log;
 
 import com.senior.gizgiz.hydronet.R;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.text.DateFormat;
 import java.text.DateFormatSymbols;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,17 +33,19 @@ import java.util.Locale;
 
 public class ResourceManager {
     private static Locale th = new Locale("th","TH");
+    public static DateFormat noYearFormat = new SimpleDateFormat("d/M",th);
     public static DateFormat shortDateFormat = DateFormat.getDateInstance(DateFormat.SHORT, th);
+    public static DateFormat shortDateFormatForFileName = new SimpleDateFormat("dd-MM-yy",th);
+    public static DateFormat weekFormat = new SimpleDateFormat("w",th);
     public static DateFormat shortDateTimeFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yy", th);
+    public static DecimalFormat twoDecimalPlaceFormat = new DecimalFormat("0.0#");
 
     public static int getDrawableID(Context context,String drawable) {
         return context.getResources().getIdentifier(drawable,"drawable",context.getPackageName());
-//        return resources.getDrawable(resourceId);
     }
 
     public static int getLayoutID(Context context, String layout) {
         return context.getResources().getIdentifier(layout,"layout",context.getPackageName());
-//        return resources.getLayout(resourceId);
     }
 
     public static Drawable getDrawable(Context context, String drawable) {
@@ -74,5 +84,44 @@ public class ResourceManager {
                     textSeparatedByNextLine.indexOf(string) + 1,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
+    }
+
+    public static void writeToFile(String data,Context context,String fileName) {
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput(fileName+".txt", Context.MODE_PRIVATE));
+            outputStreamWriter.write(data);
+            outputStreamWriter.close();
+        }
+        catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
+    }
+
+    public static String readFromFile(Context context,String fileName) {
+        String ret = "";
+        try {
+            InputStream inputStream = context.openFileInput(fileName+".txt");
+
+            if ( inputStream != null ) {
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String receiveString = "";
+                StringBuilder stringBuilder = new StringBuilder();
+
+                while ( (receiveString = bufferedReader.readLine()) != null ) {
+                    stringBuilder.append(receiveString);
+                }
+
+                inputStream.close();
+                ret = stringBuilder.toString();
+            }
+        }
+        catch (FileNotFoundException e) {
+            Log.e("login activity", "File not found: " + e.toString());
+        } catch (IOException e) {
+            Log.e("login activity", "Can not read file: " + e.toString());
+        }
+
+        return ret;
     }
 }

@@ -23,6 +23,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -105,46 +107,36 @@ public class SignupFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
-//                    alert("SignUp successful!");
-                    Toast.makeText(getActivity(), "Signed up successfully", Toast.LENGTH_LONG).show();
-                    String encryptedPass = "";
-                    try {
-                        encryptedPass = AESCrypt.encrypt(password);
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                    if(currentUser != null) {
+                        Toast.makeText(getContext(), "Logged in successfully", Toast.LENGTH_LONG).show();
+                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                .setDisplayName(username).build();
+                        currentUser.updateProfile(profileUpdates);
+                        Toast.makeText(getActivity(), "Signed up successfully", Toast.LENGTH_LONG).show();
+                        String encryptedPass = "";
+                        try {
+                            encryptedPass = AESCrypt.encrypt(password);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        RealTimeDBManager.setUpdateValueEventListener();
+                        final String finalEncryptedPass = encryptedPass;
+                        RealTimeDBManager.getDatabase().child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                RealTimeDBManager.writeNewUser(username, email, finalEncryptedPass);
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                            }
+                        });
+                        startActivity(new Intent(getContext(), MainActivity.class));
                     }
-                    RealTimeDBManager.setUpdateValueEventListener();
-                    final String finalEncryptedPass = encryptedPass;
-                    RealTimeDBManager.getDatabase().child("users").addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            RealTimeDBManager.writeNewUser(username,email, finalEncryptedPass);
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
-                    startActivity(new Intent(getContext(),MainActivity.class));
-                } else {
-                    Toast.makeText(getActivity(), "Could not sign up .. Please check input field and try again...", Toast.LENGTH_LONG).show();
-                }
+                } else Toast.makeText(getActivity(), "Could not sign up .. Please check input field and try again...", Toast.LENGTH_LONG).show();
                 signupProgress.dismiss();
             }
         });
-    }
-
-    void alert(String msg) {
-        AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
-        alertDialog.setTitle(msg);
-        alertDialog.setMessage("db updated"+"\ncheck firebase web");
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.show();
     }
 }

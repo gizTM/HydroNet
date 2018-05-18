@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/card_shadow"
+    android:padding="@dimen/padding_small"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:padding="@dimen/padding_small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView android:id="@+id/plant_img"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_plant_preview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
+        <TableLayout android:layout_weight="2"
+            android:layout_gravity="top"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                    android:id="@+id/plant_name"
+                    android:layout_gravity="center"
+                    app:textStyle="bold"
+                    android:textSize="@dimen/txt_list_item"
+                    android:layout_weight="1"
+                    android:text="@string/plant_name_preview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout android:layout_span="2"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                        app:textStyle="bold"
+                        android:text="planted on "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                        android:id="@+id/start_date"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout android:layout_span="2"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                        app:textStyle="bold"
+                        android:text="should harvest on "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                        android:id="@+id/expected_date"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/expand_toggle"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/label_fail"
+            android:text="@string/menu_sub_record_result"
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <ImageView android:id="@+id/expand"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_expand_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/expand_layout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <CheckBox android:id="@+id/check_select_all"
+            android:textColor="@color/gray"
+            android:text="Select all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <!--<GridView android:id="@+id/location_list"-->
+            <!--android:layout_weight="20"-->
+            <!--android:layout_marginStart="@dimen/padding_so_small"-->
+            <!--android:layout_marginEnd="@dimen/padding_so_small"-->
+            <!--android:horizontalSpacing="5dp"-->
+            <!--android:verticalSpacing="5dp"-->
+            <!--android:numColumns="8"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="0dp"/>-->
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/location_layout"
+            app:flexWrap="wrap"
+            app:alignItems="stretch"
+            app:alignContent="stretch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!--<com.senior.gizgiz.hydronet.HelperClass.CustomTextView-->
+                <!--android:text="A1"-->
+                <!--android:padding="@dimen/padding_so_small"-->
+                <!--android:background="@drawable/btn_small_corner_red"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+        </com.google.android.flexbox.FlexboxLayout>
+    </LinearLayout>
+</LinearLayout>

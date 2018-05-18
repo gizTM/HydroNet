@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:padding="@dimen/padding_small"
+    android:layout_width="match_parent"
+    android:layout_height="88dp">
+    <com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail
+        android:id="@+id/plant_img_layout"
+        android:layout_width="40dp"
+        android:layout_height="40dp">
+        <ImageView android:id="@+id/plant_thumbnail"
+            android:src="@drawable/ic_plant_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
+    <LinearLayout android:layout_marginStart="@dimen/padding_small"
+        android:orientation="vertical"
+        android:layout_weight="3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/plant_name"
+            android:textSize="@dimen/label"
+            android:text="preview"
+            app:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/start_date"
+            android:text="planted on ()"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/medium_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/harvest_date"
+            android:text="harvested on ()"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/medium_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:id="@+id/time"
+        android:text="grown for"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/medium_text"
+        android:layout_gravity="top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

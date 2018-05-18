@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/app_bg"
+    android:padding="@dimen/padding_small"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <GridView android:id="@+id/my_plant_list"
-        android:layout_marginStart="@dimen/padding_small"
-        android:layout_marginEnd="@dimen/padding_small"
-        android:layout_marginTop="@dimen/padding_small"
-        android:columnWidth="90dp"
-        android:numColumns="auto_fit"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="10dp"
-        android:stretchMode="columnWidth"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/plant_detail_swipe_layout"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_width="match_parent" />
-</LinearLayout>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <GridView android:id="@+id/my_plant_list"
+            android:columnWidth="90dp"
+            android:layout_margin="@dimen/padding_medium"
+            android:numColumns="auto_fit"
+            android:verticalSpacing="10dp"
+            android:horizontalSpacing="10dp"
+            android:stretchMode="columnWidth"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+    <LinearLayout android:id="@+id/empty_state_userplant"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_below="@id/btn_share_new_story"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView android:src="@drawable/ic_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:text="@string/label_empty_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

@@ -3,8 +3,8 @@ package com.senior.gizgiz.hydronet.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -100,31 +100,18 @@ public class PlantCarouselFragment extends Fragment implements OnBackPressListen
         for(int i=0; i<tabLayout.getTabCount()-1; i++) {
             View tab = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(i);
             ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) tab.getLayoutParams();
-//            p.setMargins(0,0,50,0);
             p.setMargins(0, 0, ResourceManager.getDim(getContext(),R.dimen.tab_margin), 0);
             tab.requestLayout();
         }
     }
     void handleTabChange() {
-        // when tab changed
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-//                Fragment selectedFrag = pageFragments.get(tab.getPosition());
-//                if(selectedFrag instanceof FlipperFragment)
-//                    ((FlipperFragment) selectedFrag).resetFlipper();
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {}
-
+            @Override public void onTabSelected(TabLayout.Tab tab) {}
+            @Override public void onTabUnselected(TabLayout.Tab tab) {}
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
                 Fragment selectedFrag = pageFragments.get(tab.getPosition());
-                if(selectedFrag instanceof OverviewFragment) {
-//                    Toast.makeText(getContext(),"tab reselcted : #"+tab.getPosition(),Toast.LENGTH_SHORT).show();
-                    ((OverviewFragment) selectedFrag).setViewOverview();
-                }
+                if(selectedFrag instanceof OverviewFragment) ((OverviewFragment) selectedFrag).setViewOverview();
             }
         });
     }

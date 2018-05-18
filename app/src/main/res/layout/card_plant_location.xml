@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail
+        android:layout_marginTop="@dimen/padding_small"
+        android:layout_marginEnd="@dimen/padding_small"
+        android:layout_weight="0.5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+        <ImageView android:id="@+id/location_plant_img"
+            android:src="@drawable/ic_plant_preview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </com.senior.gizgiz.hydronet.HelperClass.SquareThumbnail>
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:id="@+id/location_plant_location"
+        android:layout_weight="5"
+        android:layout_gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+</LinearLayout>

@@ -23,12 +23,12 @@ import java.util.Map;
 
 public class LocationAdapter extends BaseAdapter {
     private Context context;
-    private List<DropdownItem> itemList = new ArrayList<>();
+    private List<DropdownItem> itemList;
 //    private List<String> currentlySelectedItems = new ArrayList<>();
     private List<String> previouslySelectedItems = new ArrayList<>();
     private List<String> currentlyViewItems = new ArrayList<>();
 
-    private Map<String,List<String>> locationListForPlant = new HashMap<>();
+    private Map<String,List<String>> locationListForPlant;
 
     public LocationAdapter(Context context, List<DropdownItem> list) {
         this.context =context;
@@ -36,21 +36,15 @@ public class LocationAdapter extends BaseAdapter {
         locationListForPlant = new HashMap<>();
     }
 
-    @Override
-    public int getCount() {
+    @Override public int getCount() {
         return itemList.size();
     }
-
-    @Override
-    public DropdownItem getItem(int position) {
+    @Override public DropdownItem getItem(int position) {
         return itemList.get(position);
     }
-
-    @Override
-    public long getItemId(int position) {
+    @Override public long getItemId(int position) {
         return 0;
     }
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
@@ -134,13 +128,16 @@ public class LocationAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    public void viewSelectedItem(String selectedName) {
+    public List<String> viewSelectedItem(String selectedName) {
 //        previouslySelectedItems.removeAll(locationListForPlant.get(selectedName));
         currentlyViewItems.addAll(locationListForPlant.get(selectedName));
+        notifyDataSetChanged();
+        return currentlyViewItems;
     }
     public void resetViewSelectedItem(String selectedName) {
 //        previouslySelectedItems.addAll(locationListForPlant.get(selectedName));
         currentlyViewItems.removeAll(locationListForPlant.get(selectedName));
+        notifyDataSetChanged();
     }
     public void removeFromAdapter(String selectedName) {
         List<String> locations = locationListForPlant.get(selectedName);
@@ -181,14 +178,14 @@ public class LocationAdapter extends BaseAdapter {
             itemLabel.setText(item.getInfo());
             if (item.isSelected()) {
                 if(currentlyViewItems.contains(item.getInfo())) {
-                    itemLabel.setTextColor(ResourceManager.getColor(context,R.color.colorPrimary));
+                    itemLabel.setTextColor(ResourceManager.getColor(context,R.color.white));
                     itemLabel.setBackgroundResource(R.drawable.bg_view_dropdown_item);
                 } else if(previouslySelectedItems.contains(item.getInfo())) {
-                    itemLabel.setTextColor(ResourceManager.getColor(context,R.color.colorPrimary));
+                    itemLabel.setTextColor(ResourceManager.getColor(context,R.color.white));
                     itemLabel.setBackgroundResource(R.drawable.bg_disabled_dropdown_item);
                 } else {
-                    itemLabel.setTextColor(ResourceManager.getColor(context,R.color.boulder_gray));
-                    itemLabel.setBackgroundResource(R.drawable.bg_disabled_stepper);
+                    itemLabel.setTextColor(ResourceManager.getColor(context,R.color.gallery_gray));
+                    itemLabel.setBackgroundResource(R.drawable.bg_selected_dropdown_item);
                 }
             } else {
                 itemLabel.setTextColor(ResourceManager.getColor(context,R.color.boulder_gray));

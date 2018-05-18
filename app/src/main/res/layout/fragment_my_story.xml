@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/app_bg"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/my_story_swipe_layout"
+        android:paddingTop="@dimen/padding_so_small"
+        android:paddingStart="@dimen/padding_so_small"
+        android:paddingEnd="@dimen/padding_so_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ListView android:id="@+id/my_story_list"
+            android:dividerHeight="3dp"
+            android:divider="@null"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+    <LinearLayout android:id="@+id/my_story_empty_state"
+        android:layout_marginTop="@dimen/padding_small"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView android:src="@drawable/ic_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:text="No data to show at this time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

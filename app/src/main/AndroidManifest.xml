@@ -6,17 +6,33 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
     <!-- connect internet -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
-    <application
+    <application android:name=".HydroNetApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <receiver  android:process=":remote" android:name=".HelperClass.Alarm" />
+
+        <service android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:name=".MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+
         <activity android:name=".Activity.SplashActivity"
             android:theme="@style/SplashTheme"
             android:screenOrientation="portrait">
@@ -51,6 +67,33 @@
         <activity android:name=".Activity.EditDBActivity"
             android:screenOrientation="portrait"
             android:configChanges="keyboardHidden" />
+        <activity android:name=".Activity.AddSaleStoryActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden" />
+        <activity android:name=".Activity.FetchSensorActivity"/>
+        <activity android:name=".Activity.NegotiateActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden" />
+        <activity android:name=".Activity.AddStoryActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden" />
+        <activity android:name=".Activity.AddProgressStoryActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden" />
+        <activity android:name=".Activity.ViewStoryActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden" />
+        <activity android:name=".Activity.ViewSaleStoryActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden" />
+        <activity android:name=".Activity.SettingActivity" />
+        <activity android:name=".Activity.RecordResultActivity" />
     </application>
 
 </manifest>

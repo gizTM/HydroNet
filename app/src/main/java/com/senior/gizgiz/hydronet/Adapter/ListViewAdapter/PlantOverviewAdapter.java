@@ -12,6 +12,7 @@ import com.senior.gizgiz.hydronet.Entity.UserPlant;
 import com.senior.gizgiz.hydronet.HelperClass.CustomTextView;
 import com.senior.gizgiz.hydronet.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,9 +21,10 @@ import java.util.List;
 
 public class PlantOverviewAdapter extends BaseAdapter {
     private final Context context;
-    private final List<Plant> plantOverviewCards;
+    private final List<UserPlant> plantOverviewCards;
+    private int numGrowing,numHarvested,numFailed;
 
-    public PlantOverviewAdapter(Context context, List<Plant> plantOverviewCards) {
+    public PlantOverviewAdapter(Context context, List<UserPlant> plantOverviewCards) {
         this.context = context;
         this.plantOverviewCards = plantOverviewCards;
     }
@@ -41,26 +43,26 @@ public class PlantOverviewAdapter extends BaseAdapter {
         return view;
     }
 
-    @Override
-    public int getCount() {
+    @Override public int getCount() {
         return plantOverviewCards.size();
     }
-
-    @Override
-    public long getItemId(int position) {
+    @Override public long getItemId(int position) {
         return 0;
     }
-
-    @Override
-    public Object getItem(int position) {
+    @Override public Object getItem(int position) {
         return null;
+    }
+
+    public List<Integer> getStat() {
+        List<Integer> stat = new ArrayList<>();
+        stat.add(numGrowing); stat.add(numHarvested); stat.add(numFailed);
+        return stat;
     }
 
     private class ViewHolder {
         private CustomTextView id, name, growing, harvested, failed, total;
 
         public ViewHolder(View view) {
-            this.id = view.findViewById(R.id.plant_id);
             this.name = view.findViewById(R.id.plant_name);
             this.growing = view.findViewById(R.id.num_growing);
             this.harvested = view.findViewById(R.id.num_harvested);
@@ -70,8 +72,8 @@ public class PlantOverviewAdapter extends BaseAdapter {
 
         public void bind(int position) {
             Plant card = plantOverviewCards.get(position);
-            List<GrowHistory> histories = ((UserPlant) card).getGrowHistory();
-            int numGrowing=0,numHarvested=0,numFailed=0;
+            List<GrowHistory> histories = ((UserPlant) card).getGrowHistories();
+            numGrowing=0; numHarvested=0; numFailed=0;
             for (GrowHistory history : histories) {
                 if(history.getResult().equalsIgnoreCase("failed")) numFailed+=history.getCount();
                 else if(history.isHarvested()) numHarvested+=history.getCount();
@@ -79,10 +81,10 @@ public class PlantOverviewAdapter extends BaseAdapter {
             }
 //            id.setText(card.getId().substring(2));
             name.setText(card.getName());
-            growing.setText("x"+numGrowing);
-            harvested.setText("x"+numHarvested);
-            failed.setText("x"+numFailed);
-            total.setText("x"+(numGrowing+numHarvested+numFailed));
+            growing.setText(String.valueOf(numGrowing));
+            harvested.setText(String.valueOf(numHarvested));
+            failed.setText(String.valueOf(numFailed));
+            total.setText(String.valueOf((numGrowing+numHarvested+numFailed)));
         }
     }
 }

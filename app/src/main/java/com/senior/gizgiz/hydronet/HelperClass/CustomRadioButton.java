@@ -67,6 +67,7 @@ public class CustomRadioButton extends AppCompatRadioButton {
 
     public void setStyle(String fontStyle) {
         Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"fonts/AdventPro/AdventPro-"+fontStyle+".ttf");
+//        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"fonts/NotoSansDisplay-hinted/NotoSansDisplay-"+fontStyle+".ttf");
         setTypeface(tf);
         invalidate();
         requestLayout();

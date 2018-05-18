@@ -1,12 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="@dimen/margin_separator"
+    android:padding="@dimen/padding_small"
     android:background="@drawable/card_shadow"
     android:weightSum="3"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical"
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                    android:id="@+id/deal_remaining_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <LinearLayout android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                        android:id="@+id/num_reserved"
+                        android:text="3 Reserved"
+                        app:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                        android:id="@+id/total"
+                        android:text=" / 7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </RelativeLayout>
+            <ProgressBar android:id="@+id/count_down_progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:progressDrawable="@drawable/time_left_progressbar"
+            android:layout_marginTop="@dimen/padding_so_small"
+            android:layout_marginBottom="@dimen/padding_so_small"
+            android:max="100"
+            android:progress="10"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+        </LinearLayout>
+        <ImageView android:id="@+id/btn_option"
+            android:src="@drawable/ic_option"
+            android:layout_gravity="center"
+            android:layout_weight="0.2"
+            android:rotation="90"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
     <LinearLayout android:id="@+id/story_content"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -39,17 +87,30 @@
             android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="wrap_content">
-            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-                android:id="@+id/owner_username"
-                android:layout_marginEnd="@dimen/margin_separator"
-                android:text="@string/signup_user"
-                app:textStyle="bold"
-                android:scrollHorizontally="true"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textSize="@dimen/txt_list_item"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                    android:id="@+id/owner_username"
+                    android:layout_marginEnd="@dimen/margin_separator"
+                    android:text="@string/signup_user"
+                    app:textStyle="bold"
+                    android:scrollHorizontally="true"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textSize="@dimen/txt_list_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                    android:id="@+id/post_date"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/gray"
+                    android:text="1s"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
             <LinearLayout android:id="@+id/detail_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -87,26 +148,11 @@
                             android:layout_height="wrap_content" />
                     </TableRow>
                     <TableRow>
-                        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-                            android:text="status "
-                            app:textStyle="bold"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-                        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-                            android:id="@+id/sale_status"
-                            android:layout_weight="1"
-                            android:gravity="start"
-                            android:layout_gravity="center_vertical"
-                            android:text="xxx"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </TableRow>
-                    <TableRow>
                         <LinearLayout android:orientation="horizontal"
                             android:layout_span="2"
                             android:layout_weight="1">
                             <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-                                android:text="start at "
+                                android:text="price per unit "
                                 app:textStyle="bold"
                                 android:layout_gravity="center"
                                 android:layout_width="wrap_content"
@@ -126,14 +172,12 @@
                 </TableLayout>
                 <ImageView android:id="@+id/btn_show_grow_stat"
                     android:src="@drawable/ic_stat"
+                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    <!--<View android:background="@color/alto_gray"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="1dp" />-->
     <LinearLayout android:orientation="horizontal"
         android:layout_marginStart="@dimen/margin_separator"
         android:layout_marginEnd="@dimen/margin_separator"
@@ -152,69 +196,80 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:id="@+id/user_reserve"
+        android:text="@string/label_reserved"
+        android:drawableStart="@drawable/ic_action_my_plant"
+        android:drawableTint="@color/green"
+        android:gravity="center"
+        android:textColor="@color/green"
+        app:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
     <LinearLayout android:id="@+id/like_layout"
         android:layout_gravity="bottom"
         android:gravity="center"
         android:layout_margin="@dimen/padding_so_small"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <LinearLayout android:id="@+id/btn_negotiate"
-            android:layout_weight="1"
+        <LinearLayout android:layout_weight="1"
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content">
-            <ImageView android:src="@drawable/ic_negotiation"
+            <ImageView android:id="@+id/btn_negotiate"
+                android:src="@drawable/ic_negotiation"
                 android:background="@color/transparent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
                 android:id="@+id/negotiation_count"
+                android:layout_marginStart="@dimen/padding_so_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-        <LinearLayout android:id="@+id/btn_try"
-            android:layout_weight="1"
+        <LinearLayout android:layout_weight="1"
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <ImageView android:id="@+id/btn_try_img"
+            <ImageView android:id="@+id/btn_try"
                 android:src="@drawable/ic_try"
                 android:background="@color/transparent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
                 android:id="@+id/try_count"
+                android:layout_marginStart="@dimen/padding_so_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-        <LinearLayout android:id="@+id/btn_like"
-            android:layout_weight="1"
+        <LinearLayout android:layout_weight="1"
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content">
-            <ImageView android:id="@+id/btn_like_img"
+            <ImageView android:id="@+id/btn_like"
                 android:src="@drawable/ic_like"
                 android:background="@color/transparent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
                 android:id="@+id/like_count"
+                android:layout_marginStart="@dimen/padding_so_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-            <LinearLayout android:id="@+id/btn_share"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content">
-                <ImageView android:src="@drawable/ic_share"
-                    android:background="@color/transparent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-                    android:id="@+id/share_count"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-        </LinearLayout>
+            <!--<LinearLayout android:id="@+id/btn_share"-->
+                <!--android:layout_weight="1"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content">-->
+                <!--<ImageView android:src="@drawable/ic_share"-->
+                    <!--android:background="@color/transparent"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+                <!--<com.senior.gizgiz.hydronet.HelperClass.CustomTextView-->
+                    <!--android:id="@+id/share_count"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
     </LinearLayout>
 </LinearLayout>

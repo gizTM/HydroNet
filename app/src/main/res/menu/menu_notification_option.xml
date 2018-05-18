@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/menu_notification"
+        android:checkableBehavior="single">
+        <item android:id="@+id/option_all"
+            android:title="@string/option_see_all" />
+        <item android:id="@+id/option_read"
+            android:title="@string/option_read" />
+        <item android:id="@+id/option_not_read"
+            android:title="@string/option_not_read" />
+        <item android:id="@+id/option_sensor"
+            android:title="@string/option_sensor" />
+        <item android:id="@+id/option_story"
+            android:title="@string/option_story" />
+    </group>
+</menu>

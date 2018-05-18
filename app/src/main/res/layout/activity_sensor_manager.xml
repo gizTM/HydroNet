@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout android:id="@+id/pump_group"
+        android:orientation="vertical"
         android:padding="@dimen/margin_popup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <LinearLayout android:id="@+id/pump_group"
+        <LinearLayout android:id="@+id/pump_toggle"
             android:gravity="center"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -25,11 +29,32 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
-            android:id="@+id/netpie_log"
-            android:text="log"
+            android:id="@+id/netpie_log_pump"
+            android:text="log pump"
             android:layout_gravity="center"
             android:layout_below="@id/switch_pump"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
-</RelativeLayout>
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:id="@+id/netpie_log_water"
+        android:text="log water"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/realtime_water_graph"
+        android:layout_width="match_parent"
+        android:layout_height="200dip" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/netpie_log_connection"
+            android:text="log connection"
+            android:scrollbars="vertical"
+            android:layout_gravity="start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

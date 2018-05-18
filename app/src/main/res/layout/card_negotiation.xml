@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingStart="@dimen/padding_medium"
+    android:paddingEnd="@dimen/padding_medium"
+    android:paddingTop="@dimen/padding_small"
+    android:paddingBottom="@dimen/padding_small"
+    android:id="@+id/negotiation_layout"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:id="@+id/negotiator"
+        android:text="@string/menu_user"
+        app:textStyle="bold"
+        android:gravity="start"
+        android:ellipsize="end"
+        android:lines="1"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+    <com.senior.gizgiz.hydronet.HelperClass.CustomEditText
+        android:id="@+id/condition"
+        android:inputType="number"
+        android:text="0"
+        android:textSize="@dimen/medium_text"
+        android:textColor="@color/scorpion_gray"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="@color/transparent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:id="@+id/timestamp"
+        android:text="1 minutes ago"
+        android:textColor="@color/gray"
+        android:gravity="center"
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+</LinearLayout>

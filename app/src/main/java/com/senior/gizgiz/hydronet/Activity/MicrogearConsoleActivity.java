@@ -1,9 +1,15 @@
 package com.senior.gizgiz.hydronet.Activity;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.method.ScrollingMovementMethod;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -12,32 +18,51 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.senior.gizgiz.hydronet.Entity.SensorData;
+import com.senior.gizgiz.hydronet.HelperClass.RealTimeDBManager;
+import com.senior.gizgiz.hydronet.HelperClass.ResourceManager;
 import com.senior.gizgiz.hydronet.R;
 
 import java.text.DecimalFormat;
 import java.text.ParseException;
+import java.util.Calendar;
 
 import io.netpie.microgear.MicrogearEventListener;
 
 public class MicrogearConsoleActivity extends MicrogearActivity {
-    private String APPID = super.APPID; //APP_ID
-    private String KEY = super.KEY; //KEY
-    private String SECRET = super.SECRET; //SECRET
-    private String ALIAS = super.ALIAS;
+//    private String APPID = "HydroNet"; //APP_ID
+//    private String KEY = "42QfFe0kb6hR8X6"; //KEY
+//    private String SECRET = "a9z4FIDHURM7s4frn8iNldRYb"; //SECRET
+    private String APPID = "dht22project";
+    private String KEY = "EM9SneXxbpBaoWK";
+    private String SECRET = "bMDtXwIWtOA914XhSVtqWdfcX";
+    private String ALIAS = "android";
+    private MicrogearCallBack callback = new MicrogearCallBack();
     private boolean auto=false;
-    private MicrogearCallBack callBack = new MicrogearCallBack();
 
     private EditText appidET,keyET,secretET,aliasET, topicET,dataET, durationET;
     private Button connectBTN, publishBTN, autoBTN;
     protected TextView response;
-    private ScrollView scrollResponse;
 
+    @SuppressLint("HandlerLeak")
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             Bundle bundle = msg.getData();
-            String string = bundle.getString("myKey");
-            response.append("\n"+string);
+            String string = bundle.getString("other");
+            if(string != null) response.append("\n"+string);
+            String message = bundle.getString("msg");
+            String waterLevel="",pHLevel="",ecLevel="";
+
+            SensorData sensorData = new SensorData();
+            if(message != null) {
+                response.append("\n"+message);
+//                sensorData.setDateTime(Calendar.getInstance().getTime());
+//                sensorData.setWaterLevel(Float.valueOf(message.substring(message.indexOf(":")+1).trim()));
+//                RealTimeDBManager.getDatabase().child("sensorData").child(MainActivity.currentUser.getUid()).push().setValue(sensorData);
+//                response.append("\n\nsaved to database\ngo back to check @ home page");
+            }
+
             final int scrollAmount = response.getLayout().getLineTop(response.getLineCount())-response.getHeight();
             if(scrollAmount>0) response.scrollTo(0,scrollAmount);
             else response.scrollTo(0,0);
@@ -98,7 +123,7 @@ public class MicrogearConsoleActivity extends MicrogearActivity {
                     duration = decimalFormat.parse(durationET.getText().toString()).longValue();
                 } catch (ParseException e) {
                     String error = durationET.getText().toString()+"is not in long format.";
-                    consoleMsg(error);
+                    consoleMsg(error,"other");
                     Log.i("Connected",error+"");
                 }
                 (new Thread(new Runnable() {
@@ -117,7 +142,7 @@ public class MicrogearConsoleActivity extends MicrogearActivity {
                                 Thread.sleep(duration);
                             } catch (InterruptedException e) {
                                 String error = "Thread stopped";
-                                consoleMsg(error);
+                                consoleMsg(error,"other");
                                 Log.i("Connected",error+"");
                             }
                     }
@@ -136,10 +161,10 @@ public class MicrogearConsoleActivity extends MicrogearActivity {
         super.onResume();
     }
 
-    protected void consoleMsg(String console) {
+    protected void consoleMsg(String console,String key) {
         Message msg = handler.obtainMessage();
         Bundle bundle = new Bundle();
-        bundle.putString("myKey", console);
+        bundle.putString(key, console);
         msg.setData(bundle);
         handler.sendMessage(msg);
     }
@@ -148,48 +173,48 @@ public class MicrogearConsoleActivity extends MicrogearActivity {
         @Override
         public void onConnect() {
             String console = "Now I'm connected with netpie";
-            consoleMsg(console);
+            consoleMsg(console,"other");
             Log.i("Connected",console+"");
         }
 
         @Override
         public void onMessage(String topic, String message) {
-            consoleMsg(topic+" : "+message);
+            consoleMsg(topic+" : "+message,"msg");
             Log.i("Message",topic+" : "+message);
         }
 
         @Override
         public void onPresent(String token) {
             String console = "New friend connect : "+token;
-            consoleMsg(console);
+            consoleMsg(console,"other");
             Log.i("present",console+"");
         }
 
         @Override
         public void onAbsent(String token) {
             String console = "Friend lost :"+token;
-            consoleMsg(console);
+            consoleMsg(console,"other");
             Log.i("absent",console+"");
         }
 
         @Override
         public void onDisconnect() {
             String console = "Disconnected";
-            consoleMsg(console);
+            consoleMsg(console,"other");
             Log.i("disconnect",console+"");
         }
 
         @Override
         public void onError(String error) {
             String console = "Exception : "+error;
-            consoleMsg(console);
+            consoleMsg(console,"other");
             Log.i("exception",console+"");
         }
 
         @Override
         public void onInfo(String info) {
             String console = "Info : "+info;
-            consoleMsg(console);
+            consoleMsg(console,"other");
             Log.i("info",console+"");
         }
     }

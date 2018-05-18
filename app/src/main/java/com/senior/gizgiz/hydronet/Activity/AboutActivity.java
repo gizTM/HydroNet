@@ -46,33 +46,27 @@ public class AboutActivity extends AppCompatActivity {
         licenses.add("<div>Icons made by <a href=\"https://www.flaticon.com/authors/yannick\" title=\"Yannick\">Yannick</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a> is licensed by <a href=\"http://creativecommons.org/licenses/by/3.0/\" title=\"Creative Commons BY 3.0\" target=\"_blank\">CC 3.0 BY</a></div>");
         licenses.add("<div>Icons made by <a href=\"https://www.flaticon.com/authors/chanut\" title=\"Chanut\">Chanut</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a> is licensed by <a href=\"http://creativecommons.org/licenses/by/3.0/\" title=\"Creative Commons BY 3.0\" target=\"_blank\">CC 3.0 BY</a></div>");
         licenses.add("<div>Icons made by <a href=\"https://www.flaticon.com/authors/lucy-g\" title=\"Lucy G\">Lucy G</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a> is licensed by <a href=\"http://creativecommons.org/licenses/by/3.0/\" title=\"Creative Commons BY 3.0\" target=\"_blank\">CC 3.0 BY</a></div>");
+        licenses.add("<div>Icons made by <a href=\"https://www.flaticon.com/authors/popcorns-arts\" title=\"Icon Pond\">Icon Pond</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a> is licensed by <a href=\"http://creativecommons.org/licenses/by/3.0/\" title=\"Creative Commons BY 3.0\" target=\"_blank\">CC 3.0 BY</a></div>");
 
         sources.add("<div>PH/ TDS / PPM / EC LEVELS FOR HYDROPONIC VEGETABLES from <a href=\"https://growguru.co.za/ph-tds-ppm-ec-levels-for-hydroponic-vegetables/\">here</a></div>");
         sources.add("<div>Plant PH/EC/PPM from <a href=\"https://hydroponic.co.za/hydroponics-quickstart/plant-phecppm/\">here</a></div>");
         sources.add("<div>What Is The Best pH And EC Levels For Hydro Marijuana Growers? from <a href=\"https://www.themaven.net/theweedblog/growing/what-is-the-best-ph-and-ec-levels-for-hydro-marijuana-growers-PFG2tYveHUaZIMsZ_8td5w?full=1\">here</a></div>");
+        sources.add("<div>What Can You Grow Hydroponically? from <a href=\"http://modularhydro.com/ArticleLibrary/WhatCanYouGrowHydroponically.html\">here</a></div>");
     }
 
     private DrawerLayout drawer;
     private Toolbar toolbar;
-    private View contentPage, aboutContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // use recyclable main xml w/ ViewStub content
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        // setup toolbar drawer
+        setContentView(R.layout.activity_about);
         setup();
-        // define basic recyclable element
-        contentPage = findViewById(R.id.page_content);
-        ViewStub contentStub = contentPage.findViewById(R.id.layout_stub);
-        contentStub.setLayoutResource(R.layout.activity_about);
-        aboutContent = contentStub.inflate();
-        findViewById(R.id.fab_layout).setVisibility(View.GONE);
 
-        final CustomTextView licenseLink = aboutContent.findViewById(R.id.license);
-        final CustomTextView sourceLink = aboutContent.findViewById(R.id.info_credit);
-        aboutContent.findViewById(R.id.credit_toggle).setOnClickListener(new View.OnClickListener() {
+        final CustomTextView licenseLink = findViewById(R.id.license);
+        final CustomTextView sourceLink =  findViewById(R.id.info_credit);
+        findViewById(R.id.credit_toggle).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(!expandCredit) NavigationManager.expand(licenseLink);
@@ -80,7 +74,7 @@ public class AboutActivity extends AppCompatActivity {
                 expandCredit = !expandCredit;
             }
         });
-        aboutContent.findViewById(R.id.source_toggle).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.source_toggle).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(!expandSource) NavigationManager.expand(sourceLink);
@@ -103,9 +97,8 @@ public class AboutActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
         }
-        toolbar.findViewById(R.id.action_quick_user).setVisibility(View.GONE);
-        toolbar.findViewById(R.id.action_quick_notification).setVisibility(View.GONE);
         drawer = findViewById(R.id.drawer);
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
     }

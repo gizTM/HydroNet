@@ -1,0 +1,161 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_small"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout android:layout_weight="1"
+            android:id="@+id/cal_label_layout"
+            android:gravity="top"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_small"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:id="@+id/label_month"
+                app:textStyle="bold"
+                android:text="Month"
+                android:layout_gravity="center"
+                android:layout_weight="9"
+                android:textSize="@dimen/txt_list_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <ImageView android:id="@+id/btn_previous"
+                android:layout_weight="1"
+                android:src="@drawable/ic_expand_down_arrow"
+                android:background="@color/transparent"
+                android:tint="@color/silver_gray"
+                android:layout_marginEnd="@dimen/padding_small"
+                android:rotation="90"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <ImageView android:id="@+id/btn_next"
+                android:layout_weight="1"
+                android:src="@drawable/ic_expand_down_arrow"
+                android:background="@color/transparent"
+                android:tint="@color/silver_gray"
+                android:rotation="270"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:id="@+id/date_layout"
+            android:orientation="horizontal"
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:id="@+id/label_sun"
+                android:gravity="center"
+                app:textStyle="bold"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:id="@+id/label_mon"
+                android:gravity="center"
+                app:textStyle="bold"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:id="@+id/label_tue"
+                android:gravity="center"
+                app:textStyle="bold"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:id="@+id/label_wed"
+                android:gravity="center"
+                app:textStyle="bold"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:id="@+id/label_thu"
+                android:gravity="center"
+                app:textStyle="bold"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:id="@+id/label_fri"
+                android:gravity="center"
+                app:textStyle="bold"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:id="@+id/label_sat"
+                android:gravity="center"
+                app:textStyle="bold"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/weekly_swipe_layout"
+            android:layout_weight="3.5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <GridView android:id="@+id/calendar_gridview"
+                android:layout_marginStart="@dimen/padding_so_small"
+                android:layout_marginEnd="@dimen/padding_so_small"
+                android:numColumns="7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+        <ScrollView
+            android:layout_weight=".5"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:id="@+id/label_sensor"
+                android:text="Sensor data"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textSize="@dimen/txt_list_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </ScrollView>
+        <LinearLayout android:layout_weight="2.5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical">
+            <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+                android:text="Event:"
+                app:textStyle="bold"
+                android:textSize="@dimen/txt_list_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout android:id="@+id/event_layout"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/empty_state_weekly"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView android:src="@drawable/ic_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:text="@string/label_empty_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

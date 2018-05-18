@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/bottom_sheet_select_plant_root"
+    android:background="@color/app_bg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--android:orientation="vertical"-->
+    <!--android:id="@+id/bottom_sheet_select_plant_root"-->
+    <!--android:background="@color/app_bg"-->
+    <!--android:layout_gravity="bottom"-->
+    <!--app:behavior_hideable="true"-->
+    <!--app:behavior_peekHeight="100dp"-->
+    <!--app:layout_behavior="android.support.design.widget.BottomSheetBehavior"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="500dp">-->
+    <!--<GridView android:id="@+id/system_plant_list"-->
+        <!--android:columnWidth="90dp"-->
+        <!--android:padding="@dimen/padding_small"-->
+        <!--android:numColumns="auto_fit"-->
+        <!--android:verticalSpacing="10dp"-->
+        <!--android:horizontalSpacing="10dp"-->
+        <!--android:stretchMode="columnWidth"-->
+        <!--android:layout_height="250dp"-->
+        <!--android:layout_width="match_parent" />-->
+    <!--<com.senior.gizgiz.hydronet.HelperClass.CustomTextView-->
+        <!--android:text=""-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content" />-->
+    <!--<GridView android:id="@+id/simple_grid_view"-->
+        <!--android:columnWidth="90dp"-->
+        <!--android:padding="@dimen/padding_small"-->
+        <!--android:numColumns="auto_fit"-->
+        <!--android:verticalSpacing="10dp"-->
+        <!--android:horizontalSpacing="10dp"-->
+        <!--android:stretchMode="columnWidth"-->
+        <!--android:layout_height="250dp"-->
+        <!--android:layout_width="match_parent" />-->
+    <android.support.design.widget.TabLayout
+        android:id="@+id/sliding_tab"
+        app:tabMode="fixed"
+        app:tabGravity="fill"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <com.senior.gizgiz.hydronet.HelperClass.ViewPagerParallax
+        android:id="@+id/plant_viewpager"
+        android:layout_weight="3"
+        android:background="@color/gray"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+</LinearLayout>

@@ -60,7 +60,6 @@ public class TradeDetailAdapter extends BaseAdapter {
         private CustomTextView id, name, negotiating, bought, onSale, sold, total;
 
         public ViewHolder(View view) {
-            this.id = view.findViewById(R.id.plant_id);
             this.name = view.findViewById(R.id.plant_name);
             this.negotiating = view.findViewById(R.id.num_negotiating);
             this.bought = view.findViewById(R.id.num_bought);
@@ -89,10 +88,10 @@ public class TradeDetailAdapter extends BaseAdapter {
             }
             id.setText(card.getId().substring(2));
             name.setText(card.getUserPlant().getName());
-            negotiating.setText("x"+numNegotiating);
-            bought.setText("x"+numBought);
-            onSale.setText("x"+numOnSale);
-            total.setText("x"+(numNegotiating+numBought+numOnSale));
+            negotiating.setText(numNegotiating);
+            bought.setText(numBought);
+            onSale.setText(numOnSale);
+            total.setText(numNegotiating+numBought+numOnSale);
         }
     }
 }

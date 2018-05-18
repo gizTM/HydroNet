@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_frame_content"
+    android:padding="@dimen/padding_small"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:id="@+id/history_title"
+        android:text="1st time planted"
+        app:textStyle="bold"
+        android:textSize="@dimen/page_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:id="@+id/history_startDate"
+        android:text="Planted on ()"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <RelativeLayout android:id="@+id/toggle_detail_layout"
+        android:layout_marginTop="@dimen/padding_small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+            android:id="@+id/history_num_plant"
+            android:text="25 plants"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView android:id="@+id/expand_card"
+            android:src="@drawable/ic_expand_more"
+            android:layout_gravity="center"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <LinearLayout android:id="@+id/card_detail_layout"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
+</LinearLayout>

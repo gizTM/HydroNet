@@ -5,8 +5,9 @@ package com.senior.gizgiz.hydronet.Fragment.OverviewFragment;
  */
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
+import android.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,7 @@ public class MaterialOverviewFragment extends OverviewFragment implements OnBack
         materialOverviewAdapter = new MaterialOverviewAdapter(getContext(),MaterialAdapter.materials);
         materialOverviewList.setAdapter(materialOverviewAdapter);
         swipeRefreshLayout = view.findViewById(R.id.material_overview_swipe_layout);
+        Log.e("material overview","onViewCreated");
         swipeRefreshLayout.setOnRefreshListener(this);
         swipeRefreshLayout.post(new Runnable() {
             @Override
@@ -81,14 +83,15 @@ public class MaterialOverviewFragment extends OverviewFragment implements OnBack
         transaction.commit();
     }
     public static void fetchMaterialData(final SwipeRefreshLayout swipeRefreshLayout) {
+        Log.e("fetch material",">>>");
         swipeRefreshLayout.setRefreshing(true);
-        materialCost = 0;
         RealTimeDBManager.getDatabase().child("items").orderByChild("id").startAt("m").endAt("m\uf8ff").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 MaterialAdapter.materials.clear();
+                materialCost = 0;
+//                Log.e("onDataChanged","material");
                 for(DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
-//                    Log.e("key",childDataSnapshot.getKey());
                     Item item = childDataSnapshot.getValue(Item.class);
                     MaterialAdapter.materials.add(item);
                     materialCost+=item.getCost();

@@ -2,6 +2,7 @@ package com.senior.gizgiz.hydronet.Entity;
 
 import com.senior.gizgiz.hydronet.Adapter.ListViewAdapter.StoryAdapter;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,8 +14,8 @@ public class ProgressStory extends Story {
     private int historyNumber;
 
     public ProgressStory() {}
-    public ProgressStory(User owner, String remark, UserPlant mentionedPlant,int historyNumber) {
-        super(owner,StoryAdapter.getTypeProgress(),remark,mentionedPlant);
+    public ProgressStory(User owner, String remark, int historyNumber, String postDate) {
+        super(owner,StoryAdapter.getTypeProgress(),remark,postDate);
         this.historyNumber = historyNumber;
     }
 

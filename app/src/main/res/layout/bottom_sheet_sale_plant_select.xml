@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/bottom_sheet_select_plant_root"
+    android:background="@color/app_bg"
+    android:layout_gravity="bottom"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="100dp"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+    android:layout_width="match_parent"
+    android:layout_height="500dp">
+    <com.senior.gizgiz.hydronet.HelperClass.CustomTextView
+        android:text="Choose plant to sell"
+        android:textSize="@dimen/txt_list_item"
+        android:layout_margin="@dimen/padding_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <com.senior.gizgiz.hydronet.HelperClass.BottomSheetListView
+        android:id="@+id/select_plant_list"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent" />
+</LinearLayout>

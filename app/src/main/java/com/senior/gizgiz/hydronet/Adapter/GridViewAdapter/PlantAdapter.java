@@ -28,9 +28,10 @@ import java.util.Random;
 
 public class PlantAdapter extends BaseAdapter {
     private Context context;
-    private List<Plant> plantList;
+    private List<UserPlant> plantList;
     public static List<Plant> systemPlants = new ArrayList<>();
-    public static List<Plant> exampleUserPlants = new ArrayList<>();
+    public static List<UserPlant> userPlants = new ArrayList<>();
+    public static List<Plant> exampleCards = new ArrayList<>();
 
     static {
 //        systemPlants.add(new SystemDefaultPlant("tomato"));
@@ -41,15 +42,15 @@ public class PlantAdapter extends BaseAdapter {
 //        systemPlants.add(new SystemDefaultPlant("celery"));
 //        systemPlants.add(new SystemDefaultPlant("carrot"));
 
-        exampleUserPlants.add(new UserPlant("cucumber",createMockGrowHistory(4)));
-        exampleUserPlants.add(new UserPlant("spinach",createMockGrowHistory(6)));
-        exampleUserPlants.add(new UserPlant("salad",createMockGrowHistory(2)));
-        exampleUserPlants.add(new UserPlant("celery",createMockGrowHistory(12)));
-        exampleUserPlants.add(new UserPlant("carrot",createMockGrowHistory(9)));
-        exampleUserPlants.add(new UserPlant("chili",createMockGrowHistory(5)));
+        exampleCards.add(new UserPlant("cucumber",createMockGrowHistory(4)));
+        exampleCards.add(new UserPlant("spinach",createMockGrowHistory(6)));
+        exampleCards.add(new UserPlant("salad",createMockGrowHistory(2)));
+        exampleCards.add(new UserPlant("celery",createMockGrowHistory(12)));
+        exampleCards.add(new UserPlant("carrot",createMockGrowHistory(9)));
+        exampleCards.add(new UserPlant("chili",createMockGrowHistory(5)));
     }
 
-    public PlantAdapter(Context context, List<Plant> plantList) {
+    public PlantAdapter(Context context, List<UserPlant> plantList) {
         this.context = context;
         this.plantList = plantList;
     }
@@ -119,8 +120,8 @@ public class PlantAdapter extends BaseAdapter {
             temp.setCount(count);
             for(int j=0; j<count; j++)
                 locations.add(farmLocation.get(rand.nextInt(32)));
-            temp.setStartDate(startDate);
-            temp.setHarvestDate(harvestDate);
+            temp.setStartDate(String.valueOf(startDate.getTime()));
+            temp.setHarvestDate(String.valueOf(harvestDate));
             temp.setLocationList(locations);
             temp.setResult(failed?"success":"failed");
             temp.setHarvested(harvested);
